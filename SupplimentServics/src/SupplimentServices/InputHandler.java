@@ -2,10 +2,19 @@ package SupplimentServices;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author callu
+ */
 public class InputHandler {
 
     private static final Scanner kb = new Scanner(System.in);
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     public char getChar(String question) {
         String msg = "";
         while (msg.isEmpty()) {
@@ -15,6 +24,11 @@ public class InputHandler {
         return msg.charAt(0);
     }
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     public char getYorN(String question) {
         char answer = 'x';
         boolean validInput = false;
@@ -30,6 +44,11 @@ public class InputHandler {
         return Character.toLowerCase(answer);
     }
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     public int getInt(String question) {
         boolean inputValid = false;
         int input = 0;
@@ -46,6 +65,11 @@ public class InputHandler {
         return input;
     }
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     public long getLong(String question) {
         boolean inputValid = false;
         long input = 0;
@@ -62,6 +86,11 @@ public class InputHandler {
         return input;
     }
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     public double getDouble(String question) {
         boolean inputValid = false;
         double input = 0;
@@ -78,6 +107,11 @@ public class InputHandler {
         return input;
     }
 
+    /**
+     *
+     * @param question
+     * @return
+     */
     public String getString(String question) {
         String msg = "";
         while (msg.isEmpty()) {

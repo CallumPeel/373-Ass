@@ -1,5 +1,9 @@
 package SupplimentServices;
 
+/**
+ *
+ * @author callu
+ */
 public class Record {
 
 	private String recordName;
@@ -8,7 +12,15 @@ public class Record {
 	private String trackLength;
 	private String isRecordPlaying;
 
-	public Record(String recordName, String artistName, String yearCreated, String trackLength,
+    /**
+     *
+     * @param recordName
+     * @param artistName
+     * @param yearCreated
+     * @param trackLength
+     * @param isRecordPlaying
+     */
+    public Record(String recordName, String artistName, String yearCreated, String trackLength,
 			String isRecordPlaying) {
 		this.recordName = recordName;
 		this.artistName = artistName;

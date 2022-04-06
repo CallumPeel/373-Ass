@@ -2,12 +2,19 @@ package SupplimentServices;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author callu
+ */
 public class BackEnd {
 
 	ArrayList<Customer> customers;
 	ArrayList<Supplement> supplements;
 
-	public BackEnd() {
+    /**
+     *
+     */
+    public BackEnd() {
 		this.customers = new ArrayList<Customer>();
 		this.supplements = new ArrayList<Supplement>();
 	}
@@ -19,7 +26,11 @@ public class BackEnd {
 		return null;
 	}
 
-	public void removeCustomer(String name) {
+    /**
+     *
+     * @param name
+     */
+    public void removeCustomer(String name) {
 		if (getCustomer(name) != null) {
 			System.out.println("Customer Removed.\n");
 			customers.remove(getCustomerIndex(name));
@@ -41,26 +52,48 @@ public class BackEnd {
 		return index;
 	}
 
-	public void addCustomer(Customer customer) {
+    /**
+     *
+     * @param customer
+     */
+    public void addCustomer(Customer customer) {
 		this.customers.add(customer);
 	}
 
-	public void addCustomer(
+    /**
+     *
+     * @param customer
+     * @param paymentMethod
+     * @param associatedCustomers
+     */
+    public void addCustomer(
 			Customer customer,
 			PaymentMethod paymentMethod,
 			ArrayList<Customer> associatedCustomers) {
 		this.customers.add(new PayingCustomer(customer, paymentMethod, associatedCustomers));
 	}
 
-	public void removeCustomer(Customer customer) {
+    /**
+     *
+     * @param customer
+     */
+    public void removeCustomer(Customer customer) {
 		this.customers.remove(customer);
 	}
 
-	public void addSupplement(Supplement supplement) {
+    /**
+     *
+     * @param supplement
+     */
+    public void addSupplement(Supplement supplement) {
 		this.supplements.add(supplement);
 	}
 
-	public void removeSupplement(Supplement supplement) {
+    /**
+     *
+     * @param supplement
+     */
+    public void removeSupplement(Supplement supplement) {
 		this.supplements.remove(supplement);
 	}
 

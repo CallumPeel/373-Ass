@@ -2,12 +2,20 @@ package SupplimentServices;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author callu
+ */
 public class FrontEndConsole {
 	private BackEnd backEnd;
 	private InputHandler IH;
 	String mainMenu;
 
-	public FrontEndConsole(BackEnd backEnd) {
+    /**
+     *
+     * @param backEnd
+     */
+    public FrontEndConsole(BackEnd backEnd) {
 		this.backEnd = backEnd;
 		this.IH = new InputHandler();
 

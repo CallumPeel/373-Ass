@@ -2,11 +2,22 @@ package SupplimentServices;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author callu
+ */
 public class PayingCustomer extends Customer {
 
     PaymentMethod paymentMethod;
     ArrayList<Customer> associatedCustomers;
 
+    /**
+     *
+     * @param name
+     * @param email
+     * @param paymentMethod
+     * @param supplementSubscription
+     */
     public PayingCustomer(
             String name,
             String email,
@@ -17,6 +28,12 @@ public class PayingCustomer extends Customer {
         this.associatedCustomers = new ArrayList<Customer>();
     }
 
+    /**
+     *
+     * @param customer
+     * @param paymentMethod
+     * @param associatedCustomers
+     */
     public PayingCustomer(Customer customer,
             PaymentMethod paymentMethod,
             ArrayList<Customer> associatedCustomers) {
@@ -26,6 +43,14 @@ public class PayingCustomer extends Customer {
         this.associatedCustomers = associatedCustomers;
     }
 
+    /**
+     *
+     * @param name
+     * @param email
+     * @param supplementSubscription
+     * @param paymentMethod
+     * @param associatedCustomers
+     */
     public PayingCustomer(
             String name,
             String email,
@@ -38,18 +63,34 @@ public class PayingCustomer extends Customer {
         this.associatedCustomers = associatedCustomers;
     }
 
+    /**
+     *
+     * @param paymentMethod
+     */
     public void setPaymentMethods(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
+    /**
+     *
+     * @return
+     */
     public PaymentMethod getPaymentMethods() {
         return this.paymentMethod;
     }
 
+    /**
+     *
+     * @param customer
+     */
     public void addCustomer(Customer customer) {
         this.associatedCustomers.add(customer);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMonthlyEmail() {
         double multiplier = 52 / 12;
         ArrayList<Supplement> mySubscription = getSupplementSubscription();
