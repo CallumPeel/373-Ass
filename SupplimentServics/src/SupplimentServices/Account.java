@@ -1,8 +1,8 @@
 package SupplimentServices;
 
 /**
- *
- * @author callu
+ * Holds a customer's account details.
+ * @author Callum Peel
  */
 public class Account {
 
@@ -11,7 +11,9 @@ public class Account {
     String BSB;
 
     /**
-     *
+     * Constructs an Account object.
+     * Takes their name, account number and BSB as parameters and initializes them.
+     * 
      * @param name
      * @param accNum
      * @param BSB
@@ -23,7 +25,7 @@ public class Account {
     }
 
     /**
-     *
+     * Initializes an account to default values.
      */
     public Account() {
         this.name = "Account not active";
@@ -32,7 +34,7 @@ public class Account {
     }
 
     /**
-     *
+     * Returns account name.
      * @return
      */
     public String getName() {
@@ -40,7 +42,7 @@ public class Account {
     }
 
     /**
-     *
+     * Sets account name.
      * @param name
      */
     public void setName(String name) {
@@ -48,7 +50,7 @@ public class Account {
     }
 
     /**
-     *
+     * Returns account number
      * @return
      */
     public String getAccNum() {
@@ -56,7 +58,7 @@ public class Account {
     }
 
     /**
-     *
+     * Sets the account number
      * @param accNum
      */
     public void setAccNum(String accNum) {
@@ -64,7 +66,7 @@ public class Account {
     }
 
     /**
-     *
+     * Returns BSB
      * @return
      */
     public String getBSB() {
@@ -72,7 +74,7 @@ public class Account {
     }
 
     /**
-     *
+     * Sets BSB
      * @param BSB
      */
     public void setBSB(String BSB) {

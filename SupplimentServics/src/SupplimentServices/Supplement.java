@@ -1,8 +1,9 @@
 package SupplimentServices;
 
 /**
- *
- * @author callu
+ * Contains supplement name and cost.
+ * 
+ * @author Callum Peel
  */
 public class Supplement {
 
@@ -10,7 +11,7 @@ public class Supplement {
     private double cost;
 
     /**
-     *
+     * Takes a name and cost, constructs and initializes those values.
      * @param name
      * @param cost
      */
@@ -20,7 +21,7 @@ public class Supplement {
     }
 
     /**
-     *
+     * Takes a name and initializes it.
      * @param name
      */
     public void setName(String name) {
@@ -28,7 +29,7 @@ public class Supplement {
     }
 
     /**
-     *
+     * Returns the supplement name.
      * @return
      */
     public String getName() {
@@ -36,7 +37,7 @@ public class Supplement {
     }
 
     /**
-     *
+     *  Takes a supplement cost and initializes it.
      * @param cost
      */
     public void setCost(double cost) {
@@ -44,7 +45,7 @@ public class Supplement {
     }
 
     /**
-     *
+     * Returns the supplement cost.
      * @return
      */
     public double getCost() {

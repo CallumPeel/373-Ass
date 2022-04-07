@@ -3,15 +3,16 @@ package SupplimentServices;
 import java.util.Scanner;
 
 /**
- *
- * @author callu
+ * Handles user input from the console.
+ * @author Callum Peel
  */
 public class InputHandler {
 
     private static final Scanner kb = new Scanner(System.in);
 
     /**
-     *
+     * Takes a question to be printed to the console, 
+     * takes an input from the user and then returns the first char.
      * @param question
      * @return
      */
@@ -25,7 +26,9 @@ public class InputHandler {
     }
 
     /**
-     *
+     * Takes a question to be printed to the console,
+     * returns a 'y' or 'n'
+     * 
      * @param question
      * @return
      */
@@ -45,6 +48,8 @@ public class InputHandler {
     }
 
     /**
+     * Takes a question to be printed to the console,
+     * returns an int.
      *
      * @param question
      * @return
@@ -66,6 +71,8 @@ public class InputHandler {
     }
 
     /**
+     * Takes a question to be printed to the console,
+     * returns a long
      *
      * @param question
      * @return
@@ -87,6 +94,8 @@ public class InputHandler {
     }
 
     /**
+     * Takes a question to be printed to the console,
+     * returns a double
      *
      * @param question
      * @return
@@ -108,6 +117,8 @@ public class InputHandler {
     }
 
     /**
+     * Takes a question to be printed to the console,
+     * returns a string
      *
      * @param question
      * @return

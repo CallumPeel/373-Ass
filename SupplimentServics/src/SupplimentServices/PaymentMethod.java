@@ -1,8 +1,9 @@
 package SupplimentServices;
 
 /**
- *
- * @author callu
+ * Contains payment details.
+ * 
+ * @author Callum Peel
  */
 public class PaymentMethod {
 
@@ -11,7 +12,8 @@ public class PaymentMethod {
     Account account;
 
     /**
-     *
+     * Takes payment information and constructs a Payment Method.
+     * 
      * @param bankName
      * @param card
      * @param account
@@ -23,7 +25,8 @@ public class PaymentMethod {
     }
 
     /**
-     *
+     * Takes payment information and constructs a Payment Method.
+     * 
      * @param bankName
      * @param account
      */
@@ -34,7 +37,8 @@ public class PaymentMethod {
     }
 
     /**
-     *
+     * Takes payment information and constructs a Payment Method.
+     * 
      * @param bankName
      * @param card
      */
@@ -45,15 +49,17 @@ public class PaymentMethod {
     }
 
     /**
-     *
+     * Returns the bank name.
+     * 
      * @return
      */
     public String getBankName() {
-        return bankName;
+        return this.bankName;
     }
 
     /**
-     *
+     * Sets the bank name.
+     * 
      * @param bankName
      */
     public void setBankName(String bankName) {
@@ -61,7 +67,8 @@ public class PaymentMethod {
     }
 
     /**
-     *
+     * Returns a card.
+     * 
      * @return
      */
     public Card getCard() {
@@ -69,7 +76,8 @@ public class PaymentMethod {
     }
 
     /**
-     *
+     * Takes a card and initializes it to the corresponding global variable.
+     * 
      * @param card
      */
     public void setCard(Card card) {

@@ -3,8 +3,10 @@ package SupplimentServices;
 import java.util.ArrayList;
 
 /**
- *
- * @author callu
+ * Contains a customer with payment information.
+ * Extends the customer class
+ * 
+ * @author Callum Peel
  */
 public class PayingCustomer extends Customer {
 
@@ -12,7 +14,9 @@ public class PayingCustomer extends Customer {
     ArrayList<Customer> associatedCustomers;
 
     /**
-     *
+     * Constructs a paying customer.
+     * Takes customer information and a payment method.
+     * 
      * @param name
      * @param email
      * @param paymentMethod
@@ -22,14 +26,16 @@ public class PayingCustomer extends Customer {
             String name,
             String email,
             PaymentMethod paymentMethod,
-            ArrayList<Supplement> supplementSubscription) {
+            ArrayList<Supplement> supplementSubscription) 
+    {
         super(name, email, supplementSubscription);
         this.paymentMethod = paymentMethod;
         this.associatedCustomers = new ArrayList<Customer>();
     }
 
     /**
-     *
+     * Constructs a paying customer.
+     * 
      * @param customer
      * @param paymentMethod
      * @param associatedCustomers
@@ -44,7 +50,8 @@ public class PayingCustomer extends Customer {
     }
 
     /**
-     *
+     * Constructs a paying customer.
+     * 
      * @param name
      * @param email
      * @param supplementSubscription
@@ -64,7 +71,8 @@ public class PayingCustomer extends Customer {
     }
 
     /**
-     *
+     * Takes a payment method and initializes it's corresponding global variable.
+     * 
      * @param paymentMethod
      */
     public void setPaymentMethods(PaymentMethod paymentMethod) {
@@ -72,7 +80,7 @@ public class PayingCustomer extends Customer {
     }
 
     /**
-     *
+     * Returns a payment method.
      * @return
      */
     public PaymentMethod getPaymentMethods() {
@@ -80,7 +88,8 @@ public class PayingCustomer extends Customer {
     }
 
     /**
-     *
+     * Takes a customer and adds it to the list of associated customers.
+     * 
      * @param customer
      */
     public void addCustomer(Customer customer) {
@@ -88,7 +97,8 @@ public class PayingCustomer extends Customer {
     }
 
     /**
-     *
+     * Builds and returns a string that contains the monthly e-mails.
+     * 
      * @return
      */
     public String getMonthlyEmail() {
