@@ -3,8 +3,8 @@ package SupplimentServices;
 import java.util.ArrayList;
 
 /**
- *
- * @author callu
+ * Stores arrays of customers and supplements.
+ * @author Callum Peel
  */
 public class BackEnd {
 
@@ -12,7 +12,7 @@ public class BackEnd {
 	ArrayList<Supplement> supplements;
 
     /**
-     *
+     * Constructs and initializes a Back End.
      */
     public BackEnd() {
 		this.customers = new ArrayList<Customer>();
@@ -27,7 +27,7 @@ public class BackEnd {
 	}
 
     /**
-     *
+     * Takes a String name as a parameter and removes that customer from the list of customers.
      * @param name
      */
     public void removeCustomer(String name) {
@@ -53,7 +53,7 @@ public class BackEnd {
 	}
 
     /**
-     *
+     * Takes a customer and adds it to the list of customers.
      * @param customer
      */
     public void addCustomer(Customer customer) {
@@ -61,7 +61,8 @@ public class BackEnd {
 	}
 
     /**
-     *
+     * Takes a customer and some payment details as parameters,
+     * constructs a paying customer and adds it to the list.
      * @param customer
      * @param paymentMethod
      * @param associatedCustomers
@@ -74,7 +75,7 @@ public class BackEnd {
 	}
 
     /**
-     *
+     *Takes a customer as a parameter and removes it from the customer list.
      * @param customer
      */
     public void removeCustomer(Customer customer) {
@@ -82,7 +83,7 @@ public class BackEnd {
 	}
 
     /**
-     *
+     * Takes a supplement as a parameter and adds it to the list of supplements.
      * @param supplement
      */
     public void addSupplement(Supplement supplement) {
@@ -90,7 +91,7 @@ public class BackEnd {
 	}
 
     /**
-     *
+     * Takes a supplement as a parameter and removes it from the list of supplements.
      * @param supplement
      */
     public void removeSupplement(Supplement supplement) {

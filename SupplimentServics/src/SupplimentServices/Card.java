@@ -1,8 +1,8 @@
 package SupplimentServices;
 
 /**
- *
- * @author callu
+ * Contains card details.
+ * @author Callum Peel
  */
 public class Card {
 
@@ -12,7 +12,7 @@ public class Card {
     int cvv;
 
     /**
-     *
+     * Takes card details, constructs a card object then initializes it.
      * @param name
      * @param cardNumber
      * @param exp
@@ -26,7 +26,7 @@ public class Card {
     }
 
     /**
-     *
+     * Constructs a card object and initializes it with default values.
      */
     public Card() {
         this.name = "Card not active";
@@ -36,7 +36,7 @@ public class Card {
     }
 
     /**
-     *
+     * Returns the string expiry date.
      * @return
      */
     public String getExp() {
@@ -44,7 +44,7 @@ public class Card {
     }
 
     /**
-     *
+     * Takes a String expiry and initializes the expiry global variable.
      * @param exp
      */
     public void setExp(String exp) {
@@ -52,7 +52,7 @@ public class Card {
     }
 
     /**
-     *
+     * Returns an int cvv.
      * @return
      */
     public int getCvv() {
@@ -60,7 +60,7 @@ public class Card {
     }
 
     /**
-     *
+     * Takes an int cvv and initializes the global cvv.
      * @param cvv
      */
     public void setCvv(int cvv) {

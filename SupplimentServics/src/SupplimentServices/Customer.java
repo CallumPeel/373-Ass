@@ -3,8 +3,8 @@ package SupplimentServices;
 import java.util.ArrayList;
 
 /**
- *
- * @author callu
+ * Contains customer attributes.
+ * @author Callum Peel
  */
 public class Customer {
     String name;
@@ -12,7 +12,7 @@ public class Customer {
     private ArrayList<Supplement> supplementSubscription;
 
     /**
-     *
+     * Takes customer attributes, constructs and initializes the the global variables.
      * @param name
      * @param email
      * @param supplementSubscription
@@ -25,7 +25,8 @@ public class Customer {
     }
 
     /**
-     *
+     * Takes customer attributes, constructs and initializes the global variables.
+     * Creates an empty supplementSubscription.
      * @param name
      * @param email
      */
@@ -36,7 +37,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Takes a string name and initializes the global variable with it.
      * @param name
      */
     public void setName(String name) {
@@ -44,7 +45,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Takes a string email and initializes the global variable with it.
      * @param email
      */
     public void setEmail(String email) {
@@ -52,7 +53,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Takes an list of supplements and the global variable with it.
      * @param supplementSubscription
      */
     public void setSupplementSubscription(ArrayList<Supplement> supplementSubscription) {
@@ -60,7 +61,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Returns the String name.
      * @return
      */
     public String getName() {
@@ -68,7 +69,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Returns the String email.
      * @return
      */
     public String getEmailAddress() {
@@ -76,7 +77,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Returns a list of supplements.
      * @return
      */
     public ArrayList<Supplement> getSupplementSubscription() {
@@ -84,7 +85,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Builds a "weekly email" String and returns it.
      * @return
      */
     public String getWeeklyEmail() {
@@ -108,7 +109,7 @@ public class Customer {
     }
 
     /**
-     *
+     * Returns an empty string.
      * @return
      */
     public String getMonthlyEmail() {
