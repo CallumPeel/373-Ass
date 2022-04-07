@@ -5,14 +5,14 @@ package SupplementServices;
  * 
  * @author Callum Peel
  */
-public class Application {
-	private BackEnd backEnd;
-	private FrontEndConsole uiConsole;
+public class Main {
+    private BackEnd backEnd;
+    private FrontEndConsole uiConsole;
         
     /**
      * Constructs and initializes a new Application so that it has a new BackEnd and new FrontEnd
      */
-    public Application() {
+    public Main() {
 		this.backEnd = new BackEnd();
 		this.uiConsole = new FrontEndConsole(this.backEnd);
                 BackEnd d = new BackEnd();
@@ -23,6 +23,6 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
-		Application app = new Application();
+		Main app = new Main();
 	}
 }
