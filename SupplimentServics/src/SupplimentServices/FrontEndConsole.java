@@ -34,6 +34,7 @@ public class FrontEndConsole {
                 + "[Q] - QUIT\n"
                 + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
+        displayStudentDetails();
         buildDatabase();
 
         assignmentQuestions();
@@ -263,5 +264,14 @@ public class FrontEndConsole {
         this.backEnd.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
                 new PaymentMethod("", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
     }
-
+    
+    private void displayStudentDetails() {
+        System.out.println(
+                "Name: Callum Peel\n"
+                + "Student Number: 34217062\n"
+                + "Mode of Enrolement: On campus\n"
+                + "Tutor: Ferdous Sohel\n"
+                + "Tutorial attendance: Tuesdays 1630-1730\n\n"
+        );
+    }
 }
