@@ -1,4 +1,4 @@
-package SupplimentServices;
+package SupplementServices;
 
 /**
  * Holds a customer's account details.

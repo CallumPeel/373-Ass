@@ -1,4 +1,4 @@
-package SupplimentServices;
+package SupplementServices;
 
 /**
  * Contains supplement name and cost.

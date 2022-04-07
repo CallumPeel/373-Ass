@@ -1,4 +1,4 @@
-package SupplimentServices;
+package SupplementServices;
 
 /**
  * Main entry to the program. Contains Front and Back End.

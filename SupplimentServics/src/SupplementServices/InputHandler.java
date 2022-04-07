@@ -1,4 +1,4 @@
-package SupplimentServices;
+package SupplementServices;
 
 import java.util.Scanner;
 
