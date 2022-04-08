@@ -20,7 +20,7 @@
       function isNumber(field) {
         let isNum = true;
     		for (var i = 0; i < field.value.length; i++){
-    			var oneChar=field.value.substring(i,i+1);
+    			var oneChar=field.value.substring(i);
     			if (oneChar < "0" || oneChar > "9"){
     				alert("Numbers only");
     				field.focus();
