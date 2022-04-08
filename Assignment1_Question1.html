@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC “EG”>
+
+<html>
+  <head>
+    <title>Lab3 Exercise1</title>
+  </head>
+
+  <body>
+    <script>
+      function checkForm(form) {
+        return (
+             (!isEmpty(form.nameBox))
+          && (!isEmpty(form.ageBox))
+          && (isWord(form.nameBox))
+          && (isNumber(form.ageBox))
+        );
+      }
+      function isNumber(field) {
+        let isNum = true;
+    		for (var i = 0; i < field.value.length; i++){
+    			var oneChar=field.value.substring(i,i+1);
+    			if (oneChar < "0" || oneChar > "9"){
+    				alert("Numbers only");
+    				field.focus();
+    				field.select();
+            isNum = false;
+            break;
+    			}
+    		}
+        return isNum;
+      }
+      // function isName(field) {
+      //   if (field.value.length > 50) return false;
+      //   return (isWord(field));
+      // }
+
+      function isWord(field) {
+        let isWord = true;
+    		for (var i = 0; i < field.value.length; i++){
+    			var oneChar=field.value.substring(i);
+    			if (!oneChar.match(/[a-z]/)){
+    				alert("Letters only");
+    				field.focus();
+    				field.select();
+            isWord = false;
+            break;
+    			}
+    		}
+        return isWord;
+      }
+
+      function isEmpty(field) {
+        if (field.value == null || field.value =="") {
+          alert("Enter something!");
+          field.focus();
+          field.select();
+        }
+        return (field.value == null || field.value =="");
+      }
+    </script>
+    <hr>
+    <h1>Assignment 1</h1>
+    <hr>
+    <h2> User Information:</h2>
+
+    <p>
+      <a id="s1"></a>
+      First section
+    </p>
+    <h2>
+      <a id="s2"></a>
+      Second section
+    </h2>
+    <p>
+      This is where the buttons will go.
+    </p>
+
+    <form
+    method="get"
+    action="http://www.it.murdoch.edu.au/cgi-bin/reply1.pl"
+    onsubmit="return checkForm(this)"
+      <p>
+        Name:
+        <input
+          type="text"
+          name="nameBox"
+          size="20"
+          onChange="isWord(this)"
+        </input>
+        <br><br>
+          Age:
+        <input
+          type="text"
+          name="ageBox"
+          size="20"
+          onChange="isNumber(this)"
+        </input>
+        <br><br>
+        <input
+        type="submit"
+        name=""
+        value="submit""
+      </p>
+    </form>
+  </body>
+</html>
