@@ -10,25 +10,21 @@
       function checkForm(form) {
         return (
              (!isEmpty(form.nameBox))
-          && (!isEmpty(form.ageBox))
+          && (!isEmpty(form.phone))
+          && (!isEmpty(form.dob))
+
           && (isName(form.nameBox))
-          && (isNumber(form.ageBox))
           && (isPhoneNumber(form.phone))
+          && (isDOB(form.dob))
         );
       }
 
-      function isNumber(field) {
+      // Uses regex to check if value is an integer
+      function isInt(field) {
         let isNum = true;
-    		for (var i = 0; i < field.value.length; i++){
-    			var oneChar=field.value.substring(i);
-    			if (oneChar < "0" || oneChar > "9"){
-    				alert("Numbers only");
-    				field.focus();
-    				field.select();
-            isNum = false;
-            break;
-    			}
-    		}
+        if (!field.value.match(/^[\d]*$/)) {
+          alert("Bad number value");
+        }
         return isNum;
       }
 
@@ -71,7 +67,7 @@
         if ((trimmedValue).match(/^[+]\d{11}$/)) {
           isValid = true;
         } else {
-          alert("Bad phone number value");
+          alert("Bad phone number value. Please use the format:\n+61 XXX XXX XXX");
           field.focus();
           field.select();
         }
@@ -79,7 +75,14 @@
       }
 
       function isDOB(field) {
-
+        let isDOB = true;
+        if (!field.value.match(/^\d{2}[\/]\d{2}[\/]\d{4}$/)){
+          alert("Incorrect date format. Please use:\ndd/mm/yyyy");
+          field.focus();
+          field.select();
+          isDOB = false;
+        }
+        return isDOB;
       }
 
       function isParagraph(field) {
@@ -117,14 +120,7 @@
           onChange="isName(this)"
         </input>
         <br><br>
-        Age:
-        <input
-          type="text"
-          name="ageBox"
-          size="20"
-          onChange="isNumber(this)"
-        </input>
-        <br><br>
+
         Phone:
         <input
           type="text"
@@ -133,6 +129,16 @@
           onChange="isPhoneNumber(this)"
         </input>
         <br><br>
+
+        DOB:
+        <input
+          type="text"
+          name="dob"
+          size="20"
+          onChange="isDOB(this)"
+        </input>
+        <br><br>
+
         <input type="submit" name="" value="submit"">
       </p>
     </form>
