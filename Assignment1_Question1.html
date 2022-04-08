@@ -29,10 +29,10 @@
     		}
         return isNum;
       }
-      // function isName(field) {
-      //   if (field.value.length > 50) return false;
-      //   return (isWord(field));
-      // }
+      function isName(field) {
+        if (field.value.length > 50) return false;
+        return (isWord(field));
+      }
 
       function isWord(field) {
         let isWord = true;
@@ -85,7 +85,7 @@
           type="text"
           name="nameBox"
           size="20"
-          onChange="isWord(this)"
+          onChange="isName(this)"
         </input>
         <br><br>
           Age:
