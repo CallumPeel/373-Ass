@@ -243,16 +243,16 @@ public class FrontEndConsole {
         customerList1.add(backEnd.customers.get(2));
         ArrayList<Customer> customerList2 = new ArrayList<Customer>();
         customerList2.add(backEnd.customers.get(0));
-        customerList2.add(backEnd.customers.get(1));
         customerList2.add(backEnd.customers.get(2));
+        customerList2.add(backEnd.customers.get(3));
         ArrayList<Customer> customerList3 = new ArrayList<Customer>();
-        customerList3.add(backEnd.customers.get(0));
         customerList3.add(backEnd.customers.get(1));
         customerList3.add(backEnd.customers.get(2));
+        customerList3.add(backEnd.customers.get(3));
         ArrayList<Customer> customerList4 = new ArrayList<Customer>();
-        customerList4.add(backEnd.customers.get(0));
-        customerList4.add(backEnd.customers.get(1));
-        customerList4.add(backEnd.customers.get(2));
+        customerList4.add(backEnd.customers.get(3));
+        customerList4.add(backEnd.customers.get(4));
+        customerList4.add(backEnd.customers.get(5));
 
         // Create paying customers;
         this.backEnd.addCustomer(new Customer("Matthew", "Matthew@gmail.com", supplementList1),
@@ -269,7 +269,7 @@ public class FrontEndConsole {
         System.out.println(
                 "Name: Callum Peel\n"
                 + "Student Number: 34217062\n"
-                + "Mode of Enrolement: On campus\n"
+                + "Mode of Enrolement: Internal\n"
                 + "Tutor: Ferdous Sohel\n"
                 + "Tutorial attendance: Tuesdays 1630-1730\n\n"
         );
