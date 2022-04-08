@@ -11,7 +11,7 @@
         return (
              (!isEmpty(form.nameBox))
           && (!isEmpty(form.ageBox))
-          && (isWord(form.nameBox))
+          && (isName(form.nameBox))
           && (isNumber(form.ageBox))
           && (isPhoneNumber(form.phone))
         );
@@ -31,23 +31,27 @@
     		}
         return isNum;
       }
+
+      // Checks that a name is less than 50 characters.
+      // Calls function to check if input is a word.
       function isName(field) {
-        if (field.value.length > 50) return false;
+        if (field.value.length > 50) {
+          alert("Entry too long");
+          field.focus();
+          field.select();
+          return false;
+        }
         return (isWord(field));
       }
 
       function isWord(field) {
         let isWord = true;
-    		for (var i = 0; i < field.value.length; i++){
-    			var oneChar=field.value.substring(i);
-    			if (!oneChar.match(/[a-z]/)){
-    				alert("Letters only");
-    				field.focus();
-    				field.select();
-            isWord = false;
-            break;
-    			}
-    		}
+        if (!field.value.match(/^[a-zA-Z]*$/)){
+          alert("Letters only");
+          field.focus();
+          field.select();
+          isWord = false;
+        }
         return isWord;
       }
 
