@@ -13,8 +13,10 @@
           && (!isEmpty(form.ageBox))
           && (isWord(form.nameBox))
           && (isNumber(form.ageBox))
+          && (isPhoneNumber(form.phone))
         );
       }
+
       function isNumber(field) {
         let isNum = true;
     		for (var i = 0; i < field.value.length; i++){
@@ -58,8 +60,18 @@
         return (field.value == null || field.value =="");
       }
 
+      // Trims whitespaces and then uses regex to check if format is correct.
       function isPhoneNumber(field) {
-
+        let isValid = false;
+        let trimmedValue = field.value.replace(/ /g, "");
+        if ((trimmedValue).match(/^[+]\d{11}$/)) {
+          isValid = true;
+        } else {
+          alert("Bad phone number value");
+          field.focus();
+          field.select();
+        }
+        return isValid;
       }
 
       function isDOB(field) {
@@ -67,8 +79,8 @@
       }
 
       function isParagraph(field) {
-
       }
+
 
     </script>
     <hr>
@@ -101,7 +113,7 @@
           onChange="isName(this)"
         </input>
         <br><br>
-          Age:
+        Age:
         <input
           type="text"
           name="ageBox"
@@ -109,10 +121,15 @@
           onChange="isNumber(this)"
         </input>
         <br><br>
+        Phone:
         <input
-        type="submit"
-        name=""
-        value="submit""
+          type="text"
+          name="phone"
+          size="20"
+          onChange="isPhoneNumber(this)"
+        </input>
+        <br><br>
+        <input type="submit" name="" value="submit"">
       </p>
     </form>
   </body>
