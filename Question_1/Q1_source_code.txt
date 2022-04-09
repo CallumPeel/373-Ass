@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC “EG”>
+
+<html>
+  <head>
+    <title>Lab3 Exercise1</title>
+  </head>
+
+  <body>
+    <!--
+      This is a JavaScript script.
+      These functions are called throughout the HTML below and inject code where called.
+      This can (and really should) be separated into an external javascript file and "imported".
+    -->
+    <script>
+    // Performs validation on all text box fields.
+      function checkForm(form) {
+        if (
+        (isEmpty(form.nameBox)) ||
+        (isEmpty(form.phone)) ||
+        (isEmpty(form.dob)) ||
+        (isEmpty(form.pastimes)) ||
+        (!isName(form.nameBox)) ||
+        (!isPhoneNumber(form.phone)) ||
+        (!isDate(form.dob)) ||
+        (!isParagraph(form.pastimes)))
+        {
+          return false;
+        }
+        else {
+          return true;
+        }
+      }
+
+      // Checks that a name is less than 50 characters.
+      // Calls function to check if input is a word.
+      // Returns a boolean value.
+      function isName(field) {
+        if (field.value.length > 50) {
+          alert("Entry too long");
+          field.focus();
+          field.select();
+          return false;
+        }
+        return (isWord(field));
+        return true;
+      }
+
+      // Using regex to make sure that every char is a letter between a-z and A-Z,
+      // from start to finish.
+      // Returns a boolean value.
+      function isWord(field) {
+        let isWord = true;
+        // if empty return false
+        // if not empty, and if field doesnt match correct input, print error
+        if (isEmpty(field)) {
+          return false;
+        } else {
+          if (!field.value.match(/^[a-zA-Z ]*$/)){
+            alert("Letters only");
+            field.focus();
+            field.select();
+            isWord = false;
+          }
+        }
+        return isWord;
+      }
+
+      // Checks if field is empty.
+      // Returns a boolean value.
+      function isEmpty(field) {
+        let isEmpty = false;
+        if (field.value == null || field.value =="") {
+          alert("Enter something!");
+          field.focus();
+          field.select();
+          isEmpty = true;
+        }
+        if (field.value.match(/^[ ]*$/)){
+          alert("Entry cannot be empty space");
+          field.focus();
+          field.select();
+          isEmpty = true;
+        }
+        return isEmpty;
+      }
+
+      // Trims whitespaces and then uses regex to check if format is correct.
+      // Returns a boolean value.
+      function isPhoneNumber(field) {
+        let isValid = false;
+        if (!isEmpty(field)) {
+          let trimmedValue = field.value.replace(/ /g, "");
+          if ((trimmedValue).match(/^[+]\d{11}$/)) {
+            isValid = true;
+          } else {
+            alert("Bad phone number value. Please use the format:\n+61 XXX XXX XXX");
+            field.focus();
+            field.select();
+          }
+        }
+        return isValid;
+      }
+
+      // Implements Regular expressions to check that a date format is used.
+      // Returns a boolean value.
+      function isDate(field) {
+        if (!isEmpty(field)) {
+          if (field.value.match(/^\d{2}[\/]\d{2}[\/]\d{4}$/) ||
+          field.value.match(/^\d{2}-\d{2}-\d{4}$/)) {
+            return true;
+          } else {
+            alert("Incorrect date format. Please use:\ndd/mm/yyyy");
+            field.focus();
+            field.select();
+            return false;
+          }
+        } else {
+          return false;
+        }
+      }
+
+      // Validates paragraph length is less than 250 characters long.
+      // Returns a boolean value.
+      function isParagraph(field) {
+        let isPara = true;
+        if (isEmpty(field)) {
+          let isPara = false;
+        }
+        if (field.value.length > 250) {
+          alert("Paragraph too long.");
+          field.focus();
+          field.select();
+          isPara = false;
+        }
+        return isPara;
+      }
+
+    </script>
+    <hr>
+    <h1>373 - Assignment 1</h1>
+    <hr>
+
+    <h2> What to do:</h2>
+
+    <p>
+      <a id="s1"></a>
+      Enter your information in the boxes below.
+    </p>
+
+    <h2>
+      <a id="s2"></a>
+      User input:
+    </h2>
+    <p>
+      This is where your input will go.
+    </p>
+
+  <!--
+    The form that is sent to the server.
+    Calls checkForm function when a user click the submit button.
+  -->
+    <form
+    method="get"
+    action="http://www.it.murdoch.edu.au/cgi-bin/reply1.pl"
+    onsubmit="return checkForm(this)"
+      <p>
+        Name:
+        <!--
+          Calls isName function when a change happens in this field.
+          This could be exiting the text field for example.
+          The corresponding functions are called for each text input box.
+        -->
+        <input
+          type="text"
+          name="nameBox"
+          size="20"
+          onChange="isName(this)"
+        </input>
+        <br><br>
+
+        Phone:
+        <input
+          type="text"
+          name="phone"
+          size="20"
+          onChange="isPhoneNumber(this)"
+        </input>
+        <br><br>
+
+        DOB:
+        <input
+          type="text"
+          name="dob"
+          size="20"
+          onChange="isDate(this)"
+        </input>
+        <br><br>
+
+        Favourite Pastimes:
+        <input
+          type="text"
+          name="pastimes"
+          size="20"
+          onChange="isParagraph(this)"
+        </input>
+        <br><br>
+
+        <input type="submit" name="" value="submit"">
+      </p>
+    </form>
+  </body>
+</html>
