@@ -15,19 +15,20 @@
     // Performs validation on all text box fields.
       function checkForm(form) {
         if (
-          (isEmpty(form.nameBox)) ||
-          (isEmpty(form.phone)) ||
-          (isEmpty(form.dob)) ||
-          (isEmpty(form.pastimes)) ||
-          (!isName(form.nameBox)) ||
-          (!isPhoneNumber(form.phone)) ||
-          (!isDate(form.dob)) ||
-          (!isParagraph(form.pastimes))
-        ) {
-            return false;
-          } else {
-            return true;
-          }
+        (isEmpty(form.nameBox)) ||
+        (isEmpty(form.phone)) ||
+        (isEmpty(form.dob)) ||
+        (isEmpty(form.pastimes)) ||
+        (!isName(form.nameBox)) ||
+        (!isPhoneNumber(form.phone)) ||
+        (!isDate(form.dob)) ||
+        (!isParagraph(form.pastimes)))
+        {
+          return false;
+        }
+        else {
+          return true;
+        }
       }
 
       // Checks that a name is less than 50 characters.
@@ -41,6 +42,7 @@
           return false;
         }
         return (isWord(field));
+        return true;
       }
 
       // Using regex to make sure that every char is a letter between a-z and A-Z,
@@ -48,11 +50,17 @@
       // Returns a boolean value.
       function isWord(field) {
         let isWord = true;
-        if (!field.value.match(/^[a-zA-Z]*$/)){
-          alert("Letters only");
-          field.focus();
-          field.select();
-          isWord = false;
+        // if empty return false
+        // if not empty, and if field doesnt match correct input, print error
+        if (isEmpty(field)) {
+          return false;
+        } else {
+          if (!field.value.match(/^[a-zA-Z ]*$/)){
+            alert("Letters only");
+            field.focus();
+            field.select();
+            isWord = false;
+          }
         }
         return isWord;
       }
@@ -60,25 +68,35 @@
       // Checks if field is empty.
       // Returns a boolean value.
       function isEmpty(field) {
+        let isEmpty = false;
         if (field.value == null || field.value =="") {
           alert("Enter something!");
           field.focus();
           field.select();
+          isEmpty = true;
         }
-        return (field.value == null || field.value =="");
+        if (field.value.match(/^[ ]*$/)){
+          alert("Entry cannot be empty space");
+          field.focus();
+          field.select();
+          isEmpty = true;
+        }
+        return isEmpty;
       }
 
       // Trims whitespaces and then uses regex to check if format is correct.
       // Returns a boolean value.
       function isPhoneNumber(field) {
         let isValid = false;
-        let trimmedValue = field.value.replace(/ /g, "");
-        if ((trimmedValue).match(/^[+]\d{11}$/)) {
-          isValid = true;
-        } else {
-          alert("Bad phone number value. Please use the format:\n+61 XXX XXX XXX");
-          field.focus();
-          field.select();
+        if (!isEmpty(field)) {
+          let trimmedValue = field.value.replace(/ /g, "");
+          if ((trimmedValue).match(/^[+]\d{11}$/)) {
+            isValid = true;
+          } else {
+            alert("Bad phone number value. Please use the format:\n+61 XXX XXX XXX");
+            field.focus();
+            field.select();
+          }
         }
         return isValid;
       }
@@ -86,24 +104,30 @@
       // Implements Regular expressions to check that a date format is used.
       // Returns a boolean value.
       function isDate(field) {
-        let isDOB = true;
-        if (!field.value.match(/^\d{2}[\/]\d{2}[\/]\d{4}$/) &&
-            !field.value.match(/^\d{2}-\d{2}-\d{4}$/)
-          ){
+        if (!isEmpty(field)) {
+          if (field.value.match(/^\d{2}[\/]\d{2}[\/]\d{4}$/) ||
+          field.value.match(/^\d{2}-\d{2}-\d{4}$/)) {
+            return true;
+          } else {
             alert("Incorrect date format. Please use:\ndd/mm/yyyy");
             field.focus();
             field.select();
-            isDOB = false;
+            return false;
           }
-        return isDate;
+        } else {
+          return false;
+        }
       }
 
       // Validates paragraph length is less than 250 characters long.
       // Returns a boolean value.
       function isParagraph(field) {
         let isPara = true;
+        if (isEmpty(field)) {
+          let isPara = false;
+        }
         if (field.value.length > 250) {
-          alert("Paragraph too long.")
+          alert("Paragraph too long.");
           field.focus();
           field.select();
           isPara = false;
@@ -111,23 +135,24 @@
         return isPara;
       }
 
-
     </script>
     <hr>
-    <h1>Assignment 1</h1>
+    <h1>373 - Assignment 1</h1>
     <hr>
-    <h2> User Information:</h2>
+
+    <h2> What to do:</h2>
 
     <p>
       <a id="s1"></a>
-      First section
+      Enter your information in the boxes below.
     </p>
+
     <h2>
       <a id="s2"></a>
-      Second section
+      User input:
     </h2>
     <p>
-      This is where the buttons will go.
+      This is where your input will go.
     </p>
 
   <!--
