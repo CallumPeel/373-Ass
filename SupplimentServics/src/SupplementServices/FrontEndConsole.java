@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Callum Peel
  */
-public class FrontEndConsole {
+public class FrontEndConsole{
 
     private BackEnd backEnd;
     private InputHandler IH;
@@ -20,9 +20,10 @@ public class FrontEndConsole {
      * @param backEnd
      */
     public FrontEndConsole(BackEnd backEnd) {
+
+        displayStudentDetails();
         this.backEnd = backEnd;
         this.IH = new InputHandler();
-
         mainMenu = "\nMenu\n"
                 + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
                 + "[A] - Add a Customer\n"
@@ -34,18 +35,22 @@ public class FrontEndConsole {
                 + "[Q] - QUIT\n"
                 + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
-        displayStudentDetails();
         buildDatabase();
-
-        assignmentQuestions();
-
-        loopMenu();
+//        assignmentQuestions();
+//        loopMenu();
     }
 
 /**
  * Displays a menu loop.
  */
     private void loopMenu() {
+        
+        boolean orig = true;
+        boolean val = false;
+
+        boolean result = (orig == val);
+        if (result) System.out.println("\n\n\n\nwin\n\n\n\n");
+        
         char choice;
         do {
             choice = this.IH.getChar(mainMenu);
@@ -99,6 +104,7 @@ public class FrontEndConsole {
         for (Customer cust : this.backEnd.customers) {
             System.out.println(cust.name);
         }
+        System.out.println();
     }
 
     /**

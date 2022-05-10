@@ -1,28 +1,22 @@
 package SupplementServices;
 
-/**
- * Main entry to the program. Contains Front and Back End.
- * 
- * @author Callum Peel
- */
-public class Main {
-    private BackEnd backEnd;
-    private FrontEndConsole uiConsole;
-        
-    /**
-     * Constructs and initializes a new Application so that it has a new BackEnd and new FrontEnd
-     */
-    public Main() {
-		this.backEnd = new BackEnd();
-		this.uiConsole = new FrontEndConsole(this.backEnd);
-                BackEnd d = new BackEnd();
-	}
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-    /**
-     * The main entry to the program
-     * @param args
-     */
+public class Main extends Application{
+    
+    private static BackEnd backEnd;
+    private FrontEndConsole console;
+    private FrontEndGUI GUI;
+        
     public static void main(String[] args) {
-		Main app = new Main();
-	}
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage window) throws Exception {
+        this.backEnd = new BackEnd(window);
+        this.console = new FrontEndConsole(this.backEnd);
+        this.GUI = new FrontEndGUI(this.backEnd);
+    }
 }
