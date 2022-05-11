@@ -3,7 +3,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
-
 /**
  * Handles user input and displays prompts to the console.
  *
@@ -12,7 +11,6 @@ import javafx.scene.layout.StackPane;
 public class FrontEndGUI implements UserInterface, java.io.Serializable{
 
     private BackEnd backEnd;
-    Scene view, create, edit;
 
     /**
      * Takes a back end as a parameter and constructs a front end. Takes a
@@ -27,20 +25,17 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable{
 
     @Override
     public void viewMode() {
-        backEnd.window.setTitle("Program");
+        this.backEnd.window.setTitle("Program");
         Button button = new Button();
         button.setText("Click me");
         button.setOnAction(e -> System.out.println("sup?\n"));
+        this.backEnd.viewPane.getChildren().add(button);
         
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
-        
-        Scene scene = new Scene(layout, 300, 250);
-        backEnd.window.setScene(scene);
-        backEnd.window.show();
+        this.backEnd.scene = new Scene(this.backEnd.viewPane, 300,250);
+        this.backEnd.window.setScene(this.backEnd.scene);
+        this.backEnd.window.show();
     }
     
-
     @Override
     public void createMode() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
