@@ -122,4 +122,19 @@ public class BackEnd {
         this.supplements.remove(supplement);
     }
 
+    protected int getNumCust() {
+        return customers.size();
+    }
+
+    protected String getCustName(int index) {
+        return customers.get(index).name;
+    }
+
+    protected int getNumSups() {
+        return supplements.size();
+    }
+
+    protected String getSupName(int index) {
+        return supplements.get(index).getName();
+    }
 }

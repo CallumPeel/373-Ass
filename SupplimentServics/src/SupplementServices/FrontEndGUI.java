@@ -96,23 +96,22 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     private VBox getLeftPane() {
         TreeItem rootItem = new TreeItem("Database");
 
-        TreeItem webItem = new TreeItem("Web Tutorials");
-        webItem.getChildren().add(new TreeItem("HTML  Tutorial"));
-        webItem.getChildren().add(new TreeItem("HTML5 Tutorial"));
-        webItem.getChildren().add(new TreeItem("CSS Tutorial"));
-        webItem.getChildren().add(new TreeItem("SVG Tutorial"));
+        TreeItem webItem = new TreeItem("Customers");
+        for (int i = 0; i < backEnd.getNumCust(); i++) {
+            webItem.getChildren().add(new TreeItem(backEnd.getCustName(i)));
+        }
         rootItem.getChildren().add(webItem);
 
-        TreeItem javaItem = new TreeItem("Java Tutorials");
-        javaItem.getChildren().add(new TreeItem("Java Language"));
-        javaItem.getChildren().add(new TreeItem("Java Collections"));
-        javaItem.getChildren().add(new TreeItem("Java Concurrency"));
+        TreeItem javaItem = new TreeItem("Supplements");
+        for (int i = 0; i < backEnd.getNumSups(); i++) {
+            javaItem.getChildren().add(new TreeItem(backEnd.getSupName(i)));
+        }
         rootItem.getChildren().add(javaItem);
 
         TreeView treeView = new TreeView();
         treeView.setRoot(rootItem);
 
-        treeView.setShowRoot(false); 
+        treeView.setShowRoot(false);
 //        treeView.setShowRoot(true);
 
         VBox vbox = new VBox(treeView);
