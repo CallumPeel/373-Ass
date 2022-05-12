@@ -4,6 +4,7 @@
  */
 package SupplementServices;
 
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 /**
@@ -11,7 +12,7 @@ import javafx.scene.layout.HBox;
  * @author Callum Peel
  */
 public interface UserInterface {
-    void menuItems(HBox pane);
+    void addTopSection(BorderPane pane);
     void viewMode();
     void createMode();
     void editMode();

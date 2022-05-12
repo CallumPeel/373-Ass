@@ -17,6 +17,6 @@ public class Main extends Application{
     public void start(Stage window) throws Exception {
         this.backEnd = new BackEnd(window);
         this.console = new FrontEndConsole(this.backEnd);
-        this.GUI = new FrontEndGUI(this.backEnd, 400, 400);
+        this.GUI = new FrontEndGUI(this.backEnd, 800, 600);
     }
 }
