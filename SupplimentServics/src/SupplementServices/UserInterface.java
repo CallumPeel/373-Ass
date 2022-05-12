@@ -5,7 +5,6 @@
 package SupplementServices;
 
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 
 /**
  *
@@ -13,6 +12,7 @@ import javafx.scene.layout.HBox;
  */
 public interface UserInterface {
     void addTopSection(BorderPane pane);
+    void addLeftSection(BorderPane pane);
     void viewMode();
     void createMode();
     void editMode();
