@@ -4,14 +4,14 @@
  */
 package SupplementServices;
 
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 /**
  *
  * @author Callum Peel
  */
 public interface UserInterface {
-    void menuItems(VBox pane);
+    void menuItems(HBox pane);
     void viewMode();
     void createMode();
     void editMode();

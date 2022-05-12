@@ -2,8 +2,7 @@ package SupplementServices;
 
 import java.util.ArrayList;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -17,7 +16,7 @@ public class BackEnd {
     protected ArrayList<Supplement> supplements;
     protected Stage window;
     protected Scene scene;
-    protected VBox viewPane, createPane, editPane;
+    protected HBox viewPane, createPane, editPane;
 
     /**
      * Constructs and initializes a Back End.
@@ -26,9 +25,9 @@ public class BackEnd {
         this.customers = new ArrayList<Customer>();
         this.supplements = new ArrayList<Supplement>();
 
-        this.viewPane = new VBox();
-        this.createPane = new VBox();
-        this.editPane = new VBox();
+        this.viewPane = new HBox();
+        this.createPane = new HBox();
+        this.editPane = new HBox();
         this.window = window;
     }
 

@@ -2,7 +2,7 @@ package SupplementServices;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 /**
  * Handles user input and displays prompts to the console.
@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 public class FrontEndGUI implements UserInterface, java.io.Serializable {
 
     private BackEnd backEnd;
+    int width, height;
 
     /**
      * Takes a back end as a parameter and constructs a front end. Takes a
@@ -19,14 +20,16 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
      *
      * @param backEnd
      */
-    public FrontEndGUI(BackEnd backEnd) {
+    public FrontEndGUI(BackEnd backEnd, int width, int height) {
         this.backEnd = backEnd;
         this.backEnd.window.setTitle("Program");
+        this.width = width;
+        this.height = height;
         viewMode();
     }
 
     @Override
-    public void menuItems(VBox pane) {
+    public void menuItems(HBox pane) {
 
         Button ViewModeButton = new Button();
         ViewModeButton.setText("View Mode");
@@ -64,7 +67,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         refresh();
         menuItems(this.backEnd.viewPane);
 
-        this.backEnd.scene = new Scene(this.backEnd.viewPane, 200, 250);
+        this.backEnd.scene = new Scene(this.backEnd.viewPane, this.width, this.height);
         this.backEnd.window.setScene(this.backEnd.scene);
         this.backEnd.window.show();
     }
@@ -74,7 +77,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         refresh();
         menuItems(this.backEnd.createPane);
 
-        this.backEnd.scene = new Scene(this.backEnd.createPane, 200, 250);
+        this.backEnd.scene = new Scene(this.backEnd.createPane, this.width, this.height);
         this.backEnd.window.setScene(this.backEnd.scene);
         this.backEnd.window.show();
     }
@@ -84,15 +87,15 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         refresh();
         menuItems(this.backEnd.editPane);
 
-        this.backEnd.scene = new Scene(this.backEnd.editPane, 200, 250);
+        this.backEnd.scene = new Scene(this.backEnd.editPane, this.width, this.height);
         this.backEnd.window.setScene(this.backEnd.scene);
         this.backEnd.window.show();
     }
 
     @Override
     public void refresh() {
-        this.backEnd.viewPane = new VBox();
-        this.backEnd.createPane = new VBox();
-        this.backEnd.editPane = new VBox();
+        this.backEnd.viewPane = new HBox();
+        this.backEnd.createPane = new HBox();
+        this.backEnd.editPane = new HBox();
     }
 }
