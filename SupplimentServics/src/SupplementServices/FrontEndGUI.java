@@ -44,9 +44,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     }
 
     private BorderPane getTopPane() {
-
         Label title = new Label("MAGAZINE SERVICES");
-
         int buttonWidth = 150;
         Button vButton = new Button();
         vButton.setText("View Mode");
@@ -56,7 +54,6 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                     viewMode();
                 }
         );
-
         Button cButton = new Button();
         cButton.setText("Create Mode");
         cButton.setOnAction(
@@ -65,7 +62,6 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                     createMode();
                 }
         );
-
         Button mButton = new Button();
         mButton.setText("Edit Mode");
         mButton.setOnAction(
@@ -100,24 +96,24 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     }
 
     private VBox getLeftPane() {
-        TreeItem rootItem = new TreeItem("Database");
-
-        TreeItem webItem = new TreeItem("Customers");
+        TreeItem<String> rootItem = new TreeItem("Database");
+        
+        TreeItem<String> customers = new TreeItem("Customers");
         for (int i = 0; i < backEnd.getNumCust(); i++) {
-            webItem.getChildren().add(new TreeItem(backEnd.getCustName(i)));
+            customers.getChildren().add(new TreeItem(backEnd.getCustName(i)));
         }
-        rootItem.getChildren().add(webItem);
-
-        TreeItem javaItem = new TreeItem("Supplements");
+        TreeItem<String> supplements = new TreeItem("Supplements");
         for (int i = 0; i < backEnd.getNumSups(); i++) {
-            javaItem.getChildren().add(new TreeItem(backEnd.getSupName(i)));
-        }
-        rootItem.getChildren().add(javaItem);
+            supplements.getChildren().add(new TreeItem(backEnd.getSupName(i)));
+        } 
+        
+        rootItem.getChildren().add(customers);
+        rootItem.getChildren().add(supplements);
 
-        TreeView treeView = new TreeView();
+        TreeView<String> treeView = new TreeView();
         treeView.setRoot(rootItem);
-
         treeView.setShowRoot(false);
+
         if (!isViewMode) {
             treeView.setEditable(true);
             treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
@@ -125,7 +121,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                 public TreeCell<String> call(TreeView<String> p) {
                     return new TextFieldTreeCellImpl(backEnd);
                 }
-            });
+            }); 
         }
         VBox vbox = new VBox(treeView);
 
@@ -243,7 +239,6 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
             this.backEnd.stage.show();
         }
         if (isCreateMode) {
-            
             this.backEnd.createPane = new BorderPane();
             this.backEnd.createPane.setTop(getTopPane());
             this.backEnd.createPane.setLeft(getLeftPane());
@@ -253,7 +248,6 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
             this.backEnd.stage.show();
         }
         if (isEditMode) {
-            
             this.backEnd.editPane = new BorderPane();
             this.backEnd.editPane.setTop(getTopPane());
             this.backEnd.editPane.setLeft(getLeftPane());

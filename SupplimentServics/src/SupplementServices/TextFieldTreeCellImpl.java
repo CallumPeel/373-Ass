@@ -19,17 +19,18 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
 
     private TextField textField;
     private ContextMenu addMenu = new ContextMenu();
+    private BackEnd backEnd;
 
     public TextFieldTreeCellImpl(BackEnd backEnd) {
         MenuItem addCustomerItem = new MenuItem("Add Customer");
         MenuItem addSupplementItem = new MenuItem("Add Supplement");
+
         addMenu.getItems().add(addCustomerItem);
         addMenu.getItems().add(addSupplementItem);
         addCustomerItem.setOnAction(
                 new EventHandler() {
             public void handle(Event t) {
-                backEnd.createPane = new BorderPane();;
-                String name = "ford";
+                String name = "New Customer";
                 TreeItem newCustomer = new TreeItem<String>(name);
                 getTreeItem().getChildren().add(newCustomer);
                 backEnd.addCustomer(name);
@@ -39,12 +40,13 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
         addSupplementItem.setOnAction(
                 new EventHandler() {
             public void handle(Event t) {
-//                    TreeItem newCustomer = new TreeItem<String>("New Customer");
-//                    getTreeItem().getChildren().add(newCustomer);
+                //TreeItem newCustomer = new TreeItem<String>("New Customer");
+                //getTreeItem().getChildren().add(newCustomer);
                 System.out.println("tttttttttt");
             }
         }
         );
+        this.backEnd = backEnd;
     }
 
     @Override
@@ -77,7 +79,8 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
         } else {
             if (isEditing()) {
                 if (textField != null) {
-                    textField.setText(getString());
+                    String name = getString();
+                    textField.setText(name);
                 }
                 setText(null);
                 setGraphic(textField);
@@ -87,6 +90,7 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
                 if (!getTreeItem().isLeaf() && getTreeItem().getParent() != null) {
                     setContextMenu(addMenu);
                 }
+
             }
         }
     }
@@ -98,7 +102,10 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
             @Override
             public void handle(KeyEvent t) {
                 if (t.getCode() == KeyCode.ENTER) {
-                    commitEdit(textField.getText());
+                    String name = textField.getText();
+                    backEnd.getCustName(getItem()).setName(name);
+                    commitEdit(name);
+                    
                 } else if (t.getCode() == KeyCode.ESCAPE) {
                     cancelEdit();
                 }

@@ -134,6 +134,17 @@ public class BackEnd {
         return customers.get(index).name;
     }
 
+    protected Customer getCustName(String name) {
+        Customer result = null;
+        for (Customer c : this.customers) {
+            if (name.equalsIgnoreCase(c.getName())) {
+                result = c;
+                break;
+            }
+        }
+        return result;
+    }
+
     protected int getNumSups() {
         return supplements.size();
     }
