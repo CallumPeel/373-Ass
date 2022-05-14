@@ -116,6 +116,10 @@ public class BackEnd {
         this.supplements.add(supplement);
     }
 
+    public void addSupplement(String supplement) {
+        this.supplements.add(new Supplement(supplement));
+    }
+
     /**
      * Takes a supplement as a parameter and removes it from the list of
      * supplements.

@@ -20,8 +20,9 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
     private TextField textField;
     private ContextMenu addMenu = new ContextMenu();
     private BackEnd backEnd;
+    private boolean isEditMode;
 
-    public TextFieldTreeCellImpl(BackEnd backEnd) {
+    public TextFieldTreeCellImpl(BackEnd backEnd, boolean isEdit) {
         MenuItem addCustomerItem = new MenuItem("Add Customer");
         MenuItem addSupplementItem = new MenuItem("Add Supplement");
 
@@ -40,18 +41,23 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
         addSupplementItem.setOnAction(
                 new EventHandler() {
             public void handle(Event t) {
-                //TreeItem newCustomer = new TreeItem<String>("New Customer");
-                //getTreeItem().getChildren().add(newCustomer);
-                System.out.println("tttttttttt");
+                String name = "New Supplement";
+                TreeItem newSupplement = new TreeItem<String>(name);
+                getTreeItem().getChildren().add(newSupplement);
+                backEnd.addSupplement(name);
             }
         }
+                // make an event handler that changes the center pane?
+                
         );
         this.backEnd = backEnd;
+        this.isEditMode = isEdit;
     }
 
     @Override
     public void startEdit() {
-        super.startEdit();
+        if (isEditMode) {
+                    super.startEdit();
 
         if (textField == null) {
             createTextField();
@@ -59,6 +65,7 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
         setText(null);
         setGraphic(textField);
         textField.selectAll();
+        }
     }
 
     @Override
@@ -105,7 +112,6 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
                     String name = textField.getText();
                     backEnd.getCustName(getItem()).setName(name);
                     commitEdit(name);
-                    
                 } else if (t.getCode() == KeyCode.ESCAPE) {
                     cancelEdit();
                 }

@@ -27,6 +27,8 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     private BackEnd backEnd;
     int width, height;
     boolean isViewMode, isCreateMode, isEditMode;
+    TreeView<String> treeView1, treeView2;
+    TreeItem<String> itemSelected;
 
     /**
      * Takes a back end as a parameter and constructs a front end. Takes a
@@ -70,9 +72,11 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                     editMode();
                 }
         );
+
         vButton.setMinWidth(buttonWidth);
         cButton.setMinWidth(buttonWidth);
         mButton.setMinWidth(buttonWidth);
+
         Separator separator1 = new Separator();
         BorderPane topSectionPane = new BorderPane();
         topSectionPane.setTop(title);
@@ -96,8 +100,9 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     }
 
     private VBox getLeftPane() {
-        TreeItem<String> rootItem = new TreeItem("Database");
-        
+        TreeItem<String> rootItem1 = new TreeItem("Customer Database");
+        TreeItem<String> rootItem2 = new TreeItem("Supplement Database");
+
         TreeItem<String> customers = new TreeItem("Customers");
         for (int i = 0; i < backEnd.getNumCust(); i++) {
             customers.getChildren().add(new TreeItem(backEnd.getCustName(i)));
@@ -105,28 +110,50 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         TreeItem<String> supplements = new TreeItem("Supplements");
         for (int i = 0; i < backEnd.getNumSups(); i++) {
             supplements.getChildren().add(new TreeItem(backEnd.getSupName(i)));
-        } 
+        }
+
+        rootItem1.getChildren().add(customers);
+        rootItem2.getChildren().add(supplements);
+
+        this.treeView1 = new TreeView();
+        treeView1.setRoot(rootItem1);
+        treeView1.setShowRoot(false);
+
+        this.treeView2 = new TreeView();
+        treeView2.setRoot(rootItem2);
+        treeView2.setShowRoot(false);
         
-        rootItem.getChildren().add(customers);
-        rootItem.getChildren().add(supplements);
-
-        TreeView<String> treeView = new TreeView();
-        treeView.setRoot(rootItem);
-        treeView.setShowRoot(false);
-
         if (!isViewMode) {
-            treeView.setEditable(true);
-            treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
+            treeView1.setEditable(true);
+            treeView2.setEditable(true);
+            treeView1.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
                 @Override
                 public TreeCell<String> call(TreeView<String> p) {
-                    return new TextFieldTreeCellImpl(backEnd);
+                    TextFieldTreeCellImpl thing = new TextFieldTreeCellImpl(backEnd, isEditMode);
+                    return thing;
                 }
-            }); 
+            });
+            treeView2.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
+                @Override
+                public TreeCell<String> call(TreeView<String> p) {
+                    TextFieldTreeCellImpl thing = new TextFieldTreeCellImpl(backEnd, isEditMode);
+                    return thing;
+                }
+            });
         }
-        VBox vbox = new VBox(treeView);
+        VBox vbox = new VBox(treeView1, treeView2);
 
-        vbox.setMargin(treeView,
+        vbox.setMargin(treeView1,
                 new Insets(0, 0, 20, 20));
+        vbox.setMargin(treeView2,
+                new Insets(0, 0, 20, 20));
+
+//        this.itemSelected = treeView.getSelectionModel().getSelectedItem();
+//        if (itemSelected == null) {
+//            System.out.println("thing");
+//        }
+//        String name = thing.getValue();
+//        System.out.println(name);
         return vbox;
     }
 
@@ -157,30 +184,25 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         return vbox;
     }
 
-    private VBox getBottomPane() {
-        TreeItem rootItem = new TreeItem("Database");
+    private BorderPane getBottomPane() {
 
-        TreeItem webItem = new TreeItem("Customers");
-        for (int i = 0; i < backEnd.getNumCust(); i++) {
-            webItem.getChildren().add(new TreeItem(backEnd.getCustName(i)));
-        }
-        rootItem.getChildren().add(webItem);
+        int buttonWidth = 150;
+        Button vButton = new Button();
+        Button refreshButton = new Button();
+        refreshButton.setText("Refresh");
+        refreshButton.setOnAction(
+                e -> {
+                    System.out.println("Page Refreshed\n");
+                    refresh();
+                }
+        );
 
-        TreeItem javaItem = new TreeItem("Supplements");
-        for (int i = 0; i < backEnd.getNumSups(); i++) {
-            javaItem.getChildren().add(new TreeItem(backEnd.getSupName(i)));
-        }
-        rootItem.getChildren().add(javaItem);
+        refreshButton.setMinWidth(buttonWidth);
+        BorderPane bottomSectionPane = new BorderPane();
+        bottomSectionPane.setCenter(refreshButton);
+        bottomSectionPane.setMargin(refreshButton, new Insets(0, 0, 30, 0));
 
-        TreeView treeView = new TreeView();
-        treeView.setRoot(rootItem);
-
-        treeView.setShowRoot(false);
-//        treeView.setShowRoot(true);
-
-        VBox vbox = new VBox(treeView);
-        vbox.setMargin(treeView, new Insets(0, 0, 20, 20));
-        return vbox;
+        return bottomSectionPane;
     }
 
     @Override
@@ -234,6 +256,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
             this.backEnd.viewPane.setTop(getTopPane());
             this.backEnd.viewPane.setLeft(getLeftPane());
             this.backEnd.viewPane.setCenter(getCenterPane());
+            this.backEnd.viewPane.setBottom(getBottomPane());
             this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.vScene);
             this.backEnd.stage.show();
@@ -243,6 +266,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
             this.backEnd.createPane.setTop(getTopPane());
             this.backEnd.createPane.setLeft(getLeftPane());
             this.backEnd.createPane.setCenter(getCenterPane());
+            this.backEnd.createPane.setBottom(getBottomPane());
             this.backEnd.cScene = new Scene(this.backEnd.createPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.cScene);
             this.backEnd.stage.show();
@@ -252,6 +276,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
             this.backEnd.editPane.setTop(getTopPane());
             this.backEnd.editPane.setLeft(getLeftPane());
             this.backEnd.editPane.setCenter(getCenterPane());
+            this.backEnd.editPane.setBottom(getBottomPane());
             this.backEnd.eScene = new Scene(this.backEnd.editPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.eScene);
             this.backEnd.stage.show();
