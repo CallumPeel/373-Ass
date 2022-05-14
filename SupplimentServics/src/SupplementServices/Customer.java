@@ -35,6 +35,12 @@ public class Customer {
         this.email = email;
         this.supplementSubscription = new ArrayList<Supplement>();
     }
+    
+        public Customer(String name) {
+        this.name = name;
+        this.email = "";
+        this.supplementSubscription = new ArrayList<Supplement>();
+    }
 
     /**
      * Takes a string name and initializes the global variable with it.

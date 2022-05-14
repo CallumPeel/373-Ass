@@ -79,6 +79,10 @@ public class BackEnd {
         this.customers.add(customer);
     }
 
+    public void addCustomer(String customer) {
+        this.customers.add(new Customer(customer));
+    }
+
     /**
      * Takes a customer and some payment details as parameters, constructs a
      * paying customer and adds it to the list.

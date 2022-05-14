@@ -1,11 +1,13 @@
 package SupplementServices;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
@@ -13,6 +15,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 /**
  * Handles user input and displays prompts to the console.
@@ -23,6 +26,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
 
     private BackEnd backEnd;
     int width, height;
+    boolean isViewMode, isCreateMode, isEditMode;
 
     /**
      * Takes a back end as a parameter and constructs a front end. Takes a
@@ -35,12 +39,13 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.backEnd.stage.setTitle("Program");
         this.width = width;
         this.height = height;
+
         viewMode();
     }
 
     private BorderPane getTopPane() {
 
-        Label title = new Label("Hello");
+        Label title = new Label("MAGAZINE SERVICES");
 
         int buttonWidth = 150;
         Button vButton = new Button();
@@ -83,8 +88,9 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         topSectionPane.setAlignment(vButton, Pos.CENTER);
         topSectionPane.setAlignment(cButton, Pos.CENTER);
         topSectionPane.setAlignment(mButton, Pos.CENTER);
-        Insets insets = new Insets(10);
-        topSectionPane.setMargin(title, insets);
+
+        topSectionPane.setMargin(title, new Insets(30, 0, 0, 0));
+        Insets insets = new Insets(20, 40, 20, 40);
         topSectionPane.setMargin(vButton, insets);
         topSectionPane.setMargin(cButton, insets);
         topSectionPane.setMargin(mButton, insets);
@@ -112,9 +118,72 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         treeView.setRoot(rootItem);
 
         treeView.setShowRoot(false);
+        if (!isViewMode) {
+            treeView.setEditable(true);
+            treeView.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
+                @Override
+                public TreeCell<String> call(TreeView<String> p) {
+                    return new TextFieldTreeCellImpl(backEnd);
+                }
+            });
+        }
+        VBox vbox = new VBox(treeView);
+
+        vbox.setMargin(treeView,
+                new Insets(0, 0, 20, 20));
+        return vbox;
+    }
+
+    private VBox getCenterPane() {
+        TreeItem rootItem = new TreeItem("Database");
+
+        TreeItem webItem = new TreeItem("Customers");
+        for (int i = 0; i < backEnd.getNumCust(); i++) {
+            webItem.getChildren().add(new TreeItem(backEnd.getCustName(i)));
+        }
+        rootItem.getChildren().add(webItem);
+
+        TreeItem javaItem = new TreeItem("Supplements");
+        for (int i = 0; i < backEnd.getNumSups(); i++) {
+            javaItem.getChildren().add(new TreeItem(backEnd.getSupName(i)));
+        }
+        rootItem.getChildren().add(javaItem);
+
+        TreeView treeView = new TreeView();
+        treeView.setRoot(rootItem);
+
+        treeView.setShowRoot(false);
+//        treeView.setShowRoot(true);
+
+        ReadOnlyObjectProperty indexSelected = treeView.getSelectionModel().selectedItemProperty();
+        VBox vbox = new VBox(treeView);
+        vbox.setMargin(treeView, new Insets(0, 20, 20, 20));
+        return vbox;
+    }
+
+    private VBox getBottomPane() {
+        TreeItem rootItem = new TreeItem("Database");
+
+        TreeItem webItem = new TreeItem("Customers");
+        for (int i = 0; i < backEnd.getNumCust(); i++) {
+            webItem.getChildren().add(new TreeItem(backEnd.getCustName(i)));
+        }
+        rootItem.getChildren().add(webItem);
+
+        TreeItem javaItem = new TreeItem("Supplements");
+        for (int i = 0; i < backEnd.getNumSups(); i++) {
+            javaItem.getChildren().add(new TreeItem(backEnd.getSupName(i)));
+        }
+        rootItem.getChildren().add(javaItem);
+
+        TreeView treeView = new TreeView();
+        treeView.setRoot(rootItem);
+
+        treeView.setShowRoot(false);
 //        treeView.setShowRoot(true);
 
         VBox vbox = new VBox(treeView);
+        vbox.setMargin(treeView, new Insets(0, 0, 20, 20));
         return vbox;
     }
 
@@ -129,41 +198,69 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     }
 
     @Override
+    public void addCenterSection(BorderPane pane) {
+        pane.setCenter(getCenterPane());
+    }
+
+    @Override
+    public void addRightSection(BorderPane pane) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public void viewMode() {
+        this.isViewMode = true;
+        this.isCreateMode = false;
+        this.isEditMode = false;
         refresh();
-        this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
-        this.backEnd.stage.setScene(this.backEnd.vScene);
-        this.backEnd.stage.show();
     }
 
     @Override
     public void createMode() {
+        this.isViewMode = false;
+        this.isCreateMode = true;
+        this.isEditMode = false;
         refresh();
-        this.backEnd.cScene = new Scene(this.backEnd.createPane, this.width, this.height);
-        this.backEnd.stage.setScene(this.backEnd.cScene);
-        this.backEnd.stage.show();
     }
 
     @Override
     public void editMode() {
+        this.isViewMode = false;
+        this.isCreateMode = false;
+        this.isEditMode = true;
         refresh();
-        this.backEnd.eScene = new Scene(this.backEnd.editPane, this.width, this.height);
-        this.backEnd.stage.setScene(this.backEnd.eScene);
-        this.backEnd.stage.show();
     }
 
     @Override
     public void refresh() {
-        this.backEnd.viewPane = new BorderPane();
-        this.backEnd.createPane = new BorderPane();
-        this.backEnd.editPane = new BorderPane();
-
-        addTopSection(this.backEnd.viewPane);
-        addTopSection(this.backEnd.createPane);
-        addTopSection(this.backEnd.editPane);
-
-        addLeftSection(this.backEnd.viewPane);
-        addLeftSection(this.backEnd.createPane);
-        addLeftSection(this.backEnd.editPane);
+        if (isViewMode) {
+            this.backEnd.viewPane = new BorderPane();
+            this.backEnd.viewPane.setTop(getTopPane());
+            this.backEnd.viewPane.setLeft(getLeftPane());
+            this.backEnd.viewPane.setCenter(getCenterPane());
+            this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
+            this.backEnd.stage.setScene(this.backEnd.vScene);
+            this.backEnd.stage.show();
+        }
+        if (isCreateMode) {
+            
+            this.backEnd.createPane = new BorderPane();
+            this.backEnd.createPane.setTop(getTopPane());
+            this.backEnd.createPane.setLeft(getLeftPane());
+            this.backEnd.createPane.setCenter(getCenterPane());
+            this.backEnd.cScene = new Scene(this.backEnd.createPane, this.width, this.height);
+            this.backEnd.stage.setScene(this.backEnd.cScene);
+            this.backEnd.stage.show();
+        }
+        if (isEditMode) {
+            
+            this.backEnd.editPane = new BorderPane();
+            this.backEnd.editPane.setTop(getTopPane());
+            this.backEnd.editPane.setLeft(getLeftPane());
+            this.backEnd.editPane.setCenter(getCenterPane());
+            this.backEnd.eScene = new Scene(this.backEnd.editPane, this.width, this.height);
+            this.backEnd.stage.setScene(this.backEnd.eScene);
+            this.backEnd.stage.show();
+        }
     }
 }

@@ -13,6 +13,8 @@ import javafx.scene.layout.BorderPane;
 public interface UserInterface {
     void addTopSection(BorderPane pane);
     void addLeftSection(BorderPane pane);
+    void addCenterSection(BorderPane pane);
+    void addRightSection(BorderPane pane);
     void viewMode();
     void createMode();
     void editMode();
