@@ -122,21 +122,21 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.treeView2 = new TreeView();
         treeView2.setRoot(rootItem2);
         treeView2.setShowRoot(false);
-        
+
         if (!isViewMode) {
             treeView1.setEditable(true);
             treeView2.setEditable(true);
+
             treeView1.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
                 @Override
                 public TreeCell<String> call(TreeView<String> p) {
-                    TextFieldTreeCellImpl thing = new TextFieldTreeCellImpl(backEnd, isEditMode);
-                    return thing;
+                    return new TextFieldTreeCellImpl(backEnd, isEditMode, 'c');
                 }
             });
             treeView2.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
                 @Override
                 public TreeCell<String> call(TreeView<String> p) {
-                    TextFieldTreeCellImpl thing = new TextFieldTreeCellImpl(backEnd, isEditMode);
+                    TextFieldTreeCellImpl thing = new TextFieldTreeCellImpl(backEnd, isEditMode, 's');
                     return thing;
                 }
             });

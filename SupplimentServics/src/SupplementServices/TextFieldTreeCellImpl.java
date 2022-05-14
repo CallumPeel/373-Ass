@@ -22,34 +22,38 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
     private BackEnd backEnd;
     private boolean isEditMode;
 
-    public TextFieldTreeCellImpl(BackEnd backEnd, boolean isEdit) {
-        MenuItem addCustomerItem = new MenuItem("Add Customer");
-        MenuItem addSupplementItem = new MenuItem("Add Supplement");
+    public TextFieldTreeCellImpl(BackEnd backEnd, boolean isEdit, char listType) {
 
-        addMenu.getItems().add(addCustomerItem);
-        addMenu.getItems().add(addSupplementItem);
-        addCustomerItem.setOnAction(
-                new EventHandler() {
-            public void handle(Event t) {
-                String name = "New Customer";
-                TreeItem newCustomer = new TreeItem<String>(name);
-                getTreeItem().getChildren().add(newCustomer);
-                backEnd.addCustomer(name);
+        if (listType == 'c') {
+            MenuItem addCustomerItem = new MenuItem("Add Customer");
+            addMenu.getItems().add(addCustomerItem);
+            addCustomerItem.setOnAction(
+                    new EventHandler() {
+                public void handle(Event t) {
+                    String name = "New Customer";
+                    TreeItem newCustomer = new TreeItem<String>(name);
+                    getTreeItem().getChildren().add(newCustomer);
+                    backEnd.addCustomer(name);
+                }
             }
+            );
         }
-        );
-        addSupplementItem.setOnAction(
-                new EventHandler() {
-            public void handle(Event t) {
-                String name = "New Supplement";
-                TreeItem newSupplement = new TreeItem<String>(name);
-                getTreeItem().getChildren().add(newSupplement);
-                backEnd.addSupplement(name);
+        if (listType == 's') {
+
+            MenuItem addSupplementItem = new MenuItem("Add Supplement");
+            addMenu.getItems().add(addSupplementItem);
+            addSupplementItem.setOnAction(
+                    new EventHandler() {
+                public void handle(Event t) {
+                    String name = "New Supplement";
+                    TreeItem newSupplement = new TreeItem<String>(name);
+                    getTreeItem().getChildren().add(newSupplement);
+                    backEnd.addSupplement(name);
+                }
             }
+            // make an event handler that changes the center pane?
+            );
         }
-                // make an event handler that changes the center pane?
-                
-        );
         this.backEnd = backEnd;
         this.isEditMode = isEdit;
     }
@@ -57,14 +61,14 @@ public class TextFieldTreeCellImpl extends TreeCell<String> {
     @Override
     public void startEdit() {
         if (isEditMode) {
-                    super.startEdit();
+            super.startEdit();
 
-        if (textField == null) {
-            createTextField();
-        }
-        setText(null);
-        setGraphic(textField);
-        textField.selectAll();
+            if (textField == null) {
+                createTextField();
+            }
+            setText(null);
+            setGraphic(textField);
+            textField.selectAll();
         }
     }
 
