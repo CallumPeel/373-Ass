@@ -13,47 +13,29 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.BorderPane;
 
-public class TextFieldTreeCellImpl extends TreeCell<String> {
+public class SupplementAddBox extends TreeCell<String> {
 
     private TextField textField;
     private ContextMenu addMenu = new ContextMenu();
     private BackEnd backEnd;
     private boolean isEditMode;
 
-    public TextFieldTreeCellImpl(BackEnd backEnd, boolean isEdit, char listType) {
+    public SupplementAddBox(BackEnd backEnd, boolean isEdit) {
 
-        if (listType == 'c') {
-            MenuItem addCustomerItem = new MenuItem("Add Customer");
-            addMenu.getItems().add(addCustomerItem);
-            addCustomerItem.setOnAction(
-                    new EventHandler() {
-                public void handle(Event t) {
-                    String name = "New Customer";
-                    TreeItem newCustomer = new TreeItem<String>(name);
-                    getTreeItem().getChildren().add(newCustomer);
-                    backEnd.addCustomer(name);
-                }
+        MenuItem addSupplementItem = new MenuItem("Add Supplement");
+        addMenu.getItems().add(addSupplementItem);
+        addSupplementItem.setOnAction(
+                new EventHandler() {
+            public void handle(Event t) {
+                String name = "New Supplement";
+                TreeItem newSupplement = new TreeItem<String>(name);
+                getTreeItem().getChildren().add(newSupplement);
+                backEnd.addSupplement(name);
             }
-            );
         }
-        if (listType == 's') {
-
-            MenuItem addSupplementItem = new MenuItem("Add Supplement");
-            addMenu.getItems().add(addSupplementItem);
-            addSupplementItem.setOnAction(
-                    new EventHandler() {
-                public void handle(Event t) {
-                    String name = "New Supplement";
-                    TreeItem newSupplement = new TreeItem<String>(name);
-                    getTreeItem().getChildren().add(newSupplement);
-                    backEnd.addSupplement(name);
-                }
-            }
-            // make an event handler that changes the center pane?
-            );
-        }
+        // make an event handler that changes the center pane?
+        );
         this.backEnd = backEnd;
         this.isEditMode = isEdit;
     }

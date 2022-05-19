@@ -1,6 +1,5 @@
 package SupplementServices;
 
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,9 +10,6 @@ import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
@@ -130,13 +126,13 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
             treeView1.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
                 @Override
                 public TreeCell<String> call(TreeView<String> p) {
-                    return new TextFieldTreeCellImpl(backEnd, isEditMode, 'c');
+                    return new CustomerAddBox(backEnd, isEditMode);
                 }
             });
             treeView2.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
                 @Override
                 public TreeCell<String> call(TreeView<String> p) {
-                    TextFieldTreeCellImpl thing = new TextFieldTreeCellImpl(backEnd, isEditMode, 's');
+                    SupplementAddBox thing = new SupplementAddBox(backEnd, isEditMode);
                     return thing;
                 }
             });
@@ -157,31 +153,16 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         return vbox;
     }
 
-    private VBox getCenterPane() {
-        TreeItem rootItem = new TreeItem("Database");
+    private BorderPane getCenterPane() {
 
-        TreeItem webItem = new TreeItem("Customers");
-        for (int i = 0; i < backEnd.getNumCust(); i++) {
-            webItem.getChildren().add(new TreeItem(backEnd.getCustName(i)));
-        }
-        rootItem.getChildren().add(webItem);
+        Label title = new Label("MAGAZINE SERVICES");
+        int buttonWidth = 150;
+        BorderPane topSectionPane = new BorderPane();
+        topSectionPane.setTop(title);
+        topSectionPane.setAlignment(title, Pos.CENTER);
+        topSectionPane.setMargin(title, new Insets(30, 0, 0, 0));
 
-        TreeItem javaItem = new TreeItem("Supplements");
-        for (int i = 0; i < backEnd.getNumSups(); i++) {
-            javaItem.getChildren().add(new TreeItem(backEnd.getSupName(i)));
-        }
-        rootItem.getChildren().add(javaItem);
-
-        TreeView treeView = new TreeView();
-        treeView.setRoot(rootItem);
-
-        treeView.setShowRoot(false);
-//        treeView.setShowRoot(true);
-
-        ReadOnlyObjectProperty indexSelected = treeView.getSelectionModel().selectedItemProperty();
-        VBox vbox = new VBox(treeView);
-        vbox.setMargin(treeView, new Insets(0, 20, 20, 20));
-        return vbox;
+        return topSectionPane;
     }
 
     private BorderPane getBottomPane() {
