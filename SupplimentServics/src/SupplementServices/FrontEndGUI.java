@@ -1,5 +1,7 @@
 package SupplementServices;
 
+import java.util.List;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,6 +27,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     boolean isViewMode, isCreateMode, isEditMode;
     TreeView<String> treeView1, treeView2;
     TreeItem<String> itemSelected;
+    int buttonWidth;
 
     /**
      * Takes a back end as a parameter and constructs a front end. Takes a
@@ -37,13 +40,13 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.backEnd.stage.setTitle("Program");
         this.width = width;
         this.height = height;
+        this.buttonWidth = 150;
 
         viewMode();
     }
 
     private BorderPane getTopPane() {
         Label title = new Label("MAGAZINE SERVICES");
-        int buttonWidth = 150;
         Button vButton = new Button();
         vButton.setText("View Mode");
         vButton.setOnAction(
@@ -96,6 +99,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
     }
 
     private VBox getLeftPane() {
+
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
         TreeItem<String> rootItem2 = new TreeItem("Supplement Database");
 
@@ -137,7 +141,30 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                 }
             });
         }
-        VBox vbox = new VBox(treeView1, treeView2);
+
+        VBox vbox = new VBox();
+        if (isCreateMode || isEditMode) {
+            Button editCustomerButton = new Button();
+            editCustomerButton.setText("Edit Selected Customer");
+            editCustomerButton.setOnAction(
+                    e -> {
+                        System.out.println(treeView1.getSelectionModel().getSelectedItem().getValue());
+
+//                        viewMode();   
+                    }
+            );
+            Button editSupplementButton = new Button();
+            editSupplementButton.setText("Edit Selected Supplement");
+            editSupplementButton.setOnAction(
+                    e -> {
+                        System.out.println("edit Mode Activated\n");
+//                        viewMode();
+                    }
+            );
+            vbox = new VBox(editCustomerButton, treeView1, editSupplementButton, treeView2);
+        } else {
+            vbox = new VBox(treeView1, treeView2);
+        }
 
         vbox.setMargin(treeView1,
                 new Insets(0, 0, 20, 20));
