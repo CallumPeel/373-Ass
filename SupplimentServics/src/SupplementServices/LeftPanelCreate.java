@@ -1,21 +1,21 @@
 package SupplementServices;
 
-public class LeftPanelEdit extends LeftPanel {
+public class LeftPanelCreate extends LeftPanel {
 
-    LeftPanelEdit(BackEnd backEnd, SceneTemplate sceneTemplate) {
+    LeftPanelCreate(BackEnd backEnd, SceneTemplate sceneTemplate) {
         super(backEnd, sceneTemplate);
     }
 
     @Override
     public void setPane() {
-        this.backEnd.editPane.setLeft(this.sceneTemplate.vbox);
+        this.backEnd.createPane.setLeft(this.sceneTemplate.vbox);
     }
 
     @Override
     public void onCustButtonClick() {
         // Directly set center pane here with new CenterPanel Class.
         this.sceneTemplate.itemSelected = this.sceneTemplate.treeView1.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("Edit Modeeee");
+        System.out.println("Create Modeeee");
         this.sceneTemplate.refresh();
     }
 

@@ -111,43 +111,6 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         treeView2.setShowRoot(false);
     }
 
-    private VBox editModeLeftPanel(VBox vbox) {
-        Button editCustomerButton = new Button();
-        editCustomerButton.setText("View Customer");
-        editCustomerButton.setOnAction(
-                e -> {
-                    this.itemSelected = treeView1.getSelectionModel().getSelectedItem().getValue();
-                    refresh();
-                }
-        );
-        Button editSupplementButton = new Button();
-        editSupplementButton.setText("View Supplement");
-        editSupplementButton.setOnAction(
-                e -> {
-                    System.out.println(treeView2.getSelectionModel().getSelectedItem().getValue());
-                    refresh();
-                }
-        );
-        vbox = new VBox(editCustomerButton, treeView1, editSupplementButton, treeView2);
-
-        vbox.setAlignment(Pos.CENTER);
-        Insets inset = new Insets(0, 0, 15, 15);
-        vbox.setMargin(editSupplementButton, inset);
-        vbox.setMargin(editCustomerButton, inset);
-        vbox.setMargin(treeView1, inset);
-        vbox.setMargin(treeView2, inset);
-        return vbox;
-    }
-
-    private VBox getLeftPane() {
-        if (!this.isViewMode) {
-            new LeftPanelEdit(this.backEnd, this);
-        } else {
-            new LeftPanel(this.backEnd, this);
-        }
-        return this.vbox;
-    }
-
     private BorderPane getBottomPane() {
 
         int buttonWidth = 150;
@@ -169,9 +132,18 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         return bottomSectionPane;
     }
 
-    @Override
-    public void addLeftSection(BorderPane pane) {
-        pane.setLeft(getLeftPane());
+    public void setLeftPane() {
+        if (isViewMode) {
+            new LeftPanel(this.backEnd, this);
+
+        }
+        if (isEditMode) {
+            new LeftPanelEdit(this.backEnd, this);
+        }
+        if (isCreateMode) {
+            // This is a place holder till LeftPanelEditcreate class
+            new LeftPanelCreate(this.backEnd, this);
+        }
     }
 
     @Override
@@ -219,7 +191,7 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         if (isViewMode) {
             this.backEnd.viewPane = new BorderPane();
             this.backEnd.viewPane.setTop(getTopPane());
-            this.backEnd.viewPane.setLeft(getLeftPane());
+            setLeftPane();
             this.backEnd.viewPane.setBottom(getBottomPane());
             this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.vScene);
@@ -228,7 +200,7 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         if (isCreateMode) {
             this.backEnd.createPane = new BorderPane();
             this.backEnd.createPane.setTop(getTopPane());
-            this.backEnd.createPane.setLeft(getLeftPane());
+            setLeftPane();
             this.backEnd.createPane.setBottom(getBottomPane());
             this.backEnd.cScene = new Scene(this.backEnd.createPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.cScene);
@@ -237,11 +209,16 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         if (isEditMode) {
             this.backEnd.editPane = new BorderPane();
             this.backEnd.editPane.setTop(getTopPane());
-            this.backEnd.editPane.setLeft(getLeftPane());
+            setLeftPane();
             this.backEnd.editPane.setBottom(getBottomPane());
             this.backEnd.eScene = new Scene(this.backEnd.editPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.eScene);
             this.backEnd.stage.show();
         }
+    }
+
+    @Override
+    public void addLeftSection(BorderPane pane) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

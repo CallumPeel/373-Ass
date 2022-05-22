@@ -23,15 +23,24 @@ public class LeftPanel extends VBox {
         Button viewCustButton = new Button();
         viewCustButton.setText("View Customer");
         viewCustButton.setOnAction(
-                e -> {
-                    onCustButtonClick();
+                s -> {
+                    try {
+                        onCustButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Select a Customer");
+                    }
                 }
         );
         Button viewSupButton = new Button();
         viewSupButton.setText("View Supplement");
         viewSupButton.setOnAction(
-                e -> {
-                    onSupButtonClick();
+                s -> {
+                    try {
+                        onSupButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Select a Supplement");
+                    }
+
                 }
         );
         this.sceneTemplate.vbox = new VBox(viewCustButton, this.sceneTemplate.treeView1, viewSupButton, this.sceneTemplate.treeView2);
@@ -40,11 +49,17 @@ public class LeftPanel extends VBox {
         this.sceneTemplate.vbox.setMargin(this.sceneTemplate.treeView2, inset);
         this.sceneTemplate.vbox.setMargin(viewCustButton, inset);
         this.sceneTemplate.vbox.setMargin(viewSupButton, inset);
+        setPane();
+    }
+
+    public void setPane() {
+        this.backEnd.viewPane.setLeft(this.sceneTemplate.vbox);
     }
 
     public void onCustButtonClick() {
         // Directly set center pane here with new CenterPanel Class.
         this.sceneTemplate.itemSelected = this.sceneTemplate.treeView1.getSelectionModel().getSelectedItem().getValue();
+        System.out.println("View Modeeee");
         this.sceneTemplate.refresh();
     }
 
