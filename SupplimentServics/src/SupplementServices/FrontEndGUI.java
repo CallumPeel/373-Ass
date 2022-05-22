@@ -1,19 +1,15 @@
 package SupplementServices;
 
-import java.util.List;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 /**
  * Handles user input and displays prompts to the console.
@@ -42,7 +38,6 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.height = height;
         this.buttonWidth = 150;
         setTree();
-
         viewMode();
     }
 
@@ -151,9 +146,9 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
 
     private VBox viewModeLeftPanel(VBox vbox) {
         vbox = new VBox(this.treeView1, this.treeView2);
-        vbox.setMargin(treeView1,
+        vbox.setMargin(this.treeView1,
                 new Insets(0, 0, 20, 20));
-        vbox.setMargin(treeView2,
+        vbox.setMargin(this.treeView2,
                 new Insets(0, 0, 20, 20));
         return vbox;
     }
@@ -168,18 +163,25 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         return vbox;
     }
 
-//    private BorderPane viewCenterPane(BorderPane topSectionPane) {
-//        
-//    }
-    
-    private BorderPane getCenterPane() {
-
+    private BorderPane viewCenterPane(BorderPane topSectionPane) {
         Label title = new Label("MAGAZINE SERVICES");
-        BorderPane topSectionPane = new BorderPane();
         topSectionPane.setTop(title);
-        topSectionPane.setAlignment(title, Pos.CENTER);
-        topSectionPane.setMargin(title, new Insets(30, 0, 0, 0));
+        topSectionPane.setAlignment(title, Pos.TOP_CENTER);
+        
+        TreeItem<String> testRoot = new TreeItem("Test selection");
+        TreeView<String> testView  = new TreeView();
+        testView.setRoot(testRoot);
+        
+        VBox test = new VBox(testView);
+        topSectionPane.setCenter(test);
+        topSectionPane.setMargin(test, new Insets(30));
+                
+        return topSectionPane;
+    }
 
+    private BorderPane getCenterPane() {
+        BorderPane topSectionPane = new BorderPane();
+        topSectionPane = viewCenterPane(topSectionPane);
         return topSectionPane;
     }
 
