@@ -167,18 +167,9 @@ public class Customer {
 
     public TreeView<String> getDetails() {
         TreeItem<String> customerInformation = new TreeItem("Customer");
-        customerInformation.getChildren().add(new TreeItem(this.name));
-        customerInformation.getChildren().add(new TreeItem(this.email));
-        customerInformation.getChildren().add(new TreeItem(this.total));
-
-        TreeItem<String> supplementList = new TreeItem("Supplements");
-        for (int i = 0; i < this.supplementSubscription.size(); i++) {
-            // Branch "Supplement Name"
-            TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
-            custSupplements.getChildren().add(new TreeItem("$" + String.format("%.2f", this.supplementSubscription.get(i).getCost())));
-            supplementList.getChildren().add(custSupplements);
-        }
-        customerInformation.getChildren().add(supplementList);
+        customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
+        customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
+        customerInformation.getChildren().add(getCustSupplementBreakdown());
 
         TreeView details = new TreeView();
         details.setRoot(customerInformation);

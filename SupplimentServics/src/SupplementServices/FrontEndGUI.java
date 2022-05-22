@@ -17,12 +17,12 @@ import javafx.scene.layout.VBox;
  * @author Callum Peel
  */
 public class FrontEndGUI implements UserInterface, java.io.Serializable {
-
+    
     private BackEnd backEnd;
     int width, height;
     boolean isViewMode, isCreateMode, isEditMode;
     TreeView<String> treeView1, treeView2;
-    TreeItem<String> itemSelected;
+    String itemSelected;
     int buttonWidth;
 
     /**
@@ -37,10 +37,11 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.width = width;
         this.height = height;
         this.buttonWidth = 150;
+        this.itemSelected = "Callum";
         setTree();
         viewMode();
     }
-
+    
     private BorderPane getTopPane() {
         Label title = new Label("MAGAZINE SERVICES");
         Button vButton = new Button();
@@ -67,11 +68,11 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                     editMode();
                 }
         );
-
+        
         vButton.setMinWidth(buttonWidth);
         cButton.setMinWidth(buttonWidth);
         mButton.setMinWidth(buttonWidth);
-
+        
         Separator separator1 = new Separator();
         BorderPane topSectionPane = new BorderPane();
         topSectionPane.setTop(title);
@@ -83,17 +84,17 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         topSectionPane.setAlignment(vButton, Pos.CENTER);
         topSectionPane.setAlignment(cButton, Pos.CENTER);
         topSectionPane.setAlignment(mButton, Pos.CENTER);
-
+        
         topSectionPane.setMargin(title, new Insets(30, 0, 0, 0));
         Insets insets = new Insets(20, 40, 20, 40);
         topSectionPane.setMargin(vButton, insets);
         topSectionPane.setMargin(cButton, insets);
         topSectionPane.setMargin(mButton, insets);
         topSectionPane.setMargin(separator1, insets);
-
+        
         return topSectionPane;
     }
-
+    
     private void setTree() {
         // create tree items
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
@@ -119,31 +120,35 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         treeView2.setRoot(rootItem2);
         treeView2.setShowRoot(false);
     }
-
+    
     private VBox editModeLeftPanel(VBox vbox) {
         Button editCustomerButton = new Button();
-        editCustomerButton.setText("Edit Selected Customer");
+        editCustomerButton.setText("View Customer");
         editCustomerButton.setOnAction(
                 e -> {
-                    System.out.println(treeView1.getSelectionModel().getSelectedItem().getValue());
+                    this.itemSelected = treeView1.getSelectionModel().getSelectedItem().getValue();
+                    refresh();
                 }
         );
         Button editSupplementButton = new Button();
-        editSupplementButton.setText("Edit Selected Supplement");
+        editSupplementButton.setText("View Supplement");
         editSupplementButton.setOnAction(
                 e -> {
                     System.out.println(treeView2.getSelectionModel().getSelectedItem().getValue());
+                    refresh();
                 }
         );
         vbox = new VBox(editCustomerButton, treeView1, editSupplementButton, treeView2);
-
-        vbox.setMargin(treeView1,
-                new Insets(0, 0, 20, 20));
-        vbox.setMargin(treeView2,
-                new Insets(0, 0, 20, 20));
+        
+        vbox.setAlignment(Pos.CENTER);
+        Insets inset = new Insets(0, 0, 15, 15);
+        vbox.setMargin(editSupplementButton, inset);
+        vbox.setMargin(editCustomerButton, inset);
+        vbox.setMargin(treeView1, inset);
+        vbox.setMargin(treeView2, inset);
         return vbox;
     }
-
+    
     private VBox viewModeLeftPanel(VBox vbox) {
         vbox = new VBox(this.treeView1, this.treeView2);
         vbox.setMargin(this.treeView1,
@@ -152,7 +157,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                 new Insets(0, 0, 20, 20));
         return vbox;
     }
-
+    
     private VBox getLeftPane() {
         VBox vbox = new VBox();
         if (!this.isViewMode) {
@@ -162,28 +167,28 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         }
         return vbox;
     }
-
+    
     private BorderPane viewCenterPane(BorderPane topSectionPane) {
-        Label title = new Label("MAGAZINE SERVICES");
+        Label title = new Label("Customer Breakdown");
         topSectionPane.setTop(title);
         topSectionPane.setAlignment(title, Pos.TOP_CENTER);
 
 //        VBox test = new VBox(this.backEnd.getCustName("Callum").getDetails());
-        VBox test = new VBox(this.backEnd.getCustName("Matthew").getDetails());
+        VBox test = new VBox(this.backEnd.getCustName(this.itemSelected).getDetails());
         topSectionPane.setCenter(test);
         topSectionPane.setMargin(test, new Insets(30));
-
+        
         return topSectionPane;
     }
-
+    
     private BorderPane getCenterPane() {
         BorderPane topSectionPane = new BorderPane();
         topSectionPane = viewCenterPane(topSectionPane);
         return topSectionPane;
     }
-
+    
     private BorderPane getBottomPane() {
-
+        
         int buttonWidth = 150;
         Button vButton = new Button();
         Button refreshButton = new Button();
@@ -194,35 +199,35 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
                     refresh();
                 }
         );
-
+        
         refreshButton.setMinWidth(buttonWidth);
         BorderPane bottomSectionPane = new BorderPane();
         bottomSectionPane.setCenter(refreshButton);
         bottomSectionPane.setMargin(refreshButton, new Insets(0, 0, 30, 0));
-
+        
         return bottomSectionPane;
     }
-
+    
     @Override
     public void addLeftSection(BorderPane pane) {
         pane.setLeft(getLeftPane());
     }
-
+    
     @Override
     public void addTopSection(BorderPane pane) {
         pane.setTop(getTopPane());
     }
-
+    
     @Override
     public void addCenterSection(BorderPane pane) {
         pane.setCenter(getCenterPane());
     }
-
+    
     @Override
     public void addRightSection(BorderPane pane) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void viewMode() {
         this.isViewMode = true;
@@ -230,7 +235,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.isEditMode = false;
         refresh();
     }
-
+    
     @Override
     public void createMode() {
         this.isViewMode = false;
@@ -238,7 +243,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.isEditMode = false;
         refresh();
     }
-
+    
     @Override
     public void editMode() {
         this.isViewMode = false;
@@ -246,7 +251,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.isEditMode = true;
         refresh();
     }
-
+    
     @Override
     public void refresh() {
         if (isViewMode) {
