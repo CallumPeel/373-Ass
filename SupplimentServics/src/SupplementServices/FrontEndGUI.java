@@ -31,7 +31,6 @@ public class FrontEndGUI extends SceneTemplate {
         return topSectionPane;
     }
     
-    @Override
     public void addCenterSection(BorderPane pane) {
         pane.setCenter(getCenterPane());
     }

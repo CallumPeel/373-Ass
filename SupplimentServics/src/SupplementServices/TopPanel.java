@@ -78,6 +78,14 @@ public class TopPanel extends MyPanel {
     }
 
     private void setPane() {
-        this.backEnd.viewPane.setTop(this.topSectionPane);
+        if (this.sceneTemplate.isViewMode) {
+            this.backEnd.viewPane.setTop(this.topSectionPane);
+        }
+        if (this.sceneTemplate.isEditMode) {
+            this.backEnd.editPane.setTop(this.topSectionPane);
+        }
+        if (this.sceneTemplate.isCreateMode) {
+            this.backEnd.createPane.setTop(this.topSectionPane);
+        }
     }
 }
