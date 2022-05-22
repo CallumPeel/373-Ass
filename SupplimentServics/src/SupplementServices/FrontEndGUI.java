@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class FrontEndGUI extends SceneTemplate {
+public class FrontEndGUI extends GUITemplate {
         
     public FrontEndGUI(BackEnd backEnd, int width, int height) {
         super(backEnd, width, height);

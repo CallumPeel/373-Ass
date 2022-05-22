@@ -1,17 +1,12 @@
 package SupplementServices;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class SceneTemplate{
+public class GUITemplate{
 
     protected BackEnd backEnd;
     protected int width, height;
@@ -21,7 +16,7 @@ public class SceneTemplate{
     protected int buttonWidth;
     protected VBox vbox;
 
-    public SceneTemplate(BackEnd backEnd, int width, int height) {
+    public GUITemplate(BackEnd backEnd, int width, int height) {
         this.backEnd = backEnd;
         this.backEnd.stage.setTitle("Program");
         this.width = width;
@@ -58,40 +53,6 @@ public class SceneTemplate{
         treeView2.setShowRoot(false);
     }
 
-    private BorderPane getBottomPane() {
-
-        int buttonWidth = 150;
-        Button vButton = new Button();
-        Button refreshButton = new Button();
-        refreshButton.setText("Refresh");
-        refreshButton.setOnAction(
-                e -> {
-                    System.out.println("Page Refreshed\n");
-                    refresh();
-                }
-        );
-
-        refreshButton.setMinWidth(buttonWidth);
-        BorderPane bottomSectionPane = new BorderPane();
-        bottomSectionPane.setCenter(refreshButton);
-        bottomSectionPane.setMargin(refreshButton, new Insets(0, 0, 30, 0));
-
-        return bottomSectionPane;
-    }
-
-    public void setLeftPane() {
-        if (isViewMode) {
-            new LeftPanel(this.backEnd, this);
-        }
-        if (isEditMode) {
-            new LeftPanelEdit(this.backEnd, this);
-        }
-        if (isCreateMode) {
-            // This is a place holder till LeftPanelEditcreate class
-            new LeftPanelCreate(this.backEnd, this);
-        }
-    }
-
     public void viewMode() {
         this.isViewMode = true;
         this.isCreateMode = false;
@@ -116,21 +77,21 @@ public class SceneTemplate{
         this.backEnd.createPane = new BorderPane();
         this.backEnd.editPane = new BorderPane();
         new TopPanel(this.backEnd, this);
-        setLeftPane();
+        new BottomPanel(this.backEnd, this);
         if (isViewMode) {
-            this.backEnd.viewPane.setBottom(getBottomPane());
+            new LeftPanel(this.backEnd, this);
             this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.vScene);
             this.backEnd.stage.show();
         }
         if (isCreateMode) {
-            this.backEnd.createPane.setBottom(getBottomPane());
+            new LeftPanelCreate(this.backEnd, this);
             this.backEnd.cScene = new Scene(this.backEnd.createPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.cScene);
             this.backEnd.stage.show();
         }
         if (isEditMode) {
-            this.backEnd.editPane.setBottom(getBottomPane());
+            new LeftPanelEdit(this.backEnd, this);
             this.backEnd.eScene = new Scene(this.backEnd.editPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.eScene);
             this.backEnd.stage.show();

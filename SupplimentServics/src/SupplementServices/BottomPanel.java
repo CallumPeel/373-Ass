@@ -10,7 +10,7 @@ public class BottomPanel extends MyPanel {
     int buttonWidth;
     BorderPane bottomSectionPane;
 
-    public BottomPanel(BackEnd backEnd, SceneTemplate sceneTemplate) {
+    public BottomPanel(BackEnd backEnd, GUITemplate sceneTemplate) {
         super(backEnd, sceneTemplate);
         this.refreshButton = new Button();
         this.buttonWidth = 150;
@@ -33,13 +33,13 @@ public class BottomPanel extends MyPanel {
 
     private void setPane() {
         if (this.sceneTemplate.isViewMode) {
-            this.backEnd.viewPane.setTop(this.bottomSectionPane);
+            this.backEnd.viewPane.setBottom(this.bottomSectionPane);
         }
         if (this.sceneTemplate.isEditMode) {
-            this.backEnd.editPane.setTop(this.bottomSectionPane);
+            this.backEnd.editPane.setBottom(this.bottomSectionPane);
         }
         if (this.sceneTemplate.isCreateMode) {
-            this.backEnd.createPane.setTop(this.bottomSectionPane);
+            this.backEnd.createPane.setBottom(this.bottomSectionPane);
         }
     }
 }

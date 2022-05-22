@@ -9,7 +9,7 @@ public class LeftPanel extends MyPanel {
 
     Button viewCustomerButton, viewSupplementButton;
 
-    public LeftPanel(BackEnd backEnd, SceneTemplate sceneTemplate) {
+    public LeftPanel(BackEnd backEnd, GUITemplate sceneTemplate) {
         super(backEnd, sceneTemplate);
         buildPane();
     }
