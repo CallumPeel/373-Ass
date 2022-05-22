@@ -56,8 +56,8 @@ public class TopPanel extends MyPanel {
         topSectionPane.setAlignment(vButton, Pos.CENTER);
         topSectionPane.setAlignment(cButton, Pos.CENTER);
         topSectionPane.setAlignment(eButton, Pos.CENTER);
-        topSectionPane.setMargin(title, new Insets(30, 0, 0, 0));
-        Insets insets = new Insets(20, 40, 20, 40);
+        topSectionPane.setMargin(title, new Insets(15, 0, 0, 0));
+        Insets insets = new Insets(15, 40, 15, 40);
         topSectionPane.setMargin(vButton, insets);
         topSectionPane.setMargin(cButton, insets);
         topSectionPane.setMargin(eButton, insets);
