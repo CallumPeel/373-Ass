@@ -98,6 +98,14 @@ public class PayingCustomer extends Customer {
         this.associatedCustomers.add(customer);
     }
 
+    public double getAssociatedCustomerTotal() {
+        double total = 0;
+        for (int i = 0; i < this.associatedCustomers.size(); i++) {
+            total += this.associatedCustomers.get(i).getTotal();
+        }
+        return total;
+    }
+    
     /**
      * Builds and returns a string that contains the monthly e-mails.
      *
@@ -135,27 +143,17 @@ public class PayingCustomer extends Customer {
         monthlyEmail += "\nThe total charged to your account is: $" + total * multiplier + ".\n\n\n";
         return monthlyEmail;
     }
-
-    @Override
-    protected TreeItem<String> getCustSupplementBreakdown() {
-        TreeItem<String> supplementList = new TreeItem("Supplements");
-        for (int i = 0; i < this.supplementSubscription.size(); i++) {
-            // Branch "Supplement Name"
-            TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
-            custSupplements.getChildren().add(new TreeItem("$" + String.format("%.2f", this.supplementSubscription.get(i).getCost())));
-            supplementList.getChildren().add(custSupplements);
-        }
-        return supplementList;
-    }
     
+    @Override
     public TreeView<String> getDetails() {
         
         TreeItem<String> customerInformation = new TreeItem("Customer");
-            customerInformation.getChildren().add(new TreeItem(this.name));
-            customerInformation.getChildren().add(new TreeItem(this.email));
+            customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
+            customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
             customerInformation.getChildren().add(getCustSupplementBreakdown());
 
         TreeItem<String> subList = new TreeItem("Associated Customers");
+        subList.getChildren().add(new TreeItem("Total: " + "$" + String.format("%.2f", this.getAssociatedCustomerTotal())));
             for (int i = 0; i < this.associatedCustomers.size(); i++) {
                 subList.getChildren().add(this.associatedCustomers.get(i).getCustSupplementBreakdown());
             }

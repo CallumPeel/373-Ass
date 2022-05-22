@@ -11,8 +11,9 @@ import javafx.scene.control.TreeView;
  */
 public class Customer {
 
-    String name;
-    String email;
+    protected String name;
+    protected String email;
+    protected Double total;
     protected ArrayList<Supplement> supplementSubscription;
 
     /**
@@ -28,6 +29,7 @@ public class Customer {
         this.email = email;
         this.supplementSubscription = new ArrayList<Supplement>();
         this.supplementSubscription = supplementSubscription;
+        setTotal();
     }
 
     /**
@@ -41,12 +43,25 @@ public class Customer {
         this.name = name;
         this.email = email;
         this.supplementSubscription = new ArrayList<Supplement>();
+        setTotal();
     }
 
     public Customer(String name) {
         this.name = name;
         this.email = "";
         this.supplementSubscription = new ArrayList<Supplement>();
+        setTotal();
+    }
+
+    private void setTotal() {
+        this.total = 0.0;
+        for (int i = 0; i < this.supplementSubscription.size(); i++) {
+            this.total += this.supplementSubscription.get(i).getCost();
+        }
+    }
+
+    public double getTotal() {
+        return this.total;
     }
 
     /**
@@ -138,7 +153,9 @@ public class Customer {
     }
 
     protected TreeItem<String> getCustSupplementBreakdown() {
-        TreeItem<String> supplementList = new TreeItem(this.name);
+        TreeItem<String> supplementList = new TreeItem(this.name + "'s Supplement Breakdown");
+
+        supplementList.getChildren().add(new TreeItem("Total: " + "$" + String.format("%.2f", this.total)));
         for (int i = 0; i < this.supplementSubscription.size(); i++) {
             // Branch "Supplement Name"
             TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
@@ -152,6 +169,7 @@ public class Customer {
         TreeItem<String> customerInformation = new TreeItem("Customer");
         customerInformation.getChildren().add(new TreeItem(this.name));
         customerInformation.getChildren().add(new TreeItem(this.email));
+        customerInformation.getChildren().add(new TreeItem(this.total));
 
         TreeItem<String> supplementList = new TreeItem("Supplements");
         for (int i = 0; i < this.supplementSubscription.size(); i++) {
