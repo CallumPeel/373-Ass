@@ -2,7 +2,7 @@ package SupplementServices;
 
 public class LeftPanelEdit extends LeftPanel {
 
-    LeftPanelEdit(BackEnd backEnd, GUITemplate sceneTemplate) {
+    LeftPanelEdit(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);
     }
 

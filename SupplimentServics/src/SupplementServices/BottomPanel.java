@@ -10,7 +10,7 @@ public class BottomPanel extends MyPanel {
     int buttonWidth;
     BorderPane bottomSectionPane;
 
-    public BottomPanel(BackEnd backEnd, GUITemplate sceneTemplate) {
+    public BottomPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);
         this.refreshButton = new Button();
         this.buttonWidth = 150;

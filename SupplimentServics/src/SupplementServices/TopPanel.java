@@ -15,7 +15,7 @@ public class TopPanel extends MyPanel {
     Separator separator1;
     BorderPane topSectionPane;
 
-    public TopPanel(BackEnd backEnd, GUITemplate sceneTemplate) {
+    public TopPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);
         this.title = new Label("MAGAZINE SERVICES");
         this.cButton = new Button();

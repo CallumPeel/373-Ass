@@ -12,7 +12,7 @@ public class CenterPanel extends MyPanel {
     BorderPane centerSectionPane;
     Button viewCustomerButton, viewSupplementButton;
 
-    public CenterPanel(BackEnd backEnd, GUITemplate sceneTemplate) {
+    public CenterPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);
         buildPane();
     }
