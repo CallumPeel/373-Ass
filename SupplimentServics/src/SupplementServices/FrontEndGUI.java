@@ -41,6 +41,7 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         this.width = width;
         this.height = height;
         this.buttonWidth = 150;
+        setTree();
 
         viewMode();
     }
@@ -98,92 +99,82 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         return topSectionPane;
     }
 
-    private VBox getLeftPane() {
-
+    private void setTree() {
+        // create tree items
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
         TreeItem<String> rootItem2 = new TreeItem("Supplement Database");
-
         TreeItem<String> customers = new TreeItem("Customers");
+        TreeItem<String> supplements = new TreeItem("Supplements");
+
+        // set tree items
         for (int i = 0; i < backEnd.getNumCust(); i++) {
             customers.getChildren().add(new TreeItem(backEnd.getCustName(i)));
         }
-        TreeItem<String> supplements = new TreeItem("Supplements");
         for (int i = 0; i < backEnd.getNumSups(); i++) {
             supplements.getChildren().add(new TreeItem(backEnd.getSupName(i)));
         }
 
+        // add tree items to root
         rootItem1.getChildren().add(customers);
         rootItem2.getChildren().add(supplements);
-
         this.treeView1 = new TreeView();
         treeView1.setRoot(rootItem1);
         treeView1.setShowRoot(false);
-
         this.treeView2 = new TreeView();
         treeView2.setRoot(rootItem2);
         treeView2.setShowRoot(false);
+    }
 
-        if (!isViewMode) {
-            treeView1.setEditable(true);
-            treeView2.setEditable(true);
-
-            treeView1.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
-                @Override
-                public TreeCell<String> call(TreeView<String> p) {
-                    return new CustomerAddBox(backEnd, isEditMode);
+    private VBox editModeLeftPanel(VBox vbox) {
+        Button editCustomerButton = new Button();
+        editCustomerButton.setText("Edit Selected Customer");
+        editCustomerButton.setOnAction(
+                e -> {
+                    System.out.println(treeView1.getSelectionModel().getSelectedItem().getValue());
                 }
-            });
-            treeView2.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
-                @Override
-                public TreeCell<String> call(TreeView<String> p) {
-                    SupplementAddBox thing = new SupplementAddBox(backEnd, isEditMode);
-                    return thing;
+        );
+        Button editSupplementButton = new Button();
+        editSupplementButton.setText("Edit Selected Supplement");
+        editSupplementButton.setOnAction(
+                e -> {
+                    System.out.println(treeView2.getSelectionModel().getSelectedItem().getValue());
                 }
-            });
-        }
-
-        VBox vbox = new VBox();
-        if (isCreateMode || isEditMode) {
-            Button editCustomerButton = new Button();
-            editCustomerButton.setText("Edit Selected Customer");
-            editCustomerButton.setOnAction(
-                    e -> {
-                        System.out.println(treeView1.getSelectionModel().getSelectedItem().getValue());
-
-//                        viewMode();   
-                    }
-            );
-            Button editSupplementButton = new Button();
-            editSupplementButton.setText("Edit Selected Supplement");
-            editSupplementButton.setOnAction(
-                    e -> {
-                        System.out.println("edit Mode Activated\n");
-//                        viewMode();
-                    }
-            );
-            vbox = new VBox(editCustomerButton, treeView1, editSupplementButton, treeView2);
-        } else {
-            vbox = new VBox(treeView1, treeView2);
-        }
+        );
+        vbox = new VBox(editCustomerButton, treeView1, editSupplementButton, treeView2);
 
         vbox.setMargin(treeView1,
                 new Insets(0, 0, 20, 20));
         vbox.setMargin(treeView2,
                 new Insets(0, 0, 20, 20));
-
-//        this.itemSelected = treeView.getSelectionModel().getSelectedItem();
-//        if (itemSelected == null) {
-//            System.out.println("thing");
-//        }
-//        String name = thing.getValue();
-//        System.out.println(name);
         return vbox;
     }
 
+    private VBox viewModeLeftPanel(VBox vbox) {
+        vbox = new VBox(this.treeView1, this.treeView2);
+        vbox.setMargin(treeView1,
+                new Insets(0, 0, 20, 20));
+        vbox.setMargin(treeView2,
+                new Insets(0, 0, 20, 20));
+        return vbox;
+    }
+
+    private VBox getLeftPane() {
+        VBox vbox = new VBox();
+        if (!this.isViewMode) {
+            vbox = editModeLeftPanel(vbox);
+        } else {
+            vbox = viewModeLeftPanel(vbox);
+        }
+        return vbox;
+    }
+
+//    private BorderPane viewCenterPane(BorderPane topSectionPane) {
+//        
+//    }
+    
     private BorderPane getCenterPane() {
 
         Label title = new Label("MAGAZINE SERVICES");
-        int buttonWidth = 150;
         BorderPane topSectionPane = new BorderPane();
         topSectionPane.setTop(title);
         topSectionPane.setAlignment(title, Pos.CENTER);
