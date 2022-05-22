@@ -15,8 +15,5 @@ public interface UserInterface {
     void addLeftSection(BorderPane pane);
     void addCenterSection(BorderPane pane);
     void addRightSection(BorderPane pane);
-    void viewMode();
-    void createMode();
-    void editMode();
     void refresh();
 }

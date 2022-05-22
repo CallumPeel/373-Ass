@@ -5,15 +5,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class LeftPanel extends VBox {
+public class LeftPanel extends MyPanel {
 
-    BackEnd backEnd;
-    SceneTemplate sceneTemplate;
     Button viewCustomerButton, viewSupplementButton;
 
     public LeftPanel(BackEnd backEnd, SceneTemplate sceneTemplate) {
-        this.backEnd = backEnd;
-        this.sceneTemplate = sceneTemplate;
+        super(backEnd, sceneTemplate);
         buildPane();
     }
 

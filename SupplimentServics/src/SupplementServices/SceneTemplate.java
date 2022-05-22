@@ -162,7 +162,6 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void viewMode() {
         this.isViewMode = true;
         this.isCreateMode = false;
@@ -170,7 +169,6 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         refresh();
     }
 
-    @Override
     public void createMode() {
         this.isViewMode = false;
         this.isCreateMode = true;
@@ -178,7 +176,6 @@ public class SceneTemplate implements UserInterface, java.io.Serializable {
         refresh();
     }
 
-    @Override
     public void editMode() {
         this.isViewMode = false;
         this.isCreateMode = false;
