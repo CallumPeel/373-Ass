@@ -1,11 +1,12 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
 /**
- * Contains a customer with payment information.
- * Extends the customer class
- * 
+ * Contains a customer with payment information. Extends the customer class
+ *
  * @author Callum Peel
  */
 public class PayingCustomer extends Customer {
@@ -14,9 +15,9 @@ public class PayingCustomer extends Customer {
     ArrayList<Customer> associatedCustomers;
 
     /**
-     * Constructs a paying customer.
-     * Takes customer information and a payment method.
-     * 
+     * Constructs a paying customer. Takes customer information and a payment
+     * method.
+     *
      * @param name
      * @param email
      * @param paymentMethod
@@ -26,8 +27,7 @@ public class PayingCustomer extends Customer {
             String name,
             String email,
             PaymentMethod paymentMethod,
-            ArrayList<Supplement> supplementSubscription) 
-    {
+            ArrayList<Supplement> supplementSubscription) {
         super(name, email, supplementSubscription);
         this.paymentMethod = paymentMethod;
         this.associatedCustomers = new ArrayList<Customer>();
@@ -35,7 +35,7 @@ public class PayingCustomer extends Customer {
 
     /**
      * Constructs a paying customer.
-     * 
+     *
      * @param customer
      * @param paymentMethod
      * @param associatedCustomers
@@ -51,7 +51,7 @@ public class PayingCustomer extends Customer {
 
     /**
      * Constructs a paying customer.
-     * 
+     *
      * @param name
      * @param email
      * @param supplementSubscription
@@ -71,8 +71,9 @@ public class PayingCustomer extends Customer {
     }
 
     /**
-     * Takes a payment method and initializes it's corresponding global variable.
-     * 
+     * Takes a payment method and initializes it's corresponding global
+     * variable.
+     *
      * @param paymentMethod
      */
     public void setPaymentMethods(PaymentMethod paymentMethod) {
@@ -81,6 +82,7 @@ public class PayingCustomer extends Customer {
 
     /**
      * Returns a payment method.
+     *
      * @return
      */
     public PaymentMethod getPaymentMethods() {
@@ -89,7 +91,7 @@ public class PayingCustomer extends Customer {
 
     /**
      * Takes a customer and adds it to the list of associated customers.
-     * 
+     *
      * @param customer
      */
     public void addCustomer(Customer customer) {
@@ -98,7 +100,7 @@ public class PayingCustomer extends Customer {
 
     /**
      * Builds and returns a string that contains the monthly e-mails.
-     * 
+     *
      * @return
      */
     public String getMonthlyEmail() {
@@ -134,4 +136,34 @@ public class PayingCustomer extends Customer {
         return monthlyEmail;
     }
 
+    @Override
+    protected TreeItem<String> getCustSupplementBreakdown() {
+        TreeItem<String> supplementList = new TreeItem("Supplements");
+        for (int i = 0; i < this.supplementSubscription.size(); i++) {
+            // Branch "Supplement Name"
+            TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
+            custSupplements.getChildren().add(new TreeItem("$" + String.format("%.2f", this.supplementSubscription.get(i).getCost())));
+            supplementList.getChildren().add(custSupplements);
+        }
+        return supplementList;
+    }
+    
+    public TreeView<String> getDetails() {
+        
+        TreeItem<String> customerInformation = new TreeItem("Customer");
+            customerInformation.getChildren().add(new TreeItem(this.name));
+            customerInformation.getChildren().add(new TreeItem(this.email));
+            customerInformation.getChildren().add(getCustSupplementBreakdown());
+
+        TreeItem<String> subList = new TreeItem("Associated Customers");
+            for (int i = 0; i < this.associatedCustomers.size(); i++) {
+                subList.getChildren().add(this.associatedCustomers.get(i).getCustSupplementBreakdown());
+            }
+            customerInformation.getChildren().add(subList);
+            
+        TreeView details = new TreeView();
+        details.setRoot(customerInformation);
+        details.setShowRoot(false);
+        return details;
+    }
 }

@@ -167,15 +167,15 @@ public class FrontEndGUI implements UserInterface, java.io.Serializable {
         Label title = new Label("MAGAZINE SERVICES");
         topSectionPane.setTop(title);
         topSectionPane.setAlignment(title, Pos.TOP_CENTER);
-        
-        TreeItem<String> testRoot = new TreeItem("Test selection");
-        TreeView<String> testView  = new TreeView();
-        testView.setRoot(testRoot);
-        
-        VBox test = new VBox(testView);
+
+//        TreeItem<String> testRoot = new TreeItem("Test selection");
+//        TreeView<String> testView  = new TreeView();
+//        testView.setRoot(testRoot);
+//        VBox test = new VBox(this.backEnd.getCustName("Callum").getDetails());
+        VBox test = new VBox(this.backEnd.getCustName("Matthew").getDetails());
         topSectionPane.setCenter(test);
         topSectionPane.setMargin(test, new Insets(30));
-                
+
         return topSectionPane;
     }
 

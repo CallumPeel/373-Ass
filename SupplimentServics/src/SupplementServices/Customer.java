@@ -1,18 +1,24 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
 /**
  * Contains customer attributes.
+ *
  * @author Callum Peel
  */
 public class Customer {
+
     String name;
     String email;
-    private ArrayList<Supplement> supplementSubscription;
+    protected ArrayList<Supplement> supplementSubscription;
 
     /**
-     * Takes customer attributes, constructs and initializes the the global variables.
+     * Takes customer attributes, constructs and initializes the the global
+     * variables.
+     *
      * @param name
      * @param email
      * @param supplementSubscription
@@ -25,8 +31,9 @@ public class Customer {
     }
 
     /**
-     * Takes customer attributes, constructs and initializes the global variables.
-     * Creates an empty supplementSubscription.
+     * Takes customer attributes, constructs and initializes the global
+     * variables. Creates an empty supplementSubscription.
+     *
      * @param name
      * @param email
      */
@@ -35,8 +42,8 @@ public class Customer {
         this.email = email;
         this.supplementSubscription = new ArrayList<Supplement>();
     }
-    
-        public Customer(String name) {
+
+    public Customer(String name) {
         this.name = name;
         this.email = "";
         this.supplementSubscription = new ArrayList<Supplement>();
@@ -44,6 +51,7 @@ public class Customer {
 
     /**
      * Takes a string name and initializes the global variable with it.
+     *
      * @param name
      */
     public void setName(String name) {
@@ -52,6 +60,7 @@ public class Customer {
 
     /**
      * Takes a string email and initializes the global variable with it.
+     *
      * @param email
      */
     public void setEmail(String email) {
@@ -60,6 +69,7 @@ public class Customer {
 
     /**
      * Takes an list of supplements and the global variable with it.
+     *
      * @param supplementSubscription
      */
     public void setSupplementSubscription(ArrayList<Supplement> supplementSubscription) {
@@ -68,6 +78,7 @@ public class Customer {
 
     /**
      * Returns the String name.
+     *
      * @return
      */
     public String getName() {
@@ -76,6 +87,7 @@ public class Customer {
 
     /**
      * Returns the String email.
+     *
      * @return
      */
     public String getEmailAddress() {
@@ -84,6 +96,7 @@ public class Customer {
 
     /**
      * Returns a list of supplements.
+     *
      * @return
      */
     public ArrayList<Supplement> getSupplementSubscription() {
@@ -92,6 +105,7 @@ public class Customer {
 
     /**
      * Builds a "weekly email" String and returns it.
+     *
      * @return
      */
     public String getWeeklyEmail() {
@@ -116,10 +130,41 @@ public class Customer {
 
     /**
      * Returns an empty string.
+     *
      * @return
      */
     public String getMonthlyEmail() {
         return "";
     }
 
+    protected TreeItem<String> getCustSupplementBreakdown() {
+        TreeItem<String> supplementList = new TreeItem(this.name);
+        for (int i = 0; i < this.supplementSubscription.size(); i++) {
+            // Branch "Supplement Name"
+            TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
+            custSupplements.getChildren().add(new TreeItem("$" + String.format("%.2f", this.supplementSubscription.get(i).getCost())));
+            supplementList.getChildren().add(custSupplements);
+        }
+        return supplementList;
+    }
+
+    public TreeView<String> getDetails() {
+        TreeItem<String> customerInformation = new TreeItem("Customer");
+        customerInformation.getChildren().add(new TreeItem(this.name));
+        customerInformation.getChildren().add(new TreeItem(this.email));
+
+        TreeItem<String> supplementList = new TreeItem("Supplements");
+        for (int i = 0; i < this.supplementSubscription.size(); i++) {
+            // Branch "Supplement Name"
+            TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
+            custSupplements.getChildren().add(new TreeItem("$" + String.format("%.2f", this.supplementSubscription.get(i).getCost())));
+            supplementList.getChildren().add(custSupplements);
+        }
+        customerInformation.getChildren().add(supplementList);
+
+        TreeView details = new TreeView();
+        details.setRoot(customerInformation);
+        details.setShowRoot(false);
+        return details;
+    }
 }
