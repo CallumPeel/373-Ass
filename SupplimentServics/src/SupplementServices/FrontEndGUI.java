@@ -28,29 +28,20 @@ public class FrontEndGUI{
     }
 
     private void setTree() {
-        // create tree items
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
         TreeItem<String> rootItem2 = new TreeItem("Supplement Database");
-        TreeItem<String> customers = new TreeItem("Customers");
-        TreeItem<String> supplements = new TreeItem("Supplements");
-
-        // set tree items
         for (int i = 0; i < backEnd.getNumCust(); i++) {
-            customers.getChildren().add(new TreeItem(backEnd.getCustName(i)));
+            rootItem1.getChildren().add(new TreeItem(backEnd.getCustName(i)));
         }
         for (int i = 0; i < backEnd.getNumSups(); i++) {
-            supplements.getChildren().add(new TreeItem(backEnd.getSupName(i)));
+            rootItem2.getChildren().add(new TreeItem(backEnd.getSupName(i)));
         }
-
-        // add tree items to root
-        rootItem1.getChildren().add(customers);
-        rootItem2.getChildren().add(supplements);
         this.treeView1 = new TreeView();
-        treeView1.setRoot(rootItem1);
-        treeView1.setShowRoot(false);
+        this.treeView1.setRoot(rootItem1);
+        this.treeView1.setShowRoot(false);
         this.treeView2 = new TreeView();
-        treeView2.setRoot(rootItem2);
-        treeView2.setShowRoot(false);
+        this.treeView2.setRoot(rootItem2);
+        this.treeView2.setShowRoot(false);
     }
 
     public void viewMode() {
