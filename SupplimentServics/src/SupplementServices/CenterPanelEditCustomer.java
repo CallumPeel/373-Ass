@@ -2,11 +2,6 @@ package SupplementServices;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -34,19 +29,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
-        TextField textField = new TextField();
-        textField.setMinWidth(120);
-        textField.setMaxWidth(120);
-        Label currentName = new Label(this.initialName);
-        currentName.setMinWidth(120);
-        currentName.setMaxWidth(120);
-        Button nameButton = this.newCustomer.getNameButton(textField, currentName);
-        nameButton.setMinWidth(120);
-        nameButton.setMaxWidth(120);
-        HBox nameFieldsHBox = new HBox(textField, nameButton, currentName);
-        nameFieldsHBox.setAlignment(Pos.BASELINE_CENTER);
-        nameFieldsHBox.setSpacing(20);
-        nameFieldsHBox.setPadding(new Insets(10));
+        HBox nameFieldsHBox = this.newCustomer.getNameHBox();
         this.centerSectionPane.setCenter(nameFieldsHBox);
         setPane();
     }

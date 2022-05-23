@@ -1,11 +1,14 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.HBox;
 
 /**
  * Contains customer attributes.
@@ -66,11 +69,11 @@ public class Customer implements Cloneable {
 
     @Override
     public Customer clone() throws CloneNotSupportedException {
-        return (Customer)super.clone();
+        return (Customer) super.clone();
     }
-    
+
     public Customer getClone() throws CloneNotSupportedException {
-        return (Customer)this.clone();
+        return (Customer) this.clone();
     }
 
     private void setTotal() {
@@ -84,7 +87,11 @@ public class Customer implements Cloneable {
         return this.total;
     }
 
-    public Button getNameButton(TextField text, Label nameLabel) {
+    public HBox getNameHBox() {
+        TextField text = new TextField();
+        text.setMinWidth(120);
+        text.setMaxWidth(120);
+        Label nameLabel = new Label(this.name);
         Button nameButton = new Button();
         nameButton.setText("Set Name");
         nameButton.setOnAction(
@@ -97,9 +104,12 @@ public class Customer implements Cloneable {
                         System.out.println("Something Went Wrong...");
                     }
                 }
-                
         );
-        return nameButton;
+        HBox newBox = new HBox(text, nameButton, nameLabel);
+        newBox.setAlignment(Pos.BASELINE_CENTER);
+        newBox.setSpacing(20);
+        newBox.setPadding(new Insets(10));
+        return newBox;
     }
 
     /**
