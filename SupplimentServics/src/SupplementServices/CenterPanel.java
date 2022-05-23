@@ -22,7 +22,6 @@ public class CenterPanel extends MyPanel {
         Label title = new Label("Customer Breakdown");
         this.centerSectionPane.setTop(title);
         this.centerSectionPane.setAlignment(title, Pos.TOP_CENTER);
-//        VBox test = new VBox(this.backEnd.getCustName("Callum").getDetails());
         VBox test = new VBox(this.backEnd.getCustName(this.sceneTemplate.itemSelected).getDetails());
         centerSectionPane.setCenter(test);
         centerSectionPane.setMargin(test, new Insets(30));

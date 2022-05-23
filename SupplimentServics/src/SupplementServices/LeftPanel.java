@@ -14,7 +14,7 @@ public class LeftPanel extends MyPanel {
         buildPane();
     }
 
-    private void buildPane() {
+    public void buildPane() {
         Insets inset = new Insets(0, 0, 15, 15);
 
         Button viewCustButton = new Button();
@@ -22,9 +22,9 @@ public class LeftPanel extends MyPanel {
         viewCustButton.setOnAction(
                 s -> {
                     try {
-                        onCustButtonClick();
+                        onCustViewButtonClick();
                     } catch (Exception e) {
-                        System.out.println("Select a Customer");
+                        System.out.println("Select a Customer to view");
                     }
                 }
         );
@@ -33,9 +33,9 @@ public class LeftPanel extends MyPanel {
         viewSupButton.setOnAction(
                 s -> {
                     try {
-                        onSupButtonClick();
+                        onSupViewButtonClick();
                     } catch (Exception e) {
-                        System.out.println("Select a Supplement");
+                        System.out.println("Select a Supplement to view");
                     }
 
                 }
@@ -53,14 +53,14 @@ public class LeftPanel extends MyPanel {
         this.backEnd.viewPane.setLeft(this.sceneTemplate.vbox);
     }
 
-    public void onCustButtonClick() {
+    public void onCustViewButtonClick() {
         // Directly set center pane here with new CenterPanel Class.
         this.sceneTemplate.itemSelected = this.sceneTemplate.treeView1.getSelectionModel().getSelectedItem().getValue();
         System.out.println("View Modeeee");
         this.sceneTemplate.refresh();
     }
 
-    public void onSupButtonClick() {
+    public void onSupViewButtonClick() {
         this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
         this.sceneTemplate.refresh();
     }
