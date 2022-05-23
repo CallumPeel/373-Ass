@@ -9,7 +9,7 @@ import javafx.scene.control.TreeView;
  *
  * @author Callum Peel
  */
-public class PayingCustomer extends Customer {
+public class CustomerPaying extends Customer {
 
     PaymentMethod paymentMethod;
     ArrayList<Customer> associatedCustomers;
@@ -23,7 +23,7 @@ public class PayingCustomer extends Customer {
      * @param paymentMethod
      * @param supplementSubscription
      */
-    public PayingCustomer(
+    public CustomerPaying(
             String name,
             String email,
             PaymentMethod paymentMethod,
@@ -40,7 +40,7 @@ public class PayingCustomer extends Customer {
      * @param paymentMethod
      * @param associatedCustomers
      */
-    public PayingCustomer(Customer customer,
+    public CustomerPaying(Customer customer,
             PaymentMethod paymentMethod,
             ArrayList<Customer> associatedCustomers) {
         super(customer.name, customer.email, customer.getSupplementSubscription());
@@ -58,7 +58,7 @@ public class PayingCustomer extends Customer {
      * @param paymentMethod
      * @param associatedCustomers
      */
-    public PayingCustomer(
+    public CustomerPaying(
             String name,
             String email,
             ArrayList<Supplement> supplementSubscription,

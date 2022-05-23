@@ -13,6 +13,7 @@ import javafx.scene.control.TreeView;
  */
 public class Customer implements Cloneable {
 
+//    public String payer;
     protected String name;
     protected String email;
     protected Double total;

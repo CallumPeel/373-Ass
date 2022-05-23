@@ -42,10 +42,10 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     @Override
     public void onSaveButtonClick() {
         System.out.println("Save button clicked on edit");
-        int index = this.backEnd.customers.indexOf(this.backEnd.getCustName(initialName));
-        this.backEnd.customers.set(index, this.newCustomer);
+        int indexOfCustomerToChange = this.backEnd.customers.indexOf(this.backEnd.getCustName(initialName));
+        this.backEnd.customers.set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
-//        new CenterPanelEdit(this.backEnd, this.frontEnd);
+        this.frontEnd.refresh();
         
     }
 }

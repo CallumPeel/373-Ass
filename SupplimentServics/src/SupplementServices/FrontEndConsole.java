@@ -65,7 +65,7 @@ public class FrontEndConsole{
                     break;
                 case 'b':
                     String name = IH.getString("Please eneter a name: ");
-                    PayingCustomer payingCustomer = new PayingCustomer(
+                    CustomerPaying payingCustomer = new CustomerPaying(
                             name,
                             IH.getString("Please enter an email address: "),
                             makeSupplementList(),

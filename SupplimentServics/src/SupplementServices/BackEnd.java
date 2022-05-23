@@ -94,7 +94,7 @@ public class BackEnd {
             Customer customer,
             PaymentMethod paymentMethod,
             ArrayList<Customer> associatedCustomers) {
-        this.customers.add(new PayingCustomer(customer, paymentMethod, associatedCustomers));
+        this.customers.add(new CustomerPaying(customer, paymentMethod, associatedCustomers));
     }
 
     /**
