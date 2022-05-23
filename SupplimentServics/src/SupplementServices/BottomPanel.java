@@ -18,7 +18,7 @@ public class BottomPanel extends MyBPane {
         buildPane();
     }
 
-    private void buildPane() {
+    public void buildPane() {
         refreshButton.setText("Refresh");
         refreshButton.setOnAction(e -> {
             System.out.println("Page Refreshed\n");

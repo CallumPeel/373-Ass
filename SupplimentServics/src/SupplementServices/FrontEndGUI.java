@@ -23,7 +23,6 @@ public class FrontEndGUI {
         this.height = height;
         this.buttonWidth = 150;
         this.itemSelected = "Callum";
-        setTree();
         viewMode();
     }
 
@@ -42,6 +41,15 @@ public class FrontEndGUI {
         this.treeView2 = new TreeView();
         this.treeView2.setRoot(rootItem2);
         this.treeView2.setShowRoot(false);
+    }
+
+    public void setSelectedCustomer() {
+        this.itemSelected = this.treeView1.getSelectionModel().getSelectedItem().getValue();
+
+    }
+
+    public void setDefaultSelectedCustomer() {
+        this.itemSelected = this.backEnd.customers.get(0).name;
     }
 
     public void viewMode() {
@@ -66,6 +74,7 @@ public class FrontEndGUI {
     }
 
     public void refresh() {
+        setTree();
         this.backEnd.viewPane = new BorderPane();
         this.backEnd.createPane = new BorderPane();
         this.backEnd.editPane = new BorderPane();

@@ -11,7 +11,7 @@ import javafx.scene.control.TreeView;
  *
  * @author Callum Peel
  */
-public class Customer {
+public class Customer implements Cloneable {
 
     protected String name;
     protected String email;
@@ -53,6 +53,22 @@ public class Customer {
         this.email = "";
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();
+    }
+
+    public Customer() {
+        this.name = "Default";
+        this.email = "";
+        this.supplementSubscription = new ArrayList<Supplement>();
+        setTotal();
+    }
+
+    @Override
+    public Customer clone() throws CloneNotSupportedException {
+        return (Customer)super.clone();
+    }
+    
+    public Customer getClone() throws CloneNotSupportedException {
+        return (Customer)this.clone();
     }
 
     private void setTotal() {

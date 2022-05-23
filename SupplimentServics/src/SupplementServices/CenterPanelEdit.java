@@ -21,8 +21,7 @@ public class CenterPanelEdit extends CenterPanel {
     private void setBottomPane() {
         this.saveButton.setText("Save");
         this.saveButton.setOnAction(e -> {
-            onEditButtonClick();
-//            this.sceneTemplate.refresh();
+            onSaveButtonClick();
         });
         this.saveButton.setMinWidth(this.buttonWidth);
 
@@ -41,9 +40,8 @@ public class CenterPanelEdit extends CenterPanel {
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
 
-    private void onEditButtonClick() {
-//        new CenterPanelEditCustomner(this.backEnd, this.frontEnd);
-        System.out.println("edit button clicked");
+    public void onSaveButtonClick() {
+        System.out.println("Save button clicked");
     }
 
     private void onDeleteButtonClick() {

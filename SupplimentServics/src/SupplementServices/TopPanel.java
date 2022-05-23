@@ -27,7 +27,7 @@ public class TopPanel extends MyBPane {
         buildPane();
     }
 
-    private void buildPane() {
+    public void buildPane() {
         vButton.setText("View Mode");
         vButton.setOnAction(e -> {
             onViewButtonClick();
