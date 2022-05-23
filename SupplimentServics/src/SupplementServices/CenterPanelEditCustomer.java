@@ -2,7 +2,10 @@ package SupplementServices;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,20 +20,34 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         super(backEnd, frontEnd);
         this.oldCustomer = this.backEnd.getCustName(this.frontEnd.itemSelected);
         this.initialName = oldCustomer.name;
+        cloneCustomer();
+        this.labels = getLabels();
+        setCenterPane();
+    }
+
+    private void cloneCustomer() {
         try {
             this.newCustomer = this.oldCustomer.clone();
         } catch (CloneNotSupportedException ex) {
             Logger.getLogger(CenterPanelEditCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.labels = getLabels();
-        setCenterPane();
     }
 
     private void setCenterPane() {
-        TextField textField = new TextField("This is a text");
-        Button nameButton = this.newCustomer.getNameButton(textField);
-        HBox name = new HBox(textField, nameButton);
-        this.centerSectionPane.setCenter(name);
+        TextField textField = new TextField();
+        textField.setMinWidth(120);
+        textField.setMaxWidth(120);
+        Label currentName = new Label(this.initialName);
+        currentName.setMinWidth(120);
+        currentName.setMaxWidth(120);
+        Button nameButton = this.newCustomer.getNameButton(textField, currentName);
+        nameButton.setMinWidth(120);
+        nameButton.setMaxWidth(120);
+        HBox nameFieldsHBox = new HBox(textField, nameButton, currentName);
+        nameFieldsHBox.setAlignment(Pos.BASELINE_CENTER);
+        nameFieldsHBox.setSpacing(20);
+        nameFieldsHBox.setPadding(new Insets(10));
+        this.centerSectionPane.setCenter(nameFieldsHBox);
         setPane();
     }
 
@@ -46,6 +63,6 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         this.backEnd.customers.set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
         this.frontEnd.refresh();
-        
+
     }
 }
