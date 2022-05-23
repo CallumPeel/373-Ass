@@ -3,6 +3,7 @@ package SupplementServices;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class LeftPanelEdit extends LeftPanel {
@@ -16,13 +17,13 @@ public class LeftPanelEdit extends LeftPanel {
         Insets inset = new Insets(0, 0, 10, 10);
 
         Button viewCustButton = new Button();
-        viewCustButton.setText("View Customer");
+        viewCustButton.setText("New Customer");
         viewCustButton.setOnAction(
                 s -> {
                     try {
-                        onCustViewButtonClick();
+                        onCustNewButtonClick();
                     } catch (Exception e) {
-                        System.out.println("Select a Customer");
+                        System.out.println("Something Went Wrong...");
                     }
                 }
         );
@@ -61,21 +62,24 @@ public class LeftPanelEdit extends LeftPanel {
 
                 }
         );
+        HBox topButtons = new HBox(viewCustButton, editCustButton);
+        HBox bottomButtons = new HBox(viewSupButton, editSupButton);
         this.frontEnd.vbox = new VBox(
-                viewCustButton,
-                editCustButton,
+                topButtons,
                 this.frontEnd.treeView1,
-                viewSupButton,
-                editSupButton,
+                bottomButtons,
                 this.frontEnd.treeView2
         );
+        topButtons.setAlignment(Pos.CENTER);
+        topButtons.setPadding(new Insets(10));
+        topButtons.setSpacing(10);
+        bottomButtons.setAlignment(Pos.CENTER);
+        bottomButtons.setPadding(new Insets(10));
+        bottomButtons.setSpacing(10);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
-        this.frontEnd.vbox.setMargin(viewCustButton, inset);
-        this.frontEnd.vbox.setMargin(viewSupButton, inset);
-        this.frontEnd.vbox.setMargin(editCustButton, inset);
-        this.frontEnd.vbox.setMargin(editSupButton, inset);
+
         setPane();
     }
 
@@ -85,7 +89,7 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     public void onCustEditButtonClick() {
-        
+
         this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
 //        new CenterPanelEdit(this.backEnd, this.frontEnd);
         System.out.println("Editing Customer");
@@ -95,5 +99,12 @@ public class LeftPanelEdit extends LeftPanel {
     public void onSupEditButtonClick() {
 //        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
         this.frontEnd.refresh();
+    }
+
+    private void onCustNewButtonClick() {
+        // Directly set center pane here with new CenterPanel Class.
+//        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+        System.out.println("New Customer Being Created");
+//        this.frontEnd.refresh();
     }
 }

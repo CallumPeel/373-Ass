@@ -53,7 +53,7 @@ public class LeftPanel extends MyPanel {
         this.backEnd.viewPane.setLeft(this.frontEnd.vbox);
     }
 
-    public void onCustViewButtonClick() {
+    private void onCustViewButtonClick() {
         // Directly set center pane here with new CenterPanel Class.
         this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
         System.out.println("View Modeeee");

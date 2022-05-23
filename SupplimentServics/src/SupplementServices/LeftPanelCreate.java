@@ -29,13 +29,13 @@ public class LeftPanelCreate extends LeftPanel {
         this.backEnd.createPane.setLeft(this.frontEnd.vbox);
     }
 
-    @Override
-    public void onCustViewButtonClick() {
-        // Directly set center pane here with new CenterPanel Class.
-        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("Create Modeeee");
-        this.frontEnd.refresh();
-    }
+//    @Override
+//    public void onCustViewButtonClick() {
+//        // Directly set center pane here with new CenterPanel Class.
+//        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+//        System.out.println("Create Modeeee");
+//        this.frontEnd.refresh();
+//    }
 
     @Override
     public void onSupViewButtonClick() {

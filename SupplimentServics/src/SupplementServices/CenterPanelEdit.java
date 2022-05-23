@@ -1,7 +1,10 @@
 package SupplementServices;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class CenterPanelEdit extends CenterPanel {
 
@@ -23,7 +26,17 @@ public class CenterPanelEdit extends CenterPanel {
 //            this.sceneTemplate.refresh();
         });
         this.editButton.setMinWidth(this.buttonWidth);
-        this.centerBottomPane.setCenter(this.editButton);
+
+        this.deleteButton.setText("Delete");
+        this.deleteButton.setOnAction(e -> {
+            System.out.println("Delete button clicked\n");
+//            this.sceneTemplate.refresh();
+        });
+        this.deleteButton.setMinWidth(this.buttonWidth);
+        HBox bottomButtons = new HBox(this.editButton, this.deleteButton);
+        bottomButtons.setAlignment(Pos.CENTER);
+        bottomButtons.setPadding(new Insets(10));
+        this.centerBottomPane.setCenter(bottomButtons);
         this.centerBottomPane.setMargin(this.editButton, new Insets(0, 0, 30, 0));
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
