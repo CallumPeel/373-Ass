@@ -40,28 +40,28 @@ public class LeftPanel extends MyPanel {
 
                 }
         );
-        this.sceneTemplate.vbox = new VBox(viewCustButton, this.sceneTemplate.treeView1, viewSupButton, this.sceneTemplate.treeView2);
-        this.sceneTemplate.vbox.setAlignment(Pos.CENTER);
-        this.sceneTemplate.vbox.setMargin(this.sceneTemplate.treeView1, inset);
-        this.sceneTemplate.vbox.setMargin(this.sceneTemplate.treeView2, inset);
-        this.sceneTemplate.vbox.setMargin(viewCustButton, inset);
-        this.sceneTemplate.vbox.setMargin(viewSupButton, inset);
+        this.frontEnd.vbox = new VBox(viewCustButton, this.frontEnd.treeView1, viewSupButton, this.frontEnd.treeView2);
+        this.frontEnd.vbox.setAlignment(Pos.CENTER);
+        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
+        this.frontEnd.vbox.setMargin(viewCustButton, inset);
+        this.frontEnd.vbox.setMargin(viewSupButton, inset);
         setPane();
     }
 
     public void setPane() {
-        this.backEnd.viewPane.setLeft(this.sceneTemplate.vbox);
+        this.backEnd.viewPane.setLeft(this.frontEnd.vbox);
     }
 
     public void onCustViewButtonClick() {
         // Directly set center pane here with new CenterPanel Class.
-        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView1.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
         System.out.println("View Modeeee");
-        this.sceneTemplate.refresh();
+        this.frontEnd.refresh();
     }
 
     public void onSupViewButtonClick() {
-        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
-        this.sceneTemplate.refresh();
+        this.frontEnd.itemSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.refresh();
     }
 }

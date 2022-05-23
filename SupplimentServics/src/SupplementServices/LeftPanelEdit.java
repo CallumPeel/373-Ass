@@ -7,8 +7,8 @@ import javafx.scene.layout.VBox;
 
 public class LeftPanelEdit extends LeftPanel {
 
-    LeftPanelEdit(BackEnd backEnd, FrontEndGUI sceneTemplate) {
-        super(backEnd, sceneTemplate);
+    LeftPanelEdit(BackEnd backEnd, FrontEndGUI frontEnd) {
+        super(backEnd, frontEnd);
     }
 
     @Override
@@ -61,52 +61,39 @@ public class LeftPanelEdit extends LeftPanel {
 
                 }
         );
-        this.sceneTemplate.vbox = new VBox(
+        this.frontEnd.vbox = new VBox(
                 viewCustButton,
                 editCustButton,
-                this.sceneTemplate.treeView1,
+                this.frontEnd.treeView1,
                 viewSupButton,
                 editSupButton,
-                this.sceneTemplate.treeView2
+                this.frontEnd.treeView2
         );
-        this.sceneTemplate.vbox.setAlignment(Pos.CENTER);
-        this.sceneTemplate.vbox.setMargin(this.sceneTemplate.treeView1, inset);
-        this.sceneTemplate.vbox.setMargin(this.sceneTemplate.treeView2, inset);
-        this.sceneTemplate.vbox.setMargin(viewCustButton, inset);
-        this.sceneTemplate.vbox.setMargin(viewSupButton, inset);
-        this.sceneTemplate.vbox.setMargin(editCustButton, inset);
-        this.sceneTemplate.vbox.setMargin(editSupButton, inset);
+        this.frontEnd.vbox.setAlignment(Pos.CENTER);
+        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
+        this.frontEnd.vbox.setMargin(viewCustButton, inset);
+        this.frontEnd.vbox.setMargin(viewSupButton, inset);
+        this.frontEnd.vbox.setMargin(editCustButton, inset);
+        this.frontEnd.vbox.setMargin(editSupButton, inset);
         setPane();
     }
 
     @Override
     public void setPane() {
-        this.backEnd.editPane.setLeft(this.sceneTemplate.vbox);
-    }
-
-    @Override
-    public void onCustViewButtonClick() {
-        // Directly set center pane here with new CenterPanel Class.
-        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView1.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("viewing customer");
-        this.sceneTemplate.refresh();
+        this.backEnd.editPane.setLeft(this.frontEnd.vbox);
     }
 
     public void onCustEditButtonClick() {
-        // Directly set center pane here with new CenterPanel Class.
-//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView1.getSelectionModel().getSelectedItem().getValue();
+        
+        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+//        new CenterPanelEdit(this.backEnd, this.frontEnd);
         System.out.println("Editing Customer");
-        this.sceneTemplate.refresh();
-    }
-
-    @Override
-    public void onSupViewButtonClick() {
-        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
-        this.sceneTemplate.refresh();
+        this.frontEnd.refresh();
     }
 
     public void onSupEditButtonClick() {
 //        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
-        this.sceneTemplate.refresh();
+        this.frontEnd.refresh();
     }
 }

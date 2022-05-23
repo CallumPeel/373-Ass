@@ -6,7 +6,7 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class FrontEndGUI{
+public class FrontEndGUI {
 
     protected BackEnd backEnd;
     protected int width, height;
@@ -50,12 +50,14 @@ public class FrontEndGUI{
         this.isEditMode = false;
         refresh();
     }
+
     public void createMode() {
         this.isViewMode = false;
         this.isCreateMode = true;
         this.isEditMode = false;
         refresh();
     }
+
     public void editMode() {
         this.isViewMode = false;
         this.isCreateMode = false;
@@ -86,8 +88,7 @@ public class FrontEndGUI{
         }
         if (isEditMode) {
             new LeftPanelEdit(this.backEnd, this);
-            // Update once Edit version is completed
-//            new CenterPanel(this.backEnd, this);
+            new CenterPanelEdit(this.backEnd, this);
             this.backEnd.eScene = new Scene(this.backEnd.editPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.eScene);
             this.backEnd.stage.show();

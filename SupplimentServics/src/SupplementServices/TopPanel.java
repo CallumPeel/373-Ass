@@ -15,8 +15,8 @@ public class TopPanel extends MyPanel {
     Separator separator1;
     BorderPane topSectionPane;
 
-    public TopPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
-        super(backEnd, sceneTemplate);
+    public TopPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
+        super(backEnd, frontEnd);
         this.title = new Label("MAGAZINE SERVICES");
         this.cButton = new Button();
         this.eButton = new Button();
@@ -66,25 +66,25 @@ public class TopPanel extends MyPanel {
     }
 
     public void onViewButtonClick() {
-        this.sceneTemplate.viewMode();
+        this.frontEnd.viewMode();
     }
 
     public void onCreateButtonClick() {
-        this.sceneTemplate.createMode();
+        this.frontEnd.createMode();
     }
 
     public void onEditButtonClick() {
-        this.sceneTemplate.editMode();
+        this.frontEnd.editMode();
     }
 
     private void setPane() {
-        if (this.sceneTemplate.isViewMode) {
+        if (this.frontEnd.isViewMode) {
             this.backEnd.viewPane.setTop(this.topSectionPane);
         }
-        if (this.sceneTemplate.isEditMode) {
+        if (this.frontEnd.isEditMode) {
             this.backEnd.editPane.setTop(this.topSectionPane);
         }
-        if (this.sceneTemplate.isCreateMode) {
+        if (this.frontEnd.isCreateMode) {
             this.backEnd.createPane.setTop(this.topSectionPane);
         }
     }

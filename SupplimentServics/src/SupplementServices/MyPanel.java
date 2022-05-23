@@ -5,10 +5,10 @@ import javafx.scene.layout.VBox;
 public class MyPanel extends VBox {
 
     protected BackEnd backEnd;
-    protected FrontEndGUI sceneTemplate;
+    protected FrontEndGUI frontEnd;
 
-    public MyPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
+    public MyPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
         this.backEnd = backEnd;
-        this.sceneTemplate = sceneTemplate;
+        this.frontEnd = frontEnd;
     }
 }
