@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class LeftPanel extends MyPanel {
+public class LeftPanel extends MyBPane {
 
     Button viewCustomerButton, viewSupplementButton;
 

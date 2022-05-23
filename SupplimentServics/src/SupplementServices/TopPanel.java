@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.BorderPane;
 
-public class TopPanel extends MyPanel {
+public class TopPanel extends MyBPane {
 
     Label title;
     Button cButton, eButton, vButton;

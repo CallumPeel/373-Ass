@@ -19,15 +19,6 @@ public class CenterPanelEdit extends CenterPanelView {
         this.buttonWidth = 150;
         setBottomPane();
     }
-    
-    @Override
-        public void buildPane() {
-        this.centerSectionPane = new BorderPane();
-        Label title = new Label("Customer Breakdown");
-        this.centerSectionPane.setTop(title);
-        this.centerSectionPane.setAlignment(title, Pos.TOP_CENTER);
-        setPane();
-    }
 
     private void setBottomPane() {
         this.editButton.setText("Edit");
@@ -50,10 +41,5 @@ public class CenterPanelEdit extends CenterPanelView {
         this.centerBottomPane.setCenter(bottomButtons);
         this.centerBottomPane.setMargin(this.editButton, new Insets(0, 0, 30, 0));
         this.centerSectionPane.setBottom(this.centerBottomPane);
-    }
-
-    @Override
-    public void setPane() {
-        this.backEnd.editPane.setCenter(centerSectionPane);
     }
 }

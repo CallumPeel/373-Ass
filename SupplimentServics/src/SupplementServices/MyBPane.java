@@ -1,13 +1,13 @@
 package SupplementServices;
 
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 
-public class MyPanel extends VBox {
+public class MyBPane extends BorderPane {
 
     protected BackEnd backEnd;
     protected FrontEndGUI frontEnd;
 
-    public MyPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public MyBPane(BackEnd backEnd, FrontEndGUI frontEnd) {
         this.backEnd = backEnd;
         this.frontEnd = frontEnd;
     }

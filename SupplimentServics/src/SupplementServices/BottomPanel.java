@@ -4,7 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
-public class BottomPanel extends MyPanel {
+public class BottomPanel extends MyBPane {
 
     Button refreshButton;
     int buttonWidth;
@@ -30,7 +30,7 @@ public class BottomPanel extends MyPanel {
                 new Insets(0, 20, 30, 0));
         setPane();
     }
-
+    
     private void setPane() {
         if (this.frontEnd.isViewMode) {
             this.backEnd.viewPane.setBottom(this.bottomSectionPane);
