@@ -29,11 +29,9 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
-        HBox name = this.newCustomer.getCustHBox("Name");
-        HBox email = this.newCustomer.getCustHBox("Email");
         this.centerSectionPane.setCenter(new VBox(
-                name,
-                email
+                this.newCustomer.getCustHBox("Name"),
+                this.newCustomer.getCustHBox("Email")
         )
         );
         setPane();

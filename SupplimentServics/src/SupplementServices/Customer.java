@@ -21,6 +21,7 @@ public class Customer implements Cloneable {
     protected String name;
     protected String email;
     protected Double total;
+    protected Address address;
     protected ArrayList<Supplement> supplementSubscription;
 
     /**
