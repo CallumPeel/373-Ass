@@ -3,10 +3,11 @@ package SupplementServices;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
-public class CenterPanelEdit extends CenterPanel {
+public class CenterPanelEdit extends CenterPanelView {
 
     private Button editButton, deleteButton;
     private int buttonWidth;
@@ -18,8 +19,17 @@ public class CenterPanelEdit extends CenterPanel {
         this.buttonWidth = 150;
         setBottomPane();
     }
+    
+    @Override
+        public void buildPane() {
+        this.centerSectionPane = new BorderPane();
+        Label title = new Label("Customer Breakdown");
+        this.centerSectionPane.setTop(title);
+        this.centerSectionPane.setAlignment(title, Pos.TOP_CENTER);
+        setPane();
+    }
 
-    public void setBottomPane() {
+    private void setBottomPane() {
         this.editButton.setText("Edit");
         this.editButton.setOnAction(e -> {
             System.out.println("Edit button clicked\n");
@@ -35,7 +45,8 @@ public class CenterPanelEdit extends CenterPanel {
         this.deleteButton.setMinWidth(this.buttonWidth);
         HBox bottomButtons = new HBox(this.editButton, this.deleteButton);
         bottomButtons.setAlignment(Pos.CENTER);
-        bottomButtons.setPadding(new Insets(10));
+        bottomButtons.setPadding(new Insets(20));
+        bottomButtons.setSpacing(10);
         this.centerBottomPane.setCenter(bottomButtons);
         this.centerBottomPane.setMargin(this.editButton, new Insets(0, 0, 30, 0));
         this.centerSectionPane.setBottom(this.centerBottomPane);

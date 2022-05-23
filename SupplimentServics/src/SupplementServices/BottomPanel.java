@@ -27,7 +27,7 @@ public class BottomPanel extends MyPanel {
         refreshButton.setMinWidth(buttonWidth);
         bottomSectionPane.setCenter(refreshButton);
         bottomSectionPane.setMargin(refreshButton,
-                new Insets(0, 0, 30, 0));
+                new Insets(0, 20, 30, 0));
         setPane();
     }
 

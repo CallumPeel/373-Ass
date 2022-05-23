@@ -6,12 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class CenterPanel extends MyPanel {
+public class CenterPanelView extends MyPanel {
 
     BorderPane centerSectionPane;
     BorderPane centerBottomPane;
 
-    public CenterPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public CenterPanelView(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.centerSectionPane = new BorderPane();
         this.centerBottomPane = new BorderPane();
@@ -23,18 +23,18 @@ public class CenterPanel extends MyPanel {
         Label title = new Label("Customer Breakdown");
         this.centerSectionPane.setTop(title);
         this.centerSectionPane.setAlignment(title, Pos.TOP_CENTER);
-//        VBox test = new VBox(this.backEnd.getCustName(this.frontEnd.itemSelected).getDetails());
-//        centerSectionPane.setCenter(test);
-        centerSectionPane.setBottom(this.centerBottomPane);
-//        centerSectionPane.setMargin(test, new Insets(30));
+        addTreeView();
         setPane();
     }
 
+    private void addTreeView() {
+        VBox test = new VBox(this.backEnd.getCustName(this.frontEnd.itemSelected).getDetails());
+        centerSectionPane.setCenter(test);
+        centerSectionPane.setBottom(this.centerBottomPane);
+        centerSectionPane.setMargin(test, new Insets(30));
+    }
 
     public void setPane() {
-        // issue is here
-        // this needs to be overriden and edit pane altered
-        // and for create!!!!
         this.backEnd.viewPane.setCenter(centerSectionPane);
     }
 }

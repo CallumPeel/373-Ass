@@ -16,9 +16,9 @@ public class LeftPanelEdit extends LeftPanel {
     public void buildPane() {
         Insets inset = new Insets(0, 0, 10, 10);
 
-        Button viewCustButton = new Button();
-        viewCustButton.setText("New Customer");
-        viewCustButton.setOnAction(
+        Button newCustButton = new Button();
+        newCustButton.setText("New Customer");
+        newCustButton.setOnAction(
                 s -> {
                     try {
                         onCustNewButtonClick();
@@ -38,14 +38,26 @@ public class LeftPanelEdit extends LeftPanel {
                     }
                 }
         );
-        Button viewSupButton = new Button();
-        viewSupButton.setText("View Supplement");
-        viewSupButton.setOnAction(
+        Button deleteCustButton = new Button();
+        deleteCustButton.setText("Delete Customer");
+        deleteCustButton.setOnAction(
                 s -> {
                     try {
-                        onSupViewButtonClick();
+                        onCustDeleteButtonClick();
                     } catch (Exception e) {
-                        System.out.println("Select a Supplement to view");
+                        System.out.println("Select a Customer to delete");
+                    }
+                }
+        );
+
+        Button newSupButton = new Button();
+        newSupButton.setText("New Supplement");
+        newSupButton.setOnAction(
+                s -> {
+                    try {
+                        onSupNewButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Something went wrong...");
                     }
 
                 }
@@ -55,15 +67,27 @@ public class LeftPanelEdit extends LeftPanel {
         editSupButton.setOnAction(
                 s -> {
                     try {
-                        onSupViewButtonClick();
+                        onSupEditButtonClick();
                     } catch (Exception e) {
                         System.out.println("Select a Supplement to edit");
                     }
 
                 }
         );
-        HBox topButtons = new HBox(viewCustButton, editCustButton);
-        HBox bottomButtons = new HBox(viewSupButton, editSupButton);
+        Button deleteSupButton = new Button();
+        deleteSupButton.setText("Delete Supplement");
+        deleteSupButton.setOnAction(
+                s -> {
+                    try {
+                        onSupDeleteButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Select a Supplement to delete");
+                    }
+
+                }
+        );
+        HBox topButtons = new HBox(newCustButton, deleteCustButton, editCustButton);
+        HBox bottomButtons = new HBox(newSupButton, deleteSupButton, editSupButton);
         this.frontEnd.vbox = new VBox(
                 topButtons,
                 this.frontEnd.treeView1,
@@ -88,6 +112,13 @@ public class LeftPanelEdit extends LeftPanel {
         this.backEnd.editPane.setLeft(this.frontEnd.vbox);
     }
 
+    private void onCustNewButtonClick() {
+        // Directly set center pane here with new CenterPanel Class.
+//        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+        System.out.println("New Customer Being Created");
+//        this.frontEnd.refresh();
+    }
+
     public void onCustEditButtonClick() {
 
         this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
@@ -96,15 +127,32 @@ public class LeftPanelEdit extends LeftPanel {
         this.frontEnd.refresh();
     }
 
-    public void onSupEditButtonClick() {
-//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
+    public void onCustDeleteButtonClick() {
+
+        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+//        new CenterPanelEdit(this.backEnd, this.frontEnd);
+        System.out.println("Deleting Customer");
         this.frontEnd.refresh();
     }
 
-    private void onCustNewButtonClick() {
-        // Directly set center pane here with new CenterPanel Class.
-//        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("New Customer Being Created");
-//        this.frontEnd.refresh();
+    public void onSupNewButtonClick() {
+//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
+
+        System.out.println("Creating new Supplement");
+        this.frontEnd.refresh();
     }
+
+    public void onSupEditButtonClick() {
+//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
+
+        System.out.println("Editing Supplement");
+        this.frontEnd.refresh();
+    }
+
+    public void onSupDeleteButtonClick() {
+//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
+        System.out.println("Deleting Supplement");
+        this.frontEnd.refresh();
+    }
+
 }
