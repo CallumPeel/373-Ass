@@ -1,6 +1,8 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
@@ -62,6 +64,22 @@ public class Customer {
 
     public double getTotal() {
         return this.total;
+    }
+
+    public Button getNameButton(TextField text) {
+        Button nameButton = new Button();
+        nameButton.setText("Set Name");
+        nameButton.setOnAction(
+                s -> {
+                    try {
+                        this.name = text.getText();
+                        System.out.println("name changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                }
+        );
+        return nameButton;
     }
 
     /**

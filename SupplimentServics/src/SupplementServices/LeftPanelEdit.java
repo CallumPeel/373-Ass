@@ -118,7 +118,7 @@ public class LeftPanelEdit extends LeftPanel {
 
     public void onCustEditButtonClick() {
         this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-        new CenterPanelEditCustomner(this.backEnd, this.frontEnd);
+        new CenterPanelEditCustomer(this.backEnd, this.frontEnd);
     }
 
     public void onCustDeleteButtonClick() {
