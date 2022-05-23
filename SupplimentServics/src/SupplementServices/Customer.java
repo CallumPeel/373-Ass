@@ -87,25 +87,42 @@ public class Customer implements Cloneable {
         return this.total;
     }
 
-    public HBox getNameHBox() {
-        TextField text = new TextField();
-        text.setMinWidth(120);
-        text.setMaxWidth(120);
-        Label nameLabel = new Label(this.name);
-        Button nameButton = new Button();
-        nameButton.setText("Set Name");
-        nameButton.setOnAction(
+    public HBox getCustHBox(String buttonName) {
+        TextField inputTextBox = new TextField();
+        inputTextBox.setMinWidth(120);
+        inputTextBox.setMaxWidth(120);
+        Label outputLabel = new Label("No value");
+        switch (buttonName.toUpperCase()) {
+            case "NAME":
+                outputLabel.setText(this.name);
+                break;
+            case "EMAIL":
+                outputLabel.setText(this.email);
+                break;
+        }
+        Button setButton = new Button();
+        setButton.setText("Set " + buttonName);
+        setButton.setOnAction(
                 s -> {
                     try {
-                        this.name = text.getText();
-                        nameLabel.setText(this.name);
-                        System.out.println("name changed");
+                        switch (buttonName.toUpperCase()) {
+                            case "NAME":
+                                this.name = inputTextBox.getText();
+                                outputLabel.setText(this.name);
+                                System.out.println("Name changed");
+                                break;
+                            case "EMAIL":
+                                this.email = inputTextBox.getText();
+                                outputLabel.setText(this.email);
+                                System.out.println("Email changed");
+                                break;
+                        }
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
                 }
         );
-        HBox newBox = new HBox(text, nameButton, nameLabel);
+        HBox newBox = new HBox(inputTextBox, setButton, outputLabel);
         newBox.setAlignment(Pos.BASELINE_CENTER);
         newBox.setSpacing(20);
         newBox.setPadding(new Insets(10));
