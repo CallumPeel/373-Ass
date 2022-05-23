@@ -18,6 +18,13 @@ public class CenterPanelEdit extends CenterPanelView {
         this.deleteButton = new Button();
         this.buttonWidth = 150;
         setBottomPane();
+        setCenterPane();
+    }
+    
+    private void setCenterPane() {
+        Button x = new Button();
+        this.centerSectionPane.setCenter(x);
+        setPane();
     }
 
     private void setBottomPane() {
@@ -41,5 +48,10 @@ public class CenterPanelEdit extends CenterPanelView {
         this.centerBottomPane.setCenter(bottomButtons);
         this.centerBottomPane.setMargin(this.editButton, new Insets(0, 0, 30, 0));
         this.centerSectionPane.setBottom(this.centerBottomPane);
+    }
+    
+    @Override
+    public void setPane() {
+        this.backEnd.editPane.setCenter(centerSectionPane);
     }
 }
