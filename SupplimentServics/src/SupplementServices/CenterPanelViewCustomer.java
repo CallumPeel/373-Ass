@@ -3,9 +3,9 @@ package SupplementServices;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
 
-public class CenterPanelView extends CenterPanel {
+public class CenterPanelViewCustomer extends CenterPanel {
 
-    public CenterPanelView(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public CenterPanelViewCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         addTreeView();
     }

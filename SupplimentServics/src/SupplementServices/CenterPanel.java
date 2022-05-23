@@ -17,9 +17,9 @@ public class CenterPanel extends MyBPane {
     }
 
     public void buildPane() {
-        Label title = new Label("Customer Breakdown");
-        this.centerSectionPane.setTop(title);
-        this.centerSectionPane.setAlignment(title, Pos.TOP_CENTER);
+//        Label title = new Label("Customer Breakdown");
+//        this.centerSectionPane.setTop(title);
+//        this.centerSectionPane.setAlignment(title, Pos.TOP_CENTER);
         centerSectionPane.setBottom(this.centerBottomPane);
         setPane();
     }

@@ -113,18 +113,12 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     private void onCustNewButtonClick() {
-        // Directly set center pane here with new CenterPanel Class.
-//        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("New Customer Being Created");
-//        this.frontEnd.refresh();
+        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
     }
 
     public void onCustEditButtonClick() {
-
         this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-//        new CenterPanelEdit(this.backEnd, this.frontEnd);
-        System.out.println("Editing Customer");
-        this.frontEnd.refresh();
+        new CenterPanelEditCustomner(this.backEnd, this.frontEnd);
     }
 
     public void onCustDeleteButtonClick() {

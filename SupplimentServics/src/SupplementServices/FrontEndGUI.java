@@ -73,7 +73,7 @@ public class FrontEndGUI {
         new BottomPanel(this.backEnd, this);
         if (isViewMode) {
             new LeftPanel(this.backEnd, this);
-            new CenterPanelView(this.backEnd, this);
+            new CenterPanelViewCustomer(this.backEnd, this);
             this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.vScene);
             this.backEnd.stage.show();

@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
-public class CenterPanelEdit extends CenterPanelView {
+public class CenterPanelEdit extends CenterPanel {
 
     private Button editButton, deleteButton;
     private int buttonWidth;
@@ -18,25 +18,19 @@ public class CenterPanelEdit extends CenterPanelView {
         this.deleteButton = new Button();
         this.buttonWidth = 150;
         setBottomPane();
-        setCenterPane();
-    }
-    
-    private void setCenterPane() {
-        Button x = new Button();
-        this.centerSectionPane.setCenter(x);
-        setPane();
     }
 
     private void setBottomPane() {
         this.editButton.setText("Edit");
         this.editButton.setOnAction(e -> {
-            System.out.println("Edit button clicked\n");
+            onEditButtonClick();
 //            this.sceneTemplate.refresh();
         });
         this.editButton.setMinWidth(this.buttonWidth);
 
         this.deleteButton.setText("Delete");
         this.deleteButton.setOnAction(e -> {
+            onDeleteButtonClick();
             System.out.println("Delete button clicked\n");
 //            this.sceneTemplate.refresh();
         });
@@ -49,7 +43,16 @@ public class CenterPanelEdit extends CenterPanelView {
         this.centerBottomPane.setMargin(this.editButton, new Insets(0, 0, 30, 0));
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
+
+    private void onEditButtonClick() {
+//        new CenterPanelEditCustomner(this.backEnd, this.frontEnd);
+        System.out.println("edit button clicked");
+    }
     
+    private void onDeleteButtonClick() {
+        
+    }
+
     @Override
     public void setPane() {
         this.backEnd.editPane.setCenter(centerSectionPane);
