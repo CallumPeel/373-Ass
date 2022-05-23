@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Callum Peel
  */
-public class FrontEndConsole{
+public class FrontEndConsole {
 
     private BackEnd backEnd;
     private InputHandler IH;
@@ -40,17 +40,19 @@ public class FrontEndConsole{
 //        loopMenu();
     }
 
-/**
- * Displays a menu loop.
- */
+    /**
+     * Displays a menu loop.
+     */
     private void loopMenu() {
-        
+
         boolean orig = true;
         boolean val = false;
 
         boolean result = (orig == val);
-        if (result) System.out.println("\n\n\n\nwin\n\n\n\n");
-        
+        if (result) {
+            System.out.println("\n\n\n\nwin\n\n\n\n");
+        }
+
         char choice;
         do {
             choice = this.IH.getChar(mainMenu);
@@ -108,8 +110,10 @@ public class FrontEndConsole{
     }
 
     /**
-     * Loops a display menu that takes customer names and builds a list of associated customers.
-     * @return 
+     * Loops a display menu that takes customer names and builds a list of
+     * associated customers.
+     *
+     * @return
      */
     private ArrayList<Customer> makeCustomerList() {
         // Gets customer list from back end
@@ -143,7 +147,8 @@ public class FrontEndConsole{
 
     /**
      * Creates a list of supplements from user input.
-     * @return 
+     *
+     * @return
      */
     private ArrayList<Supplement> makeSupplementList() {
         ArrayList<Supplement> allSupplements = this.backEnd.supplements;
@@ -198,14 +203,14 @@ public class FrontEndConsole{
     }
 
     /**
-     * This function builds an example back end database.
-     * This consists of customers, paying customers, supplement details, etc.
+     * This function builds an example back end database. This consists of
+     * customers, paying customers, supplement details, etc.
      *
-     * a. construct a magazine with an array of 3-4 supplements-
-     *    with made-up details built in to the program
-     * b. construct an array of 5-6 different customers of various 
-     *    types with made-up details built in to the program, 
-     * c. print out the text of all the e-mails for all customers for four weeks of magazines,
+     * a. construct a magazine with an array of 3-4 supplements- with made-up
+     * details built in to the program b. construct an array of 5-6 different
+     * customers of various types with made-up details built in to the program,
+     * c. print out the text of all the e-mails for all customers for four weeks
+     * of magazines,
      */
     private void buildDatabase() {
         // Build suppliment database.
@@ -235,12 +240,12 @@ public class FrontEndConsole{
         supplementList4.add(backEnd.supplements.get(5));
 
         // Add standard customers
-        this.backEnd.addCustomer(new Customer("Callum", "callum@gmail.com", supplementList1));
-        this.backEnd.addCustomer(new Customer("Maddie", "Maddie@gmail.com", supplementList2));
-        this.backEnd.addCustomer(new Customer("Dom", "Dom@gmail.com", supplementList3));
-        this.backEnd.addCustomer(new Customer("Tim", "Tim@gmail.com", supplementList4));
-        this.backEnd.addCustomer(new Customer("Sally", "Sally@gmail.com", supplementList2));
-        this.backEnd.addCustomer(new Customer("Fin", "Fin@gmail.com", supplementList4));
+        this.backEnd.addCustomer(new Customer("Callum", "callum@gmail.com", new Address(), supplementList1));
+        this.backEnd.addCustomer(new Customer("Maddie", "Maddie@gmail.com", new Address(), supplementList2));
+        this.backEnd.addCustomer(new Customer("Dom", "Dom@gmail.com", new Address(), supplementList3));
+        this.backEnd.addCustomer(new Customer("Tim", "Tim@gmail.com", new Address(), supplementList4));
+        this.backEnd.addCustomer(new Customer("Sally", "Sally@gmail.com", new Address(), supplementList2));
+        this.backEnd.addCustomer(new Customer("Fin", "Fin@gmail.com", new Address(), supplementList4));
 
         // Create lists of associated customers
         ArrayList<Customer> customerList1 = new ArrayList<Customer>();
@@ -270,7 +275,7 @@ public class FrontEndConsole{
         this.backEnd.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
                 new PaymentMethod("", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
     }
-    
+
     private void displayStudentDetails() {
         System.out.println(
                 "Name: Callum Peel\n"

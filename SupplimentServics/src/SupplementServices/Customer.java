@@ -40,6 +40,15 @@ public class Customer implements Cloneable {
         setTotal();
     }
 
+    public Customer(String name, String email, Address address, ArrayList<Supplement> supplementSubscription) {
+        this.name = name;
+        this.email = email;
+        this.total = total;
+        this.address = address;
+        this.supplementSubscription = supplementSubscription;
+        setTotal();
+    }
+
     /**
      * Takes customer attributes, constructs and initializes the global
      * variables. Creates an empty supplementSubscription.
@@ -128,7 +137,7 @@ public class Customer implements Cloneable {
         HBox newBox = new HBox(inputTextBox, setButton, outputLabel);
         newBox.setAlignment(Pos.BASELINE_LEFT);
         newBox.setSpacing(20);
-        newBox.setPadding(new Insets(5,30,5,30));
+        newBox.setPadding(new Insets(5, 30, 5, 30));
         newBox.setMinWidth(400);
 //        newBox.setMaxWidth(400);
         return newBox;

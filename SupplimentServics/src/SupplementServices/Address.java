@@ -2,7 +2,7 @@ package SupplementServices;
 
 public class Address {
 
-    int streetNumber , postcode;
+    int streetNumber, postcode;
     String streetName, suburb;
 
     public Address(int streetNumber, int postcode, String streetName, String suburb) {
@@ -10,6 +10,13 @@ public class Address {
         this.postcode = postcode;
         this.streetName = streetName;
         this.suburb = suburb;
+    }
+
+    public Address() {
+        this.streetNumber = -1;
+        this.postcode = -1;
+        this.streetName = "Default Street";
+        this.suburb = "Default Suburb";
     }
 
     public void setStreetNumber(int streetNumber) {
@@ -45,4 +52,3 @@ public class Address {
     }
 
 }
-    
