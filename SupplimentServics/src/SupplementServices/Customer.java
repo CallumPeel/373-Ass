@@ -122,10 +122,14 @@ public class Customer implements Cloneable {
                     }
                 }
         );
+        setButton.setMinWidth(100);
+        setButton.setMaxWidth(100);
         HBox newBox = new HBox(inputTextBox, setButton, outputLabel);
-        newBox.setAlignment(Pos.BASELINE_CENTER);
+        newBox.setAlignment(Pos.BASELINE_LEFT);
         newBox.setSpacing(20);
-        newBox.setPadding(new Insets(10));
+        newBox.setPadding(new Insets(5,30,5,30));
+        newBox.setMinWidth(400);
+//        newBox.setMaxWidth(400);
         return newBox;
     }
 
