@@ -2,6 +2,7 @@ package SupplementServices;
 
 import java.util.ArrayList;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
@@ -25,7 +26,6 @@ public class FrontEndGUI {
         this.buttonWidth = 150;
         this.itemSelected = "Callum";
         viewMode();
-        getPayingCustomerList();
     }
 
     private void setTree() {
@@ -104,16 +104,5 @@ public class FrontEndGUI {
             this.backEnd.stage.setScene(this.backEnd.eScene);
             this.backEnd.stage.show();
         }
-    }
-
-    private void getPayingCustomerList() {
-        CustomerPaying x = new CustomerPaying();
-        ArrayList<CustomerPaying> testList = new ArrayList<CustomerPaying>();
-        for (int i = 0; i < this.backEnd.customers.size(); i++) {
-            if (this.backEnd.customers.get(i).getClass() == x.getClass()) {
-                testList.add((CustomerPaying)this.backEnd.customers.get(i));
-            }
-        }
-        testList.forEach(n -> System.out.println(n.name));
     }
 }

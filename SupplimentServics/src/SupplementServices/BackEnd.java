@@ -2,6 +2,7 @@ package SupplementServices;
 
 import java.util.ArrayList;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -154,5 +155,16 @@ public class BackEnd {
 
     protected String getSupName(int index) {
         return supplements.get(index).getName();
+    }
+
+    public ChoiceBox<String> getPayingCustomerList() {
+        ChoiceBox<String> choice = new ChoiceBox();
+        CustomerPaying x = new CustomerPaying();
+        for (int i = 0; i < this.customers.size(); i++) {
+            if (this.customers.get(i).getClass() == x.getClass()) {
+                choice.getItems().add(this.customers.get(i).name);
+            }
+        }
+        return choice;
     }
 }
