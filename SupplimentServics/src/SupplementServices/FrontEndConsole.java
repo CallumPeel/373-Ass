@@ -267,13 +267,13 @@ public class FrontEndConsole {
 
         // Create paying customers;
         this.backEnd.addCustomer(new Customer("Matthew", "Matthew@gmail.com", supplementList1),
-                new PaymentMethod("", new Card("Matthew", "1234 1234 1234 1234", "12/24", 232)), customerList1);
+                new PaymentMethod("Bank of Australia", new Card("Matthew", "1234 1234 1234 1234", "12/24", 232)), customerList1);
         this.backEnd.addCustomer(new Customer("Steven", "Steven@gmail.com", supplementList2),
-                new PaymentMethod("", new Card("Steven", "1234 4444 1234 2222", "10/24", 513)), customerList2);
+                new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513)), customerList2);
         this.backEnd.addCustomer(new Customer("Mark", "Mark@gmail.com", supplementList3),
-                new PaymentMethod("", new Card("Steven", "6666 4444 3333 2222", "11/25", 765)), customerList3);
+                new PaymentMethod("Bank of Brazil", new Card("Steven", "6666 4444 3333 2222", "11/25", 765)), customerList3);
         this.backEnd.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
-                new PaymentMethod("", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
+                new PaymentMethod("Bank of Asia", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
     }
 
     private void displayStudentDetails() {
