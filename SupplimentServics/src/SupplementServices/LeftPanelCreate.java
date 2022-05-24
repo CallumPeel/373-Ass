@@ -39,7 +39,7 @@ public class LeftPanelCreate extends LeftPanel {
 
     @Override
     public void onSupViewButtonClick() {
-        this.frontEnd.itemSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.customerSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
         this.frontEnd.refresh();
     }
 }

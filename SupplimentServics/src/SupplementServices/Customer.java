@@ -34,6 +34,7 @@ public class Customer implements Cloneable {
         this.name = name;
         this.email = email;
         this.address = new Address();
+        this.payer = "default";
         this.supplementSubscription = new ArrayList<Supplement>();
         this.supplementSubscription = supplementSubscription;
         setTotal();
@@ -44,6 +45,7 @@ public class Customer implements Cloneable {
         this.email = email;
         this.total = total;
         this.address = address;
+        this.payer = "default";
         this.supplementSubscription = supplementSubscription;
         setTotal();
     }
@@ -59,6 +61,7 @@ public class Customer implements Cloneable {
         this.name = name;
         this.email = email;
         this.address = new Address();
+        this.payer = "default";
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();
     }
@@ -66,6 +69,7 @@ public class Customer implements Cloneable {
     public Customer(String name) {
         this.name = name;
         this.email = "Default";
+        this.payer = "default";
         this.address = new Address();
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();
@@ -74,6 +78,7 @@ public class Customer implements Cloneable {
     public Customer() {
         this.name = "Default";
         this.email = "Default";
+        this.payer = "default";
         this.address = new Address();
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();

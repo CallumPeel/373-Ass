@@ -12,7 +12,7 @@ public class FrontEndGUI {
     protected int width, height;
     protected boolean isViewMode, isCreateMode, isEditMode;
     protected TreeView<String> treeView1, treeView2;
-    protected String itemSelected;
+    protected String customerSelected, supplementSelected;
     protected int buttonWidth;
     protected VBox vbox;
 
@@ -22,7 +22,8 @@ public class FrontEndGUI {
         this.width = width;
         this.height = height;
         this.buttonWidth = 150;
-        this.itemSelected = "Callum";
+        this.customerSelected = this.backEnd.customers.get(0).name;
+        this.supplementSelected = this.backEnd.supplements.get(0).getName();
         viewMode();
     }
 
@@ -44,12 +45,12 @@ public class FrontEndGUI {
     }
 
     public void setSelectedCustomer() {
-        this.itemSelected = this.treeView1.getSelectionModel().getSelectedItem().getValue();
+        this.customerSelected = this.treeView1.getSelectionModel().getSelectedItem().getValue();
 
     }
 
     public void setDefaultSelectedCustomer() {
-        this.itemSelected = this.backEnd.customers.get(0).name;
+        this.customerSelected = this.backEnd.customers.get(0).name;
     }
 
     public void viewMode() {

@@ -1,5 +1,8 @@
 package SupplementServices;
 
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+
 /**
  * Contains supplement name and cost.
  *
@@ -7,8 +10,8 @@ package SupplementServices;
  */
 public class Supplement {
 
-    private String name;
-    private double cost;
+    protected String name;
+    protected double cost;
 
     /**
      * Takes a name and cost, constructs and initializes those values.
@@ -60,5 +63,16 @@ public class Supplement {
      */
     public double getCost() {
         return this.cost;
+    }
+
+    public TreeView<String> getDetails() {
+        TreeItem<String> supplementInformation = new TreeItem("Supplement");
+        supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));
+        supplementInformation.getChildren().add(new TreeItem("Cost: $" + String.format("%.2f", this.cost)));
+
+        TreeView details = new TreeView();
+        details.setRoot(supplementInformation);
+        details.setShowRoot(false);
+        return details;
     }
 }

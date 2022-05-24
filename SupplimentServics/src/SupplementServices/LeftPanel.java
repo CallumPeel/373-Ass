@@ -20,7 +20,7 @@ public class LeftPanel extends MyBPane {
         this.frontEnd.treeView1.setOnMouseClicked(
                 s -> {
                     try {
-                        onCustViewButtonClick();
+                        onCustViewMouseClick();
                     } catch (Exception e) {
                         System.out.println("Select a Customer to view");
                     }
@@ -47,13 +47,13 @@ public class LeftPanel extends MyBPane {
         this.backEnd.viewPane.setLeft(this.frontEnd.vbox);
     }
 
-    private void onCustViewButtonClick() {
-        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+    private void onCustViewMouseClick() {
+        this.frontEnd.customerSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
         new CenterPanelViewCustomer(this.backEnd, this.frontEnd);
     }
 
     public void onSupViewButtonClick() {
-        this.frontEnd.itemSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
-        // new CenterPanelViewSupplement(this.backEnd, this.frontEnd);
+        this.frontEnd.supplementSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
+        new CenterPanelViewSupplement(this.backEnd, this.frontEnd);
     }
 }

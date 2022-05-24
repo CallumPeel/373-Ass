@@ -13,7 +13,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     public CenterPanelEditCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.oldCustomer = this.backEnd.getCustName(this.frontEnd.itemSelected);
+        this.oldCustomer = this.backEnd.getCustName(this.frontEnd.customerSelected);
         this.initialName = oldCustomer.name;
         cloneCustomer();
         this.labels = getLabels();

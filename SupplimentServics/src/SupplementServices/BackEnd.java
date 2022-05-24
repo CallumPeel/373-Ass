@@ -154,7 +154,18 @@ public class BackEnd {
     }
 
     protected String getSupName(int index) {
-        return supplements.get(index).getName();
+        return supplements.get(index).name;
+    }
+
+    protected Supplement getSupName(String name) {
+        Supplement result = null;
+        for (Supplement c : this.supplements) {
+            if (name.equalsIgnoreCase(c.getName())) {
+                result = c;
+                break;
+            }
+        }
+        return result;
     }
 
     public ChoiceBox<String> getPayingCustomerList() {
