@@ -2,6 +2,7 @@ package SupplementServices;
 
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
@@ -14,7 +15,7 @@ import javafx.scene.layout.VBox;
  */
 public class Customer implements Cloneable {
 
-    public Customer payer;
+    public String payer;
     protected String name;
     protected String email;
     protected Double total;
@@ -84,9 +85,9 @@ public class Customer implements Cloneable {
     }
 
     public void setPayer(Customer payer) {
-        this.payer = payer;
+        this.payer = payer.name;
     }
-    
+
     private void setTotal() {
         this.total = 0.0;
         for (int i = 0; i < this.supplementSubscription.size(); i++) {
@@ -207,14 +208,34 @@ public class Customer implements Cloneable {
         return suburbBox.getBox();
     }
 
-    public VBox getVBox() {
+    private HBox dropDown(ChoiceBox<String> choice) {
+        // get functionality working with dropdown
+        MyHBox suburbBox = new MyHBox(choice);
+        suburbBox.setButtonName("Set");
+        suburbBox.setLabelText(this.payer);
+        suburbBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.payer = suburbBox.choice.getValue();
+                        suburbBox.outputLabel.setText(this.payer);
+                        System.out.println("Payer changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        suburbBox.formatBox();
+        return suburbBox.getBox();
+    }
+
+    public VBox getVBox(ChoiceBox<String> choice) {
         return new VBox(
                 this.getNameHBox(),
                 this.getEmailHBox(),
                 this.getAddressHBox(),
                 this.getPostCodeHBox(),
                 this.streetNameHBox(),
-                this.suburbBoxHBox()
+                this.suburbBoxHBox(),
+                this.dropDown(choice)
         );
     }
 
