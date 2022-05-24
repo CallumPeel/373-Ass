@@ -15,7 +15,7 @@ public class LeftPanel extends MyBPane {
     }
 
     public void buildPane() {
-        Insets inset = new Insets(0, 0, 15, 15);
+        Insets inset = new Insets(0, 15, 15, 15);
 
         this.frontEnd.treeView1.setOnMouseClicked(
                 s -> {

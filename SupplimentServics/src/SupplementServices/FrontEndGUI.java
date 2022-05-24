@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -42,6 +43,8 @@ public class FrontEndGUI {
         this.treeView2 = new TreeView();
         this.treeView2.setRoot(rootItem2);
         this.treeView2.setShowRoot(false);
+        this.treeView1.setPadding(new Insets(15));
+        this.treeView2.setPadding(new Insets(15));
     }
 
     public void setSelectedCustomer() {

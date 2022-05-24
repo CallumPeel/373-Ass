@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 
 public class CenterPanel extends MyBPane {
@@ -11,6 +12,7 @@ public class CenterPanel extends MyBPane {
         super(backEnd, frontEnd);
         this.centerSectionPane = new BorderPane();
         this.centerBottomPane = new BorderPane();
+        this.centerSectionPane.setPadding(new Insets(15));
     }
 
     public void buildPane() {

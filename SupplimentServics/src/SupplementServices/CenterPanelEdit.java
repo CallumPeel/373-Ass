@@ -26,7 +26,7 @@ public class CenterPanelEdit extends CenterPanel {
 
         HBox bottomButtons = new HBox(this.saveButton);
         bottomButtons.setAlignment(Pos.CENTER);
-        bottomButtons.setPadding(new Insets(20));
+        bottomButtons.setPadding(new Insets(15, 0, 0, 10));
         bottomButtons.setSpacing(10);
         this.centerBottomPane.setCenter(bottomButtons);
         this.centerBottomPane.setMargin(this.saveButton, new Insets(0, 0, 30, 0));
