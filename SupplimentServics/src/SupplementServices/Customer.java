@@ -105,7 +105,7 @@ public class Customer implements Cloneable {
         return this.total;
     }
 
-    private HBox getNameHBox() {
+    public HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Name");
         nameBox.setLabelText(this.name);
@@ -124,7 +124,7 @@ public class Customer implements Cloneable {
         return nameBox.getBox();
     }
 
-    private HBox getEmailHBox() {
+    public HBox getEmailHBox() {
         MyHBox emailBox = new MyHBox();
         emailBox.setButtonName("Email");
         emailBox.setLabelText(this.email);
@@ -142,7 +142,7 @@ public class Customer implements Cloneable {
         return emailBox.getBox();
     }
 
-    private HBox getAddressHBox() {
+    public HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
         addressNumberBox.setButtonName("Address Number");
         addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
@@ -160,7 +160,7 @@ public class Customer implements Cloneable {
         return addressNumberBox.getBox();
     }
 
-    private HBox getPostCodeHBox() {
+    public HBox getPostCodeHBox() {
         MyHBox postCodeBox = new MyHBox();
         postCodeBox.setButtonName("Post Code");
         postCodeBox.setLabelText(Integer.toString(this.address.postcode));
@@ -178,7 +178,7 @@ public class Customer implements Cloneable {
         return postCodeBox.getBox();
     }
 
-    private HBox streetNameHBox() {
+    public HBox streetNameHBox() {
         MyHBox streetNameBox = new MyHBox();
         streetNameBox.setButtonName("Street Name");
         streetNameBox.setLabelText(this.address.streetName);
@@ -196,7 +196,7 @@ public class Customer implements Cloneable {
         return streetNameBox.getBox();
     }
 
-    private HBox suburbBoxHBox() {
+    public HBox suburbBoxHBox() {
         MyHBox suburbBox = new MyHBox();
         suburbBox.setButtonName("Suburb Name");
         suburbBox.setLabelText(this.address.suburb);
@@ -214,7 +214,7 @@ public class Customer implements Cloneable {
         return suburbBox.getBox();
     }
 
-    private HBox dropDown(ChoiceBox<String> choice) {
+    public HBox dropDown(ChoiceBox<String> choice) {
         // get functionality working with dropdown
         MyHBox suburbBox = new MyHBox(choice);
         suburbBox.setButtonName("Set");

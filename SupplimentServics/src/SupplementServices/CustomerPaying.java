@@ -2,8 +2,11 @@ package SupplementServices;
 
 import java.util.ArrayList;
 import javafx.geometry.Insets;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Contains a customer with payment information. Extends the customer class
@@ -28,7 +31,8 @@ public class CustomerPaying extends Customer {
             String name,
             String email,
             PaymentMethod paymentMethod,
-            ArrayList<Supplement> supplementSubscription) {
+            ArrayList<Supplement> supplementSubscription
+    ) {
         super(name, email, supplementSubscription);
         this.paymentMethod = paymentMethod;
         this.associatedCustomers = new ArrayList<Customer>();
@@ -170,4 +174,59 @@ public class CustomerPaying extends Customer {
         details.setPadding(new Insets(15));
         return details;
     }
+
+    @Override
+    public VBox getVBox(ChoiceBox<String> choice) {
+        return new VBox(
+                this.getNameHBox(),
+                this.getEmailHBox(),
+                this.getAddressHBox(),
+                this.getPostCodeHBox(),
+                this.streetNameHBox(),
+                this.suburbBoxHBox(),
+                this.dropDown(choice),
+                getBankNameHBox()
+        );
+    }
+
+    public HBox getBankNameHBox() {
+        MyHBox bankNameBox = new MyHBox();
+        bankNameBox.setButtonName("Bank Name");
+        bankNameBox.setLabelText(this.paymentMethod.bankName);
+        bankNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.bankName = bankNameBox.inputText.getText();
+                        bankNameBox.outputLabel.setText(this.paymentMethod.bankName);
+                        System.out.println("Bank Name changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        bankNameBox.formatBox();
+        return bankNameBox.getBox();
+    }
+//
+//    public HBox getCardNameHBox() {
+//    }
+//
+//    public HBox getCardNumberHBox() {
+//    }
+//
+//    public HBox getCardExpHBox() {
+//    }
+//
+//    public HBox getCardCVVHBox() {
+//    }
+//
+//    public HBox getAccountNameHBox() {
+//    }
+//
+//    public HBox getAccountNumHBox() {
+//    }
+//
+//    public HBox getAccountBSBHBox() {
+//    }
+
 }
