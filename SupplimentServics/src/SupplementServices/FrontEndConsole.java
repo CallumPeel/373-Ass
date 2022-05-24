@@ -266,8 +266,25 @@ public class FrontEndConsole {
         customerList4.add(backEnd.customers.get(5));
 
         // Create paying customers;
-        this.backEnd.addCustomer(new Customer("Matthew", "Matthew@gmail.com", supplementList1),
-                new PaymentMethod("Bank of Australia", new Card("Matthew", "1234 1234 1234 1234", "12/24", 232)), customerList1);
+        this.backEnd.addCustomer(
+                new Customer("Matthew", "Matthew@gmail.com", supplementList1),
+                new PaymentMethod(
+                        "Bank of Australia",
+                        new Card(
+                                "Matthew",
+                                "1234 1234 1234 1234",
+                                "12/24",
+                                232
+                        ),
+                        new Account(
+                                "Matts account",
+                                "1234 1234",
+                                "1234"
+                        )
+                ),
+                customerList1
+        );
+
         this.backEnd.addCustomer(new Customer("Steven", "Steven@gmail.com", supplementList2),
                 new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513)), customerList2);
         this.backEnd.addCustomer(new Customer("Mark", "Mark@gmail.com", supplementList3),
