@@ -32,6 +32,7 @@ public class Customer implements Cloneable {
     public Customer(String name, String email, ArrayList<Supplement> supplementSubscription) {
         this.name = name;
         this.email = email;
+        this.address = new Address();
         this.supplementSubscription = new ArrayList<Supplement>();
         this.supplementSubscription = supplementSubscription;
         setTotal();
@@ -56,20 +57,23 @@ public class Customer implements Cloneable {
     public Customer(String name, String email) {
         this.name = name;
         this.email = email;
+        this.address = new Address();
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();
     }
 
     public Customer(String name) {
         this.name = name;
-        this.email = "";
+        this.email = "Default";
+        this.address = new Address();
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();
     }
 
     public Customer() {
         this.name = "Default";
-        this.email = "";
+        this.email = "Default";
+        this.address = new Address();
         this.supplementSubscription = new ArrayList<Supplement>();
         setTotal();
     }

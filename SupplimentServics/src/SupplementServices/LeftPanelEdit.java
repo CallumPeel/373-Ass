@@ -113,7 +113,7 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     private void onCustNewButtonClick() {
-        this.frontEnd.setSelectedCustomer();
+        new CenterPanelNewCustomer(this.backEnd, this.frontEnd);
     }
 
     public void onCustEditButtonClick() {
