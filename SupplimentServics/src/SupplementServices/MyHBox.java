@@ -42,10 +42,10 @@ class MyHBox {
         this.box.setSpacing(20);
         this.box.setPadding(new Insets(5, 30, 5, 30));
         this.box.setMinWidth(400);
-        this.button.setMinWidth(100);
-        this.button.setMaxWidth(100);
-        this.inputText.setMinWidth(120);
-        this.inputText.setMaxWidth(120);
+        this.button.setMinWidth(120);
+        this.button.setMaxWidth(120);
+        this.inputText.setMinWidth(100);
+        this.inputText.setMaxWidth(100);
     }
 
     public HBox getBox() {

@@ -1,11 +1,7 @@
 package SupplementServices;
 
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
@@ -117,24 +113,95 @@ public class Customer implements Cloneable {
     }
 
     public HBox getEmailHBox() {
-        MyHBox nameBox = new MyHBox();
-        nameBox.setButtonName("Email");
-        nameBox.setLabelText(this.email);
-        nameBox.button.setOnAction(
+        MyHBox emailBox = new MyHBox();
+        emailBox.setButtonName("Email");
+        emailBox.setLabelText(this.email);
+        emailBox.button.setOnAction(
                 s -> {
                     try {
-                        this.email = nameBox.inputText.getText();
-                        nameBox.outputLabel.setText(this.email);
+                        this.email = emailBox.inputText.getText();
+                        emailBox.outputLabel.setText(this.email);
                         System.out.println("Email changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
                 });
-        nameBox.formatBox();
-        return nameBox.getBox();
+        emailBox.formatBox();
+        return emailBox.getBox();
     }
 
+    public HBox getAddressHBox() {
+        MyHBox addressNumberBox = new MyHBox();
+        addressNumberBox.setButtonName("Address Number");
+        addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
+        addressNumberBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.address.streetNumber = parseInt(addressNumberBox.inputText.getText());
+                        addressNumberBox.outputLabel.setText(Integer.toString(this.address.streetNumber));
+                        System.out.println("Address Number changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        addressNumberBox.formatBox();
+        return addressNumberBox.getBox();
+    }
+
+    public HBox getPostCodeHBox() {
+        MyHBox postCodeBox = new MyHBox();
+        postCodeBox.setButtonName("Post Code");
+        postCodeBox.setLabelText(Integer.toString(this.address.postcode));
+        postCodeBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.address.postcode = parseInt(postCodeBox.inputText.getText());
+                        postCodeBox.outputLabel.setText(Integer.toString(this.address.postcode));
+                        System.out.println("Post Code changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        postCodeBox.formatBox();
+        return postCodeBox.getBox();
+    }
+    
+    public HBox streetNameHBox() {
+        MyHBox streetNameBox = new MyHBox();
+        streetNameBox.setButtonName("Street Name");
+        streetNameBox.setLabelText(this.address.streetName);
+        streetNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.address.streetName = streetNameBox.inputText.getText();
+                        streetNameBox.outputLabel.setText(this.address.streetName);
+                        System.out.println("Street Name changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        streetNameBox.formatBox();
+        return streetNameBox.getBox();
+    }
+    
+    public HBox suburbBoxHBox() {
+        MyHBox suburbBox = new MyHBox();
+        suburbBox.setButtonName("Suburb Name");
+        suburbBox.setLabelText(this.address.suburb);
+        suburbBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.address.suburb = suburbBox.inputText.getText();
+                        suburbBox.outputLabel.setText(this.address.suburb);
+                        System.out.println("Suburb Name changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        suburbBox.formatBox();
+        return suburbBox.getBox();
+    }
+    
     /**
      * Takes a string name and initializes the global variable with it.
      *
