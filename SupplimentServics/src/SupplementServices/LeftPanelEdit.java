@@ -121,15 +121,11 @@ public class LeftPanelEdit extends LeftPanel {
         new CenterPanelEditCustomer(this.backEnd, this.frontEnd);
     }
 
-    
-    
     public void onCustDeleteButtonClick() {
         this.frontEnd.setSelectedCustomer();
         new CenterPanelDeleteCustomer(this.backEnd, this.frontEnd);
     }
 
-    
-    
     public void onSupNewButtonClick() {
 //        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
 
@@ -143,8 +139,8 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     public void onSupDeleteButtonClick() {
-//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("Deleting Supplement");
+        this.frontEnd.setSelectedSupplement();
+        new CenterPanelDeleteSupplement(this.backEnd, this.frontEnd);
     }
 
 }
