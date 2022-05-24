@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
  */
 public class Customer implements Cloneable {
 
-//    public String payer;
+    public Customer payer;
     protected String name;
     protected String email;
     protected Double total;
@@ -83,10 +83,10 @@ public class Customer implements Cloneable {
         return (Customer) super.clone();
     }
 
-    public Customer getClone() throws CloneNotSupportedException {
-        return (Customer) this.clone();
+    public void setPayer(Customer payer) {
+        this.payer = payer;
     }
-
+    
     private void setTotal() {
         this.total = 0.0;
         for (int i = 0; i < this.supplementSubscription.size(); i++) {
@@ -98,7 +98,7 @@ public class Customer implements Cloneable {
         return this.total;
     }
 
-    public HBox getNameHBox() {
+    private HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Name");
         nameBox.setLabelText(this.name);
@@ -117,7 +117,7 @@ public class Customer implements Cloneable {
         return nameBox.getBox();
     }
 
-    public HBox getEmailHBox() {
+    private HBox getEmailHBox() {
         MyHBox emailBox = new MyHBox();
         emailBox.setButtonName("Email");
         emailBox.setLabelText(this.email);
@@ -135,7 +135,7 @@ public class Customer implements Cloneable {
         return emailBox.getBox();
     }
 
-    public HBox getAddressHBox() {
+    private HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
         addressNumberBox.setButtonName("Address Number");
         addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
@@ -153,7 +153,7 @@ public class Customer implements Cloneable {
         return addressNumberBox.getBox();
     }
 
-    public HBox getPostCodeHBox() {
+    private HBox getPostCodeHBox() {
         MyHBox postCodeBox = new MyHBox();
         postCodeBox.setButtonName("Post Code");
         postCodeBox.setLabelText(Integer.toString(this.address.postcode));
@@ -171,7 +171,7 @@ public class Customer implements Cloneable {
         return postCodeBox.getBox();
     }
 
-    public HBox streetNameHBox() {
+    private HBox streetNameHBox() {
         MyHBox streetNameBox = new MyHBox();
         streetNameBox.setButtonName("Street Name");
         streetNameBox.setLabelText(this.address.streetName);
@@ -189,7 +189,7 @@ public class Customer implements Cloneable {
         return streetNameBox.getBox();
     }
 
-    public HBox suburbBoxHBox() {
+    private HBox suburbBoxHBox() {
         MyHBox suburbBox = new MyHBox();
         suburbBox.setButtonName("Suburb Name");
         suburbBox.setLabelText(this.address.suburb);
@@ -330,4 +330,5 @@ public class Customer implements Cloneable {
         details.setShowRoot(false);
         return details;
     }
+
 }
