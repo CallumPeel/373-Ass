@@ -112,40 +112,27 @@ public class Customer implements Cloneable {
                         System.out.println("Something Went Wrong...");
                     }
                 });
-        nameBox.setSpacing();
+        nameBox.formatBox();
         return nameBox.getBox();
     }
-    
-    public HBox getNameHBoxOld() {
-        TextField inputTextBox = new TextField();
-        inputTextBox.setMinWidth(120);
-        inputTextBox.setMaxWidth(120);
-        
-        Label outputLabel = new Label("No value");
-        outputLabel.setText(this.name);
-        
-        Button setButton = new Button();
-        setButton.setText("Set Name");
-        setButton.setOnAction(
+
+    public HBox getEmailHBox() {
+        MyHBox nameBox = new MyHBox();
+        nameBox.setButtonName("Email");
+        nameBox.setLabelText(this.email);
+        nameBox.button.setOnAction(
                 s -> {
                     try {
-                        this.name = inputTextBox.getText();
-                        outputLabel.setText(this.name);
-                        System.out.println("Name changed");
+                        this.email = nameBox.inputText.getText();
+                        nameBox.outputLabel.setText(this.email);
+                        System.out.println("Email changed");
 
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
                 });
-        setButton.setMinWidth(100);
-        setButton.setMaxWidth(100);
-        
-        HBox newBox = new HBox(inputTextBox, setButton, outputLabel);
-        newBox.setAlignment(Pos.BASELINE_LEFT);
-        newBox.setSpacing(20);
-        newBox.setPadding(new Insets(5, 30, 5, 30));
-        newBox.setMinWidth(400);
-        return newBox;
+        nameBox.formatBox();
+        return nameBox.getBox();
     }
 
     /**

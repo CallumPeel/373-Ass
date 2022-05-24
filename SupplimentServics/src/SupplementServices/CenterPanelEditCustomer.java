@@ -2,7 +2,6 @@ package SupplementServices;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class CenterPanelEditCustomer extends CenterPanelEdit {
@@ -30,7 +29,8 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     private void setCenterPane() {
         this.centerSectionPane.setCenter(new VBox(
-                this.newCustomer.getNameHBox()
+                this.newCustomer.getNameHBox(),
+                this.newCustomer.getEmailHBox()
         )
         );
         setPane();

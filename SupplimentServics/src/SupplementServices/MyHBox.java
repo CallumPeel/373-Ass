@@ -37,13 +37,15 @@ class MyHBox {
         this.outputLabel.setText(fieldValue);
     }
 
-    void setSpacing() {
+    void formatBox() {
         this.box.setAlignment(Pos.BASELINE_LEFT);
         this.box.setSpacing(20);
         this.box.setPadding(new Insets(5, 30, 5, 30));
         this.box.setMinWidth(400);
         this.button.setMinWidth(100);
         this.button.setMaxWidth(100);
+        this.inputText.setMinWidth(120);
+        this.inputText.setMaxWidth(120);
     }
 
     public HBox getBox() {
