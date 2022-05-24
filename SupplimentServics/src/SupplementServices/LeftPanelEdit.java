@@ -137,8 +137,8 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     public void onSupEditButtonClick() {
-//        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
-
+        this.frontEnd.setSelectedSupplement();
+        new CenterPanelEditSupplement(this.backEnd, this.frontEnd);
         System.out.println("Editing Supplement");
     }
 

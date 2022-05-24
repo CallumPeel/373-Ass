@@ -46,11 +46,18 @@ public class FrontEndGUI {
 
     public void setSelectedCustomer() {
         this.customerSelected = this.treeView1.getSelectionModel().getSelectedItem().getValue();
+    }
 
+    public void setSelectedSupplement() {
+        this.supplementSelected = this.treeView2.getSelectionModel().getSelectedItem().getValue();
     }
 
     public void setDefaultSelectedCustomer() {
         this.customerSelected = this.backEnd.customers.get(0).name;
+    }
+
+    public void setDefaultSelectedSupplement() {
+        this.supplementSelected = this.backEnd.supplements.get(0).name;
     }
 
     public void viewMode() {

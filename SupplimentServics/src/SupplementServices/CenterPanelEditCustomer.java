@@ -47,6 +47,5 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         this.backEnd.customers.set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
         this.frontEnd.refresh();
-
     }
 }
