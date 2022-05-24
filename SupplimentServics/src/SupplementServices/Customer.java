@@ -97,49 +97,54 @@ public class Customer implements Cloneable {
         return this.total;
     }
 
-    public HBox getCustHBox(String buttonName) {
-        TextField inputTextBox = new TextField();
-        inputTextBox.setMinWidth(120);
-        inputTextBox.setMaxWidth(120);
-        Label outputLabel = new Label("No value");
-        switch (buttonName.toUpperCase()) {
-            case "NAME":
-                outputLabel.setText(this.name);
-                break;
-            case "EMAIL":
-                outputLabel.setText(this.email);
-                break;
-        }
-        Button setButton = new Button();
-        setButton.setText("Set " + buttonName);
-        setButton.setOnAction(
+    public HBox getNameHBox() {
+        MyHBox nameBox = new MyHBox();
+        nameBox.setButtonName("Name");
+        nameBox.setLabelText(this.name);
+        nameBox.button.setOnAction(
                 s -> {
                     try {
-                        switch (buttonName.toUpperCase()) {
-                            case "NAME":
-                                this.name = inputTextBox.getText();
-                                outputLabel.setText(this.name);
-                                System.out.println("Name changed");
-                                break;
-                            case "EMAIL":
-                                this.email = inputTextBox.getText();
-                                outputLabel.setText(this.email);
-                                System.out.println("Email changed");
-                                break;
-                        }
+                        this.name = nameBox.inputText.getText();
+                        nameBox.outputLabel.setText(this.name);
+                        System.out.println("Name changed");
+
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
-                }
-        );
+                });
+        nameBox.setSpacing();
+        return nameBox.getBox();
+    }
+    
+    public HBox getNameHBoxOld() {
+        TextField inputTextBox = new TextField();
+        inputTextBox.setMinWidth(120);
+        inputTextBox.setMaxWidth(120);
+        
+        Label outputLabel = new Label("No value");
+        outputLabel.setText(this.name);
+        
+        Button setButton = new Button();
+        setButton.setText("Set Name");
+        setButton.setOnAction(
+                s -> {
+                    try {
+                        this.name = inputTextBox.getText();
+                        outputLabel.setText(this.name);
+                        System.out.println("Name changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
         setButton.setMinWidth(100);
         setButton.setMaxWidth(100);
+        
         HBox newBox = new HBox(inputTextBox, setButton, outputLabel);
         newBox.setAlignment(Pos.BASELINE_LEFT);
         newBox.setSpacing(20);
         newBox.setPadding(new Insets(5, 30, 5, 30));
         newBox.setMinWidth(400);
-//        newBox.setMaxWidth(400);
         return newBox;
     }
 
