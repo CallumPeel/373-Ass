@@ -1,6 +1,7 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.geometry.Insets;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
@@ -33,7 +34,7 @@ public class CustomerPaying extends Customer {
         this.associatedCustomers = new ArrayList<Customer>();
     }
 
-    public CustomerPaying(){
+    public CustomerPaying() {
         // for testing
     }
 
@@ -166,6 +167,7 @@ public class CustomerPaying extends Customer {
         TreeView details = new TreeView();
         details.setRoot(customerInformation);
         details.setShowRoot(false);
+        details.setPadding(new Insets(15));
         return details;
     }
 }

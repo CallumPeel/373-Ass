@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
@@ -80,6 +81,7 @@ public class Supplement implements Cloneable {
         TreeView details = new TreeView();
         details.setRoot(supplementInformation);
         details.setShowRoot(false);
+        details.setPadding(new Insets(15));
         return details;
     }
 

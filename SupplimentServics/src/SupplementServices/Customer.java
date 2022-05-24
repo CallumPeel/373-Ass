@@ -2,6 +2,7 @@ package SupplementServices;
 
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -354,6 +355,7 @@ public class Customer implements Cloneable {
         TreeView details = new TreeView();
         details.setRoot(customerInformation);
         details.setShowRoot(false);
+        details.setPadding(new Insets(15));
         return details;
     }
 

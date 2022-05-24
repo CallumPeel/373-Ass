@@ -14,7 +14,7 @@ public class CenterPanelViewCustomer extends CenterPanel {
         VBox test = new VBox(this.backEnd.getCustName(this.frontEnd.customerSelected).getDetails());
         this.centerSectionPane.setCenter(test);
         this.centerSectionPane.setBottom(this.centerBottomPane);
-        this.centerSectionPane.setMargin(test, new Insets(30));
+        this.centerSectionPane.setMargin(test, new Insets(0,15,15,15));
         setPane();
     }
 }
