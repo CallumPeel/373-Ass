@@ -28,8 +28,9 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
+        VBox content = this.newCustomer.getVBox();
         this.centerSectionPane.setCenter(
-                this.newCustomer.getVBox()
+                content
         );
         setPane();
     }

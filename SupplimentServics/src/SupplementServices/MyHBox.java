@@ -7,6 +7,7 @@ package SupplementServices;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -21,18 +22,28 @@ class MyHBox {
     public Label outputLabel;
     public Button button;
     public TextField inputText;
+    ChoiceBox<String> choice;
 
     public MyHBox() {
         this.outputLabel = new Label();
         this.button = new Button();
         this.inputText = new TextField();
         this.box = new HBox(this.inputText, this.button, this.outputLabel);
+        this.choice = new ChoiceBox<String>();
+    }
+
+    public MyHBox(ChoiceBox<String> choice) {
+        this.outputLabel = new Label();
+        this.button = new Button();
+        this.inputText = new TextField();
+        this.choice = new ChoiceBox<String>();
+        this.box = new HBox(this.choice, this.button, this.outputLabel);
     }
 
     public void setButtonName(String name) {
         this.button.setText(name);
     }
-    
+
     public void setLabelText(String fieldValue) {
         this.outputLabel.setText(fieldValue);
     }

@@ -1,8 +1,6 @@
 package SupplementServices;
 
-import java.util.ArrayList;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
