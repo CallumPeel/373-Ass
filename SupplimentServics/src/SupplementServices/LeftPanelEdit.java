@@ -121,32 +121,30 @@ public class LeftPanelEdit extends LeftPanel {
         new CenterPanelEditCustomer(this.backEnd, this.frontEnd);
     }
 
+    
+    
     public void onCustDeleteButtonClick() {
-
-        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-//        new CenterPanelEdit(this.backEnd, this.frontEnd);
-        System.out.println("Deleting Customer");
-        this.frontEnd.refresh();
+        this.frontEnd.setSelectedCustomer();
+        new CenterPanelDeleteCustomer(this.backEnd, this.frontEnd);
     }
 
+    
+    
     public void onSupNewButtonClick() {
 //        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
 
         System.out.println("Creating new Supplement");
-        this.frontEnd.refresh();
     }
 
     public void onSupEditButtonClick() {
 //        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
 
         System.out.println("Editing Supplement");
-        this.frontEnd.refresh();
     }
 
     public void onSupDeleteButtonClick() {
 //        this.sceneTemplate.itemSelected = this.sceneTemplate.treeView2.getSelectionModel().getSelectedItem().getValue();
         System.out.println("Deleting Supplement");
-        this.frontEnd.refresh();
     }
 
 }

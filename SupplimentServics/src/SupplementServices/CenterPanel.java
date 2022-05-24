@@ -11,7 +11,6 @@ public class CenterPanel extends MyBPane {
         super(backEnd, frontEnd);
         this.centerSectionPane = new BorderPane();
         this.centerBottomPane = new BorderPane();
-//        buildPane();
     }
 
     public void buildPane() {
