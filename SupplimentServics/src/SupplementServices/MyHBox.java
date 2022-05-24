@@ -57,6 +57,8 @@ class MyHBox {
         this.button.setMaxWidth(120);
         this.inputText.setMinWidth(100);
         this.inputText.setMaxWidth(100);
+        this.choice.setMinWidth(100);
+        this.choice.setMaxWidth(100);
     }
 
     public HBox getBox() {
