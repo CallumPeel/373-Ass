@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Contains customer attributes.
@@ -165,7 +166,7 @@ public class Customer implements Cloneable {
         postCodeBox.formatBox();
         return postCodeBox.getBox();
     }
-    
+
     public HBox streetNameHBox() {
         MyHBox streetNameBox = new MyHBox();
         streetNameBox.setButtonName("Street Name");
@@ -183,7 +184,7 @@ public class Customer implements Cloneable {
         streetNameBox.formatBox();
         return streetNameBox.getBox();
     }
-    
+
     public HBox suburbBoxHBox() {
         MyHBox suburbBox = new MyHBox();
         suburbBox.setButtonName("Suburb Name");
@@ -201,7 +202,18 @@ public class Customer implements Cloneable {
         suburbBox.formatBox();
         return suburbBox.getBox();
     }
-    
+
+    public VBox getVBox() {
+        return new VBox(
+                this.getNameHBox(),
+                this.getEmailHBox(),
+                this.getAddressHBox(),
+                this.getPostCodeHBox(),
+                this.streetNameHBox(),
+                this.suburbBoxHBox()
+        );
+    }
+
     /**
      * Takes a string name and initializes the global variable with it.
      *
