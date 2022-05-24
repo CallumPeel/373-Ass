@@ -31,6 +31,11 @@ public class Supplement implements Cloneable {
         this.cost = -1;
     }
 
+    public Supplement() {
+        this.name = "Default";
+        this.cost = -1;
+    }
+
     /**
      * Takes a name and initializes it.
      *
