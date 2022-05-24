@@ -17,9 +17,7 @@ public class LeftPanel extends MyBPane {
     public void buildPane() {
         Insets inset = new Insets(0, 0, 15, 15);
 
-        Button viewCustButton = new Button();
-        viewCustButton.setText("View Customer");
-        viewCustButton.setOnAction(
+        this.frontEnd.treeView1.setOnMouseClicked(
                 s -> {
                     try {
                         onCustViewButtonClick();
@@ -28,9 +26,7 @@ public class LeftPanel extends MyBPane {
                     }
                 }
         );
-        Button viewSupButton = new Button();
-        viewSupButton.setText("View Supplement");
-        viewSupButton.setOnAction(
+        this.frontEnd.treeView2.setOnMouseClicked(
                 s -> {
                     try {
                         onSupViewButtonClick();
@@ -40,12 +36,10 @@ public class LeftPanel extends MyBPane {
 
                 }
         );
-        this.frontEnd.vbox = new VBox(viewCustButton, this.frontEnd.treeView1, viewSupButton, this.frontEnd.treeView2);
+        this.frontEnd.vbox = new VBox(this.frontEnd.treeView1, this.frontEnd.treeView2);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
-        this.frontEnd.vbox.setMargin(viewCustButton, inset);
-        this.frontEnd.vbox.setMargin(viewSupButton, inset);
         setPane();
     }
 
