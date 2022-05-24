@@ -33,6 +33,10 @@ public class CustomerPaying extends Customer {
         this.associatedCustomers = new ArrayList<Customer>();
     }
 
+    public CustomerPaying(){
+        // for testing
+    }
+
     /**
      * Constructs a paying customer.
      *
@@ -105,7 +109,7 @@ public class CustomerPaying extends Customer {
         }
         return total;
     }
-    
+
     /**
      * Builds and returns a string that contains the monthly e-mails.
      *
@@ -143,22 +147,22 @@ public class CustomerPaying extends Customer {
         monthlyEmail += "\nThe total charged to your account is: $" + total * multiplier + ".\n\n\n";
         return monthlyEmail;
     }
-    
+
     @Override
     public TreeView<String> getDetails() {
-        
+
         TreeItem<String> customerInformation = new TreeItem("Customer");
-            customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
-            customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
-            customerInformation.getChildren().add(getCustSupplementBreakdown());
+        customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
+        customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
+        customerInformation.getChildren().add(getCustSupplementBreakdown());
 
         TreeItem<String> subList = new TreeItem("Associated Customers");
         subList.getChildren().add(new TreeItem("Total: " + "$" + String.format("%.2f", this.getAssociatedCustomerTotal())));
-            for (int i = 0; i < this.associatedCustomers.size(); i++) {
-                subList.getChildren().add(this.associatedCustomers.get(i).getCustSupplementBreakdown());
-            }
-            customerInformation.getChildren().add(subList);
-            
+        for (int i = 0; i < this.associatedCustomers.size(); i++) {
+            subList.getChildren().add(this.associatedCustomers.get(i).getCustSupplementBreakdown());
+        }
+        customerInformation.getChildren().add(subList);
+
         TreeView details = new TreeView();
         details.setRoot(customerInformation);
         details.setShowRoot(false);
