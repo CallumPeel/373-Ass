@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
@@ -175,20 +176,6 @@ public class CustomerPaying extends Customer {
         return details;
     }
 
-    @Override
-    public VBox getVBox(ChoiceBox<String> choice) {
-        return new VBox(
-                this.getNameHBox(),
-                this.getEmailHBox(),
-                this.getAddressHBox(),
-                this.getPostCodeHBox(),
-                this.streetNameHBox(),
-                this.suburbBoxHBox(),
-                this.dropDown(choice),
-                getBankNameHBox()
-        );
-    }
-
     public HBox getBankNameHBox() {
         MyHBox bankNameBox = new MyHBox();
         bankNameBox.setButtonName("Bank Name");
@@ -207,26 +194,157 @@ public class CustomerPaying extends Customer {
         bankNameBox.formatBox();
         return bankNameBox.getBox();
     }
-//
-//    public HBox getCardNameHBox() {
-//    }
-//
-//    public HBox getCardNumberHBox() {
-//    }
-//
-//    public HBox getCardExpHBox() {
-//    }
-//
-//    public HBox getCardCVVHBox() {
-//    }
-//
-//    public HBox getAccountNameHBox() {
-//    }
-//
-//    public HBox getAccountNumHBox() {
-//    }
-//
-//    public HBox getAccountBSBHBox() {
-//    }
 
+    public HBox getCardNameHBox() {
+        MyHBox bankNameBox = new MyHBox();
+        bankNameBox.setButtonName("Card Name");
+        bankNameBox.setLabelText(this.paymentMethod.card.name);
+        bankNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.card.name = bankNameBox.inputText.getText();
+                        bankNameBox.outputLabel.setText(this.paymentMethod.card.name);
+                        System.out.println("Card Name changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        bankNameBox.formatBox();
+        return bankNameBox.getBox();
+    }
+
+    public HBox getCardNumberHBox() {
+        MyHBox bankNameBox = new MyHBox();
+        bankNameBox.setButtonName("Card Number");
+        bankNameBox.setLabelText(this.paymentMethod.card.cardNumber);
+        bankNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.card.cardNumber = bankNameBox.inputText.getText();
+                        bankNameBox.outputLabel.setText(this.paymentMethod.card.cardNumber);
+                        System.out.println("Card Number changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        bankNameBox.formatBox();
+        return bankNameBox.getBox();
+    }
+
+    public HBox getCardExpHBox() {
+        MyHBox bankNameBox = new MyHBox();
+        bankNameBox.setButtonName("Card Expiry");
+        bankNameBox.setLabelText(this.paymentMethod.card.exp);
+        bankNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.card.exp = bankNameBox.inputText.getText();
+                        bankNameBox.outputLabel.setText(this.paymentMethod.card.exp);
+                        System.out.println("Card Expiry changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        bankNameBox.formatBox();
+        return bankNameBox.getBox();
+    }
+
+    public HBox getCardCVVHBox() {
+        MyHBox cvvBox = new MyHBox();
+        cvvBox.setButtonName("Card CVV");
+        cvvBox.setLabelText(Integer.toString(this.paymentMethod.card.cvv));
+        cvvBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.card.cvv = parseInt(cvvBox.inputText.getText());
+                        cvvBox.outputLabel.setText(Integer.toString(this.paymentMethod.card.cvv));
+                        System.out.println("Card CVV changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        cvvBox.formatBox();
+        return cvvBox.getBox();
+    }
+
+    public HBox getAccountNameHBox() {
+        MyHBox accNameBox = new MyHBox();
+        accNameBox.setButtonName("Account Name");
+        accNameBox.setLabelText(this.paymentMethod.account.name);
+        accNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.account.name = accNameBox.inputText.getText();
+                        accNameBox.outputLabel.setText(this.paymentMethod.account.name);
+                        System.out.println("Account Name changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        accNameBox.formatBox();
+        return accNameBox.getBox();
+    }
+
+    public HBox getAccountNumHBox() {
+        MyHBox accNameBox = new MyHBox();
+        accNameBox.setButtonName("Account Num");
+        accNameBox.setLabelText(this.paymentMethod.account.accNum);
+        accNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.account.accNum = accNameBox.inputText.getText();
+                        accNameBox.outputLabel.setText(this.paymentMethod.account.accNum);
+                        System.out.println("Account Num changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        accNameBox.formatBox();
+        return accNameBox.getBox();
+    }
+
+    public HBox getAccountBSBHBox() {
+        MyHBox accNameBox = new MyHBox();
+        accNameBox.setButtonName("Account BSB");
+        accNameBox.setLabelText(this.paymentMethod.account.BSB);
+        accNameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.paymentMethod.account.BSB = accNameBox.inputText.getText();
+                        accNameBox.outputLabel.setText(this.paymentMethod.account.BSB);
+                        System.out.println("Account BSB changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        accNameBox.formatBox();
+        return accNameBox.getBox();
+    }
+
+    @Override
+    public VBox getVBox(ChoiceBox<String> choice) {
+        return new VBox(
+                this.getNameHBox(),
+                this.getEmailHBox(),
+                this.getAddressHBox(),
+                this.getPostCodeHBox(),
+                this.streetNameHBox(),
+                this.suburbBoxHBox(),
+                this.dropDown(choice),
+                getBankNameHBox(),
+                getCardNameHBox(),
+                getCardNumberHBox(),
+                getCardExpHBox(),
+                getCardCVVHBox(),
+                getAccountNameHBox(),
+                getAccountNumHBox(),
+                getAccountBSBHBox()
+        );
+    }
 }

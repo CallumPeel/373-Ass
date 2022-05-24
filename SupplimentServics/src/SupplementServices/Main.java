@@ -13,6 +13,6 @@ public class Main extends Application{
     public void start(Stage window) throws Exception {
         BackEnd backEnd = new BackEnd(window);
         FrontEndConsole console = new FrontEndConsole(backEnd);
-        FrontEndGUI gui = new FrontEndGUI(backEnd, 800, 600);
+        FrontEndGUI gui = new FrontEndGUI(backEnd, 900, 850);
     }
 }
