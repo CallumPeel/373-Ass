@@ -2,6 +2,7 @@ package SupplementServices;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
 
 public class CenterPanelEditCustomer extends CenterPanelEdit {
@@ -28,10 +29,9 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
-        VBox content = this.newCustomer.getVBox(this.backEnd.getPayingCustomerList());
-        this.centerSectionPane.setCenter(
-                content
-        );
+        ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
+        VBox content = this.newCustomer.getVBox(choice);
+        this.centerSectionPane.setCenter(content);
         setPane();
     }
 

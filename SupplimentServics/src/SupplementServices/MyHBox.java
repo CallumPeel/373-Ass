@@ -36,7 +36,7 @@ class MyHBox {
         this.outputLabel = new Label();
         this.button = new Button();
         this.inputText = new TextField();
-        this.choice = new ChoiceBox<String>();
+        this.choice = choice;
         this.box = new HBox(this.choice, this.button, this.outputLabel);
     }
 
