@@ -69,4 +69,23 @@ public class LeftPanelCreate extends LeftPanelEdit {
         setPane();
     }
 
+    @Override
+    public void onCustNewButtonClick() {
+        // new CenterPanelNewMagazine
+        new CenterPanelNewCustomer(this.backEnd, this.frontEnd);
+    }
+
+    @Override
+    public void onCustEditButtonClick() {
+        // new CenterPanelEditMagazine
+        this.frontEnd.setSelectedCustomer();
+        new CenterPanelEditCustomer(this.backEnd, this.frontEnd);
+    }
+
+    @Override
+    public void onCustDeleteButtonClick() {
+        // new CenterPanelDeleteMagazine
+        this.frontEnd.setSelectedCustomer();
+        new CenterPanelDeleteCustomer(this.backEnd, this.frontEnd);
+    }
 }
