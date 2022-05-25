@@ -3,11 +3,14 @@ package SupplementServices;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  * Contains a customer with payment information. Extends the customer class
@@ -155,8 +158,12 @@ public class CustomerPaying extends Customer {
     }
 
     @Override
-    public TreeView<String> getDetails() {
+    public VBox getDetails() {
 
+        Label customer = new Label("Paying Customer");
+        VBox test = new VBox(customer);
+        customer.setPadding(new Insets(15));
+        customer.setFont(new Font("Arial", 20));
         TreeItem<String> customerInformation = new TreeItem("Customer");
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
         customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
@@ -173,7 +180,8 @@ public class CustomerPaying extends Customer {
         details.setRoot(customerInformation);
         details.setShowRoot(false);
         details.setPadding(new Insets(15));
-        return details;
+        test.getChildren().add(details);
+        return test;
     }
 
     public HBox getBankNameHBox() {
@@ -348,3 +356,9 @@ public class CustomerPaying extends Customer {
         );
     }
 }
+
+
+
+//              NEED TO ADD PAYING CUSTOMER OR REGULAR CUSTOMER!!!
+
+//                        TO TREE VIEW

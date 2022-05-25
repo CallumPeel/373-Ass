@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 
 public class TopPanel extends MyBPane {
 
@@ -18,6 +19,8 @@ public class TopPanel extends MyBPane {
     public TopPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.title = new Label("MAGAZINE SERVICES");
+        this.title.setFont(new Font("Arial", 20));
+        this.title.setPadding(new Insets(20));
         this.cButton = new Button();
         this.eButton = new Button();
         this.vButton = new Button();

@@ -4,10 +4,12 @@ import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  * Contains customer attributes.
@@ -346,7 +348,12 @@ public class Customer implements Cloneable {
         return supplementList;
     }
 
-    public TreeView<String> getDetails() {
+    public VBox getDetails() {
+        Label customer = new Label("Customer");
+        VBox test = new VBox(customer);
+        customer.setPadding(new Insets(15));
+        customer.setFont(new Font("Arial", 20));
+
         TreeItem<String> customerInformation = new TreeItem("Customer");
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
         customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
@@ -356,7 +363,8 @@ public class Customer implements Cloneable {
         details.setRoot(customerInformation);
         details.setShowRoot(false);
         details.setPadding(new Insets(15));
-        return details;
+        test.getChildren().add(details);
+        return test;
     }
 
 }

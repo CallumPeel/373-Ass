@@ -11,10 +11,10 @@ public class CenterPanelViewCustomer extends CenterPanel {
     }
 
     private void addTreeView() {
-        VBox test = new VBox(this.backEnd.getCustName(this.frontEnd.customerSelected).getDetails());
-        this.centerSectionPane.setCenter(test);
+        VBox customerBreakdownVBox = new VBox(this.backEnd.getCustName(this.frontEnd.customerSelected).getDetails());
+        this.centerSectionPane.setCenter(customerBreakdownVBox);
         this.centerSectionPane.setBottom(this.centerBottomPane);
-        this.centerSectionPane.setMargin(test, new Insets(0,15,15,15));
+        this.centerSectionPane.setMargin(customerBreakdownVBox, new Insets(15));        
         setPane();
     }
 }

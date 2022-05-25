@@ -1,10 +1,12 @@
 package SupplementServices;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  * Contains supplement name and cost.
@@ -73,7 +75,12 @@ public class Supplement implements Cloneable {
         return this.cost;
     }
 
-    public TreeView<String> getDetails() {
+    public VBox getDetails() {
+        Label customer = new Label("Supplement");
+        VBox test = new VBox(customer);
+        customer.setPadding(new Insets(15));
+        customer.setFont(new Font("Arial", 20));
+
         TreeItem<String> supplementInformation = new TreeItem("Supplement");
         supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));
         supplementInformation.getChildren().add(new TreeItem("Cost: $" + String.format("%.2f", this.cost)));
@@ -82,7 +89,8 @@ public class Supplement implements Cloneable {
         details.setRoot(supplementInformation);
         details.setShowRoot(false);
         details.setPadding(new Insets(15));
-        return details;
+        test.getChildren().add(details);
+        return test;
     }
 
     // implement for sups
