@@ -7,10 +7,35 @@ import java.util.ArrayList;
  * @author Callum Peel
  */
 public class Magazine {
-    
+
+    String name;
     double cost;
     ArrayList<Supplement> supplements;
+    ArrayList<Customer> customerSubscriptions;
 
+    Magazine(String mag) {
+        this.name = mag;
+        this.cost = -1;
+        this.supplements = new ArrayList<Supplement>();
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Customer> getCustomerSubscriptions() {
+        return customerSubscriptions;
+    }
+
+    public void setCustomerSubscriptions(ArrayList<Customer> customerSubscriptions) {
+        this.customerSubscriptions = customerSubscriptions;
+    }
+    
+    
     /**
      * Default constructor initializes global variables too default values.
      */

@@ -13,7 +13,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     public CenterPanelEditCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.oldCustomer = this.backEnd.getCustName(this.frontEnd.customerSelected);
+        this.oldCustomer = this.backEnd.getCustByName(this.frontEnd.customerSelected);
         this.initialName = oldCustomer.name;
         cloneCustomer();
         this.labels = getLabels();
@@ -43,7 +43,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     @Override
     public void onSaveButtonClick() {
         System.out.println("Save button clicked on edit");
-        int indexOfCustomerToChange = this.backEnd.customers.indexOf(this.backEnd.getCustName(initialName));
+        int indexOfCustomerToChange = this.backEnd.customers.indexOf(this.backEnd.getCustByName(initialName));
         this.backEnd.customers.set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
         this.frontEnd.refresh();

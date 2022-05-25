@@ -10,19 +10,18 @@ public class LeftPanelCreate extends LeftPanel {
         super(backEnd, frontEnd);
     }
     
-    @Override
-    public void buildPane() {
-        Insets inset = new Insets(0, 0, 15, 15);
-
-        this.frontEnd.vbox = new VBox(
-                this.frontEnd.treeView1,
-                this.frontEnd.treeView2
-        );
-        this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
-        setPane();
-    }
+//    @Override
+//    public void buildPane() {
+//        Insets inset = new Insets(0, 0, 15, 15);
+//        this.frontEnd.vbox = new VBox(
+//                this.frontEnd.treeView1,
+//                this.frontEnd.treeView2
+//        );
+//        this.frontEnd.vbox.setAlignment(Pos.CENTER);
+//        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
+//        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
+//        setPane();
+//    }
 
     @Override
     public void setPane() {

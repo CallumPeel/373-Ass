@@ -53,7 +53,7 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
     private void saveChange() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.customers.remove(this.backEnd.getCustName(this.frontEnd.customerSelected));
+            this.backEnd.customers.remove(this.backEnd.getCustByName(this.frontEnd.customerSelected));
             this.frontEnd.setDefaultSelectedCustomer();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
@@ -65,7 +65,7 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
     public void onSaveButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.customers.remove(this.backEnd.getCustName(this.frontEnd.customerSelected));
+            this.backEnd.customers.remove(this.backEnd.getCustByName(this.frontEnd.customerSelected));
             this.frontEnd.setDefaultSelectedCustomer();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
