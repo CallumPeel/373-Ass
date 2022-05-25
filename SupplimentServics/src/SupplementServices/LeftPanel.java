@@ -17,13 +17,13 @@ public class LeftPanel extends MyBPane {
     }
 
     public void buildPane() {
-        Insets inset = new Insets(0, 15, 15, 15);      
+        Insets inset = new Insets(0, 15, 10, 30);      
         Label customerLabel = new Label("Customers");
         customerLabel.setFont(new Font("Arial", 15));
-        customerLabel.setPadding(inset);
+        customerLabel.setPadding(new Insets(0, 15, 10, 30));
         Label supplementLabel = new Label("Supplements");
         supplementLabel.setFont(new Font("Arial", 15));
-        supplementLabel.setPadding(inset);
+        supplementLabel.setPadding(new Insets(20, 15, 10, 30));
         this.frontEnd.treeView1.setOnMouseClicked(
                 s -> {
                     try {

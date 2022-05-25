@@ -2,43 +2,71 @@ package SupplementServices;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class LeftPanelCreate extends LeftPanel {
+public class LeftPanelCreate extends LeftPanelEdit {
 
     LeftPanelCreate(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
-    
-//    @Override
-//    public void buildPane() {
-//        Insets inset = new Insets(0, 0, 15, 15);
-//        this.frontEnd.vbox = new VBox(
-//                this.frontEnd.treeView1,
-//                this.frontEnd.treeView2
-//        );
-//        this.frontEnd.vbox.setAlignment(Pos.CENTER);
-//        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
-//        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
-//        setPane();
-//    }
 
     @Override
     public void setPane() {
         this.backEnd.createPane.setLeft(this.frontEnd.vbox);
     }
 
-//    @Override
-//    public void onCustViewButtonClick() {
-//        // Directly set center pane here with new CenterPanel Class.
-//        this.frontEnd.itemSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
-//        System.out.println("Create Modeeee");
-//        this.frontEnd.refresh();
-//    }
-
     @Override
-    public void onSupViewButtonClick() {
-        this.frontEnd.customerSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
-        this.frontEnd.refresh();
+    public void buildPane() {
+        Insets inset = new Insets(0, 0, 10, 30);
+
+        Button newCustButton = new Button();
+        newCustButton.setText("New Customer");
+        newCustButton.setOnAction(
+                s -> {
+                    try {
+                        onCustNewButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                }
+        );
+        Button editCustButton = new Button();
+        editCustButton.setText("Edit Customer");
+        editCustButton.setOnAction(
+                s -> {
+                    try {
+                        onCustEditButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Select a Customer to edit");
+                    }
+                }
+        );
+        Button deleteCustButton = new Button();
+        deleteCustButton.setText("Delete Customer");
+        deleteCustButton.setOnAction(
+                s -> {
+                    try {
+                        onCustDeleteButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Select a Customer to delete");
+                    }
+                }
+        );
+
+        HBox topButtons = new HBox(newCustButton, deleteCustButton, editCustButton);
+        this.frontEnd.vbox = new VBox(
+                topButtons,
+                this.frontEnd.treeView1
+        );
+        topButtons.setAlignment(Pos.CENTER);
+        topButtons.setPadding(new Insets(10));
+        topButtons.setSpacing(10);
+        this.frontEnd.vbox.setAlignment(Pos.CENTER);
+        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
+
+        setPane();
     }
+
 }

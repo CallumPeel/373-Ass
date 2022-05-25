@@ -14,10 +14,10 @@ public class LeftPanelEdit extends LeftPanel {
 
     @Override
     public void buildPane() {
-        Insets inset = new Insets(0, 0, 10, 10);
+        Insets inset = new Insets(0, 0, 10, 30);
 
         Button newCustButton = new Button();
-        newCustButton.setText("New Customer");
+        newCustButton.setText("New");
         newCustButton.setOnAction(
                 s -> {
                     try {
@@ -28,7 +28,7 @@ public class LeftPanelEdit extends LeftPanel {
                 }
         );
         Button editCustButton = new Button();
-        editCustButton.setText("Edit Customer");
+        editCustButton.setText("Edit");
         editCustButton.setOnAction(
                 s -> {
                     try {
@@ -39,7 +39,7 @@ public class LeftPanelEdit extends LeftPanel {
                 }
         );
         Button deleteCustButton = new Button();
-        deleteCustButton.setText("Delete Customer");
+        deleteCustButton.setText("Delete");
         deleteCustButton.setOnAction(
                 s -> {
                     try {
@@ -49,9 +49,8 @@ public class LeftPanelEdit extends LeftPanel {
                     }
                 }
         );
-
         Button newSupButton = new Button();
-        newSupButton.setText("New Supplement");
+        newSupButton.setText("New");
         newSupButton.setOnAction(
                 s -> {
                     try {
@@ -63,7 +62,7 @@ public class LeftPanelEdit extends LeftPanel {
                 }
         );
         Button editSupButton = new Button();
-        editSupButton.setText("Edit Supplement");
+        editSupButton.setText("Edit");
         editSupButton.setOnAction(
                 s -> {
                     try {
@@ -75,7 +74,7 @@ public class LeftPanelEdit extends LeftPanel {
                 }
         );
         Button deleteSupButton = new Button();
-        deleteSupButton.setText("Delete Supplement");
+        deleteSupButton.setText("Delete");
         deleteSupButton.setOnAction(
                 s -> {
                     try {
@@ -95,11 +94,11 @@ public class LeftPanelEdit extends LeftPanel {
                 this.frontEnd.treeView2
         );
         topButtons.setAlignment(Pos.CENTER);
-        topButtons.setPadding(new Insets(10));
-        topButtons.setSpacing(10);
+        topButtons.setPadding(new Insets(10,10,20,30));
+        topButtons.setSpacing(20);
         bottomButtons.setAlignment(Pos.CENTER);
-        bottomButtons.setPadding(new Insets(10));
-        bottomButtons.setSpacing(10);
+        bottomButtons.setPadding(new Insets(20,10,20,30));
+        bottomButtons.setSpacing(20);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
@@ -112,7 +111,7 @@ public class LeftPanelEdit extends LeftPanel {
         this.backEnd.editPane.setLeft(this.frontEnd.vbox);
     }
 
-    private void onCustNewButtonClick() {
+    public void onCustNewButtonClick() {
         new CenterPanelNewCustomer(this.backEnd, this.frontEnd);
     }
 
