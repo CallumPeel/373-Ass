@@ -168,6 +168,14 @@ public class BackEnd {
         return choice;
     }
 
+    public ChoiceBox<String> getCustomerList() {
+        ChoiceBox<String> choice = new ChoiceBox();
+        for (int i = 0; i < this.customers.size(); i++) {
+            choice.getItems().add(this.customers.get(i).name);
+        }
+        return choice;
+    }
+
     /**
      * Takes a String name as a parameter and removes that customer from the
      * list of customers.

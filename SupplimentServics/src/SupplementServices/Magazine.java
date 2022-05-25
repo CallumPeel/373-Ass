@@ -239,12 +239,32 @@ public class Magazine implements Cloneable {
         return supplementsBox.getBox();
     }
 
-    public VBox getVBox(BackEnd backEnd, ChoiceBox<String> choice) {
+    public HBox addCustDropDown(BackEnd backEnd, ChoiceBox<String> custDrop) {
+        MyHBox custBox = new MyHBox(custDrop);
+        custBox.setButtonName("add");
+        custBox.setLabelText("Choose a customer to add");
+        custBox.button.setOnAction(
+                s -> {
+                    try {
+                        String selection = custBox.choice.getValue();
+                        this.customerSubscriptions.add(backEnd.getCustomer(selection));
+                        custBox.outputLabel.setText("Customer \"" + selection + "\" added");
+                        System.out.println("Customer \"" + selection + "\" added to list");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        custBox.formatBox();
+        return custBox.getBox();
+    }
+
+    public VBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
         return new VBox(
                 this.getNameHBox(),
                 this.getCostHBox(),
-                addSupDropDown(backEnd, choice),
-                deleteSupDropDown(backEnd)
+                addSupDropDown(backEnd, supDrop),
+                deleteSupDropDown(backEnd),
+                addCustDropDown(backEnd, custDrop)
         );
     }
 
