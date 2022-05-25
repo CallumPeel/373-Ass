@@ -29,7 +29,7 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
         this.question = new Label("Delete Magazine?");
         this.yesButton = new Button("YES");
         this.yesButton.setOnAction(e -> {
-            saveChange();
+            onSaveChangesButtonClick();
             System.out.println("Delete on\n");
         });
         this.noButton = new Button("NO");
@@ -53,11 +53,12 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
         this.centerSectionPane.setCenter(this.mainBox);
     }
 
-    private void saveChange() {
+    @Override
+    public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.customerSelected));
-            this.frontEnd.setDefaultSelectedCustomer();
+            this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magSelected));
+            this.frontEnd.setDefaultSelectedMagazine();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
         }
@@ -65,19 +66,13 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveChangesButtonClick() {
-        System.out.println("Save button clicked on delete");
-        try {
-            this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.customerSelected));
-            this.frontEnd.setDefaultSelectedCustomer();
-        } catch (Exception e) {
-            System.out.println("Something Went Wrong");
-        }
-        this.frontEnd.refresh();
+    public void setPane() {
+        this.centerSectionPane.setPadding(new Insets(25, 0, 0, 50));
+        this.backEnd.getCreatePane().setCenter(this.centerSectionPane);
     }
-    
+
     @Override
     public void setBottomPane() {
-        
+
     }
 }

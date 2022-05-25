@@ -2,9 +2,7 @@ package SupplementServices.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.centerPane.CenterPanelNewCustomer;
-import SupplementServices.centerPane.CenterPanelDeleteCustomer;
-import SupplementServices.centerPane.CenterPanelEditCustomer;
+import SupplementServices.centerPane.CenterPanelDeleteMag;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -31,7 +29,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
         newButton.setOnAction(
                 s -> {
                     try {
-                        onCustNewButtonClick();
+                        onNewButtonClick();
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -42,7 +40,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
         editButton.setOnAction(
                 s -> {
                     try {
-                        onCustEditButtonClick();
+                        onEditButtonClick();
                     } catch (Exception e) {
                         System.out.println("Select a Magazine to edit");
                     }
@@ -53,7 +51,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
         deleteButton.setOnAction(
                 s -> {
                     try {
-                        onCustDeleteButtonClick();
+                        onDeleteButtonClick();
                     } catch (Exception e) {
                         System.out.println("Select a Magazine to delete");
                     }
@@ -67,30 +65,25 @@ public class LeftPanelCreate extends LeftPanelEdit {
         );
         topButtons.setAlignment(Pos.CENTER);
         topButtons.setPadding(new Insets(10));
-        topButtons.setSpacing(10);
+        topButtons.setSpacing(20);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.magazineTreeView, inset);
 
         setPane();
     }
 
-    @Override
-    public void onCustNewButtonClick() {
-        // new CenterPanelNewMagazine
-        new CenterPanelNewCustomer(this.backEnd, this.frontEnd);
+    public void onNewButtonClick() {
+//        new CenterPanelNewMag(this.backEnd, this.frontEnd);
     }
 
-    @Override
-    public void onCustEditButtonClick() {
-        // new CenterPanelEditMagazine
+    public void onEditButtonClick() {
         this.frontEnd.setSelectedMagazine();
-        new CenterPanelEditCustomer(this.backEnd, this.frontEnd);
+//        new CenterPanelEditMag(this.backEnd, this.frontEnd);
     }
 
-    @Override
-    public void onCustDeleteButtonClick() {
+    public void onDeleteButtonClick() {
         // new CenterPanelDeleteMagazine
         this.frontEnd.setSelectedMagazine();
-        new CenterPanelDeleteCustomer(this.backEnd, this.frontEnd);
+        new CenterPanelDeleteMag(this.backEnd, this.frontEnd);
     }
 }

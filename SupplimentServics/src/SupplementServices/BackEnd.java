@@ -117,7 +117,7 @@ public class BackEnd {
         return result;
     }
 
-    private Magazine getMagazine(String name) {
+    public Magazine getMagazine(String name) {
         if (getMagazineIndex(name) >= 0) {
             return mags.get(getMagazineIndex(name));
         }
