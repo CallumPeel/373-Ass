@@ -291,6 +291,11 @@ public class FrontEndConsole {
                 new PaymentMethod("Bank of Brazil", new Card("Steven", "6666 4444 3333 2222", "11/25", 765)), customerList3);
         this.backEnd.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
                 new PaymentMethod("Bank of Asia", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
+
+        this.backEnd.addMagazine(new Magazine("Doms mag", 10, supplementList1));
+        this.backEnd.addMagazine(new Magazine("Callums mag", 10, supplementList2));
+        this.backEnd.addMagazine(new Magazine("Some mag", 10, supplementList3));
+
     }
 
     private void displayStudentDetails() {

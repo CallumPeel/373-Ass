@@ -22,7 +22,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
         Insets inset = new Insets(0, 0, 10, 30);
 
         Button newCustButton = new Button();
-        newCustButton.setText("New Customer");
+        newCustButton.setText("New");
         newCustButton.setOnAction(
                 s -> {
                     try {
@@ -33,7 +33,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
                 }
         );
         Button editCustButton = new Button();
-        editCustButton.setText("Edit Customer");
+        editCustButton.setText("Edit");
         editCustButton.setOnAction(
                 s -> {
                     try {
@@ -44,7 +44,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
                 }
         );
         Button deleteCustButton = new Button();
-        deleteCustButton.setText("Delete Customer");
+        deleteCustButton.setText("Delete");
         deleteCustButton.setOnAction(
                 s -> {
                     try {
