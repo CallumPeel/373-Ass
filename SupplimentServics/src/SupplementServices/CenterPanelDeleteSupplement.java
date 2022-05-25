@@ -53,7 +53,7 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
     private void saveChange() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.supplements.remove(this.backEnd.getSupName(this.frontEnd.supplementSelected));
+            this.backEnd.supplements.remove(this.backEnd.getSupplement(this.frontEnd.supplementSelected));
             this.frontEnd.setDefaultSelectedSupplement();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
@@ -65,7 +65,7 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
     public void onSaveButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.supplements.remove(this.backEnd.getSupName(this.frontEnd.supplementSelected));
+            this.backEnd.supplements.remove(this.backEnd.getSupplement(this.frontEnd.supplementSelected));
             this.frontEnd.setDefaultSelectedSupplement();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");

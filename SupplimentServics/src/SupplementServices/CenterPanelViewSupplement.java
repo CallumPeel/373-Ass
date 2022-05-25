@@ -18,7 +18,7 @@ public class CenterPanelViewSupplement extends CenterPanel {
         addTreeView();
     }
     private void addTreeView() {
-        VBox supplementBreakdownVBox = new VBox(this.backEnd.getSupName(this.frontEnd.supplementSelected).getDetails());
+        VBox supplementBreakdownVBox = new VBox(this.backEnd.getSupplement(this.frontEnd.supplementSelected).getDetails());
         this.centerSectionPane.setCenter(supplementBreakdownVBox);
         this.centerSectionPane.setBottom(this.centerBottomPane);
         this.centerSectionPane.setMargin(supplementBreakdownVBox, new Insets(15));

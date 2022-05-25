@@ -12,7 +12,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
 
     public CenterPanelEditSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.oldSupplement = this.backEnd.getSupName(this.frontEnd.supplementSelected);
+        this.oldSupplement = this.backEnd.getSupplement(this.frontEnd.supplementSelected);
         this.initialName = this.oldSupplement.name;
         cloneSupplement();
         this.labels = getLabels();
@@ -42,7 +42,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     @Override
     public void onSaveButtonClick() {
         System.out.println("Save button clicked on edit");
-        int indexOfSupplementToChange = this.backEnd.supplements.indexOf(this.backEnd.getSupName(initialName));
+        int indexOfSupplementToChange = this.backEnd.supplements.indexOf(this.backEnd.getSupplement(initialName));
         this.backEnd.supplements.set(indexOfSupplementToChange, this.newSupplement);
         this.frontEnd.setDefaultSelectedSupplement();
         this.frontEnd.refresh();

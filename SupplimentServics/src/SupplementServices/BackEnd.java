@@ -38,9 +38,20 @@ public class BackEnd {
         this.stage = window;
     }
 
-    protected Customer getCustByName(String name) {
+    protected Customer getCustomer(String name) {
         Customer result = null;
         for (Customer c : this.customers) {
+            if (name.equalsIgnoreCase(c.getName())) {
+                result = c;
+                break;
+            }
+        }
+        return result;
+    }
+
+    protected Supplement getSupplement(String name) {
+        Supplement result = null;
+        for (Supplement c : this.supplements) {
             if (name.equalsIgnoreCase(c.getName())) {
                 result = c;
                 break;
@@ -60,27 +71,16 @@ public class BackEnd {
         return customers.get(index).name;
     }
 
+    protected String getSupName(int index) {
+        return supplements.get(index).name;
+    }
+
     protected int getNumCust() {
         return customers.size();
     }
 
     protected int getNumSups() {
         return supplements.size();
-    }
-
-    protected String getSupName(int index) {
-        return supplements.get(index).name;
-    }
-
-    protected Supplement getSupName(String name) {
-        Supplement result = null;
-        for (Supplement c : this.supplements) {
-            if (name.equalsIgnoreCase(c.getName())) {
-                result = c;
-                break;
-            }
-        }
-        return result;
     }
 
     public ChoiceBox<String> getPayingCustomerList() {
@@ -101,20 +101,11 @@ public class BackEnd {
      * @param name
      */
     public void removeCustomer(String name) {
-        if (getCustByName(name) != null) {
+        if (getCustomer(name) != null) {
             System.out.println("Customer Removed.\n");
             customers.remove(getCustomerIndex(name));
         } else {
             System.out.println("Customer not found.\n");
-        }
-    }
-
-    public void removeMagazine(String name) {
-        if (getMagazine(name) != null) {
-            System.out.println("Magazine Removed.\n");
-            mags.remove(getMagazineIndex(name));
-        } else {
-            System.out.println("Magazine not found.\n");
         }
     }
 
@@ -125,6 +116,15 @@ public class BackEnd {
      */
     public void removeCustomer(Customer customer) {
         this.customers.remove(customer);
+    }
+
+    public void removeMagazine(String name) {
+        if (getMagazine(name) != null) {
+            System.out.println("Magazine Removed.\n");
+            mags.remove(getMagazineIndex(name));
+        } else {
+            System.out.println("Magazine not found.\n");
+        }
     }
 
     public void removeMagazine(Magazine mag) {
@@ -174,16 +174,8 @@ public class BackEnd {
         this.customers.add(customer);
     }
 
-    public void addMagazine(Magazine mag) {
-        this.mags.add(mag);
-    }
-
     public void addCustomer(String customer) {
         this.customers.add(new Customer(customer));
-    }
-
-    public void addMagazine(String mag) {
-        this.mags.add(new Magazine(mag));
     }
 
     /**
@@ -196,6 +188,14 @@ public class BackEnd {
      */
     public void addCustomer(Customer customer, PaymentMethod paymentMethod, ArrayList<Customer> associatedCustomers) {
         this.customers.add(new CustomerPaying(customer, paymentMethod, associatedCustomers));
+    }
+
+    public void addMagazine(Magazine mag) {
+        this.mags.add(mag);
+    }
+
+    public void addMagazine(String mag) {
+        this.mags.add(new Magazine(mag));
     }
 
     /**
