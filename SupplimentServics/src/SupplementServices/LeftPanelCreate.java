@@ -21,9 +21,9 @@ public class LeftPanelCreate extends LeftPanelEdit {
     public void buildPane() {
         Insets inset = new Insets(0, 0, 10, 30);
 
-        Button newCustButton = new Button();
-        newCustButton.setText("New");
-        newCustButton.setOnAction(
+        Button newButton = new Button();
+        newButton.setText("New");
+        newButton.setOnAction(
                 s -> {
                     try {
                         onCustNewButtonClick();
@@ -32,39 +32,39 @@ public class LeftPanelCreate extends LeftPanelEdit {
                     }
                 }
         );
-        Button editCustButton = new Button();
-        editCustButton.setText("Edit");
-        editCustButton.setOnAction(
+        Button editButton = new Button();
+        editButton.setText("Edit");
+        editButton.setOnAction(
                 s -> {
                     try {
                         onCustEditButtonClick();
                     } catch (Exception e) {
-                        System.out.println("Select a Customer to edit");
+                        System.out.println("Select a Magazine to edit");
                     }
                 }
         );
-        Button deleteCustButton = new Button();
-        deleteCustButton.setText("Delete");
-        deleteCustButton.setOnAction(
+        Button deleteButton = new Button();
+        deleteButton.setText("Delete");
+        deleteButton.setOnAction(
                 s -> {
                     try {
                         onCustDeleteButtonClick();
                     } catch (Exception e) {
-                        System.out.println("Select a Customer to delete");
+                        System.out.println("Select a Magazine to delete");
                     }
                 }
         );
 
-        HBox topButtons = new HBox(newCustButton, deleteCustButton, editCustButton);
+        HBox topButtons = new HBox(newButton, deleteButton, editButton);
         this.frontEnd.vbox = new VBox(
                 topButtons,
-                this.frontEnd.treeView1
+                this.frontEnd.magazineTreeView
         );
         topButtons.setAlignment(Pos.CENTER);
         topButtons.setPadding(new Insets(10));
         topButtons.setSpacing(10);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.magazineTreeView, inset);
 
         setPane();
     }

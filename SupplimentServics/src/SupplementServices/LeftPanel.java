@@ -24,7 +24,7 @@ public class LeftPanel extends MyBPane {
         Label supplementLabel = new Label("Supplements");
         supplementLabel.setFont(new Font("Arial", 15));
         supplementLabel.setPadding(new Insets(20, 15, 10, 30));
-        this.frontEnd.treeView1.setOnMouseClicked(
+        this.frontEnd.customerTreeView.setOnMouseClicked(
                 s -> {
                     try {
                         onCustViewMouseClick();
@@ -33,7 +33,7 @@ public class LeftPanel extends MyBPane {
                     }
                 }
         );
-        this.frontEnd.treeView2.setOnMouseClicked(
+        this.frontEnd.supplementTreeView.setOnMouseClicked(
                 s -> {
                     try {
                         onSupViewButtonClick();
@@ -43,10 +43,10 @@ public class LeftPanel extends MyBPane {
 
                 }
         );
-        this.frontEnd.vbox = new VBox(customerLabel, this.frontEnd.treeView1, supplementLabel, this.frontEnd.treeView2);
+        this.frontEnd.vbox = new VBox(customerLabel, this.frontEnd.customerTreeView, supplementLabel, this.frontEnd.supplementTreeView);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.customerTreeView, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.supplementTreeView, inset);
         setPane();
     }
 
@@ -55,12 +55,12 @@ public class LeftPanel extends MyBPane {
     }
 
     private void onCustViewMouseClick() {
-        this.frontEnd.customerSelected = this.frontEnd.treeView1.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.customerSelected = this.frontEnd.customerTreeView.getSelectionModel().getSelectedItem().getValue();
         new CenterPanelViewCustomer(this.backEnd, this.frontEnd);
     }
 
     public void onSupViewButtonClick() {
-        this.frontEnd.supplementSelected = this.frontEnd.treeView2.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.supplementSelected = this.frontEnd.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
         new CenterPanelViewSupplement(this.backEnd, this.frontEnd);
     }
 }

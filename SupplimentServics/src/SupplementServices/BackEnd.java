@@ -71,6 +71,10 @@ public class BackEnd {
         return customers.get(index).name;
     }
 
+    protected String getMagName(int index) {
+        return mags.get(index).name;
+    }
+
     protected String getSupName(int index) {
         return supplements.get(index).name;
     }
@@ -81,6 +85,10 @@ public class BackEnd {
 
     protected int getNumSups() {
         return supplements.size();
+    }
+
+    protected int getNumMags() {
+        return mags.size();
     }
 
     public ChoiceBox<String> getPayingCustomerList() {

@@ -89,9 +89,9 @@ public class LeftPanelEdit extends LeftPanel {
         HBox bottomButtons = new HBox(newSupButton, deleteSupButton, editSupButton);
         this.frontEnd.vbox = new VBox(
                 topButtons,
-                this.frontEnd.treeView1,
+                this.frontEnd.customerTreeView,
                 bottomButtons,
-                this.frontEnd.treeView2
+                this.frontEnd.supplementTreeView
         );
         topButtons.setAlignment(Pos.CENTER);
         topButtons.setPadding(new Insets(10,10,20,30));
@@ -100,8 +100,8 @@ public class LeftPanelEdit extends LeftPanel {
         bottomButtons.setPadding(new Insets(20,10,20,30));
         bottomButtons.setSpacing(20);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
-        this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.customerTreeView, inset);
+        this.frontEnd.vbox.setMargin(this.frontEnd.supplementTreeView, inset);
 
         setPane();
     }

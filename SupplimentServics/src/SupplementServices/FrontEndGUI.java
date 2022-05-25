@@ -12,7 +12,7 @@ public class FrontEndGUI {
     protected BackEnd backEnd;
     protected int width, height;
     protected boolean isViewMode, isCreateMode, isEditMode;
-    protected TreeView<String> treeView1, treeView2;
+    protected TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
     protected String customerSelected, supplementSelected;
     protected int buttonWidth;
     protected VBox vbox;
@@ -28,7 +28,18 @@ public class FrontEndGUI {
         viewMode();
     }
 
-    private void setTree() {
+    private void setMagTree() {
+        TreeItem<String> rootItem1 = new TreeItem("Magazine Database");
+        for (int i = 0; i < backEnd.getNumMags(); i++) {
+            rootItem1.getChildren().add(new TreeItem(backEnd.getMagName(i)));
+        }
+        this.magazineTreeView = new TreeView();
+        this.magazineTreeView.setRoot(rootItem1);
+        this.magazineTreeView.setShowRoot(false);
+        this.magazineTreeView.setPadding(new Insets(15));
+    }
+
+    private void setViewTree() {
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
         TreeItem<String> rootItem2 = new TreeItem("Supplement Database");
         for (int i = 0; i < backEnd.getNumCust(); i++) {
@@ -37,22 +48,23 @@ public class FrontEndGUI {
         for (int i = 0; i < backEnd.getNumSups(); i++) {
             rootItem2.getChildren().add(new TreeItem(backEnd.getSupName(i)));
         }
-        this.treeView1 = new TreeView();
-        this.treeView1.setRoot(rootItem1);
-        this.treeView1.setShowRoot(false);
-        this.treeView2 = new TreeView();
-        this.treeView2.setRoot(rootItem2);
-        this.treeView2.setShowRoot(false);
-        this.treeView1.setPadding(new Insets(15));
-        this.treeView2.setPadding(new Insets(15));
+
+        this.customerTreeView = new TreeView();
+        this.customerTreeView.setRoot(rootItem1);
+        this.customerTreeView.setShowRoot(false);
+        this.supplementTreeView = new TreeView();
+        this.supplementTreeView.setRoot(rootItem2);
+        this.supplementTreeView.setShowRoot(false);
+        this.customerTreeView.setPadding(new Insets(15));
+        this.supplementTreeView.setPadding(new Insets(15));
     }
 
     public void setSelectedCustomer() {
-        this.customerSelected = this.treeView1.getSelectionModel().getSelectedItem().getValue();
+        this.customerSelected = this.customerTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
     public void setSelectedSupplement() {
-        this.supplementSelected = this.treeView2.getSelectionModel().getSelectedItem().getValue();
+        this.supplementSelected = this.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
     public void setDefaultSelectedCustomer() {
@@ -85,7 +97,8 @@ public class FrontEndGUI {
     }
 
     public void refresh() {
-        setTree();
+        setViewTree();
+        setMagTree();
         this.backEnd.viewPane = new BorderPane();
         this.backEnd.createPane = new BorderPane();
         this.backEnd.editPane = new BorderPane();
