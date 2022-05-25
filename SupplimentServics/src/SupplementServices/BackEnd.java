@@ -81,6 +81,7 @@ public class BackEnd {
     public VBox getViewRightPane() {
         return viewRightPane;
     }
+
     /**
      * Constructs and initializes a Back End.
      */
@@ -155,6 +156,14 @@ public class BackEnd {
             if (this.customers.get(i).getClass() == x.getClass()) {
                 choice.getItems().add(this.customers.get(i).name);
             }
+        }
+        return choice;
+    }
+
+    public ChoiceBox<String> getSupplementList() {
+        ChoiceBox<String> choice = new ChoiceBox();
+        for (int i = 0; i < this.supplements.size(); i++) {
+            choice.getItems().add(this.supplements.get(i).name);
         }
         return choice;
     }

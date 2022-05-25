@@ -6,6 +6,7 @@ import SupplementServices.Magazine;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
 
 public class CenterPanelEditMagazine extends CenterPanelEdit {
@@ -32,7 +33,8 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
-        VBox content = this.newMagazine.getVBox();
+        ChoiceBox<String> choice = this.backEnd.getSupplementList();
+        VBox content = this.newMagazine.getVBox(this.backEnd, choice);
         this.centerSectionPane.setCenter(content);
         setPane();
     }

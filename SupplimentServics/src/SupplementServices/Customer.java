@@ -217,7 +217,6 @@ public class Customer implements Cloneable {
     }
 
     public HBox dropDown(ChoiceBox<String> choice) {
-        // get functionality working with dropdown
         MyHBox suburbBox = new MyHBox(choice);
         suburbBox.setButtonName("Set");
         suburbBox.setLabelText(this.payer);
