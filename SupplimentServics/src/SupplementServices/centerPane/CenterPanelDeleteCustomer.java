@@ -62,18 +62,6 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
         }
         this.frontEnd.refresh();
     }
-
-    @Override
-    public void onSaveChangesButtonClick() {
-        System.out.println("Save button clicked on delete");
-        try {
-            this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.customerSelected));
-            this.frontEnd.setDefaultSelectedCustomer();
-        } catch (Exception e) {
-            System.out.println("Something Went Wrong");
-        }
-        this.frontEnd.refresh();
-    }
     
     @Override
     public void setBottomPane() {

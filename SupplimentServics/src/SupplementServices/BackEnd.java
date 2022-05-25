@@ -15,6 +15,17 @@ import javafx.stage.Stage;
  */
 public class BackEnd {
 
+    protected ArrayList<Customer> customers;
+    protected ArrayList<Supplement> supplements;
+    protected ArrayList<Magazine> mags;
+    protected Stage stage;
+    protected Scene vScene, cScene, eScene;
+    protected BorderPane viewPane;
+    protected BorderPane createPane;
+    protected BorderPane editPane;
+    protected FlowPane topPane;
+    protected VBox viewLeftPane, viewCenterPane, viewRightPane;
+
     public ArrayList<Customer> getCustomers() {
         return customers;
     }
@@ -70,18 +81,6 @@ public class BackEnd {
     public VBox getViewRightPane() {
         return viewRightPane;
     }
-
-    protected ArrayList<Customer> customers;
-    protected ArrayList<Supplement> supplements;
-    protected ArrayList<Magazine> mags;
-    protected Stage stage;
-    protected Scene vScene, cScene, eScene;
-    protected BorderPane viewPane;
-    protected BorderPane createPane;
-    protected BorderPane editPane;
-    protected FlowPane topPane;
-    protected VBox viewLeftPane, viewCenterPane, viewRightPane;
-
     /**
      * Constructs and initializes a Back End.
      */

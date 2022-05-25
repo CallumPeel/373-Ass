@@ -17,16 +17,16 @@ import javafx.scene.layout.VBox;
  *
  * @author callu
  */
-public class CenterPanelDeleteCustomer extends CenterPanelEdit {
+public class CenterPanelDeleteMag extends CenterPanelEdit {
 
     VBox mainBox;
     HBox buttons;
     Label question;
     Button yesButton, noButton;
 
-    public CenterPanelDeleteCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public CenterPanelDeleteMag(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.question = new Label("Delete Customer?");
+        this.question = new Label("Delete Magazine?");
         this.yesButton = new Button("YES");
         this.yesButton.setOnAction(e -> {
             saveChange();
@@ -48,6 +48,7 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
         setPane();
     }
 
+    // use setpane instead
     private void setCenter() {
         this.centerSectionPane.setCenter(this.mainBox);
     }

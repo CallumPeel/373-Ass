@@ -18,7 +18,7 @@ public class FrontEndGUI {
     protected int width, height;
     protected boolean isViewMode, isCreateMode, isEditMode;
     public TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
-    public String customerSelected, supplementSelected;
+    public String customerSelected, supplementSelected, magSelected;
     protected int buttonWidth;
     public VBox vbox;
 
@@ -30,6 +30,7 @@ public class FrontEndGUI {
         this.buttonWidth = 150;
         this.customerSelected = this.backEnd.customers.get(0).name;
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
+        this.magSelected = this.backEnd.mags.get(0).getName();
         viewMode();
     }
 
@@ -72,12 +73,20 @@ public class FrontEndGUI {
         this.supplementSelected = this.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
+    public void setSelectedMagazine() {
+        this.magSelected = this.magazineTreeView.getSelectionModel().getSelectedItem().getValue();
+    }
+
     public void setDefaultSelectedCustomer() {
         this.customerSelected = this.backEnd.customers.get(0).name;
     }
 
     public void setDefaultSelectedSupplement() {
         this.supplementSelected = this.backEnd.supplements.get(0).name;
+    }
+
+    public void setDefaultSelectedMagazine() {
+        this.magSelected = this.backEnd.mags.get(0).name;
     }
 
     public void viewMode() {
