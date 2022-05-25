@@ -31,7 +31,6 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
-//        ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
         VBox content = this.newSupplement.getVBox();
         this.centerSectionPane.setCenter(content);
         setPane();

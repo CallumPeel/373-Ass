@@ -57,7 +57,7 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
     public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magSelected));
+            this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magazineSelected));
             this.frontEnd.setDefaultSelectedMagazine();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");

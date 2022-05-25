@@ -1,13 +1,16 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Contains a list supplements and tracks cost.
  *
  * @author Callum Peel
  */
-public class Magazine {
+public class Magazine implements Cloneable {
 
     String name;
     double cost;
@@ -46,6 +49,11 @@ public class Magazine {
         this.name = "Defaut";
         this.cost = -1;
         this.supplements = new ArrayList<Supplement>();
+    }
+
+    @Override
+    public Magazine clone() throws CloneNotSupportedException {
+        return (Magazine) super.clone();
     }
 
     public String getName() {
@@ -129,6 +137,31 @@ public class Magazine {
      */
     public void removeSupplement(Supplement supplement) {
         this.supplements.remove(supplement);
+    }
+
+    public HBox getNameHBox() {
+        MyHBox nameBox = new MyHBox();
+        nameBox.setButtonName("Name");
+        nameBox.setLabelText(this.name);
+        nameBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.name = nameBox.inputText.getText();
+                        nameBox.outputLabel.setText(this.name);
+                        System.out.println("Name changed");
+
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        nameBox.formatBox();
+        return nameBox.getBox();
+    }
+
+    public VBox getVBox() {
+        return new VBox(
+                this.getNameHBox()
+        );
     }
 
 }

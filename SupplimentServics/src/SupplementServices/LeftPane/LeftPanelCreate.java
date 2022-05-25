@@ -3,6 +3,7 @@ package SupplementServices.LeftPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.centerPane.CenterPanelDeleteMag;
+import SupplementServices.centerPane.CenterPanelEditMagazine;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -78,11 +79,10 @@ public class LeftPanelCreate extends LeftPanelEdit {
 
     public void onEditButtonClick() {
         this.frontEnd.setSelectedMagazine();
-//        new CenterPanelEditMag(this.backEnd, this.frontEnd);
+        new CenterPanelEditMagazine(this.backEnd, this.frontEnd);
     }
 
     public void onDeleteButtonClick() {
-        // new CenterPanelDeleteMagazine
         this.frontEnd.setSelectedMagazine();
         new CenterPanelDeleteMag(this.backEnd, this.frontEnd);
     }
