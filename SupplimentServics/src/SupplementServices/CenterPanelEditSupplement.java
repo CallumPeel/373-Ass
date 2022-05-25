@@ -40,7 +40,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveButtonClick() {
+    public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on edit");
         int indexOfSupplementToChange = this.backEnd.supplements.indexOf(this.backEnd.getSupplement(initialName));
         this.backEnd.supplements.set(indexOfSupplementToChange, this.newSupplement);

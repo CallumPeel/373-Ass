@@ -62,7 +62,7 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveButtonClick() {
+    public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
             this.backEnd.supplements.remove(this.backEnd.getSupplement(this.frontEnd.supplementSelected));

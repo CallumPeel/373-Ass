@@ -18,9 +18,9 @@ public class CenterPanelEdit extends CenterPanel {
     }
 
     public void setBottomPane() {
-        this.saveButton.setText("Save");
+        this.saveButton.setText("Commit Changes");
         this.saveButton.setOnAction(e -> {
-            onSaveButtonClick();
+            onSaveChangesButtonClick();
         });
         this.saveButton.setMinWidth(this.buttonWidth);
 
@@ -33,8 +33,8 @@ public class CenterPanelEdit extends CenterPanel {
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
 
-    public void onSaveButtonClick() {
-        System.out.println("Save button clicked");
+    public void onSaveChangesButtonClick() {
+        System.out.println("Save Changes button clicked");
     }
 
     @Override

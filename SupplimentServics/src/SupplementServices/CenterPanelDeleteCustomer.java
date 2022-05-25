@@ -62,7 +62,7 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveButtonClick() {
+    public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
             this.backEnd.customers.remove(this.backEnd.getCustomer(this.frontEnd.customerSelected));

@@ -35,7 +35,7 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveButtonClick() {
+    public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on new");
         this.backEnd.supplements.add(this.supplement);
         this.frontEnd.setDefaultSelectedSupplement();
