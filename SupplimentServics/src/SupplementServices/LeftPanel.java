@@ -3,7 +3,9 @@ package SupplementServices;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class LeftPanel extends MyBPane {
 
@@ -15,7 +17,16 @@ public class LeftPanel extends MyBPane {
     }
 
     public void buildPane() {
+
         Insets inset = new Insets(0, 15, 15, 15);
+        
+        Label customerLabel = new Label("Customers");
+        customerLabel.setFont(new Font("Arial", 15));
+        customerLabel.setPadding(inset);
+
+        Label supplementLabel = new Label("Supplements");
+        supplementLabel.setFont(new Font("Arial", 15));
+        supplementLabel.setPadding(inset);
 
         this.frontEnd.treeView1.setOnMouseClicked(
                 s -> {
@@ -36,7 +47,7 @@ public class LeftPanel extends MyBPane {
 
                 }
         );
-        this.frontEnd.vbox = new VBox(this.frontEnd.treeView1, this.frontEnd.treeView2);
+        this.frontEnd.vbox = new VBox(customerLabel, this.frontEnd.treeView1, supplementLabel, this.frontEnd.treeView2);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView1, inset);
         this.frontEnd.vbox.setMargin(this.frontEnd.treeView2, inset);
