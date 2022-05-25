@@ -173,6 +173,24 @@ public class Magazine implements Cloneable {
         nameBox.formatBox();
         return nameBox.getBox();
     }
+    
+        private HBox getCostHBox() {
+        MyHBox costBox = new MyHBox();
+        costBox.setButtonName("Magazine Cost");
+        costBox.setLabelText(Double.toString(this.cost));
+        costBox.button.setOnAction(
+                s -> {
+                    try {
+                        this.cost = Double.parseDouble(costBox.inputText.getText());
+                        costBox.outputLabel.setText(Double.toString(this.cost));
+                        System.out.println("Post Code changed");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        costBox.formatBox();
+        return costBox.getBox();
+    }
 
     // add cost method
     public HBox dropDown(BackEnd backEnd, ChoiceBox<String> choice) {
@@ -197,6 +215,7 @@ public class Magazine implements Cloneable {
     public VBox getVBox(BackEnd backEnd, ChoiceBox<String> choice) {
         return new VBox(
                 this.getNameHBox(),
+                this.getCostHBox(),
                 dropDown(backEnd, choice)
         );
     }
