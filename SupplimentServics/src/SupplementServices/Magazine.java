@@ -35,8 +35,8 @@ public class Magazine implements Cloneable {
         this.supplements = supplements;
         this.customerSubscriptions = customerSubscriptions;
     }
-    
-        public Magazine(String name, double cost, ArrayList<Supplement> supplements) {
+
+    public Magazine(String name, double cost, ArrayList<Supplement> supplements) {
         this.name = name;
         this.cost = cost;
         this.supplements = supplements;
@@ -155,6 +155,14 @@ public class Magazine implements Cloneable {
         this.supplements.remove(supplement);
     }
 
+    public ChoiceBox<String> getSupplementList() {
+        ChoiceBox<String> choice = new ChoiceBox();
+        for (int i = 0; i < this.supplements.size(); i++) {
+            choice.getItems().add(this.supplements.get(i).name);
+        }
+        return choice;
+    }
+
     public HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Name");
@@ -173,8 +181,8 @@ public class Magazine implements Cloneable {
         nameBox.formatBox();
         return nameBox.getBox();
     }
-    
-        private HBox getCostHBox() {
+
+    private HBox getCostHBox() {
         MyHBox costBox = new MyHBox();
         costBox.setButtonName("Magazine Cost");
         costBox.setLabelText(Double.toString(this.cost));
@@ -192,11 +200,10 @@ public class Magazine implements Cloneable {
         return costBox.getBox();
     }
 
-    // add cost method
-    public HBox dropDown(BackEnd backEnd, ChoiceBox<String> choice) {
+    public HBox addSupDropDown(BackEnd backEnd, ChoiceBox<String> choice) {
         MyHBox supplementsBox = new MyHBox(choice);
         supplementsBox.setButtonName("add");
-        supplementsBox.setLabelText("Choose a supplement");
+        supplementsBox.setLabelText("Choose a supplement to add");
         supplementsBox.button.setOnAction(
                 s -> {
                     try {
@@ -212,11 +219,32 @@ public class Magazine implements Cloneable {
         return supplementsBox.getBox();
     }
 
+    public HBox deleteSupDropDown(BackEnd backEnd) {
+
+        MyHBox supplementsBox = new MyHBox(getSupplementList());
+        supplementsBox.setButtonName("remove");
+        supplementsBox.setLabelText("Choose a supplement to remove");
+        supplementsBox.button.setOnAction(
+                s -> {
+                    try {
+                        String selection = supplementsBox.choice.getValue();
+                        this.supplements.remove(backEnd.getSupplement(selection));
+                        supplementsBox.outputLabel.setText("Supplement \"" + selection + "\" removed");
+                        System.out.println("Supplement \"" + selection + "\" removed from list");
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                });
+        supplementsBox.formatBox();
+        return supplementsBox.getBox();
+    }
+
     public VBox getVBox(BackEnd backEnd, ChoiceBox<String> choice) {
         return new VBox(
                 this.getNameHBox(),
                 this.getCostHBox(),
-                dropDown(backEnd, choice)
+                addSupDropDown(backEnd, choice),
+                deleteSupDropDown(backEnd)
         );
     }
 
