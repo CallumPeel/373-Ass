@@ -1,5 +1,8 @@
-package SupplementServices;
+package SupplementServices.centerPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
+import SupplementServices.MyBPane;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 
@@ -21,6 +24,6 @@ public class CenterPanel extends MyBPane {
     }
 
     public void setPane() {
-        this.backEnd.viewPane.setCenter(centerSectionPane);
+        this.backEnd.getViewPane().setCenter(centerSectionPane);
     }
 }

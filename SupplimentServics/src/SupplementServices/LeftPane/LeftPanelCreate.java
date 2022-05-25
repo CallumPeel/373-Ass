@@ -1,5 +1,10 @@
-package SupplementServices;
+package SupplementServices.LeftPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
+import SupplementServices.centerPane.CenterPanelNewCustomer;
+import SupplementServices.centerPane.CenterPanelDeleteCustomer;
+import SupplementServices.centerPane.CenterPanelEditCustomer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,13 +13,13 @@ import javafx.scene.layout.VBox;
 
 public class LeftPanelCreate extends LeftPanelEdit {
 
-    LeftPanelCreate(BackEnd backEnd, FrontEndGUI frontEnd) {
+     public LeftPanelCreate(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
     @Override
     public void setPane() {
-        this.backEnd.createPane.setLeft(this.frontEnd.vbox);
+        this.backEnd.getCreatePane().setLeft(this.frontEnd.vbox);
     }
 
     @Override

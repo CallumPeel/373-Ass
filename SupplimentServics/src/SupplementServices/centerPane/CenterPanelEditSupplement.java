@@ -1,5 +1,8 @@
-package SupplementServices;
+package SupplementServices.centerPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
+import SupplementServices.Supplement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.layout.VBox;
@@ -13,7 +16,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     public CenterPanelEditSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.oldSupplement = this.backEnd.getSupplement(this.frontEnd.supplementSelected);
-        this.initialName = this.oldSupplement.name;
+        this.initialName = this.oldSupplement.getName();
         cloneSupplement();
         this.labels = getLabels();
         setCenterPane();
@@ -42,8 +45,8 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     @Override
     public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on edit");
-        int indexOfSupplementToChange = this.backEnd.supplements.indexOf(this.backEnd.getSupplement(initialName));
-        this.backEnd.supplements.set(indexOfSupplementToChange, this.newSupplement);
+        int indexOfSupplementToChange = this.backEnd.getSupplements().indexOf(this.backEnd.getSupplement(initialName));
+        this.backEnd.getSupplements().set(indexOfSupplementToChange, this.newSupplement);
         this.frontEnd.setDefaultSelectedSupplement();
         this.frontEnd.refresh();
     }

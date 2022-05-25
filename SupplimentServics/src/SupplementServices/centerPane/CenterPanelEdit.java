@@ -1,5 +1,7 @@
-package SupplementServices;
+package SupplementServices.centerPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -40,6 +42,6 @@ public class CenterPanelEdit extends CenterPanel {
     @Override
     public void setPane() {
         this.centerSectionPane.setPadding(new Insets(25, 0, 0, 50));
-        this.backEnd.editPane.setCenter(this.centerSectionPane);
+        this.backEnd.getEditPane().setCenter(this.centerSectionPane);
     }
 }

@@ -2,8 +2,10 @@
  * Student Name: Callum Peel
  * Student ID: 34217062
  */
-package SupplementServices;
+package SupplementServices.centerPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,16 +17,16 @@ import javafx.scene.layout.VBox;
  *
  * @author callu
  */
-public class CenterPanelDeleteCustomer extends CenterPanelEdit {
+public class CenterPanelDeleteSupplement extends CenterPanelEdit {
 
     VBox mainBox;
     HBox buttons;
     Label question;
     Button yesButton, noButton;
 
-    public CenterPanelDeleteCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public CenterPanelDeleteSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.question = new Label("Delete Customer?");
+        this.question = new Label("Delete Supplement?");
         this.yesButton = new Button("YES");
         this.yesButton.setOnAction(e -> {
             saveChange();
@@ -53,8 +55,8 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
     private void saveChange() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.customers.remove(this.backEnd.getCustomer(this.frontEnd.customerSelected));
-            this.frontEnd.setDefaultSelectedCustomer();
+            this.backEnd.removeSupplement(this.backEnd.getSupplement(this.frontEnd.supplementSelected));
+            this.frontEnd.setDefaultSelectedSupplement();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
         }
@@ -65,8 +67,8 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
     public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.customers.remove(this.backEnd.getCustomer(this.frontEnd.customerSelected));
-            this.frontEnd.setDefaultSelectedCustomer();
+            this.backEnd.removeSupplement(this.backEnd.getSupplement(this.frontEnd.supplementSelected));
+            this.frontEnd.setDefaultSelectedSupplement();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
         }

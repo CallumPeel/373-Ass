@@ -1,5 +1,10 @@
-package SupplementServices;
+package SupplementServices.LeftPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
+import SupplementServices.MyBPane;
+import SupplementServices.centerPane.CenterPanelViewSupplement;
+import SupplementServices.centerPane.CenterPanelViewCustomer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -51,7 +56,7 @@ public class LeftPanel extends MyBPane {
     }
 
     public void setPane() {
-        this.backEnd.viewPane.setLeft(this.frontEnd.vbox);
+        this.backEnd.getViewPane().setLeft(this.frontEnd.vbox);
     }
 
     private void onCustViewMouseClick() {

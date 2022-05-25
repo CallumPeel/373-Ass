@@ -1,5 +1,8 @@
-package SupplementServices;
+package SupplementServices.centerPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.Customer;
+import SupplementServices.FrontEndGUI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ChoiceBox;
@@ -14,7 +17,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     public CenterPanelEditCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.oldCustomer = this.backEnd.getCustomer(this.frontEnd.customerSelected);
-        this.initialName = oldCustomer.name;
+        this.initialName = oldCustomer.getName();
         cloneCustomer();
         this.labels = getLabels();
         setCenterPane();
@@ -43,8 +46,8 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     @Override
     public void onSaveChangesButtonClick() {
         System.out.println("Save Changes button clicked on edit");
-        int indexOfCustomerToChange = this.backEnd.customers.indexOf(this.backEnd.getCustomer(initialName));
-        this.backEnd.customers.set(indexOfCustomerToChange, this.newCustomer);
+        int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
+        this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
         this.frontEnd.refresh();
     }

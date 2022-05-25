@@ -15,12 +15,70 @@ import javafx.stage.Stage;
  */
 public class BackEnd {
 
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public ArrayList<Supplement> getSupplements() {
+        return supplements;
+    }
+
+    public ArrayList<Magazine> getMags() {
+        return mags;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public Scene getvScene() {
+        return vScene;
+    }
+
+    public Scene getcScene() {
+        return cScene;
+    }
+
+    public Scene geteScene() {
+        return eScene;
+    }
+
+    public BorderPane getViewPane() {
+        return viewPane;
+    }
+
+    public BorderPane getCreatePane() {
+        return createPane;
+    }
+
+    public BorderPane getEditPane() {
+        return editPane;
+    }
+
+    public FlowPane getTopPane() {
+        return topPane;
+    }
+
+    public VBox getViewLeftPane() {
+        return viewLeftPane;
+    }
+
+    public VBox getViewCenterPane() {
+        return viewCenterPane;
+    }
+
+    public VBox getViewRightPane() {
+        return viewRightPane;
+    }
+
     protected ArrayList<Customer> customers;
     protected ArrayList<Supplement> supplements;
     protected ArrayList<Magazine> mags;
     protected Stage stage;
     protected Scene vScene, cScene, eScene;
-    protected BorderPane viewPane, createPane, editPane;
+    protected BorderPane viewPane;
+    protected BorderPane createPane;
+    protected BorderPane editPane;
     protected FlowPane topPane;
     protected VBox viewLeftPane, viewCenterPane, viewRightPane;
 
@@ -38,7 +96,7 @@ public class BackEnd {
         this.stage = window;
     }
 
-    protected Customer getCustomer(String name) {
+    public Customer getCustomer(String name) {
         Customer result = null;
         for (Customer c : this.customers) {
             if (name.equalsIgnoreCase(c.getName())) {
@@ -49,7 +107,7 @@ public class BackEnd {
         return result;
     }
 
-    protected Supplement getSupplement(String name) {
+    public Supplement getSupplement(String name) {
         Supplement result = null;
         for (Supplement c : this.supplements) {
             if (name.equalsIgnoreCase(c.getName())) {

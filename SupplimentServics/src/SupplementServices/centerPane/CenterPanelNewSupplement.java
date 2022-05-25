@@ -2,29 +2,32 @@
  * Student Name: Callum Peel
  * Student ID: 34217062
  */
-package SupplementServices;
+package SupplementServices.centerPane;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
+import SupplementServices.Supplement;
 import javafx.scene.layout.VBox;
 
 /**
  *
  * @author callum
  */
-public class CenterPanelNewCustomer extends CenterPanelEdit {
+public class CenterPanelNewSupplement extends CenterPanelEdit {
 
-    Customer customer;
+    Supplement supplement;
     VBox labels;
 
-    public CenterPanelNewCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public CenterPanelNewSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.customer = new Customer();
+        this.supplement = new Supplement();
         this.labels = getLabels();
         setCenterPane();
     }
 
     private void setCenterPane() {
         this.centerSectionPane.setCenter(
-                this.customer.getVBox(this.backEnd.getPayingCustomerList())
+                this.supplement.getVBox()
         );
         setPane();
     }
@@ -37,8 +40,8 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
     @Override
     public void onSaveChangesButtonClick() {
         System.out.println("Save button clicked on new");
-        this.backEnd.customers.add(this.customer);
-        this.frontEnd.setDefaultSelectedCustomer();
+        this.backEnd.getSupplements().add(this.supplement);
+        this.frontEnd.setDefaultSelectedSupplement();
         this.frontEnd.refresh();
 
     }

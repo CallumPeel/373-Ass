@@ -1,5 +1,10 @@
 package SupplementServices;
 
+import SupplementServices.LeftPane.LeftPanel;
+import SupplementServices.LeftPane.LeftPanelEdit;
+import SupplementServices.LeftPane.LeftPanelCreate;
+import SupplementServices.centerPane.CenterPanelViewCustomer;
+import SupplementServices.centerPane.CenterPanelEdit;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
@@ -12,10 +17,10 @@ public class FrontEndGUI {
     protected BackEnd backEnd;
     protected int width, height;
     protected boolean isViewMode, isCreateMode, isEditMode;
-    protected TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
-    protected String customerSelected, supplementSelected;
+    public TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
+    public String customerSelected, supplementSelected;
     protected int buttonWidth;
-    protected VBox vbox;
+    public VBox vbox;
 
     public FrontEndGUI(BackEnd backEnd, int width, int height) {
         this.backEnd = backEnd;
