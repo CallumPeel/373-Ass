@@ -170,7 +170,9 @@ public class CustomerPaying extends Customer {
         customerInformation.getChildren().add(getCustSupplementBreakdown());
 
         TreeItem<String> subList = new TreeItem("Associated Customers");
-        subList.getChildren().add(new TreeItem("Total: " + "$" + String.format("%.2f", this.getAssociatedCustomerTotal())));
+        subList.getChildren().add(
+                new TreeItem("Total: " + "$" + String.format("%.2f", this.getAssociatedCustomerTotal()))
+        );
         for (int i = 0; i < this.associatedCustomers.size(); i++) {
             subList.getChildren().add(this.associatedCustomers.get(i).getCustSupplementBreakdown());
         }
@@ -356,8 +358,6 @@ public class CustomerPaying extends Customer {
         );
     }
 }
-
-
 
 //              NEED TO ADD PAYING CUSTOMER OR REGULAR CUSTOMER!!!
 

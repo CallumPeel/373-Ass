@@ -4,6 +4,8 @@ import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.centerPane.CenterPanelDeleteMag;
 import SupplementServices.centerPane.CenterPanelEditMagazine;
+import SupplementServices.centerPane.CenterPanelViewCustomer;
+import SupplementServices.centerPane.CenterPanelViewMagazine;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -12,7 +14,7 @@ import javafx.scene.layout.VBox;
 
 public class LeftPanelCreate extends LeftPanelEdit {
 
-     public LeftPanelCreate(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public LeftPanelCreate(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
@@ -58,7 +60,16 @@ public class LeftPanelCreate extends LeftPanelEdit {
                     }
                 }
         );
-
+        this.frontEnd.magazineTreeView.setOnMouseClicked(
+                s -> {
+                    try {
+                        onMagViewMouseClick();
+                    } catch (Exception e) {
+                        System.out.println(this.frontEnd.magazineSelected);
+                        System.out.println("Select a Customer to view");
+                    }
+                }
+        );
         HBox topButtons = new HBox(newButton, deleteButton, editButton);
         this.frontEnd.vbox = new VBox(
                 topButtons,
@@ -85,5 +96,10 @@ public class LeftPanelCreate extends LeftPanelEdit {
     public void onDeleteButtonClick() {
         this.frontEnd.setSelectedMagazine();
         new CenterPanelDeleteMag(this.backEnd, this.frontEnd);
+    }
+
+    private void onMagViewMouseClick() {
+        this.frontEnd.setSelectedMagazine();
+        new CenterPanelViewMagazine(this.backEnd, this.frontEnd);
     }
 }

@@ -339,7 +339,6 @@ public class Customer implements Cloneable {
 
         supplementList.getChildren().add(new TreeItem("Total: " + "$" + String.format("%.2f", this.total)));
         for (int i = 0; i < this.supplementSubscription.size(); i++) {
-            // Branch "Supplement Name"
             TreeItem<String> custSupplements = new TreeItem(this.supplementSubscription.get(i).getName());
             custSupplements.getChildren().add(new TreeItem("$" + String.format("%.2f", this.supplementSubscription.get(i).getCost())));
             supplementList.getChildren().add(custSupplements);

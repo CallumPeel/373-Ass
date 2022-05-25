@@ -1,9 +1,14 @@
 package SupplementServices;
 
 import java.util.ArrayList;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  * Contains a list supplements and tracks cost.
@@ -24,22 +29,32 @@ public class Magazine implements Cloneable {
      * @param supplements
      * @param cost
      */
-    public Magazine(String name, double cost, ArrayList<Supplement> supplements) {
+    public Magazine(String name, double cost, ArrayList<Supplement> supplements, ArrayList<Customer> customerSubscriptions) {
         this.name = name;
         this.cost = cost;
         this.supplements = supplements;
+        this.customerSubscriptions = customerSubscriptions;
+    }
+    
+        public Magazine(String name, double cost, ArrayList<Supplement> supplements) {
+        this.name = name;
+        this.cost = cost;
+        this.supplements = supplements;
+        this.customerSubscriptions = new ArrayList<Customer>();
     }
 
     public Magazine(String name, double cost) {
         this.name = name;
         this.cost = cost;
         this.supplements = new ArrayList<Supplement>();
+        this.customerSubscriptions = new ArrayList<Customer>();
     }
 
     public Magazine(String mag) {
         this.name = mag;
         this.cost = -1;
         this.supplements = new ArrayList<Supplement>();
+        this.customerSubscriptions = new ArrayList<Customer>();
     }
 
     /**
@@ -49,6 +64,7 @@ public class Magazine implements Cloneable {
         this.name = "Defaut";
         this.cost = -1;
         this.supplements = new ArrayList<Supplement>();
+        this.customerSubscriptions = new ArrayList<Customer>();
     }
 
     @Override
@@ -159,7 +175,6 @@ public class Magazine implements Cloneable {
     }
 
     // add cost method
-    
     public HBox dropDown(BackEnd backEnd, ChoiceBox<String> choice) {
         MyHBox supplementsBox = new MyHBox(choice);
         supplementsBox.setButtonName("add");
@@ -167,9 +182,10 @@ public class Magazine implements Cloneable {
         supplementsBox.button.setOnAction(
                 s -> {
                     try {
-                        this.supplements.add(backEnd.getSupplement(supplementsBox.choice.getValue()));
-                        supplementsBox.outputLabel.setText(supplementsBox.choice.getValue());
-                        System.out.println("Supplement added");
+                        String selection = supplementsBox.choice.getValue();
+                        this.supplements.add(backEnd.getSupplement(selection));
+                        supplementsBox.outputLabel.setText("Supplement \"" + selection + "\" added");
+                        System.out.println("Supplement \"" + selection + "\" added to list");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -183,6 +199,33 @@ public class Magazine implements Cloneable {
                 this.getNameHBox(),
                 dropDown(backEnd, choice)
         );
+    }
+
+    public VBox getDetails() {
+        Label magazine = new Label("Magazine");
+        VBox test = new VBox(magazine);
+        magazine.setPadding(new Insets(15));
+        magazine.setFont(new Font("Arial", 20));
+
+        TreeItem<String> supplementInformation = new TreeItem("Magazine");
+        supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));
+        supplementInformation.getChildren().add(new TreeItem("Cost: $" + String.format("%.2f", this.cost)));
+
+        TreeItem<String> supList = new TreeItem("Magazine Supplements");
+        this.supplements.forEach((n) -> supList.getChildren().add(new TreeItem("" + n.name)));
+        supplementInformation.getChildren().add(supList);
+        TreeItem<String> custList = new TreeItem("Magazine Supplements");
+        int size = this.customerSubscriptions.size();
+        for (int i = 0; i < this.customerSubscriptions.size(); i++) {
+            custList.getChildren().add(new TreeItem("" + this.customerSubscriptions.get(i).name));
+        }
+        supplementInformation.getChildren().add(custList);
+        TreeView details = new TreeView();
+        details.setRoot(supplementInformation);
+        details.setShowRoot(false);
+        details.setPadding(new Insets(15));
+        test.getChildren().add(details);
+        return test;
     }
 
 }
