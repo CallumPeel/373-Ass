@@ -48,12 +48,15 @@ public class BackEnd implements Serializable {
         this.editPane = new BorderPane();
         this.stage = window;
         buildDatabase();
-        try {
-            writeToFile();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        readFile();
+        
+        saveCustomers();
+        loadCustomers();
+
+//        saveSupplements();
+//        loadSupplements();
+//
+        saveMagazines();
+        loadMagazines();
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -317,17 +320,29 @@ public class BackEnd implements Serializable {
         this.supplements.add(new Supplement(supplement));
     }
 
-    public void writeToFile() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("CustomerList.bin"));
+    public void saveCustomers() throws FileNotFoundException, IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("Customers.bin"));
         outputStream.writeObject(this.customers);
     }
-    
-    public void readFile() throws FileNotFoundException, IOException, ClassNotFoundException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("CustomerList.bin"));
-        ArrayList<Customer> newCustomers  = ((ArrayList<Customer>) inputStream.readObject());
-        System.out.println(newCustomers.get(0).name + " read in");
-        newCustomers.forEach(result -> System.out.println(result.name));  
+
+    public void loadCustomers() throws FileNotFoundException, IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("Customers.bin"));
+        ArrayList<Customer> newCustomers = ((ArrayList<Customer>) inputStream.readObject());
+        System.out.println("Loading Customers...");
     }
+
+    public void saveMagazines() throws FileNotFoundException, IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("magazines.bin"));
+        outputStream.writeObject(this.magazines);
+    }
+
+    public void loadMagazines() throws FileNotFoundException, IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("magazines.bin"));
+        ArrayList<Magazine> newMagazines = ((ArrayList<Magazine>) inputStream.readObject());
+                System.out.println("Loading Magazines...");
+//        newMagazines.forEach(result -> System.out.println(result.name));
+    }
+
     private void buildDatabase() {
         // Build suppliment database.
         addSupplement(new Supplement("One", 2.4));
