@@ -75,11 +75,16 @@ public class Supplement implements Cloneable, Serializable {
         return this.cost;
     }
 
+    public MyVBox getSupplementLabelVBox() {
+        Label supplementLabel = new Label("Supplement");
+        supplementLabel.setPadding(new Insets(15));
+        supplementLabel.setFont(new Font("Arial", 20));
+        MyVBox test = new MyVBox(supplementLabel);
+        return test;
+    }
+
     public MyVBox getDetails() {
-        Label customer = new Label("Supplement");
-        MyVBox test = new MyVBox(customer);
-        customer.setPadding(new Insets(15));
-        customer.setFont(new Font("Arial", 20));
+        MyVBox test = new MyVBox(getSupplementLabelVBox());
 
         TreeItem<String> supplementInformation = new TreeItem("Supplement");
         supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));

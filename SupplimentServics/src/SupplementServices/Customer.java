@@ -365,7 +365,7 @@ public class Customer implements Cloneable, Serializable {
         }
         return supplementList;
     }
-    
+
     public TreeItem<String> getCustomerDetails() {
         TreeItem<String> customerInformation = new TreeItem("Customer");
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
@@ -377,12 +377,17 @@ public class Customer implements Cloneable, Serializable {
         return customerInformation;
     }
 
+    public MyVBox getCustomerLabelVBox() {
+        Label customerLabel = new Label("Customer");
+        customerLabel.setPadding(new Insets(15));
+        customerLabel.setFont(new Font("Arial", 20));
+        MyVBox test = new MyVBox(customerLabel);
+        return test;
+    }
+
     public MyVBox getDetails() {
 
-        Label customer = new Label("Customer");
-        MyVBox test = new MyVBox(customer);
-        customer.setPadding(new Insets(15));
-        customer.setFont(new Font("Arial", 20));
+        MyVBox test = new MyVBox(getCustomerLabelVBox());
 
         TreeView details = new TreeView();
         details.setRoot(getCustomerDetails());

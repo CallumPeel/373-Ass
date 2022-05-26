@@ -5,7 +5,6 @@
 package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
-import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
 import SupplementServices.MyVBox;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
