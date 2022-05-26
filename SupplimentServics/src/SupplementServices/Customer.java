@@ -371,6 +371,7 @@ public class Customer implements Cloneable, Serializable {
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
         customerInformation.getChildren().add(new TreeItem("Payer Name: " + this.payer));
         customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
+        customerInformation.getChildren().add(new TreeItem("Total Cost: " + "$" + String.format("%.2f", this.total)));
         customerInformation.getChildren().add(this.address.getAddressTreeView());
         customerInformation.getChildren().add(getCustSupplementBreakdown());
         return customerInformation;
@@ -378,7 +379,6 @@ public class Customer implements Cloneable, Serializable {
 
     public MyVBox getDetails() {
 
-        // Add payer to treeview breakdown
         Label customer = new Label("Customer");
         MyVBox test = new MyVBox(customer);
         customer.setPadding(new Insets(15));

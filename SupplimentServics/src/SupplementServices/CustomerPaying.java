@@ -162,10 +162,6 @@ public class CustomerPaying extends Customer {
         MyVBox test = new MyVBox(customer);
         customer.setPadding(new Insets(15));
         customer.setFont(new Font("Arial", 20));
-        TreeItem<String> customerInformation = new TreeItem("Customer");
-        customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
-        customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
-        customerInformation.getChildren().add(getCustSupplementBreakdown());
 
         TreeItem<String> subList = new TreeItem("Associated Customers");
         subList.getChildren().add(
@@ -174,6 +170,7 @@ public class CustomerPaying extends Customer {
         for (int i = 0; i < this.associatedCustomers.size(); i++) {
             subList.getChildren().add(this.associatedCustomers.get(i).getCustSupplementBreakdown());
         }
+        TreeItem<String> customerInformation = getCustomerDetails();
         customerInformation.getChildren().add(subList);
 
         TreeView details = new TreeView();
@@ -356,7 +353,3 @@ public class CustomerPaying extends Customer {
         );
     }
 }
-
-//              NEED TO ADD PAYING CUSTOMER OR REGULAR CUSTOMER!!!
-
-//                        TO TREE VIEW

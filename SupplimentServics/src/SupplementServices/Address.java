@@ -60,9 +60,9 @@ public class Address implements Serializable {
                 this.streetNumber
                 + " "
                 + this.streetName
-                + " st\n"
+                + "\n"
                 + this.suburb
-                + "\nPost Code: " + this.postCode));
+                + "\n" + this.postCode));
         return customerInformation;
     }
 }
