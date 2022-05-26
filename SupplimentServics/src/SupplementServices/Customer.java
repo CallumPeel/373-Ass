@@ -168,7 +168,11 @@ public class Customer implements Cloneable, Serializable {
     public HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
         addressNumberBox.setButtonName("Set Address Number");
+
         addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
+        if (this.address.streetNumber == -1) {
+            addressNumberBox.setLabelText("Default");
+        }
         addressNumberBox.button.setOnAction(
                 s -> {
                     try {
@@ -187,6 +191,9 @@ public class Customer implements Cloneable, Serializable {
         MyHBox postCodeBox = new MyHBox();
         postCodeBox.setButtonName("Set Post Code");
         postCodeBox.setLabelText(Integer.toString(this.address.postCode));
+        if (this.address.postCode == -1) {
+            postCodeBox.setLabelText("Default");
+        }
         postCodeBox.button.setOnAction(
                 s -> {
                     try {
@@ -400,6 +407,7 @@ public class Customer implements Cloneable, Serializable {
 
     public void setAssociatedCustomerListToNull() {
     }
+
     public void addAssociatedCustomer(Customer associateCustomer) {
     }
 }

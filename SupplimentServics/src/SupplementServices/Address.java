@@ -18,8 +18,8 @@ public class Address implements Serializable {
     public Address() {
         this.streetNumber = -1;
         this.postCode = -1;
-        this.streetName = "Default Street";
-        this.suburb = "Default Suburb";
+        this.streetName = "Default";
+        this.suburb = "Default";
     }
 
     public void setStreetNumber(int streetNumber) {

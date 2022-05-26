@@ -30,9 +30,9 @@ public class Account implements Serializable {
      * Initializes an account to default values.
      */
     public Account() {
-        this.name = "Account not active";
-        this.accNum = "Account not active";
-        this.BSB = "Account not active";
+        this.name = "Default";
+        this.accNum = "Default";
+        this.BSB = "Default";
     }
 
     /**

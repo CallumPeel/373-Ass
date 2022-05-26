@@ -42,7 +42,7 @@ public class CustomerPaying extends Customer {
 
     public CustomerPaying() {
         super();
-        this.paymentMethod = new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513));
+        this.paymentMethod = new PaymentMethod("Default", new Card("Default", "Default", "Default", -1));
         this.associatedCustomers = new ArrayList<Customer>();
 
     }
@@ -278,6 +278,9 @@ public class CustomerPaying extends Customer {
         MyHBox cvvBox = new MyHBox();
         cvvBox.setButtonName("Set Card CVV");
         cvvBox.setLabelText(Integer.toString(this.paymentMethod.card.cvv));
+        if (this.paymentMethod.card.cvv == -1) {
+            cvvBox.setLabelText("Default");
+        }
         cvvBox.button.setOnAction(
                 s -> {
                     try {
@@ -375,7 +378,7 @@ public class CustomerPaying extends Customer {
     public void setAssociatedCustomerListToNull() {
         this.associatedCustomers = new ArrayList<Customer>();
     }
-    
+
     public void addAssociatedCustomer(Customer associateCustomer) {
         this.associatedCustomers.add(associateCustomer);
     }
