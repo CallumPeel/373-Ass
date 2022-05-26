@@ -2,6 +2,7 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javax.swing.JFileChooser;
 
 public class CenterPanelEdit extends CenterPanel {
 
@@ -56,6 +58,13 @@ public class CenterPanelEdit extends CenterPanel {
     public void onSaveAsChangesButtonClick() throws IOException {
 //        this.backEnd.save();
         System.out.println("SAVE AS");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("."));
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            System.out.println(file);
+        }
     }
 
     public void onSaveChangesButtonClick() throws IOException {
