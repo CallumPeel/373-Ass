@@ -1,11 +1,17 @@
 package SupplementServices;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -13,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author Callum Peel
  */
-public class BackEnd {
+public class BackEnd implements Serializable {
 
     protected ArrayList<Customer> customers;
     protected ArrayList<Supplement> supplements;
@@ -24,7 +30,31 @@ public class BackEnd {
     protected BorderPane createPane;
     protected BorderPane editPane;
     protected FlowPane topPane;
-    protected VBox viewLeftPane, viewCenterPane, viewRightPane;
+    protected MyVBox viewLeftPane, viewCenterPane, viewRightPane;
+
+    /**
+     * Constructs and initializes a Back End.
+     *
+     * @param window
+     * @throws java.io.IOException
+     */
+    public BackEnd(Stage window) throws IOException, FileNotFoundException, ClassNotFoundException {
+        this.customers = new ArrayList<Customer>();
+        this.supplements = new ArrayList<Supplement>();
+        this.magazines = new ArrayList<Magazine>();
+
+        this.viewPane = new BorderPane();
+        this.createPane = new BorderPane();
+        this.editPane = new BorderPane();
+        this.stage = window;
+        buildDatabase();
+        try {
+            writeToFile();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        readFile();
+    }
 
     public ArrayList<Customer> getCustomers() {
         return customers;
@@ -70,30 +100,16 @@ public class BackEnd {
         return topPane;
     }
 
-    public VBox getViewLeftPane() {
+    public MyVBox getViewLeftPane() {
         return viewLeftPane;
     }
 
-    public VBox getViewCenterPane() {
+    public MyVBox getViewCenterPane() {
         return viewCenterPane;
     }
 
-    public VBox getViewRightPane() {
+    public MyVBox getViewRightPane() {
         return viewRightPane;
-    }
-
-    /**
-     * Constructs and initializes a Back End.
-     */
-    public BackEnd(Stage window) {
-        this.customers = new ArrayList<Customer>();
-        this.supplements = new ArrayList<Supplement>();
-        this.magazines = new ArrayList<Magazine>();
-
-        this.viewPane = new BorderPane();
-        this.createPane = new BorderPane();
-        this.editPane = new BorderPane();
-        this.stage = window;
     }
 
     public Customer getCustomer(String name) {
@@ -299,6 +315,103 @@ public class BackEnd {
 
     public void addSupplement(String supplement) {
         this.supplements.add(new Supplement(supplement));
+    }
+
+    public void writeToFile() throws IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("backEnd.bin"));
+        outputStream.writeObject(this);
+    }
+
+    public void readFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("backEnd.bin"));
+        BackEnd newBackEnd = (BackEnd) inputStream.readObject();
+//        System.out.println(newBackEnd.customers.get(0).name + " read in");
+    }
+
+    private void buildDatabase() {
+        // Build suppliment database.
+        addSupplement(new Supplement("One", 2.4));
+        addSupplement(new Supplement("Two", 6.3));
+        addSupplement(new Supplement("Three", 7));
+        addSupplement(new Supplement("Four", 8));
+        addSupplement(new Supplement("Five", 11));
+        addSupplement(new Supplement("Six", 3.4));
+
+        // Build customer database.
+        ArrayList<Supplement> supplementList1 = new ArrayList<Supplement>();
+        supplementList1.add(this.supplements.get(0));
+        supplementList1.add(this.supplements.get(1));
+        supplementList1.add(this.supplements.get(2));
+        ArrayList<Supplement> supplementList2 = new ArrayList<Supplement>();
+        supplementList2.add(this.supplements.get(0));
+        supplementList2.add(this.supplements.get(3));
+        supplementList2.add(this.supplements.get(5));
+        ArrayList<Supplement> supplementList3 = new ArrayList<Supplement>();
+        supplementList3.add(this.supplements.get(4));
+        supplementList3.add(this.supplements.get(5));
+        supplementList3.add(this.supplements.get(2));
+        ArrayList<Supplement> supplementList4 = new ArrayList<Supplement>();
+        supplementList4.add(this.supplements.get(3));
+        supplementList4.add(this.supplements.get(4));
+        supplementList4.add(this.supplements.get(5));
+
+        // Add standard customers
+        addCustomer(new Customer("Callum", "callum@gmail.com", new Address(), supplementList1));
+        addCustomer(new Customer("Maddie", "Maddie@gmail.com", new Address(), supplementList2));
+        addCustomer(new Customer("Dom", "Dom@gmail.com", new Address(), supplementList3));
+        addCustomer(new Customer("Tim", "Tim@gmail.com", new Address(), supplementList4));
+        addCustomer(new Customer("Sally", "Sally@gmail.com", new Address(), supplementList2));
+        addCustomer(new Customer("Fin", "Fin@gmail.com", new Address(), supplementList4));
+
+        // Create lists of associated customers
+        ArrayList<Customer> customerList1 = new ArrayList<Customer>();
+        customerList1.add(this.customers.get(0));
+        customerList1.add(this.customers.get(1));
+        customerList1.add(this.customers.get(2));
+        ArrayList<Customer> customerList2 = new ArrayList<Customer>();
+        customerList2.add(this.customers.get(0));
+        customerList2.add(this.customers.get(2));
+        customerList2.add(this.customers.get(3));
+        ArrayList<Customer> customerList3 = new ArrayList<Customer>();
+        customerList3.add(this.customers.get(1));
+        customerList3.add(this.customers.get(2));
+        customerList3.add(this.customers.get(3));
+        ArrayList<Customer> customerList4 = new ArrayList<Customer>();
+        customerList4.add(this.customers.get(3));
+        customerList4.add(this.customers.get(4));
+        customerList4.add(this.customers.get(5));
+
+        // Create paying customers;
+        this.addCustomer(
+                new Customer("Matthew", "Matthew@gmail.com", supplementList1),
+                new PaymentMethod(
+                        "Bank of Australia",
+                        new Card(
+                                "Matthew",
+                                "1234 1234 1234 1234",
+                                "12/24",
+                                232
+                        ),
+                        new Account(
+                                "Matts account",
+                                "1234 1234",
+                                "1234"
+                        )
+                ),
+                customerList1
+        );
+
+        this.addCustomer(new Customer("Steven", "Steven@gmail.com", supplementList2),
+                new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513)), customerList2);
+        this.addCustomer(new Customer("Mark", "Mark@gmail.com", supplementList3),
+                new PaymentMethod("Bank of Brazil", new Card("Steven", "6666 4444 3333 2222", "11/25", 765)), customerList3);
+        this.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
+                new PaymentMethod("Bank of Asia", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
+
+        this.addMagazine(new Magazine("Doms mag", 10, supplementList1, customerList1));
+        this.addMagazine(new Magazine("Callums mag", 10, supplementList2, customerList2));
+        this.addMagazine(new Magazine("Some mag", 10, supplementList3, customerList3));
+
     }
 
 }

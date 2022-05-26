@@ -2,6 +2,7 @@ package SupplementServices.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import SupplementServices.MyVBox;
 import SupplementServices.centerPane.CenterPanelDeleteMag;
 import SupplementServices.centerPane.CenterPanelEditMagazine;
 import SupplementServices.centerPane.CenterPanelNewMagazine;
@@ -71,7 +72,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
                 }
         );
         HBox topButtons = new HBox(newButton, deleteButton, editButton);
-        this.frontEnd.vbox = new VBox(
+        this.frontEnd.vbox = new MyVBox(
                 topButtons,
                 this.frontEnd.magazineTreeView
         );

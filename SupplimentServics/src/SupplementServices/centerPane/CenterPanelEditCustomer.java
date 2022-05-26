@@ -3,6 +3,7 @@ package SupplementServices.centerPane;
 import SupplementServices.BackEnd;
 import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
+import SupplementServices.MyVBox;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ChoiceBox;
@@ -12,7 +13,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     String initialName;
     Customer oldCustomer, newCustomer;
-    VBox labels;
+    MyVBox labels;
 
     public CenterPanelEditCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
@@ -33,13 +34,13 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     private void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
-        VBox content = this.newCustomer.getVBox(choice);
+        MyVBox content = this.newCustomer.getVBox(choice);
         this.centerSectionPane.setCenter(content);
         setPane();
     }
 
-    private VBox getLabels() {
-        VBox buttons = new VBox();
+    private MyVBox getLabels() {
+        MyVBox buttons = new MyVBox();
         return buttons;
     }
 

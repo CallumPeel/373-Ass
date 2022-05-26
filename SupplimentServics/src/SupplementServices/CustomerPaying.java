@@ -3,7 +3,6 @@ package SupplementServices;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
@@ -158,10 +157,10 @@ public class CustomerPaying extends Customer {
     }
 
     @Override
-    public VBox getDetails() {
+    public MyVBox getDetails() {
 
         Label customer = new Label("Paying Customer");
-        VBox test = new VBox(customer);
+        MyVBox test = new MyVBox(customer);
         customer.setPadding(new Insets(15));
         customer.setFont(new Font("Arial", 20));
         TreeItem<String> customerInformation = new TreeItem("Customer");
@@ -338,8 +337,8 @@ public class CustomerPaying extends Customer {
     }
 
     @Override
-    public VBox getVBox(ChoiceBox<String> choice) {
-        return new VBox(
+    public MyVBox getVBox(ChoiceBox<String> choice) {
+        return new MyVBox(
                 this.getNameHBox(),
                 this.getEmailHBox(),
                 this.getAddressHBox(),

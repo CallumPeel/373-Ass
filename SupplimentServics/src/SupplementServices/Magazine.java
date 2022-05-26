@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
@@ -15,7 +16,7 @@ import javafx.scene.text.Font;
  *
  * @author Callum Peel
  */
-public class Magazine implements Cloneable {
+public class Magazine implements Cloneable, Serializable {
 
     String name;
     double cost;
@@ -285,8 +286,8 @@ public class Magazine implements Cloneable {
         return custBox.getBox();
     }
 
-    public VBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
-        return new VBox(
+    public MyVBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
+        return new MyVBox(
                 this.getNameHBox(),
                 this.getCostHBox(),
                 addSupDropDown(backEnd, supDrop),
@@ -296,9 +297,9 @@ public class Magazine implements Cloneable {
         );
     }
 
-    public VBox getDetails() {
+    public MyVBox getDetails() {
         Label magazine = new Label("Magazine");
-        VBox test = new VBox(magazine);
+        MyVBox test = new MyVBox(magazine);
         magazine.setPadding(new Insets(15));
         magazine.setFont(new Font("Arial", 20));
 

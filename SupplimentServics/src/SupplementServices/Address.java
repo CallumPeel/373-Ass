@@ -1,6 +1,8 @@
 package SupplementServices;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     int streetNumber, postcode;
     String streetName, suburb;

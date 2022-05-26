@@ -6,6 +6,7 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import SupplementServices.MyVBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,7 +20,7 @@ import javafx.scene.layout.VBox;
  */
 public class CenterPanelDeleteCustomer extends CenterPanelEdit {
 
-    VBox mainBox;
+    MyVBox mainBox;
     HBox buttons;
     Label question;
     Button yesButton, noButton;
@@ -38,7 +39,7 @@ public class CenterPanelDeleteCustomer extends CenterPanelEdit {
             System.out.println("Delete off\n");
         });
         this.buttons = new HBox(this.yesButton, this.noButton);
-        this.mainBox = new VBox(question, buttons);
+        this.mainBox = new MyVBox(question, buttons);
         this.buttons.setAlignment(Pos.CENTER);
         this.buttons.setPadding(new Insets(20));
         this.buttons.setSpacing(20);

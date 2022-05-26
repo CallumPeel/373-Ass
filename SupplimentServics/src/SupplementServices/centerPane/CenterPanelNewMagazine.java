@@ -8,6 +8,7 @@ import SupplementServices.BackEnd;
 import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
+import SupplementServices.MyVBox;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -21,7 +22,7 @@ import javafx.scene.text.Font;
 public class CenterPanelNewMagazine extends CenterPanelEdit {
 
     Magazine magazine;
-    VBox labels;
+    MyVBox labels;
 
     public CenterPanelNewMagazine(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
@@ -33,7 +34,7 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
     private void setCenterPane() {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
-        VBox content = this.magazine.getVBox(this.backEnd, supDrop, custDrop);
+        MyVBox content = this.magazine.getVBox(this.backEnd, supDrop, custDrop);
         Label magazine = new Label("Create New Magazine");
         magazine.setPadding(new Insets(15));
         magazine.setFont(new Font("Arial", 20));
@@ -42,8 +43,8 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
         setPane();
     }
 
-    private VBox getLabels() {
-        VBox buttons = new VBox();
+    private MyVBox getLabels() {
+        MyVBox buttons = new MyVBox();
         return buttons;
     }
 

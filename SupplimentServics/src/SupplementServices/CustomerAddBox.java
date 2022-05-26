@@ -4,17 +4,15 @@
  */
 package SupplementServices;
 
+import java.io.Serializable;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 
-public class CustomerAddBox{
+public class CustomerAddBox implements Serializable {
 
     private TextField textField;
     private ContextMenu addMenu = new ContextMenu();

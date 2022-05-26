@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
@@ -16,7 +17,7 @@ import javafx.scene.text.Font;
  *
  * @author Callum Peel
  */
-public class Customer implements Cloneable {
+public class Customer implements Cloneable, Serializable {
 
     public String payer;
     protected String name;
@@ -234,8 +235,8 @@ public class Customer implements Cloneable {
         return suburbBox.getBox();
     }
 
-    public VBox getVBox(ChoiceBox<String> choice) {
-        return new VBox(
+    public MyVBox getVBox(ChoiceBox<String> choice) {
+        return new MyVBox(
                 this.getNameHBox(),
                 this.getEmailHBox(),
                 this.getAddressHBox(),
@@ -346,9 +347,9 @@ public class Customer implements Cloneable {
         return supplementList;
     }
 
-    public VBox getDetails() {
+    public MyVBox getDetails() {
         Label customer = new Label("Customer");
-        VBox test = new VBox(customer);
+        MyVBox test = new MyVBox(customer);
         customer.setPadding(new Insets(15));
         customer.setFont(new Font("Arial", 20));
 

@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
@@ -13,7 +14,7 @@ import javafx.scene.text.Font;
  *
  * @author Callum Peel
  */
-public class Supplement implements Cloneable {
+public class Supplement implements Cloneable, Serializable {
 
     protected String name;
     protected double cost;
@@ -75,9 +76,9 @@ public class Supplement implements Cloneable {
         return this.cost;
     }
 
-    public VBox getDetails() {
+    public MyVBox getDetails() {
         Label customer = new Label("Supplement");
-        VBox test = new VBox(customer);
+        MyVBox test = new MyVBox(customer);
         customer.setPadding(new Insets(15));
         customer.setFont(new Font("Arial", 20));
 
@@ -131,8 +132,8 @@ public class Supplement implements Cloneable {
         return costBox.getBox();
     }
 
-    public VBox getVBox() {
-        return new VBox(
+    public MyVBox getVBox() {
+        return new MyVBox(
                 this.getNameHBox(),
                 this.getCostHBox()
         );

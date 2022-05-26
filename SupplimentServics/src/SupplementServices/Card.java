@@ -1,10 +1,12 @@
 package SupplementServices;
 
+import java.io.Serializable;
+
 /**
  * Contains card details.
  * @author Callum Peel
  */
-public class Card {
+public class Card  implements Serializable {
 
     String name;
     String cardNumber;

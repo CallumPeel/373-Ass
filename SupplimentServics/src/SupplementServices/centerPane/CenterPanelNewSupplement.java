@@ -6,6 +6,7 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import SupplementServices.MyVBox;
 import SupplementServices.Supplement;
 import javafx.scene.layout.VBox;
 
@@ -16,7 +17,7 @@ import javafx.scene.layout.VBox;
 public class CenterPanelNewSupplement extends CenterPanelEdit {
 
     Supplement supplement;
-    VBox labels;
+    MyVBox labels;
 
     public CenterPanelNewSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
@@ -32,8 +33,8 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
         setPane();
     }
 
-    private VBox getLabels() {
-        VBox buttons = new VBox();
+    private MyVBox getLabels() {
+        MyVBox buttons = new MyVBox();
         return buttons;
     }
 

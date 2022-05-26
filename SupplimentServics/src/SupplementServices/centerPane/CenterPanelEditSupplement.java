@@ -2,6 +2,7 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import SupplementServices.MyVBox;
 import SupplementServices.Supplement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +12,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
 
     String initialName;
     Supplement oldSupplement, newSupplement;
-    VBox labels;
+    MyVBox labels;
 
     public CenterPanelEditSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
@@ -31,13 +32,13 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     }
 
     private void setCenterPane() {
-        VBox content = this.newSupplement.getVBox();
+        MyVBox content = this.newSupplement.getVBox();
         this.centerSectionPane.setCenter(content);
         setPane();
     }
 
-    private VBox getLabels() {
-        VBox buttons = new VBox();
+    private MyVBox getLabels() {
+        MyVBox buttons = new MyVBox();
         return buttons;
     }
 

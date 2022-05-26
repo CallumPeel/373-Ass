@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Callum Peel
  */
-public class FrontEndConsole {
+public class FrontEndConsole implements Serializable{
 
     private BackEnd backEnd;
     private InputHandler IH;
@@ -35,7 +36,7 @@ public class FrontEndConsole {
                 + "[Q] - QUIT\n"
                 + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
-        buildDatabase();
+//        buildDatabase();
 //        assignmentQuestions();
 //        loopMenu();
     }
@@ -212,91 +213,91 @@ public class FrontEndConsole {
      * c. print out the text of all the e-mails for all customers for four weeks
      * of magazines,
      */
-    private void buildDatabase() {
-        // Build suppliment database.
-        this.backEnd.addSupplement(new Supplement("One", 2.4));
-        this.backEnd.addSupplement(new Supplement("Two", 6.3));
-        this.backEnd.addSupplement(new Supplement("Three", 7));
-        this.backEnd.addSupplement(new Supplement("Four", 8));
-        this.backEnd.addSupplement(new Supplement("Five", 11));
-        this.backEnd.addSupplement(new Supplement("Six", 3.4));
-
-        // Build customer database.
-        ArrayList<Supplement> supplementList1 = new ArrayList<Supplement>();
-        supplementList1.add(backEnd.supplements.get(0));
-        supplementList1.add(backEnd.supplements.get(1));
-        supplementList1.add(backEnd.supplements.get(2));
-        ArrayList<Supplement> supplementList2 = new ArrayList<Supplement>();
-        supplementList2.add(backEnd.supplements.get(0));
-        supplementList2.add(backEnd.supplements.get(3));
-        supplementList2.add(backEnd.supplements.get(5));
-        ArrayList<Supplement> supplementList3 = new ArrayList<Supplement>();
-        supplementList3.add(backEnd.supplements.get(4));
-        supplementList3.add(backEnd.supplements.get(5));
-        supplementList3.add(backEnd.supplements.get(2));
-        ArrayList<Supplement> supplementList4 = new ArrayList<Supplement>();
-        supplementList4.add(backEnd.supplements.get(3));
-        supplementList4.add(backEnd.supplements.get(4));
-        supplementList4.add(backEnd.supplements.get(5));
-
-        // Add standard customers
-        this.backEnd.addCustomer(new Customer("Callum", "callum@gmail.com", new Address(), supplementList1));
-        this.backEnd.addCustomer(new Customer("Maddie", "Maddie@gmail.com", new Address(), supplementList2));
-        this.backEnd.addCustomer(new Customer("Dom", "Dom@gmail.com", new Address(), supplementList3));
-        this.backEnd.addCustomer(new Customer("Tim", "Tim@gmail.com", new Address(), supplementList4));
-        this.backEnd.addCustomer(new Customer("Sally", "Sally@gmail.com", new Address(), supplementList2));
-        this.backEnd.addCustomer(new Customer("Fin", "Fin@gmail.com", new Address(), supplementList4));
-
-        // Create lists of associated customers
-        ArrayList<Customer> customerList1 = new ArrayList<Customer>();
-        customerList1.add(backEnd.customers.get(0));
-        customerList1.add(backEnd.customers.get(1));
-        customerList1.add(backEnd.customers.get(2));
-        ArrayList<Customer> customerList2 = new ArrayList<Customer>();
-        customerList2.add(backEnd.customers.get(0));
-        customerList2.add(backEnd.customers.get(2));
-        customerList2.add(backEnd.customers.get(3));
-        ArrayList<Customer> customerList3 = new ArrayList<Customer>();
-        customerList3.add(backEnd.customers.get(1));
-        customerList3.add(backEnd.customers.get(2));
-        customerList3.add(backEnd.customers.get(3));
-        ArrayList<Customer> customerList4 = new ArrayList<Customer>();
-        customerList4.add(backEnd.customers.get(3));
-        customerList4.add(backEnd.customers.get(4));
-        customerList4.add(backEnd.customers.get(5));
-
-        // Create paying customers;
-        this.backEnd.addCustomer(
-                new Customer("Matthew", "Matthew@gmail.com", supplementList1),
-                new PaymentMethod(
-                        "Bank of Australia",
-                        new Card(
-                                "Matthew",
-                                "1234 1234 1234 1234",
-                                "12/24",
-                                232
-                        ),
-                        new Account(
-                                "Matts account",
-                                "1234 1234",
-                                "1234"
-                        )
-                ),
-                customerList1
-        );
-
-        this.backEnd.addCustomer(new Customer("Steven", "Steven@gmail.com", supplementList2),
-                new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513)), customerList2);
-        this.backEnd.addCustomer(new Customer("Mark", "Mark@gmail.com", supplementList3),
-                new PaymentMethod("Bank of Brazil", new Card("Steven", "6666 4444 3333 2222", "11/25", 765)), customerList3);
-        this.backEnd.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
-                new PaymentMethod("Bank of Asia", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
-
-        this.backEnd.addMagazine(new Magazine("Doms mag", 10, supplementList1, customerList1));
-        this.backEnd.addMagazine(new Magazine("Callums mag", 10, supplementList2, customerList2));
-        this.backEnd.addMagazine(new Magazine("Some mag", 10, supplementList3, customerList3));
-
-    }
+//    private void buildDatabase() {
+//        // Build suppliment database.
+//        this.backEnd.addSupplement(new Supplement("One", 2.4));
+//        this.backEnd.addSupplement(new Supplement("Two", 6.3));
+//        this.backEnd.addSupplement(new Supplement("Three", 7));
+//        this.backEnd.addSupplement(new Supplement("Four", 8));
+//        this.backEnd.addSupplement(new Supplement("Five", 11));
+//        this.backEnd.addSupplement(new Supplement("Six", 3.4));
+//
+//        // Build customer database.
+//        ArrayList<Supplement> supplementList1 = new ArrayList<Supplement>();
+//        supplementList1.add(backEnd.supplements.get(0));
+//        supplementList1.add(backEnd.supplements.get(1));
+//        supplementList1.add(backEnd.supplements.get(2));
+//        ArrayList<Supplement> supplementList2 = new ArrayList<Supplement>();
+//        supplementList2.add(backEnd.supplements.get(0));
+//        supplementList2.add(backEnd.supplements.get(3));
+//        supplementList2.add(backEnd.supplements.get(5));
+//        ArrayList<Supplement> supplementList3 = new ArrayList<Supplement>();
+//        supplementList3.add(backEnd.supplements.get(4));
+//        supplementList3.add(backEnd.supplements.get(5));
+//        supplementList3.add(backEnd.supplements.get(2));
+//        ArrayList<Supplement> supplementList4 = new ArrayList<Supplement>();
+//        supplementList4.add(backEnd.supplements.get(3));
+//        supplementList4.add(backEnd.supplements.get(4));
+//        supplementList4.add(backEnd.supplements.get(5));
+//
+//        // Add standard customers
+//        this.backEnd.addCustomer(new Customer("Callum", "callum@gmail.com", new Address(), supplementList1));
+//        this.backEnd.addCustomer(new Customer("Maddie", "Maddie@gmail.com", new Address(), supplementList2));
+//        this.backEnd.addCustomer(new Customer("Dom", "Dom@gmail.com", new Address(), supplementList3));
+//        this.backEnd.addCustomer(new Customer("Tim", "Tim@gmail.com", new Address(), supplementList4));
+//        this.backEnd.addCustomer(new Customer("Sally", "Sally@gmail.com", new Address(), supplementList2));
+//        this.backEnd.addCustomer(new Customer("Fin", "Fin@gmail.com", new Address(), supplementList4));
+//
+//        // Create lists of associated customers
+//        ArrayList<Customer> customerList1 = new ArrayList<Customer>();
+//        customerList1.add(backEnd.customers.get(0));
+//        customerList1.add(backEnd.customers.get(1));
+//        customerList1.add(backEnd.customers.get(2));
+//        ArrayList<Customer> customerList2 = new ArrayList<Customer>();
+//        customerList2.add(backEnd.customers.get(0));
+//        customerList2.add(backEnd.customers.get(2));
+//        customerList2.add(backEnd.customers.get(3));
+//        ArrayList<Customer> customerList3 = new ArrayList<Customer>();
+//        customerList3.add(backEnd.customers.get(1));
+//        customerList3.add(backEnd.customers.get(2));
+//        customerList3.add(backEnd.customers.get(3));
+//        ArrayList<Customer> customerList4 = new ArrayList<Customer>();
+//        customerList4.add(backEnd.customers.get(3));
+//        customerList4.add(backEnd.customers.get(4));
+//        customerList4.add(backEnd.customers.get(5));
+//
+//        // Create paying customers;
+//        this.backEnd.addCustomer(
+//                new Customer("Matthew", "Matthew@gmail.com", supplementList1),
+//                new PaymentMethod(
+//                        "Bank of Australia",
+//                        new Card(
+//                                "Matthew",
+//                                "1234 1234 1234 1234",
+//                                "12/24",
+//                                232
+//                        ),
+//                        new Account(
+//                                "Matts account",
+//                                "1234 1234",
+//                                "1234"
+//                        )
+//                ),
+//                customerList1
+//        );
+//
+//        this.backEnd.addCustomer(new Customer("Steven", "Steven@gmail.com", supplementList2),
+//                new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513)), customerList2);
+//        this.backEnd.addCustomer(new Customer("Mark", "Mark@gmail.com", supplementList3),
+//                new PaymentMethod("Bank of Brazil", new Card("Steven", "6666 4444 3333 2222", "11/25", 765)), customerList3);
+//        this.backEnd.addCustomer(new Customer("Phil", "Phil@gmail.com", supplementList4),
+//                new PaymentMethod("Bank of Asia", new Card("Phil", "3233 1313 1111 4344", "12/23", 748)), customerList3);
+//
+//        this.backEnd.addMagazine(new Magazine("Doms mag", 10, supplementList1, customerList1));
+//        this.backEnd.addMagazine(new Magazine("Callums mag", 10, supplementList2, customerList2));
+//        this.backEnd.addMagazine(new Magazine("Some mag", 10, supplementList3, customerList3));
+//
+//    }
 
     private void displayStudentDetails() {
         System.out.println(
