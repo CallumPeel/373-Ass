@@ -20,7 +20,7 @@ public class Magazine implements Cloneable {
     String name;
     double cost;
     ArrayList<Supplement> supplements;
-    ArrayList<Customer> customerSubscriptions;
+    ArrayList<Customer> customers;
 
     /**
      * Takes a supplement list and cost then constructs and initializes a
@@ -33,28 +33,28 @@ public class Magazine implements Cloneable {
         this.name = name;
         this.cost = cost;
         this.supplements = supplements;
-        this.customerSubscriptions = customerSubscriptions;
+        this.customers = customerSubscriptions;
     }
 
     public Magazine(String name, double cost, ArrayList<Supplement> supplements) {
         this.name = name;
         this.cost = cost;
         this.supplements = supplements;
-        this.customerSubscriptions = new ArrayList<Customer>();
+        this.customers = new ArrayList<Customer>();
     }
 
     public Magazine(String name, double cost) {
         this.name = name;
         this.cost = cost;
         this.supplements = new ArrayList<Supplement>();
-        this.customerSubscriptions = new ArrayList<Customer>();
+        this.customers = new ArrayList<Customer>();
     }
 
     public Magazine(String mag) {
         this.name = mag;
         this.cost = -1;
         this.supplements = new ArrayList<Supplement>();
-        this.customerSubscriptions = new ArrayList<Customer>();
+        this.customers = new ArrayList<Customer>();
     }
 
     /**
@@ -64,7 +64,7 @@ public class Magazine implements Cloneable {
         this.name = "Defaut";
         this.cost = -1;
         this.supplements = new ArrayList<Supplement>();
-        this.customerSubscriptions = new ArrayList<Customer>();
+        this.customers = new ArrayList<Customer>();
     }
 
     @Override
@@ -77,7 +77,7 @@ public class Magazine implements Cloneable {
     }
 
     public ArrayList<Customer> getCustomerSubscriptions() {
-        return customerSubscriptions;
+        return customers;
     }
 
     /**
@@ -116,7 +116,7 @@ public class Magazine implements Cloneable {
     }
 
     public void setCustomerSubscriptions(ArrayList<Customer> customerSubscriptions) {
-        this.customerSubscriptions = customerSubscriptions;
+        this.customers = customerSubscriptions;
     }
 
     /**
@@ -153,6 +153,14 @@ public class Magazine implements Cloneable {
      */
     public void removeSupplement(Supplement supplement) {
         this.supplements.remove(supplement);
+    }
+
+    public ChoiceBox<String> getCustomerList() {
+        ChoiceBox<String> choice = new ChoiceBox();
+        for (int i = 0; i < this.customers.size(); i++) {
+            choice.getItems().add(this.customers.get(i).name);
+        }
+        return choice;
     }
 
     public ChoiceBox<String> getSupplementList() {
@@ -239,21 +247,40 @@ public class Magazine implements Cloneable {
         return supplementsBox.getBox();
     }
 
-    public HBox addCustDropDown(BackEnd backEnd, ChoiceBox<String> custDrop) {
-        MyHBox custBox = new MyHBox(custDrop);
-        custBox.setButtonName("add");
-        custBox.setLabelText("Choose a customer to add");
+    public HBox deleteCustDropDown(BackEnd backEnd) {
+
+        MyHBox custBox = new MyHBox(getCustomerList());
+        custBox.setButtonName("remove");
+        custBox.setLabelText("Choose a customer to remove");
         custBox.button.setOnAction(
                 s -> {
                     try {
                         String selection = custBox.choice.getValue();
-                        this.customerSubscriptions.add(backEnd.getCustomer(selection));
-                        custBox.outputLabel.setText("Customer \"" + selection + "\" added");
-                        System.out.println("Customer \"" + selection + "\" added to list");
+                        this.customers.remove(backEnd.getCustomer(selection));
+                        custBox.outputLabel.setText("Customer \"" + selection + "\" removed");
+                        System.out.println("Customer \"" + selection + "\" removed from list");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
                 });
+        custBox.formatBox();
+        return custBox.getBox();
+    }
+
+    public HBox addCustDropDown(BackEnd backEnd, ChoiceBox<String> custDrop) {
+        MyHBox custBox = new MyHBox(custDrop);
+        custBox.setButtonName("add");
+        custBox.setLabelText("Choose a customer to add");
+        custBox.button.setOnAction(s -> {
+            try {
+                String selection = custBox.choice.getValue();
+                this.customers.add(backEnd.getCustomer(selection));
+                custBox.outputLabel.setText("Customer \"" + selection + "\" added");
+                System.out.println("Customer \"" + selection + "\" added to list");
+            } catch (Exception e) {
+                System.out.println("Something Went Wrong...");
+            }
+        });
         custBox.formatBox();
         return custBox.getBox();
     }
@@ -264,7 +291,8 @@ public class Magazine implements Cloneable {
                 this.getCostHBox(),
                 addSupDropDown(backEnd, supDrop),
                 deleteSupDropDown(backEnd),
-                addCustDropDown(backEnd, custDrop)
+                addCustDropDown(backEnd, custDrop),
+                deleteCustDropDown(backEnd)
         );
     }
 
@@ -281,10 +309,10 @@ public class Magazine implements Cloneable {
         TreeItem<String> supList = new TreeItem("Magazine Supplements");
         this.supplements.forEach((n) -> supList.getChildren().add(new TreeItem("" + n.name)));
         supplementInformation.getChildren().add(supList);
-        TreeItem<String> custList = new TreeItem("Magazine Supplements");
-        int size = this.customerSubscriptions.size();
-        for (int i = 0; i < this.customerSubscriptions.size(); i++) {
-            custList.getChildren().add(new TreeItem("" + this.customerSubscriptions.get(i).name));
+        TreeItem<String> custList = new TreeItem("Magazine Customers");
+        int size = this.customers.size();
+        for (int i = 0; i < this.customers.size(); i++) {
+            custList.getChildren().add(new TreeItem("" + this.customers.get(i).name));
         }
         supplementInformation.getChildren().add(custList);
         TreeView details = new TreeView();
@@ -294,5 +322,4 @@ public class Magazine implements Cloneable {
         test.getChildren().add(details);
         return test;
     }
-
 }
