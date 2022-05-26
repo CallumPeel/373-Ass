@@ -112,7 +112,7 @@ public class CustomerPaying extends Customer {
     public double getAssociatedCustomerTotal() {
         double total = 0;
         for (int i = 0; i < this.associatedCustomers.size(); i++) {
-            total += this.associatedCustomers.get(i).getTotal();
+            total += this.associatedCustomers.get(i).total;
         }
         return total;
     }
@@ -153,6 +153,14 @@ public class CustomerPaying extends Customer {
         }
         monthlyEmail += "\nThe total charged to your account is: $" + total * multiplier + ".\n\n\n";
         return monthlyEmail;
+    }
+
+//    public String getTotal() {
+//        return "$" + String.format("%.2f", this.total);
+//    }
+    @Override
+    public String getTotal() {
+        return "$" + String.format("%.2f", this.total + getAssociatedCustomerTotal());
     }
 
     @Override

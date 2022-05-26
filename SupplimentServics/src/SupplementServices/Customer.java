@@ -103,8 +103,8 @@ public class Customer implements Cloneable, Serializable {
         }
     }
 
-    public double getTotal() {
-        return this.total;
+    public String getTotal() {
+        return "$" + String.format("%.2f", this.total);
     }
 
     public HBox getNameHBox() {
@@ -365,13 +365,13 @@ public class Customer implements Cloneable, Serializable {
         }
         return supplementList;
     }
-
+    
     public TreeItem<String> getCustomerDetails() {
         TreeItem<String> customerInformation = new TreeItem("Customer");
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
         customerInformation.getChildren().add(new TreeItem("Payer Name: " + this.payer));
         customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
-        customerInformation.getChildren().add(new TreeItem("Total Cost: " + "$" + String.format("%.2f", this.total)));
+        customerInformation.getChildren().add(new TreeItem("Total Cost: " + getTotal()));
         customerInformation.getChildren().add(this.address.getAddressTreeView());
         customerInformation.getChildren().add(getCustSupplementBreakdown());
         return customerInformation;
