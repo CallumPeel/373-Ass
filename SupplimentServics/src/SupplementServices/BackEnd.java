@@ -48,11 +48,9 @@ public class BackEnd implements Serializable {
         this.editPane = new BorderPane();
         this.stage = window;
 
-//        buildFullDatabase();
 //        saveCustomers();
 //        saveSupplements();
 //        saveMagazines();
-
         loadCustomers();
         loadSupplements();
         loadMagazines();
@@ -323,12 +321,7 @@ public class BackEnd implements Serializable {
         this.supplements.add(new Supplement(supplement));
     }
 
-    public void saveCustomers() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("Customers.bin"));
-        outputStream.writeObject(this.customers);
-    }
-
-    public void loadCustomers() throws FileNotFoundException, IOException, ClassNotFoundException {
+    private void loadCustomers() throws FileNotFoundException, IOException, ClassNotFoundException {
         // loads in customers...needs to load in paying customers??? wait maybe not
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("Customers.bin"));
         ArrayList<Customer> newCustomers = new ArrayList<Customer>();
@@ -337,12 +330,7 @@ public class BackEnd implements Serializable {
         System.out.println("Loading Customers...");
     }
 
-    public void saveMagazines() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("magazines.bin"));
-        outputStream.writeObject(this.magazines);
-    }
-
-    public void loadMagazines() throws FileNotFoundException, IOException, ClassNotFoundException {
+    private void loadMagazines() throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("magazines.bin"));
         ArrayList<Magazine> newMagazines = new ArrayList<Magazine>();
         newMagazines = ((ArrayList<Magazine>) inputStream.readObject());
@@ -351,18 +339,34 @@ public class BackEnd implements Serializable {
 //        newMagazines.forEach(result -> System.out.println(result.name));
     }
 
-    public void saveSupplements() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("supplements.bin"));
-        outputStream.writeObject(this.supplements);
-    }
-
-    public void loadSupplements() throws FileNotFoundException, IOException, ClassNotFoundException {
+    private void loadSupplements() throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("supplements.bin"));
         ArrayList<Supplement> newSupplements = new ArrayList<Supplement>();
         newSupplements = ((ArrayList<Supplement>) inputStream.readObject());
         this.supplements = newSupplements;
         System.out.println("Loading Supplements...");
 //        newSupplements.forEach(result -> System.out.println(result.name));
+    }
+
+    private void saveCustomers() throws FileNotFoundException, IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("Customers.bin"));
+        outputStream.writeObject(this.customers);
+    }
+
+    private void saveMagazines() throws FileNotFoundException, IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("magazines.bin"));
+        outputStream.writeObject(this.magazines);
+    }
+
+    private void saveSupplements() throws FileNotFoundException, IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("supplements.bin"));
+        outputStream.writeObject(this.supplements);
+    }
+
+    public void save() throws IOException {
+        saveCustomers();
+        saveMagazines();
+        saveSupplements();
     }
 
     private void buildFullDatabase() {
