@@ -197,8 +197,7 @@ public class Magazine implements Cloneable, Serializable {
         if (this.cost == -1) {
             costBox.setLabelText("Default");
         }
-        costBox.button.setOnAction(
-                s -> {
+        costBox.button.setOnAction(s -> {
                     try {
                         this.cost = Double.parseDouble(costBox.inputText.getText());
                         costBox.outputLabel.setText(Double.toString(this.cost));
