@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.layout.VBox;
 
 public class CenterPanelEditCustomer extends CenterPanelEdit {
 
@@ -21,7 +20,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         this.oldCustomer = this.backEnd.getCustomer(this.frontEnd.customerSelected);
         this.initialName = oldCustomer.getName();
         cloneCustomer();
-        this.labels = getLabels();
+        this.labels = new MyVBox();
         setCenterPane();
     }
 
@@ -38,11 +37,6 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         MyVBox content = this.newCustomer.getVBox(choice);
         this.centerSectionPane.setCenter(content);
         setPane();
-    }
-
-    private MyVBox getLabels() {
-        MyVBox buttons = new MyVBox();
-        return buttons;
     }
 
     @Override

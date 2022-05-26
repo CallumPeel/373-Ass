@@ -9,7 +9,7 @@ import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
 import java.io.IOException;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ChoiceBox;
 
 /**
  *
@@ -22,21 +22,20 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
 
     public CenterPanelNewCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.customer = new Customer();
-        this.labels = getLabels();
+        setCustomer();
+        this.labels = new MyVBox();
         setCenterPane();
     }
 
-    private void setCenterPane() {
-        this.centerSectionPane.setCenter(
-                this.customer.getVBox(this.backEnd.getPayingCustomerList())
-        );
-        setPane();
+    public void setCustomer() {
+        this.customer = new Customer();
     }
 
-    private MyVBox getLabels() {
-        MyVBox buttons = new MyVBox();
-        return buttons;
+    public void setCenterPane() {
+        ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
+        MyVBox content = this.customer.getVBox(choice);
+        this.centerSectionPane.setCenter(content);
+        setPane();
     }
 
     @Override
@@ -46,6 +45,5 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
         this.frontEnd.setDefaultSelectedCustomer();
         this.backEnd.save();
         this.frontEnd.refresh();
-
     }
 }

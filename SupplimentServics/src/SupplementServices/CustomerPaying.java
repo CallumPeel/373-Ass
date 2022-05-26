@@ -41,7 +41,10 @@ public class CustomerPaying extends Customer {
     }
 
     public CustomerPaying() {
-        // for testing
+        super();
+        this.paymentMethod = new PaymentMethod("Bank of America", new Card("Steven", "1234 4444 1234 2222", "10/24", 513));
+        this.associatedCustomers = new ArrayList<Customer>();
+
     }
 
     /**
@@ -343,13 +346,13 @@ public class CustomerPaying extends Customer {
     @Override
     public MyVBox getVBox(ChoiceBox<String> choice) {
         return new MyVBox(
-                this.getNameHBox(),
-                this.getEmailHBox(),
-                this.getAddressHBox(),
-                this.getPostCodeHBox(),
-                this.streetNameHBox(),
-                this.suburbBoxHBox(),
-                this.dropDown(choice),
+                getNameHBox(),
+                getEmailHBox(),
+                getAddressHBox(),
+                getPostCodeHBox(),
+                streetNameHBox(),
+                suburbBoxHBox(),
+                dropDown(choice),
                 getBankNameHBox(),
                 getCardNameHBox(),
                 getCardNumberHBox(),

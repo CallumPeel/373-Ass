@@ -9,6 +9,7 @@ import SupplementServices.centerPane.CenterPanelEditSupplement;
 import SupplementServices.centerPane.CenterPanelNewCustomer;
 import SupplementServices.centerPane.CenterPanelDeleteCustomer;
 import SupplementServices.centerPane.CenterPanelEditCustomer;
+import SupplementServices.centerPane.CenterPanelNewCustomerPaying;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -25,7 +26,7 @@ public class LeftPanelEdit extends LeftPanel {
         Insets inset = new Insets(0, 0, 10, 30);
 
         Button newCustButton = new Button();
-        newCustButton.setText("New");
+        newCustButton.setText("New Customer");
         newCustButton.setOnAction(
                 s -> {
                     try {
@@ -35,6 +36,19 @@ public class LeftPanelEdit extends LeftPanel {
                     }
                 }
         );
+
+        Button newCustPayingButton = new Button();
+        newCustPayingButton.setText("New Paying Customer");
+        newCustPayingButton.setOnAction(
+                s -> {
+                    try {
+                        onCustPayingNewButtonClick();
+                    } catch (Exception e) {
+                        System.out.println("Something Went Wrong...");
+                    }
+                }
+        );
+
         Button editCustButton = new Button();
         editCustButton.setText("Edit");
         editCustButton.setOnAction(
@@ -93,7 +107,7 @@ public class LeftPanelEdit extends LeftPanel {
 
                 }
         );
-        HBox topButtons = new HBox(newCustButton, deleteCustButton, editCustButton);
+        HBox topButtons = new HBox(newCustButton, newCustPayingButton, deleteCustButton, editCustButton);
         HBox bottomButtons = new HBox(newSupButton, deleteSupButton, editSupButton);
         this.frontEnd.vbox = new MyVBox(
                 topButtons,
@@ -102,10 +116,10 @@ public class LeftPanelEdit extends LeftPanel {
                 this.frontEnd.supplementTreeView
         );
         topButtons.setAlignment(Pos.CENTER);
-        topButtons.setPadding(new Insets(10,10,20,30));
+        topButtons.setPadding(new Insets(10, 10, 20, 30));
         topButtons.setSpacing(20);
         bottomButtons.setAlignment(Pos.CENTER);
-        bottomButtons.setPadding(new Insets(20,10,20,30));
+        bottomButtons.setPadding(new Insets(20, 10, 20, 30));
         bottomButtons.setSpacing(20);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.customerTreeView, inset);
@@ -121,6 +135,10 @@ public class LeftPanelEdit extends LeftPanel {
 
     public void onCustNewButtonClick() {
         new CenterPanelNewCustomer(this.backEnd, this.frontEnd);
+    }
+
+    public void onCustPayingNewButtonClick() {
+        new CenterPanelNewCustomerPaying(this.backEnd, this.frontEnd);
     }
 
     public void onCustEditButtonClick() {
