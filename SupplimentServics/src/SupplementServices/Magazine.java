@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -195,6 +194,9 @@ public class Magazine implements Cloneable, Serializable {
         MyHBox costBox = new MyHBox();
         costBox.setButtonName("Magazine Cost");
         costBox.setLabelText(Double.toString(this.cost));
+        if (this.cost == -1) {
+            costBox.setLabelText("Default");
+        }
         costBox.button.setOnAction(
                 s -> {
                     try {
