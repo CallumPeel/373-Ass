@@ -72,7 +72,7 @@ public class LeftPanelEdit extends LeftPanel {
                 }
         );
         Button newSupButton = new Button();
-        newSupButton.setText("New");
+        newSupButton.setText("New Supplement");
         newSupButton.setOnAction(
                 s -> {
                     try {

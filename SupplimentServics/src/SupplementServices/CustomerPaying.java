@@ -167,12 +167,18 @@ public class CustomerPaying extends Customer {
     }
 
     @Override
+    public MyVBox getCustomerLabelVBox() {
+        Label customerLabel = new Label("Paying Customer");
+        customerLabel.setPadding(new Insets(10));
+        customerLabel.setFont(new Font("Arial", 20));
+        MyVBox test = new MyVBox(customerLabel);
+        return test;
+    }
+
+    @Override
     public MyVBox getDetails() {
 
-        Label customer = new Label("Paying Customer");
-        MyVBox test = new MyVBox(customer);
-        customer.setPadding(new Insets(15));
-        customer.setFont(new Font("Arial", 20));
+        MyVBox test = new MyVBox(getCustomerLabelVBox());
 
         TreeItem<String> subList = new TreeItem("Associated Customers");
         subList.getChildren().add(
@@ -187,7 +193,7 @@ public class CustomerPaying extends Customer {
         TreeView details = new TreeView();
         details.setRoot(customerInformation);
         details.setShowRoot(false);
-        details.setPadding(new Insets(15));
+        details.setPadding(new Insets(10));
         test.getChildren().add(details);
         return test;
     }
@@ -346,6 +352,7 @@ public class CustomerPaying extends Customer {
     @Override
     public MyVBox getVBox(ChoiceBox<String> choice) {
         return new MyVBox(
+                getCustomerLabelVBox(),
                 getNameHBox(),
                 getEmailHBox(),
                 getAddressHBox(),

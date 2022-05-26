@@ -300,7 +300,7 @@ public class Magazine implements Cloneable, Serializable {
     public MyVBox getDetails() {
         Label magazine = new Label("Magazine");
         MyVBox test = new MyVBox(magazine);
-        magazine.setPadding(new Insets(15));
+        magazine.setPadding(new Insets(10));
         magazine.setFont(new Font("Arial", 20));
 
         TreeItem<String> supplementInformation = new TreeItem("Magazine");
@@ -319,7 +319,7 @@ public class Magazine implements Cloneable, Serializable {
         TreeView details = new TreeView();
         details.setRoot(supplementInformation);
         details.setShowRoot(false);
-        details.setPadding(new Insets(15));
+        details.setPadding(new Insets(10));
         test.getChildren().add(details);
         return test;
     }

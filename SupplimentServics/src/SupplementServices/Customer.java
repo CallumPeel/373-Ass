@@ -255,6 +255,7 @@ public class Customer implements Cloneable, Serializable {
 
     public MyVBox getVBox(ChoiceBox<String> choice) {
         return new MyVBox(
+                getCustomerLabelVBox(),
                 getNameHBox(),
                 getPayerHBox(),
                 getEmailHBox(),
@@ -379,23 +380,20 @@ public class Customer implements Cloneable, Serializable {
 
     public MyVBox getCustomerLabelVBox() {
         Label customerLabel = new Label("Customer");
-        customerLabel.setPadding(new Insets(15));
+        customerLabel.setPadding(new Insets(10));
         customerLabel.setFont(new Font("Arial", 20));
         MyVBox test = new MyVBox(customerLabel);
         return test;
     }
 
     public MyVBox getDetails() {
-
         MyVBox test = new MyVBox(getCustomerLabelVBox());
-
         TreeView details = new TreeView();
         details.setRoot(getCustomerDetails());
         details.setShowRoot(false);
-        details.setPadding(new Insets(15));
+        details.setPadding(new Insets(10));
         test.getChildren().add(details);
         return test;
     }
 
-// add customer things to tree
 }

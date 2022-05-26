@@ -77,7 +77,7 @@ public class Supplement implements Cloneable, Serializable {
 
     public MyVBox getSupplementLabelVBox() {
         Label supplementLabel = new Label("Supplement");
-        supplementLabel.setPadding(new Insets(15));
+        supplementLabel.setPadding(new Insets(10));
         supplementLabel.setFont(new Font("Arial", 20));
         MyVBox test = new MyVBox(supplementLabel);
         return test;
@@ -93,7 +93,7 @@ public class Supplement implements Cloneable, Serializable {
         TreeView details = new TreeView();
         details.setRoot(supplementInformation);
         details.setShowRoot(false);
-        details.setPadding(new Insets(15));
+        details.setPadding(new Insets(10));
         test.getChildren().add(details);
         return test;
     }
@@ -138,6 +138,7 @@ public class Supplement implements Cloneable, Serializable {
 
     public MyVBox getVBox() {
         return new MyVBox(
+                getSupplementLabelVBox(),
                 this.getNameHBox(),
                 this.getCostHBox()
         );

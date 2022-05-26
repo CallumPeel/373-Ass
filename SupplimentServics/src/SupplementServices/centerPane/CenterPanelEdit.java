@@ -23,7 +23,7 @@ public class CenterPanelEdit extends CenterPanel {
     }
 
     public void setBottomPane() {
-        this.saveButton.setText("Commit Changes");
+        this.saveButton.setText("Save");
         this.saveButton.setOnAction(e -> {
             try {
                 onSaveChangesButtonClick();
@@ -48,7 +48,7 @@ public class CenterPanelEdit extends CenterPanel {
 
     @Override
     public void setPane() {
-        this.centerSectionPane.setPadding(new Insets(25, 0, 0, 15));
+        this.centerSectionPane.setPadding(new Insets(0, 0, 0, 15));
         this.backEnd.getEditPane().setCenter(this.centerSectionPane);
     }
 }

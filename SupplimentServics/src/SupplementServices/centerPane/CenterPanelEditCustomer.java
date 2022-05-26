@@ -7,7 +7,10 @@ import SupplementServices.MyVBox;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 
 public class CenterPanelEditCustomer extends CenterPanelEdit {
 
@@ -34,14 +37,13 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     private void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
-        MyVBox content = this.newCustomer.getVBox(choice);
+        MyVBox content = this.newCustomer.getVBox(choice);        
         this.centerSectionPane.setCenter(content);
         setPane();
     }
 
     @Override
     public void onSaveChangesButtonClick() throws IOException {
-//        System.out.println("Save Changes button clicked on edit");
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
         this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
