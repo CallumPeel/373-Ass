@@ -122,6 +122,9 @@ public class Supplement implements Cloneable, Serializable {
         MyHBox costBox = new MyHBox();
         costBox.setButtonName("Set Cost");
         costBox.setLabelText("$" + String.format("%.2f", this.cost));
+        if (this.cost == -1) {
+            costBox.setLabelText("Default");
+        }
         costBox.button.setOnAction(
                 s -> {
                     try {
