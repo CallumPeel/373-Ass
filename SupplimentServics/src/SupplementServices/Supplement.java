@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
@@ -13,7 +14,7 @@ import javafx.scene.text.Font;
  *
  * @author Callum Peel
  */
-public class Supplement implements Cloneable {
+public class Supplement implements Cloneable, Serializable {
 
     protected String name;
     protected double cost;

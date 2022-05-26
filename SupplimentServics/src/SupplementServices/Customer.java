@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
@@ -16,7 +17,7 @@ import javafx.scene.text.Font;
  *
  * @author Callum Peel
  */
-public class Customer implements Cloneable {
+public class Customer implements Cloneable, Serializable {
 
     public String payer;
     protected String name;

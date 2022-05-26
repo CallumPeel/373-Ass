@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
@@ -15,7 +16,7 @@ import javafx.scene.text.Font;
  *
  * @author Callum Peel
  */
-public class Magazine implements Cloneable {
+public class Magazine implements Cloneable, Serializable {
 
     String name;
     double cost;
