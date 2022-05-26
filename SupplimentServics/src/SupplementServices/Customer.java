@@ -184,12 +184,12 @@ public class Customer implements Cloneable, Serializable {
     public HBox getPostCodeHBox() {
         MyHBox postCodeBox = new MyHBox();
         postCodeBox.setButtonName("Set Post Code");
-        postCodeBox.setLabelText(Integer.toString(this.address.postcode));
+        postCodeBox.setLabelText(Integer.toString(this.address.postCode));
         postCodeBox.button.setOnAction(
                 s -> {
                     try {
-                        this.address.postcode = parseInt(postCodeBox.inputText.getText());
-                        postCodeBox.outputLabel.setText(Integer.toString(this.address.postcode));
+                        this.address.postCode = parseInt(postCodeBox.inputText.getText());
+                        postCodeBox.outputLabel.setText(Integer.toString(this.address.postCode));
                         System.out.println("Post Code changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
@@ -366,6 +366,16 @@ public class Customer implements Cloneable, Serializable {
         return supplementList;
     }
 
+    public TreeItem<String> getCustomerDetails() {
+        TreeItem<String> customerInformation = new TreeItem("Customer");
+        customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
+        customerInformation.getChildren().add(new TreeItem("Payer Name: " + this.payer));
+        customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
+        customerInformation.getChildren().add(this.address.getAddressTreeView());
+        customerInformation.getChildren().add(getCustSupplementBreakdown());
+        return customerInformation;
+    }
+
     public MyVBox getDetails() {
 
         // Add payer to treeview breakdown
@@ -374,18 +384,13 @@ public class Customer implements Cloneable, Serializable {
         customer.setPadding(new Insets(15));
         customer.setFont(new Font("Arial", 20));
 
-        TreeItem<String> customerInformation = new TreeItem("Customer");
-        customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
-        customerInformation.getChildren().add(new TreeItem("Payer Name: " + this.payer));
-        customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
-        customerInformation.getChildren().add(getCustSupplementBreakdown());
-
         TreeView details = new TreeView();
-        details.setRoot(customerInformation);
+        details.setRoot(getCustomerDetails());
         details.setShowRoot(false);
         details.setPadding(new Insets(15));
         test.getChildren().add(details);
         return test;
     }
 
+// add customer things to tree
 }

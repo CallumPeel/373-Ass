@@ -1,22 +1,23 @@
 package SupplementServices;
 
 import java.io.Serializable;
+import javafx.scene.control.TreeItem;
 
 public class Address implements Serializable {
 
-    int streetNumber, postcode;
+    int streetNumber, postCode;
     String streetName, suburb;
 
     public Address(int streetNumber, int postcode, String streetName, String suburb) {
         this.streetNumber = streetNumber;
-        this.postcode = postcode;
+        this.postCode = postcode;
         this.streetName = streetName;
         this.suburb = suburb;
     }
 
     public Address() {
         this.streetNumber = -1;
-        this.postcode = -1;
+        this.postCode = -1;
         this.streetName = "Default Street";
         this.suburb = "Default Suburb";
     }
@@ -26,7 +27,7 @@ public class Address implements Serializable {
     }
 
     public void setPostcode(int postcode) {
-        this.postcode = postcode;
+        this.postCode = postcode;
     }
 
     public void setStreetName(String streetName) {
@@ -42,7 +43,7 @@ public class Address implements Serializable {
     }
 
     public int getPostcode() {
-        return postcode;
+        return postCode;
     }
 
     public String getStreetName() {
@@ -53,4 +54,15 @@ public class Address implements Serializable {
         return suburb;
     }
 
+    public TreeItem<String> getAddressTreeView() {
+        TreeItem<String> customerInformation = new TreeItem("Address");
+        customerInformation.getChildren().add(new TreeItem(
+                this.streetNumber
+                + " "
+                + this.streetName
+                + " st\n"
+                + this.suburb
+                + "\nPost Code: " + this.postCode));
+        return customerInformation;
+    }
 }

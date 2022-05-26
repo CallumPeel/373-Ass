@@ -48,9 +48,11 @@ public class BackEnd implements Serializable {
         this.editPane = new BorderPane();
         this.stage = window;
 
+//        buildFullDatabase();
 //        saveCustomers();
 //        saveSupplements();
 //        saveMagazines();
+
         loadCustomers();
         loadSupplements();
         loadMagazines();
