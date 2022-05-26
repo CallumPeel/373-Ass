@@ -1,14 +1,17 @@
 package SupplementServices;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -16,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author Callum Peel
  */
-public class BackEnd {
+public class BackEnd implements Serializable {
 
     protected ArrayList<Customer> customers;
     protected ArrayList<Supplement> supplements;
@@ -27,14 +30,15 @@ public class BackEnd {
     protected BorderPane createPane;
     protected BorderPane editPane;
     protected FlowPane topPane;
-    protected VBox viewLeftPane, viewCenterPane, viewRightPane;
+    protected MyVBox viewLeftPane, viewCenterPane, viewRightPane;
 
     /**
      * Constructs and initializes a Back End.
+     *
      * @param window
      * @throws java.io.IOException
      */
-    public BackEnd(Stage window) throws IOException {
+    public BackEnd(Stage window) throws IOException, FileNotFoundException, ClassNotFoundException {
         this.customers = new ArrayList<Customer>();
         this.supplements = new ArrayList<Supplement>();
         this.magazines = new ArrayList<Magazine>();
@@ -45,10 +49,11 @@ public class BackEnd {
         this.stage = window;
         buildDatabase();
         try {
-        writeToFile(customers.get(0));
-        } catch (IOException e){
+            writeToFile();
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        readFile();
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -95,15 +100,15 @@ public class BackEnd {
         return topPane;
     }
 
-    public VBox getViewLeftPane() {
+    public MyVBox getViewLeftPane() {
         return viewLeftPane;
     }
 
-    public VBox getViewCenterPane() {
+    public MyVBox getViewCenterPane() {
         return viewCenterPane;
     }
 
-    public VBox getViewRightPane() {
+    public MyVBox getViewRightPane() {
         return viewRightPane;
     }
 
@@ -312,9 +317,15 @@ public class BackEnd {
         this.supplements.add(new Supplement(supplement));
     }
 
-    public void writeToFile(Customer c) throws IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("Customer.bin"));
-        outputStream.writeObject(c);
+    public void writeToFile() throws IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("backEnd.bin"));
+        outputStream.writeObject(this);
+    }
+
+    public void readFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("backEnd.bin"));
+        BackEnd newBackEnd = (BackEnd) inputStream.readObject();
+//        System.out.println(newBackEnd.customers.get(0).name + " read in");
     }
 
     private void buildDatabase() {
@@ -403,5 +414,4 @@ public class BackEnd {
 
     }
 
-    
 }

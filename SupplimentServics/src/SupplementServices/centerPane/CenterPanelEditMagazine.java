@@ -3,6 +3,7 @@ package SupplementServices.centerPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
+import SupplementServices.MyVBox;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
@@ -15,14 +16,14 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
 
     String initialName;
     Magazine oldMagazine, newMagazine;
-    VBox labels;
+    MyVBox labels;
 
     public CenterPanelEditMagazine(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.oldMagazine = this.backEnd.getMagazine(this.frontEnd.magazineSelected);
         this.initialName = oldMagazine.getName();
         cloneMagazine();
-        this.labels = new VBox();
+        this.labels = new MyVBox();
         setCenterPane();
     }
 
@@ -37,7 +38,7 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
     private void setCenterPane() {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
-        VBox content = this.newMagazine.getVBox(this.backEnd, supDrop, custDrop);
+        MyVBox content = this.newMagazine.getVBox(this.backEnd, supDrop, custDrop);
         Label magazine = new Label("Edit Magazine");
         magazine.setPadding(new Insets(15));
         magazine.setFont(new Font("Arial", 20));

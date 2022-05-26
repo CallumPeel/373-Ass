@@ -235,8 +235,8 @@ public class Customer implements Cloneable, Serializable {
         return suburbBox.getBox();
     }
 
-    public VBox getVBox(ChoiceBox<String> choice) {
-        return new VBox(
+    public MyVBox getVBox(ChoiceBox<String> choice) {
+        return new MyVBox(
                 this.getNameHBox(),
                 this.getEmailHBox(),
                 this.getAddressHBox(),
@@ -347,9 +347,9 @@ public class Customer implements Cloneable, Serializable {
         return supplementList;
     }
 
-    public VBox getDetails() {
+    public MyVBox getDetails() {
         Label customer = new Label("Customer");
-        VBox test = new VBox(customer);
+        MyVBox test = new MyVBox(customer);
         customer.setPadding(new Insets(15));
         customer.setFont(new Font("Arial", 20));
 

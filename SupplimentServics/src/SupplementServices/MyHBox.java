@@ -4,6 +4,7 @@
  */
 package SupplementServices;
 
+import java.io.Serializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,7 +17,15 @@ import javafx.scene.layout.HBox;
  *
  * @author callum
  */
-class MyHBox {
+class MyHBox  implements Serializable {
+
+    public MyHBox(HBox box, Label outputLabel, Button button, TextField inputText, ChoiceBox<String> choice) {
+        this.box = box;
+        this.outputLabel = outputLabel;
+        this.button = button;
+        this.inputText = inputText;
+        this.choice = choice;
+    }
 
     public HBox box;
     public Label outputLabel;

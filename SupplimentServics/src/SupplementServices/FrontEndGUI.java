@@ -20,7 +20,7 @@ public class FrontEndGUI {
     public TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
     public String customerSelected, supplementSelected, magazineSelected;
     protected int buttonWidth;
-    public VBox vbox;
+    public MyVBox vbox;
 
     public FrontEndGUI(BackEnd backEnd, int width, int height) {
         this.backEnd = backEnd;

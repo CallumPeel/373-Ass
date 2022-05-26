@@ -286,8 +286,8 @@ public class Magazine implements Cloneable, Serializable {
         return custBox.getBox();
     }
 
-    public VBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
-        return new VBox(
+    public MyVBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
+        return new MyVBox(
                 this.getNameHBox(),
                 this.getCostHBox(),
                 addSupDropDown(backEnd, supDrop),
@@ -297,9 +297,9 @@ public class Magazine implements Cloneable, Serializable {
         );
     }
 
-    public VBox getDetails() {
+    public MyVBox getDetails() {
         Label magazine = new Label("Magazine");
-        VBox test = new VBox(magazine);
+        MyVBox test = new MyVBox(magazine);
         magazine.setPadding(new Insets(15));
         magazine.setFont(new Font("Arial", 20));
 

@@ -1,8 +1,9 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import javafx.scene.layout.BorderPane;
 
-public class MyBPane extends BorderPane {
+public class MyBPane extends BorderPane implements Serializable  {
 
     protected BackEnd backEnd;
     protected FrontEndGUI frontEnd;

@@ -3,6 +3,7 @@ package SupplementServices.LeftPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyBPane;
+import SupplementServices.MyVBox;
 import SupplementServices.centerPane.CenterPanelViewSupplement;
 import SupplementServices.centerPane.CenterPanelViewCustomer;
 import javafx.geometry.Insets;
@@ -48,7 +49,7 @@ public class LeftPanel extends MyBPane {
 
                 }
         );
-        this.frontEnd.vbox = new VBox(customerLabel, this.frontEnd.customerTreeView, supplementLabel, this.frontEnd.supplementTreeView);
+        this.frontEnd.vbox = new MyVBox(customerLabel, this.frontEnd.customerTreeView, supplementLabel, this.frontEnd.supplementTreeView);
         this.frontEnd.vbox.setAlignment(Pos.CENTER);
         this.frontEnd.vbox.setMargin(this.frontEnd.customerTreeView, inset);
         this.frontEnd.vbox.setMargin(this.frontEnd.supplementTreeView, inset);

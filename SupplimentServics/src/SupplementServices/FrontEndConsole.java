@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Callum Peel
  */
-public class FrontEndConsole {
+public class FrontEndConsole implements Serializable{
 
     private BackEnd backEnd;
     private InputHandler IH;

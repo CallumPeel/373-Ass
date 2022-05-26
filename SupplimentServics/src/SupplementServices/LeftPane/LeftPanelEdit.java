@@ -2,6 +2,7 @@ package SupplementServices.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import SupplementServices.MyVBox;
 import SupplementServices.centerPane.CenterPanelDeleteSupplement;
 import SupplementServices.centerPane.CenterPanelNewSupplement;
 import SupplementServices.centerPane.CenterPanelEditSupplement;
@@ -95,7 +96,7 @@ public class LeftPanelEdit extends LeftPanel {
         );
         HBox topButtons = new HBox(newCustButton, deleteCustButton, editCustButton);
         HBox bottomButtons = new HBox(newSupButton, deleteSupButton, editSupButton);
-        this.frontEnd.vbox = new VBox(
+        this.frontEnd.vbox = new MyVBox(
                 topButtons,
                 this.frontEnd.customerTreeView,
                 bottomButtons,

@@ -1,12 +1,13 @@
 package SupplementServices;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  * Handles user input from the console.
  * @author Callum Peel
  */
-public class InputHandler {
+public class InputHandler implements Serializable {
 
     private static final Scanner kb = new Scanner(System.in);
 

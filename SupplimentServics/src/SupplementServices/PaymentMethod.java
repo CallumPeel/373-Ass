@@ -1,11 +1,13 @@
 package SupplementServices;
 
+import java.io.Serializable;
+
 /**
  * Contains payment details.
  * 
  * @author Callum Peel
  */
-public class PaymentMethod {
+public class PaymentMethod  implements Serializable {
 
     String bankName;
     Card card;

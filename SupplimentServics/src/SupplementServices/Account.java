@@ -1,10 +1,12 @@
 package SupplementServices;
 
+import java.io.Serializable;
+
 /**
  * Holds a customer's account details.
  * @author Callum Peel
  */
-public class Account {
+public class Account implements Serializable {
 
     String name;
     String accNum;
