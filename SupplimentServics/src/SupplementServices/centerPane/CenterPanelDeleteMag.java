@@ -7,6 +7,9 @@ package SupplementServices.centerPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -30,7 +33,11 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
         this.question = new Label("Delete Magazine?");
         this.yesButton = new Button("YES");
         this.yesButton.setOnAction(e -> {
-            onSaveChangesButtonClick();
+            try {
+                onSaveChangesButtonClick();
+            } catch (IOException ex) {
+                Logger.getLogger(CenterPanelDeleteMag.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println("Delete on\n");
         });
         this.noButton = new Button("NO");
@@ -55,7 +62,7 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveChangesButtonClick() {
+    public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on delete");
         try {
             this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magazineSelected));
@@ -63,6 +70,7 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
         }
+        this.backEnd.save();
         this.frontEnd.refresh();
     }
 

@@ -4,6 +4,7 @@ import SupplementServices.BackEnd;
 import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ChoiceBox;
@@ -45,11 +46,12 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveChangesButtonClick() {
-        System.out.println("Save Changes button clicked on edit");
+    public void onSaveChangesButtonClick() throws IOException {
+//        System.out.println("Save Changes button clicked on edit");
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
         this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
+        this.backEnd.save();
         this.frontEnd.refresh();
     }
 }

@@ -8,6 +8,7 @@ import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
 import SupplementServices.Supplement;
+import java.io.IOException;
 import javafx.scene.layout.VBox;
 
 /**
@@ -39,10 +40,11 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveChangesButtonClick() {
+    public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
         this.backEnd.getSupplements().add(this.supplement);
         this.frontEnd.setDefaultSelectedSupplement();
+        this.backEnd.save();
         this.frontEnd.refresh();
 
     }

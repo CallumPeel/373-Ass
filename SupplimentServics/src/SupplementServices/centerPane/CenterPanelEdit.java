@@ -2,6 +2,9 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -22,7 +25,11 @@ public class CenterPanelEdit extends CenterPanel {
     public void setBottomPane() {
         this.saveButton.setText("Commit Changes");
         this.saveButton.setOnAction(e -> {
-            onSaveChangesButtonClick();
+            try {
+                onSaveChangesButtonClick();
+            } catch (IOException ex) {
+                Logger.getLogger(CenterPanelEdit.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         this.saveButton.setMinWidth(this.buttonWidth);
 
@@ -35,8 +42,8 @@ public class CenterPanelEdit extends CenterPanel {
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
 
-    public void onSaveChangesButtonClick() {
-        System.out.println("Save Changes button clicked");
+    public void onSaveChangesButtonClick() throws IOException {
+        this.backEnd.save();
     }
 
     @Override

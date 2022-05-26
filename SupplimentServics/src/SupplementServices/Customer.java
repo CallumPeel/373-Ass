@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -110,7 +109,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
-        nameBox.setButtonName("Name");
+        nameBox.setButtonName("Set Name");
         nameBox.setLabelText(this.name);
         nameBox.button.setOnAction(
                 s -> {
@@ -129,7 +128,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox getPayerHBox() {
         MyHBox payerBox = new MyHBox();
-        payerBox.setButtonName("Payer Name");
+        payerBox.setButtonName("Set Payer Name");
         payerBox.setLabelText(this.payer);
         payerBox.button.setOnAction(
                 s -> {
@@ -148,7 +147,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox getEmailHBox() {
         MyHBox emailBox = new MyHBox();
-        emailBox.setButtonName("Email");
+        emailBox.setButtonName("Set Email");
         emailBox.setLabelText(this.email);
         emailBox.button.setOnAction(
                 s -> {
@@ -166,7 +165,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
-        addressNumberBox.setButtonName("Address Number");
+        addressNumberBox.setButtonName("Set Address Number");
         addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
         addressNumberBox.button.setOnAction(
                 s -> {
@@ -184,7 +183,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox getPostCodeHBox() {
         MyHBox postCodeBox = new MyHBox();
-        postCodeBox.setButtonName("Post Code");
+        postCodeBox.setButtonName("Set Post Code");
         postCodeBox.setLabelText(Integer.toString(this.address.postcode));
         postCodeBox.button.setOnAction(
                 s -> {
@@ -202,7 +201,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox streetNameHBox() {
         MyHBox streetNameBox = new MyHBox();
-        streetNameBox.setButtonName("Street Name");
+        streetNameBox.setButtonName("Set Street Name");
         streetNameBox.setLabelText(this.address.streetName);
         streetNameBox.button.setOnAction(
                 s -> {
@@ -220,7 +219,7 @@ public class Customer implements Cloneable, Serializable {
 
     public HBox suburbBoxHBox() {
         MyHBox suburbBox = new MyHBox();
-        suburbBox.setButtonName("Suburb Name");
+        suburbBox.setButtonName("Set Suburb Name");
         suburbBox.setLabelText(this.address.suburb);
         suburbBox.button.setOnAction(
                 s -> {
@@ -237,21 +236,21 @@ public class Customer implements Cloneable, Serializable {
     }
 
     public HBox dropDown(ChoiceBox<String> choice) {
-        MyHBox suburbBox = new MyHBox(choice);
-        suburbBox.setButtonName("Set");
-        suburbBox.setLabelText(this.payer);
-        suburbBox.button.setOnAction(
+        MyHBox payerBox = new MyHBox(choice);
+        payerBox.setButtonName("Set Paying Customer");
+        payerBox.setLabelText(this.payer);
+        payerBox.button.setOnAction(
                 s -> {
                     try {
-                        this.payer = suburbBox.choice.getValue();
-                        suburbBox.outputLabel.setText(this.payer);
+                        this.payer = payerBox.choice.getValue();
+                        payerBox.outputLabel.setText(this.payer);
                         System.out.println("Payer changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
                 });
-        suburbBox.formatBox();
-        return suburbBox.getBox();
+        payerBox.formatBox();
+        return payerBox.getBox();
     }
 
     public MyVBox getVBox(ChoiceBox<String> choice) {

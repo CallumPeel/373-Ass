@@ -7,12 +7,14 @@ package SupplementServices.centerPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  *
@@ -30,7 +32,11 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
         this.question = new Label("Delete Supplement?");
         this.yesButton = new Button("YES");
         this.yesButton.setOnAction(e -> {
-            saveChange();
+            try {
+                saveChange();
+            } catch (IOException ex) {
+                Logger.getLogger(CenterPanelDeleteSupplement.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println("Delete on\n");
         });
         this.noButton = new Button("NO");
@@ -53,7 +59,7 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
         this.centerSectionPane.setCenter(this.mainBox);
     }
 
-    private void saveChange() {
+    private void saveChange() throws IOException {
         System.out.println("Save button clicked on delete");
         try {
             this.backEnd.removeSupplement(this.backEnd.getSupplement(this.frontEnd.supplementSelected));
@@ -61,6 +67,7 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
         }
+        this.backEnd.save();
         this.frontEnd.refresh();
     }
 
@@ -75,9 +82,9 @@ public class CenterPanelDeleteSupplement extends CenterPanelEdit {
         }
         this.frontEnd.refresh();
     }
-    
+
     @Override
     public void setBottomPane() {
-        
+
     }
 }

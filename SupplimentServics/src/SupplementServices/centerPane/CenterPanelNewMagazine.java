@@ -9,6 +9,7 @@ import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
 import SupplementServices.MyVBox;
+import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -49,10 +50,11 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveChangesButtonClick() {
+    public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
         this.backEnd.addMagazine(this.magazine);
         this.frontEnd.setDefaultSelectedMagazine();
+                this.backEnd.save();
         this.frontEnd.refresh();
     }
 

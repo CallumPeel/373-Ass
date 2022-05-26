@@ -4,6 +4,7 @@ import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
 import SupplementServices.MyVBox;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
@@ -48,11 +49,12 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
     }
 
     @Override
-    public void onSaveChangesButtonClick() {
+    public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save Changes button clicked on edit");
         int indexOfMagazineToChange = this.backEnd.getMags().indexOf(this.backEnd.getMagazine(initialName));
         this.backEnd.getMags().set(indexOfMagazineToChange, this.newMagazine);
         this.frontEnd.setDefaultSelectedCustomer();
+        this.backEnd.save();
         this.frontEnd.refresh();
     }
 
