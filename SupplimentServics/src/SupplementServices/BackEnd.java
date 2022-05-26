@@ -317,17 +317,17 @@ public class BackEnd implements Serializable {
         this.supplements.add(new Supplement(supplement));
     }
 
-    public void writeToFile() throws IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("backEnd.bin"));
-        outputStream.writeObject(this);
+    public void writeToFile() throws FileNotFoundException, IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("CustomerList.bin"));
+        outputStream.writeObject(this.customers);
     }
-
+    
     public void readFile() throws FileNotFoundException, IOException, ClassNotFoundException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("backEnd.bin"));
-        BackEnd newBackEnd = (BackEnd) inputStream.readObject();
-//        System.out.println(newBackEnd.customers.get(0).name + " read in");
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("CustomerList.bin"));
+        ArrayList<Customer> newCustomers  = ((ArrayList<Customer>) inputStream.readObject());
+        System.out.println(newCustomers.get(0).name + " read in");
+        newCustomers.forEach(result -> System.out.println(result.name));  
     }
-
     private void buildDatabase() {
         // Build suppliment database.
         addSupplement(new Supplement("One", 2.4));
