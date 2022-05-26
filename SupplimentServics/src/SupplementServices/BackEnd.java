@@ -17,7 +17,7 @@ public class BackEnd {
 
     protected ArrayList<Customer> customers;
     protected ArrayList<Supplement> supplements;
-    protected ArrayList<Magazine> mags;
+    protected ArrayList<Magazine> magazines;
     protected Stage stage;
     protected Scene vScene, cScene, eScene;
     protected BorderPane viewPane;
@@ -35,7 +35,7 @@ public class BackEnd {
     }
 
     public ArrayList<Magazine> getMags() {
-        return mags;
+        return magazines;
     }
 
     public Stage getStage() {
@@ -88,7 +88,7 @@ public class BackEnd {
     public BackEnd(Stage window) {
         this.customers = new ArrayList<Customer>();
         this.supplements = new ArrayList<Supplement>();
-        this.mags = new ArrayList<Magazine>();
+        this.magazines = new ArrayList<Magazine>();
 
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
@@ -120,7 +120,7 @@ public class BackEnd {
 
     public Magazine getMagazine(String name) {
         if (getMagazineIndex(name) >= 0) {
-            return mags.get(getMagazineIndex(name));
+            return magazines.get(getMagazineIndex(name));
         }
         return null;
     }
@@ -130,7 +130,7 @@ public class BackEnd {
     }
 
     protected String getMagName(int index) {
-        return mags.get(index).name;
+        return magazines.get(index).name;
     }
 
     protected String getSupName(int index) {
@@ -146,7 +146,7 @@ public class BackEnd {
     }
 
     protected int getNumMags() {
-        return mags.size();
+        return magazines.size();
     }
 
     public ChoiceBox<String> getPayingCustomerList() {
@@ -172,6 +172,14 @@ public class BackEnd {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.customers.size(); i++) {
             choice.getItems().add(this.customers.get(i).name);
+        }
+        return choice;
+    }
+
+    public ChoiceBox<String> getMagazineList() {
+        ChoiceBox<String> choice = new ChoiceBox();
+        for (int i = 0; i < this.magazines.size(); i++) {
+            choice.getItems().add(this.magazines.get(i).name);
         }
         return choice;
     }
@@ -203,14 +211,14 @@ public class BackEnd {
     public void removeMagazine(String name) {
         if (getMagazine(name) != null) {
             System.out.println("Magazine Removed.\n");
-            mags.remove(getMagazineIndex(name));
+            magazines.remove(getMagazineIndex(name));
         } else {
             System.out.println("Magazine not found.\n");
         }
     }
 
     public void removeMagazine(Magazine mag) {
-        this.mags.remove(mag);
+        this.magazines.remove(mag);
     }
 
     /**
@@ -238,7 +246,7 @@ public class BackEnd {
     private int getMagazineIndex(String name) {
         int counter = 0;
         int index = -1;
-        for (Magazine c : this.mags) {
+        for (Magazine c : this.magazines) {
             if (c.getName().equalsIgnoreCase(name)) {
                 index = counter;
             }
@@ -273,11 +281,11 @@ public class BackEnd {
     }
 
     public void addMagazine(Magazine mag) {
-        this.mags.add(mag);
+        this.magazines.add(mag);
     }
 
     public void addMagazine(String mag) {
-        this.mags.add(new Magazine(mag));
+        this.magazines.add(new Magazine(mag));
     }
 
     /**

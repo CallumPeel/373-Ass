@@ -30,7 +30,7 @@ public class FrontEndGUI {
         this.buttonWidth = 150;
         this.customerSelected = this.backEnd.customers.get(0).name;
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
-        this.magazineSelected = this.backEnd.mags.get(0).getName();
+        this.magazineSelected = this.backEnd.magazines.get(0).getName();
         viewMode();
     }
 
@@ -86,7 +86,7 @@ public class FrontEndGUI {
     }
 
     public void setDefaultSelectedMagazine() {
-        this.magazineSelected = this.backEnd.mags.get(0).name;
+        this.magazineSelected = this.backEnd.magazines.get(0).name;
     }
 
     public void viewMode() {

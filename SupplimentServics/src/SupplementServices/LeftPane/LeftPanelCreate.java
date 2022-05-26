@@ -4,7 +4,7 @@ import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.centerPane.CenterPanelDeleteMag;
 import SupplementServices.centerPane.CenterPanelEditMagazine;
-import SupplementServices.centerPane.CenterPanelViewCustomer;
+import SupplementServices.centerPane.CenterPanelNewMagazine;
 import SupplementServices.centerPane.CenterPanelViewMagazine;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -85,7 +85,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
     }
 
     public void onNewButtonClick() {
-//        new CenterPanelNewMag(this.backEnd, this.frontEnd);
+        new CenterPanelNewMagazine(this.backEnd, this.frontEnd);
     }
 
     public void onEditButtonClick() {
