@@ -116,6 +116,8 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.name = nameBox.inputText.getText();
                         nameBox.outputLabel.setText(this.name);
+                        // can't add payee to payer.
+                        // THINK!!!
                         System.out.println("Name changed");
 
                     } catch (Exception e) {
@@ -396,4 +398,8 @@ public class Customer implements Cloneable, Serializable {
         return test;
     }
 
+    public void setAssociatedCustomerListToNull() {
+    }
+    public void addAssociatedCustomer(Customer associateCustomer) {
+    }
 }

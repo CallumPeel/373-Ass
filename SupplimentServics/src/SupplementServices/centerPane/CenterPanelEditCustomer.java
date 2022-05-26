@@ -7,10 +7,7 @@ import SupplementServices.MyVBox;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.text.Font;
 
 public class CenterPanelEditCustomer extends CenterPanelEdit {
 

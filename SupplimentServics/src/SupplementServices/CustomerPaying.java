@@ -370,4 +370,13 @@ public class CustomerPaying extends Customer {
                 getAccountBSBHBox()
         );
     }
+
+    @Override
+    public void setAssociatedCustomerListToNull() {
+        this.associatedCustomers = new ArrayList<Customer>();
+    }
+    
+    public void addAssociatedCustomer(Customer associateCustomer) {
+        this.associatedCustomers.add(associateCustomer);
+    }
 }

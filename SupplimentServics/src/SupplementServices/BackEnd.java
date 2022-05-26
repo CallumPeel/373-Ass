@@ -48,18 +48,17 @@ public class BackEnd implements Serializable {
         this.editPane = new BorderPane();
         this.stage = window;
 
-        buildFullDatabase();
-        saveCustomers();
-        saveSupplements();
-        saveMagazines();
-
-//        loadCustomers();
-//        loadSupplements();
-//        loadMagazines();
-
+//        buildFullDatabase();
 //        saveCustomers();
 //        saveSupplements();
 //        saveMagazines();
+        loadCustomers();
+        loadSupplements();
+        loadMagazines();
+
+        saveCustomers();
+        saveSupplements();
+        saveMagazines();
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -366,6 +365,7 @@ public class BackEnd implements Serializable {
     }
 
     public void save() throws IOException {
+        setAssociatedCustomerLists();
         saveCustomers();
         saveMagazines();
         saveSupplements();
@@ -455,4 +455,16 @@ public class BackEnd implements Serializable {
         this.addMagazine(new Magazine("Some mag", 10, supplementList3, customerList3));
     }
 
+    public void setAssociatedCustomerLists() {
+        for (int i = 0; i < this.getNumCust(); i++) {
+            this.customers.get(i).setAssociatedCustomerListToNull();
+        }
+        for (int i = 0; i < this.getNumCust(); i++) {
+            try {
+                getCustomer(this.customers.get(i).payer).addAssociatedCustomer(this.customers.get(i));
+            } catch (Exception e) {
+                System.out.println("Payer not found.");
+            }
+        }
+    }
 }
