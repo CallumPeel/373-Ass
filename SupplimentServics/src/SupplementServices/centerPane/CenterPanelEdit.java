@@ -48,7 +48,7 @@ public class CenterPanelEdit extends CenterPanel {
 
     @Override
     public void setPane() {
-        this.centerSectionPane.setPadding(new Insets(25, 0, 0, 50));
+        this.centerSectionPane.setPadding(new Insets(25, 0, 0, 15));
         this.backEnd.getEditPane().setCenter(this.centerSectionPane);
     }
 }
