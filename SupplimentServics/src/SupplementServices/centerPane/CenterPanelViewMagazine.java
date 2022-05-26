@@ -21,7 +21,6 @@ public class CenterPanelViewMagazine extends CenterPanel {
     }
 
     private void addTreeView() {
-        VBox v = this.backEnd.getMagazine(this.frontEnd.magazineSelected).getDetails();
         VBox magazineBreakdownVBox = new VBox(this.backEnd.getMagazine(this.frontEnd.magazineSelected).getDetails());
         this.centerSectionPane.setCenter(magazineBreakdownVBox);
         this.centerSectionPane.setBottom(this.centerBottomPane);

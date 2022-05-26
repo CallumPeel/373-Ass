@@ -7,7 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class CenterPanelEditMagazine extends CenterPanelEdit {
 
@@ -36,6 +38,10 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
         VBox content = this.newMagazine.getVBox(this.backEnd, supDrop, custDrop);
+        Label magazine = new Label("Edit Magazine");
+        magazine.setPadding(new Insets(15));
+        magazine.setFont(new Font("Arial", 20));
+        content.getChildren().add(0, magazine);
         this.centerSectionPane.setCenter(content);
         setPane();
     }

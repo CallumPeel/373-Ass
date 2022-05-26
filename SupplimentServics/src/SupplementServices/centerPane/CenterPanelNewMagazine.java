@@ -10,7 +10,9 @@ import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  *
@@ -32,6 +34,10 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
         VBox content = this.magazine.getVBox(this.backEnd, supDrop, custDrop);
+        Label magazine = new Label("Create New Magazine");
+        magazine.setPadding(new Insets(15));
+        magazine.setFont(new Font("Arial", 20));
+        content.getChildren().add(0, magazine);
         this.centerSectionPane.setCenter(content);
         setPane();
     }
