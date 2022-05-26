@@ -47,16 +47,16 @@ public class BackEnd implements Serializable {
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
         this.stage = window;
-        buildDatabase();
-        
-        saveCustomers();
-        loadCustomers();
 
+//        saveCustomers();
+        loadCustomers();
+        buildDatabase();
 //        saveSupplements();
 //        loadSupplements();
 //
-        saveMagazines();
+//        saveMagazines();
         loadMagazines();
+
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -327,7 +327,9 @@ public class BackEnd implements Serializable {
 
     public void loadCustomers() throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("Customers.bin"));
-        ArrayList<Customer> newCustomers = ((ArrayList<Customer>) inputStream.readObject());
+        ArrayList<Customer> newCustomers = new ArrayList<Customer>();
+        newCustomers = ((ArrayList<Customer>) inputStream.readObject());
+        this.customers = newCustomers;
         System.out.println("Loading Customers...");
     }
 
@@ -339,7 +341,7 @@ public class BackEnd implements Serializable {
     public void loadMagazines() throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("magazines.bin"));
         ArrayList<Magazine> newMagazines = ((ArrayList<Magazine>) inputStream.readObject());
-                System.out.println("Loading Magazines...");
+        System.out.println("Loading Magazines...");
 //        newMagazines.forEach(result -> System.out.println(result.name));
     }
 
@@ -371,13 +373,12 @@ public class BackEnd implements Serializable {
         supplementList4.add(this.supplements.get(5));
 
         // Add standard customers
-        addCustomer(new Customer("Callum", "callum@gmail.com", new Address(), supplementList1));
-        addCustomer(new Customer("Maddie", "Maddie@gmail.com", new Address(), supplementList2));
-        addCustomer(new Customer("Dom", "Dom@gmail.com", new Address(), supplementList3));
-        addCustomer(new Customer("Tim", "Tim@gmail.com", new Address(), supplementList4));
-        addCustomer(new Customer("Sally", "Sally@gmail.com", new Address(), supplementList2));
-        addCustomer(new Customer("Fin", "Fin@gmail.com", new Address(), supplementList4));
-
+//        addCustomer(new Customer("Callum", "callum@gmail.com", new Address(), supplementList1));
+//        addCustomer(new Customer("Maddie", "Maddie@gmail.com", new Address(), supplementList2));
+//        addCustomer(new Customer("Dom", "Dom@gmail.com", new Address(), supplementList3));
+//        addCustomer(new Customer("Tim", "Tim@gmail.com", new Address(), supplementList4));
+//        addCustomer(new Customer("Sally", "Sally@gmail.com", new Address(), supplementList2));
+//        addCustomer(new Customer("Fin", "Fin@gmail.com", new Address(), supplementList4));
         // Create lists of associated customers
         ArrayList<Customer> customerList1 = new ArrayList<Customer>();
         customerList1.add(this.customers.get(0));
