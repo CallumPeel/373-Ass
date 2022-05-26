@@ -200,7 +200,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getBankNameHBox() {
         MyHBox bankNameBox = new MyHBox();
-        bankNameBox.setButtonName("Bank Name");
+        bankNameBox.setButtonName("Set Bank Name");
         bankNameBox.setLabelText(this.paymentMethod.bankName);
         bankNameBox.button.setOnAction(
                 s -> {
@@ -219,7 +219,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getCardNameHBox() {
         MyHBox bankNameBox = new MyHBox();
-        bankNameBox.setButtonName("Card Name");
+        bankNameBox.setButtonName("Set Card Name");
         bankNameBox.setLabelText(this.paymentMethod.card.name);
         bankNameBox.button.setOnAction(
                 s -> {
@@ -238,7 +238,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getCardNumberHBox() {
         MyHBox bankNameBox = new MyHBox();
-        bankNameBox.setButtonName("Card Number");
+        bankNameBox.setButtonName("Set Card Number");
         bankNameBox.setLabelText(this.paymentMethod.card.cardNumber);
         bankNameBox.button.setOnAction(
                 s -> {
@@ -257,7 +257,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getCardExpHBox() {
         MyHBox bankNameBox = new MyHBox();
-        bankNameBox.setButtonName("Card Expiry");
+        bankNameBox.setButtonName("Set Card Expiry");
         bankNameBox.setLabelText(this.paymentMethod.card.exp);
         bankNameBox.button.setOnAction(
                 s -> {
@@ -276,7 +276,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getCardCVVHBox() {
         MyHBox cvvBox = new MyHBox();
-        cvvBox.setButtonName("Card CVV");
+        cvvBox.setButtonName("Set Card CVV");
         cvvBox.setLabelText(Integer.toString(this.paymentMethod.card.cvv));
         cvvBox.button.setOnAction(
                 s -> {
@@ -294,7 +294,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getAccountNameHBox() {
         MyHBox accNameBox = new MyHBox();
-        accNameBox.setButtonName("Account Name");
+        accNameBox.setButtonName("Set Account Name");
         accNameBox.setLabelText(this.paymentMethod.account.name);
         accNameBox.button.setOnAction(
                 s -> {
@@ -313,7 +313,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getAccountNumHBox() {
         MyHBox accNameBox = new MyHBox();
-        accNameBox.setButtonName("Account Num");
+        accNameBox.setButtonName("Set Account Num");
         accNameBox.setLabelText(this.paymentMethod.account.accNum);
         accNameBox.button.setOnAction(
                 s -> {
@@ -332,7 +332,7 @@ public class CustomerPaying extends Customer {
 
     public HBox getAccountBSBHBox() {
         MyHBox accNameBox = new MyHBox();
-        accNameBox.setButtonName("Account BSB");
+        accNameBox.setButtonName("Set Account BSB");
         accNameBox.setLabelText(this.paymentMethod.account.BSB);
         accNameBox.button.setOnAction(
                 s -> {

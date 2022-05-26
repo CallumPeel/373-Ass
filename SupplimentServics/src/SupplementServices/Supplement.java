@@ -101,7 +101,7 @@ public class Supplement implements Cloneable, Serializable {
     // implement for sups
     private HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
-        nameBox.setButtonName("Name");
+        nameBox.setButtonName("Set Name");
         nameBox.setLabelText(this.name);
         nameBox.button.setOnAction(
                 s -> {
@@ -120,14 +120,14 @@ public class Supplement implements Cloneable, Serializable {
 
     private HBox getCostHBox() {
         MyHBox costBox = new MyHBox();
-        costBox.setButtonName("Post Code");
-        costBox.setLabelText(Double.toString(this.cost));
+        costBox.setButtonName("Set Cost");
+        costBox.setLabelText("$" + String.format("%.2f", this.cost));
         costBox.button.setOnAction(
                 s -> {
                     try {
                         this.cost = Double.parseDouble(costBox.inputText.getText());
-                        costBox.outputLabel.setText(Double.toString(this.cost));
-                        System.out.println("Post Code changed");
+                        costBox.outputLabel.setText("$" + String.format("%.2f", this.getCost()));
+                        System.out.println("Cost changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
