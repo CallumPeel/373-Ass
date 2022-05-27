@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
@@ -47,18 +48,20 @@ public class BackEnd implements Serializable {
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
         this.stage = window;
-
+//        load();
 //        buildFullDatabase();
 //        saveCustomers();
 //        saveSupplements();
 //        saveMagazines();
-        loadCustomers();
-        loadSupplements();
-        loadMagazines();
+//        loadCustomers();
+//        loadSupplements();
+//        loadMagazines();
 
-        saveCustomers();
-        saveSupplements();
-        saveMagazines();
+//        saveCustomers();
+//        saveSupplements();
+//        saveMagazines();
+//        load();
+//        saveAs();
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -323,7 +326,6 @@ public class BackEnd implements Serializable {
     }
 
     private void loadCustomers() throws FileNotFoundException, IOException, ClassNotFoundException {
-        // loads in customers...needs to load in paying customers??? wait maybe not
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("Customers.bin"));
         ArrayList<Customer> newCustomers = new ArrayList<Customer>();
         newCustomers = ((ArrayList<Customer>) inputStream.readObject());
@@ -466,5 +468,51 @@ public class BackEnd implements Serializable {
                 System.out.println("Payer not found.");
             }
         }
+    }
+
+    private void saveAs() throws FileNotFoundException, IOException {
+        ArrayList<Object> objects = new ArrayList<>();
+        for (int i = 0; i < customers.size(); i++) {
+            objects.add(customers.get(i));
+        }
+        for (int i = 0; i < supplements.size(); i++) {
+            objects.add(supplements.get(i));
+        }
+        for (int i = 0; i < magazines.size(); i++) {
+            objects.add(magazines.get(i));
+        }
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("all.bin"));
+        outputStream.writeObject(objects);
+    }
+
+    private void load() throws FileNotFoundException, IOException, ClassNotFoundException {
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream("all.bin"));
+        List<Object> input = (List<Object>) is.readObject();
+        List<Object> checkList = new ArrayList<>();
+        // this will contain the list of the objects
+        for (Object obj : input) {
+            checkList.add(obj.getClass().getSimpleName());
+            if (obj instanceof Customer && !(obj instanceof CustomerPaying)) {
+                Customer newCust = (Customer) obj;
+                this.customers.add(newCust);
+            }
+            if (obj instanceof CustomerPaying) {
+                CustomerPaying newCustPaying = (CustomerPaying) obj;
+                this.customers.add(newCustPaying);
+            }
+            if (obj instanceof Supplement) {
+                Supplement newSup = (Supplement) obj;
+                this.supplements.add(newSup);
+            }
+            if (obj instanceof Magazine) {
+                Magazine newMag = (Magazine) obj;
+                this.magazines.add(newMag);
+            }
+        }
+        System.out.println(checkList);
+
+        is.close();
+//        System.out.println("Loading Magazines...");
+//        newMagazines.forEach(result -> System.out.println(result.name));
     }
 }
