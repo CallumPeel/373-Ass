@@ -48,7 +48,8 @@ public class BackEnd implements Serializable {
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
         this.stage = window;
-//        load();
+        load();
+        save();
 //        buildFullDatabase();
 //        saveCustomers();
 //        saveSupplements();
@@ -325,32 +326,6 @@ public class BackEnd implements Serializable {
         this.supplements.add(new Supplement(supplement));
     }
 
-    private void loadCustomers() throws FileNotFoundException, IOException, ClassNotFoundException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("Customers.bin"));
-        ArrayList<Customer> newCustomers = new ArrayList<Customer>();
-        newCustomers = ((ArrayList<Customer>) inputStream.readObject());
-        this.customers = newCustomers;
-        System.out.println("Loading Customers...");
-    }
-
-    private void loadMagazines() throws FileNotFoundException, IOException, ClassNotFoundException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("magazines.bin"));
-        ArrayList<Magazine> newMagazines = new ArrayList<Magazine>();
-        newMagazines = ((ArrayList<Magazine>) inputStream.readObject());
-        this.magazines = newMagazines;
-        System.out.println("Loading Magazines...");
-//        newMagazines.forEach(result -> System.out.println(result.name));
-    }
-
-    private void loadSupplements() throws FileNotFoundException, IOException, ClassNotFoundException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("supplements.bin"));
-        ArrayList<Supplement> newSupplements = new ArrayList<Supplement>();
-        newSupplements = ((ArrayList<Supplement>) inputStream.readObject());
-        this.supplements = newSupplements;
-        System.out.println("Loading Supplements...");
-//        newSupplements.forEach(result -> System.out.println(result.name));
-    }
-
     private void saveCustomers() throws FileNotFoundException, IOException {
         ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("Customers.bin"));
         outputStream.writeObject(this.customers);
@@ -365,13 +340,13 @@ public class BackEnd implements Serializable {
         ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("supplements.bin"));
         outputStream.writeObject(this.supplements);
     }
-
-    public void save() throws IOException {
-        setAssociatedCustomerLists();
-        saveCustomers();
-        saveMagazines();
-        saveSupplements();
-    }
+//
+//    public void save() throws IOException {
+//        setAssociatedCustomerLists();
+//        saveCustomers();
+//        saveMagazines();
+//        saveSupplements();
+//    }
 
     private void buildFullDatabase() {
         // Build suppliment database.
@@ -470,7 +445,8 @@ public class BackEnd implements Serializable {
         }
     }
 
-    private void saveAs() throws FileNotFoundException, IOException {
+    public void save() throws FileNotFoundException, IOException {
+        setAssociatedCustomerLists();
         ArrayList<Object> objects = new ArrayList<>();
         for (int i = 0; i < customers.size(); i++) {
             objects.add(customers.get(i));
