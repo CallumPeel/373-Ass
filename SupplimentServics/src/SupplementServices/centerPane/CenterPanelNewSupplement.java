@@ -40,12 +40,20 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
     }
 
     @Override
+    public void onSaveAsChangesButtonClick() throws IOException {
+        System.out.println("Save button clicked on new");
+        this.backEnd.getSupplements().add(this.supplement);
+        this.frontEnd.setDefaultSelectedSupplement();
+        this.backEnd.save(getDirectory());
+        this.frontEnd.refresh();
+    }
+
+    @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
         this.backEnd.getSupplements().add(this.supplement);
         this.frontEnd.setDefaultSelectedSupplement();
         this.backEnd.save();
         this.frontEnd.refresh();
-
     }
 }

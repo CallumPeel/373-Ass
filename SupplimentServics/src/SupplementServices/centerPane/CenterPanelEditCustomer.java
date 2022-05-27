@@ -39,12 +39,11 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         setPane();
     }
 
+    @Override
     public void onSaveAsChangesButtonClick() throws IOException {
-//        this.backEnd.setFileName(getDirectory());
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
         this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
-//        this.backEnd.save();
         this.backEnd.save(getDirectory());
         this.frontEnd.refresh();
     }

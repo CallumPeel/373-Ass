@@ -47,7 +47,16 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         this.centerSectionPane.setCenter(content);
         setPane();
     }
-
+    @Override
+    public void onSaveAsChangesButtonClick() throws IOException {
+        System.out.println("Save Changes button clicked on edit");
+        int indexOfMagazineToChange = this.backEnd.getMags().indexOf(this.backEnd.getMagazine(initialName));
+        this.backEnd.getMags().set(indexOfMagazineToChange, this.newMagazine);
+        this.frontEnd.setDefaultSelectedCustomer();
+        this.backEnd.save(getDirectory());
+        this.frontEnd.refresh();
+    }
+    
     @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save Changes button clicked on edit");

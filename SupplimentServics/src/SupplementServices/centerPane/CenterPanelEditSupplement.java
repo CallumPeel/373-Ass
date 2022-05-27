@@ -44,6 +44,16 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
     }
 
     @Override
+    public void onSaveAsChangesButtonClick() throws IOException {
+        System.out.println("Save button clicked on edit");
+        int indexOfSupplementToChange = this.backEnd.getSupplements().indexOf(this.backEnd.getSupplement(initialName));
+        this.backEnd.getSupplements().set(indexOfSupplementToChange, this.newSupplement);
+        this.frontEnd.setDefaultSelectedSupplement();
+        this.backEnd.save(getDirectory());
+        this.frontEnd.refresh();
+    }
+
+    @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on edit");
         int indexOfSupplementToChange = this.backEnd.getSupplements().indexOf(this.backEnd.getSupplement(initialName));

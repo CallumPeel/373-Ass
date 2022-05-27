@@ -48,11 +48,20 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
     }
 
     @Override
+    public void onSaveAsChangesButtonClick() throws IOException {
+        System.out.println("Save button clicked on new");
+        this.backEnd.addMagazine(this.magazine);
+        this.frontEnd.setDefaultSelectedMagazine();
+        this.backEnd.save(getDirectory());
+        this.frontEnd.refresh();
+    }
+
+    @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
         this.backEnd.addMagazine(this.magazine);
         this.frontEnd.setDefaultSelectedMagazine();
-                this.backEnd.save();
+        this.backEnd.save();
         this.frontEnd.refresh();
     }
 

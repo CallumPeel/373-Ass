@@ -46,4 +46,13 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
         this.backEnd.save();
         this.frontEnd.refresh();
     }
+
+    @Override
+    public void onSaveAsChangesButtonClick() throws IOException {
+        System.out.println("Save button clicked on new");
+        this.backEnd.getCustomers().add(this.customer);
+        this.frontEnd.setDefaultSelectedCustomer();
+        this.backEnd.save(getDirectory());
+        this.frontEnd.refresh();
+    }
 }
