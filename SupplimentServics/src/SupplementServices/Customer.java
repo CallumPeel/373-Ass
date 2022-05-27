@@ -116,8 +116,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.name = nameBox.inputText.getText();
                         nameBox.outputLabel.setText(this.name);
-                        // can't add payee to payer.
-                        // THINK!!!
                         System.out.println("Name changed");
 
                     } catch (Exception e) {
@@ -126,25 +124,6 @@ public class Customer implements Cloneable, Serializable {
                 });
         nameBox.formatBox();
         return nameBox.getBox();
-    }
-
-    public HBox getPayerHBox() {
-        MyHBox payerBox = new MyHBox();
-        payerBox.setButtonName("Set Payer Name");
-        payerBox.setLabelText(this.payer);
-        payerBox.button.setOnAction(
-                s -> {
-                    try {
-                        this.payer = payerBox.inputText.getText();
-                        payerBox.outputLabel.setText(this.payer);
-                        System.out.println("Payer changed");
-
-                    } catch (Exception e) {
-                        System.out.println("Something Went Wrong...");
-                    }
-                });
-        payerBox.formatBox();
-        return payerBox.getBox();
     }
 
     public HBox getEmailHBox() {
@@ -244,6 +223,25 @@ public class Customer implements Cloneable, Serializable {
         return suburbBox.getBox();
     }
 
+//    public HBox getPayerHBox() {
+//        MyHBox payerBox = new MyHBox();
+//        payerBox.setButtonName("Set Payer Name");
+//        payerBox.setLabelText(this.payer);
+//        payerBox.button.setOnAction(
+//                s -> {
+//                    try {
+//                        this.payer = payerBox.inputText.getText();
+//                        payerBox.outputLabel.setText(this.payer);
+//                        System.out.println("Payer changed1");
+//
+//                    } catch (Exception e) {
+//                        System.out.println("Something Went Wrong...");
+//                    }
+//                });
+//        payerBox.formatBox();
+//        return payerBox.getBox();
+//    }
+
     public HBox dropDown(ChoiceBox<String> choice) {
         MyHBox payerBox = new MyHBox(choice);
         payerBox.setButtonName("Set Paying Customer");
@@ -253,7 +251,7 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.payer = payerBox.choice.getValue();
                         payerBox.outputLabel.setText(this.payer);
-                        System.out.println("Payer changed");
+                        System.out.println("Payer changed2");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -266,7 +264,6 @@ public class Customer implements Cloneable, Serializable {
         return new MyVBox(
                 getCustomerLabelVBox(),
                 getNameHBox(),
-                getPayerHBox(),
                 getEmailHBox(),
                 getAddressHBox(),
                 getPostCodeHBox(),

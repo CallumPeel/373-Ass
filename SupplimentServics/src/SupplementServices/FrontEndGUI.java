@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 
 public class FrontEndGUI {
 

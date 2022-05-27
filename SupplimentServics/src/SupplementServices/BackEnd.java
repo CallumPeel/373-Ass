@@ -32,6 +32,7 @@ public class BackEnd implements Serializable {
     protected BorderPane editPane;
     protected FlowPane topPane;
     protected MyVBox viewLeftPane, viewCenterPane, viewRightPane;
+    protected String fileName;
 
     /**
      * Constructs and initializes a Back End.
@@ -48,8 +49,10 @@ public class BackEnd implements Serializable {
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
         this.stage = window;
+//        this.fileName = "C:\\Repositories\\373-Ass\\SupplimentServics\\all.bin";
+        this.fileName = "ty.bin";
         load();
-        save();
+//        save();
 //        buildFullDatabase();
 //        saveCustomers();
 //        saveSupplements();
@@ -326,28 +329,6 @@ public class BackEnd implements Serializable {
         this.supplements.add(new Supplement(supplement));
     }
 
-    private void saveCustomers() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("Customers.bin"));
-        outputStream.writeObject(this.customers);
-    }
-
-    private void saveMagazines() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("magazines.bin"));
-        outputStream.writeObject(this.magazines);
-    }
-
-    private void saveSupplements() throws FileNotFoundException, IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("supplements.bin"));
-        outputStream.writeObject(this.supplements);
-    }
-//
-//    public void save() throws IOException {
-//        setAssociatedCustomerLists();
-//        saveCustomers();
-//        saveMagazines();
-//        saveSupplements();
-//    }
-
     private void buildFullDatabase() {
         // Build suppliment database.
         addSupplement(new Supplement("One", 2.4));
@@ -448,21 +429,44 @@ public class BackEnd implements Serializable {
     public void save() throws FileNotFoundException, IOException {
         setAssociatedCustomerLists();
         ArrayList<Object> objects = new ArrayList<>();
-        for (int i = 0; i < customers.size(); i++) {
-            objects.add(customers.get(i));
+        for (int i = 0; i < this.customers.size(); i++) {
+            objects.add(this.customers.get(i));
         }
-        for (int i = 0; i < supplements.size(); i++) {
-            objects.add(supplements.get(i));
+        for (int i = 0; i < this.supplements.size(); i++) {
+            objects.add(this.supplements.get(i));
         }
-        for (int i = 0; i < magazines.size(); i++) {
-            objects.add(magazines.get(i));
+        for (int i = 0; i < this.magazines.size(); i++) {
+            objects.add(this.magazines.get(i));
         }
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("all.bin"));
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(this.fileName));
         outputStream.writeObject(objects);
+        outputStream.close();
+    }
+
+    public void save(String fName) throws FileNotFoundException, IOException {
+        setAssociatedCustomerLists();
+        ArrayList<Object> objects = new ArrayList<>();
+        for (int i = 0; i < this.customers.size(); i++) {
+            objects.add(this.customers.get(i));
+            System.out.println(this.customers.get(i).name + " = PC = " + this.customers.get(i).payer);
+        }
+        for (int i = 0; i < this.supplements.size(); i++) {
+            objects.add(this.supplements.get(i));
+        }
+        for (int i = 0; i < this.magazines.size(); i++) {
+            objects.add(this.magazines.get(i));
+        }
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fName));
+        outputStream.writeObject(objects);
+        outputStream.close();
+    }
+
+    public void setFileName(String newfilename) {
+        this.fileName = newfilename;
     }
 
     private void load() throws FileNotFoundException, IOException, ClassNotFoundException {
-        ObjectInputStream is = new ObjectInputStream(new FileInputStream("all.bin"));
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(this.fileName));
         List<Object> input = (List<Object>) is.readObject();
         List<Object> checkList = new ArrayList<>();
         // this will contain the list of the objects
@@ -485,10 +489,7 @@ public class BackEnd implements Serializable {
                 this.magazines.add(newMag);
             }
         }
-        System.out.println(checkList);
-
         is.close();
-//        System.out.println("Loading Magazines...");
-//        newMagazines.forEach(result -> System.out.println(result.name));
     }
+
 }

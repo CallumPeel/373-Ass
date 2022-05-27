@@ -34,9 +34,19 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     private void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
-        MyVBox content = this.newCustomer.getVBox(choice);        
+        MyVBox content = this.newCustomer.getVBox(choice);
         this.centerSectionPane.setCenter(content);
         setPane();
+    }
+
+    public void onSaveAsChangesButtonClick() throws IOException {
+//        this.backEnd.setFileName(getDirectory());
+        int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
+        this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
+        this.frontEnd.setDefaultSelectedCustomer();
+//        this.backEnd.save();
+        this.backEnd.save(getDirectory());
+        this.frontEnd.refresh();
     }
 
     @Override

@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CenterPanelEdit extends CenterPanel {
 
@@ -35,6 +36,7 @@ public class CenterPanelEdit extends CenterPanel {
             }
         });
         this.saveButton.setMinWidth(this.buttonWidth);
+        
         this.saveAsButton.setMinWidth(this.buttonWidth);
         this.saveAsButton.setText("Save As");
         this.saveAsButton.setOnAction(e -> {
@@ -55,16 +57,28 @@ public class CenterPanelEdit extends CenterPanel {
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
 
-    public void onSaveAsChangesButtonClick() throws IOException {
-//        this.backEnd.save();
-        System.out.println("SAVE AS");
+    public String getDirectory() {
+        String fileName = "";
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File("."));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Binary Files", "bin");
+        fileChooser.setFileFilter(filter);
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
             System.out.println(file);
+            fileName = file.toString();
+            if (!fileName.endsWith("bin")) {
+                fileName += ".bin";
+            }
+            System.out.println(fileName);
         }
+        return fileName;
+    }
+
+    public void onSaveAsChangesButtonClick() throws IOException {
+//        this.backEnd.setFileName(getDirectory());
+        this.backEnd.save(getDirectory());
     }
 
     public void onSaveChangesButtonClick() throws IOException {
