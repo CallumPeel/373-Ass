@@ -49,23 +49,6 @@ public class BackEnd implements Serializable {
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
         this.stage = window;
-//        this.fileName = "C:\\Repositories\\373-Ass\\SupplimentServics\\all.bin";
-//        this.fileName = "working.bin";
-//        load();
-//        save();
-//        buildFullDatabase();
-//        saveCustomers();
-//        saveSupplements();
-//        saveMagazines();
-//        loadCustomers();
-//        loadSupplements();
-//        loadMagazines();
-
-//        saveCustomers();
-//        saveSupplements();
-//        saveMagazines();
-//        load();
-//        saveAs();
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -466,10 +449,10 @@ public class BackEnd implements Serializable {
     }
 
     void load() throws FileNotFoundException, IOException, ClassNotFoundException {
+        
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(this.fileName));
         List<Object> input = (List<Object>) is.readObject();
         List<Object> checkList = new ArrayList<>();
-        // this will contain the list of the objects
         for (Object obj : input) {
             checkList.add(obj.getClass().getSimpleName());
             if (obj instanceof Customer && !(obj instanceof CustomerPaying)) {
