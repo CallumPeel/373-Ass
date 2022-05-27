@@ -52,7 +52,7 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
         System.out.println("Save button clicked on new");
         this.backEnd.addMagazine(this.magazine);
         this.frontEnd.setDefaultSelectedMagazine();
-        this.backEnd.save(getDirectory());
+        this.backEnd.save(this.frontEnd.getDirectory());
         this.frontEnd.refresh();
     }
 

@@ -44,7 +44,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
         this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
-        this.backEnd.save(getDirectory());
+        this.backEnd.save(this.frontEnd.getDirectory());
         this.frontEnd.refresh();
     }
 

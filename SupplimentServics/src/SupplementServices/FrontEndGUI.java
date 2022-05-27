@@ -5,11 +5,18 @@ import SupplementServices.LeftPane.LeftPanelEdit;
 import SupplementServices.LeftPane.LeftPanelCreate;
 import SupplementServices.centerPane.CenterPanelViewCustomer;
 import SupplementServices.centerPane.CenterPanelEdit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FrontEndGUI {
 
@@ -21,12 +28,18 @@ public class FrontEndGUI {
     protected int buttonWidth;
     public MyVBox vbox;
 
-    public FrontEndGUI(BackEnd backEnd, int width, int height) {
+    public FrontEndGUI(BackEnd backEnd, int width, int height) throws IOException, FileNotFoundException {
         this.backEnd = backEnd;
         this.backEnd.stage.setTitle("Program");
         this.width = width;
         this.height = height;
         this.buttonWidth = 150;
+        this.backEnd.setFileName(getDirectory());
+        try {
+            this.backEnd.load();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.customerSelected = this.backEnd.customers.get(0).name;
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
         this.magazineSelected = this.backEnd.magazines.get(0).getName();
@@ -139,5 +152,24 @@ public class FrontEndGUI {
             this.backEnd.stage.setScene(this.backEnd.eScene);
             this.backEnd.stage.show();
         }
+    }
+
+    public String getDirectory() {
+        String fileName = "";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("."));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Binary Files", "bin");
+        fileChooser.setFileFilter(filter);
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            System.out.println(file);
+            fileName = file.toString();
+            if (!fileName.endsWith("bin")) {
+                fileName += ".bin";
+            }
+            System.out.println(fileName);
+        }
+        return fileName;
     }
 }

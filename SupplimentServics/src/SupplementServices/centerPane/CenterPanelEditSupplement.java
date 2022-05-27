@@ -7,7 +7,6 @@ import SupplementServices.Supplement;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.layout.VBox;
 
 public class CenterPanelEditSupplement extends CenterPanelEdit {
 
@@ -49,7 +48,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
         int indexOfSupplementToChange = this.backEnd.getSupplements().indexOf(this.backEnd.getSupplement(initialName));
         this.backEnd.getSupplements().set(indexOfSupplementToChange, this.newSupplement);
         this.frontEnd.setDefaultSelectedSupplement();
-        this.backEnd.save(getDirectory());
+        this.backEnd.save(this.frontEnd.getDirectory());
         this.frontEnd.refresh();
     }
 

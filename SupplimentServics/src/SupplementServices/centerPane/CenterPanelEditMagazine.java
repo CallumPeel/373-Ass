@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class CenterPanelEditMagazine extends CenterPanelEdit {
@@ -53,7 +52,7 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         int indexOfMagazineToChange = this.backEnd.getMags().indexOf(this.backEnd.getMagazine(initialName));
         this.backEnd.getMags().set(indexOfMagazineToChange, this.newMagazine);
         this.frontEnd.setDefaultSelectedCustomer();
-        this.backEnd.save(getDirectory());
+        this.backEnd.save(this.frontEnd.getDirectory());
         this.frontEnd.refresh();
     }
     

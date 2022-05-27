@@ -44,7 +44,7 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
         System.out.println("Save button clicked on new");
         this.backEnd.getSupplements().add(this.supplement);
         this.frontEnd.setDefaultSelectedSupplement();
-        this.backEnd.save(getDirectory());
+        this.backEnd.save(this.frontEnd.getDirectory());
         this.frontEnd.refresh();
     }
 

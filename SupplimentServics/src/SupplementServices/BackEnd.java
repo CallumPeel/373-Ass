@@ -50,8 +50,8 @@ public class BackEnd implements Serializable {
         this.editPane = new BorderPane();
         this.stage = window;
 //        this.fileName = "C:\\Repositories\\373-Ass\\SupplimentServics\\all.bin";
-        this.fileName = "working.bin";
-        load();
+//        this.fileName = "working.bin";
+//        load();
 //        save();
 //        buildFullDatabase();
 //        saveCustomers();
@@ -465,7 +465,7 @@ public class BackEnd implements Serializable {
         this.fileName = newfilename;
     }
 
-    private void load() throws FileNotFoundException, IOException, ClassNotFoundException {
+    void load() throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(this.fileName));
         List<Object> input = (List<Object>) is.readObject();
         List<Object> checkList = new ArrayList<>();
