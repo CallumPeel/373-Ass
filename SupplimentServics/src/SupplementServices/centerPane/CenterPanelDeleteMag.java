@@ -6,63 +6,20 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyVBox;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  *
  * @author callu
  */
-public class CenterPanelDeleteMag extends CenterPanelEdit {
-
-    MyVBox mainBox;
-    HBox buttons;
-    Label question;
-    Button yesButton, noButton;
+public class CenterPanelDeleteMag extends CenterPanelDelete {
 
     public CenterPanelDeleteMag(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.question = new Label("Delete Magazine?");
-        this.yesButton = new Button("YES");
-        this.yesButton.setOnAction(e -> {
-            try {
-                onSaveChangesButtonClick();
-            } catch (IOException ex) {
-                Logger.getLogger(CenterPanelDeleteMag.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println("Delete on\n");
-        });
-        this.noButton = new Button("NO");
-        this.noButton.setOnAction(e -> {
-            this.frontEnd.refresh();
-            System.out.println("Delete off\n");
-        });
-        this.buttons = new HBox(this.yesButton, this.noButton);
-        this.mainBox = new MyVBox(question, buttons);
-        this.buttons.setAlignment(Pos.CENTER);
-        this.buttons.setPadding(new Insets(20));
-        this.buttons.setSpacing(20);
-        this.mainBox.setAlignment(Pos.CENTER);
-
-        setCenter();
-        setPane();
     }
 
-    // use setpane instead
-    private void setCenter() {
-        this.centerSectionPane.setCenter(this.mainBox);
-    }
-
-    @Override
-    public void onSaveChangesButtonClick() throws IOException {
+    public void saveChange() throws IOException {
         System.out.println("Save button clicked on delete");
         try {
             this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magazineSelected));
@@ -76,12 +33,6 @@ public class CenterPanelDeleteMag extends CenterPanelEdit {
 
     @Override
     public void setPane() {
-        this.centerSectionPane.setPadding(new Insets(25, 0, 0, 50));
         this.backEnd.getCreatePane().setCenter(this.centerSectionPane);
-    }
-
-    @Override
-    public void setBottomPane() {
-
     }
 }
