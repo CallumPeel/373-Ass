@@ -41,10 +41,12 @@ public class BackEnd implements Serializable {
      * @throws java.io.IOException
      */
     public BackEnd(Stage window) throws IOException, FileNotFoundException, ClassNotFoundException {
+
+        this.fileName = "database";
+
         this.customers = new ArrayList<Customer>();
         this.supplements = new ArrayList<Supplement>();
         this.magazines = new ArrayList<Magazine>();
-
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
@@ -449,7 +451,7 @@ public class BackEnd implements Serializable {
     }
 
     void load() throws FileNotFoundException, IOException, ClassNotFoundException {
-        
+
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(this.fileName));
         List<Object> input = (List<Object>) is.readObject();
         List<Object> checkList = new ArrayList<>();
