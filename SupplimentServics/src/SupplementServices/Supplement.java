@@ -98,7 +98,6 @@ public class Supplement implements Cloneable, Serializable {
         return test;
     }
 
-    // implement for sups
     private HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Set Name");
@@ -108,8 +107,6 @@ public class Supplement implements Cloneable, Serializable {
                     try {
                         this.name = nameBox.inputText.getText();
                         nameBox.outputLabel.setText(this.name);
-                        System.out.println("Name changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -130,7 +127,6 @@ public class Supplement implements Cloneable, Serializable {
                     try {
                         this.cost = Double.parseDouble(costBox.inputText.getText());
                         costBox.outputLabel.setText("$" + String.format("%.2f", this.getCost()));
-                        System.out.println("Cost changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }

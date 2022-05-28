@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 public class TopPanel extends MyBPane {
 
     Label title;
-    Button cButton, eButton, vButton;
+    Button createButton, editButton, viewButton;
     int buttonWidth;
     Separator separator1;
     BorderPane topSectionPane;
@@ -21,9 +21,9 @@ public class TopPanel extends MyBPane {
         this.title = new Label("MAGAZINE SERVICES");
         this.title.setFont(new Font("Arial", 20));
         this.title.setPadding(new Insets(20));
-        this.cButton = new Button();
-        this.eButton = new Button();
-        this.vButton = new Button();
+        this.createButton = new Button();
+        this.editButton = new Button();
+        this.viewButton = new Button();
         this.buttonWidth = 150;
         this.separator1 = new Separator();
         this.topSectionPane = new BorderPane();
@@ -31,56 +31,36 @@ public class TopPanel extends MyBPane {
     }
 
     public void buildPane() {
-        vButton.setText("View Mode");
-        vButton.setOnAction(e -> {
-            onViewButtonClick();
-            System.out.println("View Mode Activated\n");
+        this.viewButton.setText("View Mode");
+        this.viewButton.setOnAction(e -> {
+            this.frontEnd.viewMode();
         });
-        cButton.setText("Create Mode");
-        cButton.setOnAction(e -> {
-            onCreateButtonClick();
-            System.out.println("Create Mode Activated\n");
+        this.createButton.setText("Create Mode");
+        this.createButton.setOnAction(e -> {
+            this.frontEnd.createMode();
         });
-        eButton.setText("Edit Mode");
-        eButton.setOnAction(e -> {
-            onEditButtonClick();
-            System.out.println("Edit Mode Activated\n");
+        this.editButton.setText("Edit Mode");
+        this.editButton.setOnAction(e -> {
+            this.frontEnd.editMode();
         });
-        vButton.setMinWidth(buttonWidth);
-        cButton.setMinWidth(buttonWidth);
-        eButton.setMinWidth(buttonWidth);
-
-        topSectionPane.setTop(title);
-        topSectionPane.setLeft(vButton);
-        topSectionPane.setCenter(cButton);
-        topSectionPane.setRight(eButton);
-        topSectionPane.setBottom(separator1);
-        topSectionPane.setAlignment(title, Pos.CENTER);
-        topSectionPane.setAlignment(vButton, Pos.CENTER);
-        topSectionPane.setAlignment(cButton, Pos.CENTER);
-        topSectionPane.setAlignment(eButton, Pos.CENTER);
-        topSectionPane.setMargin(title, new Insets(15, 0, 0, 0));
+        this.viewButton.setMinWidth(this.buttonWidth);
+        this.createButton.setMinWidth(this.buttonWidth);
+        this.editButton.setMinWidth(this.buttonWidth);
+        this.topSectionPane.setTop(this.title);
+        this.topSectionPane.setLeft(this.viewButton);
+        this.topSectionPane.setCenter(this.createButton);
+        this.topSectionPane.setRight(this.editButton);
+        this.topSectionPane.setBottom(this.separator1);
+        this.topSectionPane.setAlignment(this.title, Pos.CENTER);
+        this.topSectionPane.setAlignment(this.viewButton, Pos.CENTER);
+        this.topSectionPane.setAlignment(this.createButton, Pos.CENTER);
+        this.topSectionPane.setAlignment(this.editButton, Pos.CENTER);
+        this.topSectionPane.setMargin(this.title, new Insets(15, 0, 0, 0));
         Insets insets = new Insets(15, 50, 15, 50);
-        topSectionPane.setMargin(vButton, insets);
-        topSectionPane.setMargin(cButton, insets);
-        topSectionPane.setMargin(eButton, insets);
-        topSectionPane.setMargin(separator1, insets);
-        setPane();
-    }
-
-    public void onViewButtonClick() {
-        this.frontEnd.viewMode();
-    }
-
-    public void onCreateButtonClick() {
-        this.frontEnd.createMode();
-    }
-
-    public void onEditButtonClick() {
-        this.frontEnd.editMode();
-    }
-
-    private void setPane() {
+        this.topSectionPane.setMargin(this.viewButton, insets);
+        this.topSectionPane.setMargin(this.createButton, insets);
+        this.topSectionPane.setMargin(this.editButton, insets);
+        this.topSectionPane.setMargin(this.separator1, insets);
         if (this.frontEnd.isViewMode) {
             this.backEnd.viewPane.setTop(this.topSectionPane);
         }

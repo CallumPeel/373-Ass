@@ -40,21 +40,21 @@ public class Magazine implements Cloneable, Serializable {
         this.name = name;
         this.cost = cost;
         this.supplements = supplements;
-        this.customers = new ArrayList<Customer>();
+        this.customers = new ArrayList<>();
     }
 
     public Magazine(String name, double cost) {
         this.name = name;
         this.cost = cost;
-        this.supplements = new ArrayList<Supplement>();
-        this.customers = new ArrayList<Customer>();
+        this.supplements = new ArrayList<>();
+        this.customers = new ArrayList<>();
     }
 
     public Magazine(String mag) {
         this.name = mag;
         this.cost = -1;
-        this.supplements = new ArrayList<Supplement>();
-        this.customers = new ArrayList<Customer>();
+        this.supplements = new ArrayList<>();
+        this.customers = new ArrayList<>();
     }
 
     /**
@@ -63,8 +63,8 @@ public class Magazine implements Cloneable, Serializable {
     public Magazine() {
         this.name = "Defaut";
         this.cost = -1;
-        this.supplements = new ArrayList<Supplement>();
-        this.customers = new ArrayList<Customer>();
+        this.supplements = new ArrayList<>();
+        this.customers = new ArrayList<>();
     }
 
     @Override
@@ -73,11 +73,11 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public ArrayList<Customer> getCustomerSubscriptions() {
-        return customers;
+        return this.customers;
     }
 
     /**
@@ -96,19 +96,6 @@ public class Magazine implements Cloneable, Serializable {
      */
     public ArrayList<Supplement> getSupplements() {
         return this.supplements;
-    }
-
-    /**
-     * Calculates the total cost of a list of supplements.
-     *
-     * @return
-     */
-    private double getTotal() {
-        double total = 0;
-        for (Supplement supplement : this.supplements) {
-            total += supplement.getCost();
-        }
-        return total + this.cost;
     }
 
     public void setName(String name) {
@@ -180,8 +167,6 @@ public class Magazine implements Cloneable, Serializable {
                     try {
                         this.name = nameBox.inputText.getText();
                         nameBox.outputLabel.setText(this.name);
-                        System.out.println("Name changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -201,7 +186,6 @@ public class Magazine implements Cloneable, Serializable {
                     try {
                         this.cost = Double.parseDouble(costBox.inputText.getText());
                         costBox.outputLabel.setText(Double.toString(this.cost));
-                        System.out.println("Post Code changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -220,7 +204,6 @@ public class Magazine implements Cloneable, Serializable {
                         String selection = supplementsBox.choice.getValue();
                         this.supplements.add(backEnd.getSupplement(selection));
                         supplementsBox.outputLabel.setText("Supplement \"" + selection + "\" added");
-                        System.out.println("Supplement \"" + selection + "\" added to list");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -230,7 +213,6 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     public HBox deleteSupDropDown(BackEnd backEnd) {
-
         MyHBox supplementsBox = new MyHBox(getSupplementList());
         supplementsBox.setButtonName("remove");
         supplementsBox.setLabelText("Choose a supplement to remove");
@@ -240,7 +222,6 @@ public class Magazine implements Cloneable, Serializable {
                         String selection = supplementsBox.choice.getValue();
                         this.supplements.remove(backEnd.getSupplement(selection));
                         supplementsBox.outputLabel.setText("Supplement \"" + selection + "\" removed");
-                        System.out.println("Supplement \"" + selection + "\" removed from list");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -250,7 +231,6 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     public HBox deleteCustDropDown(BackEnd backEnd) {
-
         MyHBox custBox = new MyHBox(getCustomerList());
         custBox.setButtonName("remove");
         custBox.setLabelText("Choose a customer to remove");
@@ -260,7 +240,6 @@ public class Magazine implements Cloneable, Serializable {
                         String selection = custBox.choice.getValue();
                         this.customers.remove(backEnd.getCustomer(selection));
                         custBox.outputLabel.setText("Customer \"" + selection + "\" removed");
-                        System.out.println("Customer \"" + selection + "\" removed from list");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -278,7 +257,6 @@ public class Magazine implements Cloneable, Serializable {
                 String selection = custBox.choice.getValue();
                 this.customers.add(backEnd.getCustomer(selection));
                 custBox.outputLabel.setText("Customer \"" + selection + "\" added");
-                System.out.println("Customer \"" + selection + "\" added to list");
             } catch (Exception e) {
                 System.out.println("Something Went Wrong...");
             }
@@ -303,16 +281,13 @@ public class Magazine implements Cloneable, Serializable {
         MyVBox test = new MyVBox(magazine);
         magazine.setPadding(new Insets(10));
         magazine.setFont(new Font("Arial", 20));
-
         TreeItem<String> supplementInformation = new TreeItem("Magazine");
         supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));
         supplementInformation.getChildren().add(new TreeItem("Cost: $" + String.format("%.2f", this.cost)));
-
         TreeItem<String> supList = new TreeItem("Magazine Supplements");
         this.supplements.forEach((n) -> supList.getChildren().add(new TreeItem("" + n.name)));
         supplementInformation.getChildren().add(supList);
         TreeItem<String> custList = new TreeItem("Magazine Customers");
-        int size = this.customers.size();
         for (int i = 0; i < this.customers.size(); i++) {
             custList.getChildren().add(new TreeItem("" + this.customers.get(i).name));
         }
