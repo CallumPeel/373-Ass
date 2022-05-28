@@ -2,7 +2,6 @@ package SupplementServices.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,7 +55,6 @@ public class CenterPanelEdit extends CenterPanel {
     }
 
     public void onSaveAsChangesButtonClick() throws IOException {
-//        this.backEnd.setFileName(getDirectory());
         this.backEnd.save(this.frontEnd.getDirectory());
     }
 

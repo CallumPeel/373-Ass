@@ -7,11 +7,10 @@ package SupplementServices.centerPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import java.io.IOException;
-import javafx.geometry.Insets;
 
 /**
  *
- * @author callu
+ * @author callum
  */
 public class CenterPanelDeleteMag extends CenterPanelDelete {
 
@@ -19,8 +18,8 @@ public class CenterPanelDeleteMag extends CenterPanelDelete {
         super(backEnd, frontEnd);
     }
 
+    @Override
     public void saveChange() throws IOException {
-        System.out.println("Save button clicked on delete");
         try {
             this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magazineSelected));
             this.frontEnd.setDefaultSelectedMagazine();
@@ -33,6 +32,5 @@ public class CenterPanelDeleteMag extends CenterPanelDelete {
 
     @Override
     public void setPane() {
-        this.backEnd.getCreatePane().setCenter(this.centerSectionPane);
     }
 }
