@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
@@ -43,7 +44,6 @@ public class FrontEndGUI {
         this.customerSelected = this.backEnd.customers.get(0).name;
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
         this.magazineSelected = this.backEnd.magazines.get(0).getName();
-
         viewMode();
     }
 
@@ -67,7 +67,6 @@ public class FrontEndGUI {
         for (int i = 0; i < backEnd.getNumSups(); i++) {
             rootItem2.getChildren().add(new TreeItem(backEnd.getSupName(i)));
         }
-
         this.customerTreeView = new TreeView();
         this.customerTreeView.setRoot(rootItem1);
         this.customerTreeView.setShowRoot(false);
@@ -167,10 +166,9 @@ public class FrontEndGUI {
             if (!fileName.endsWith("bin")) {
                 fileName += ".bin";
             }
-            System.out.println(fileName);
-        } else {
-            new MyPopup("Error!\nSomething went wrong.");
-        }
+            } else {
+                fileName = getDirectory();
+            }
         return fileName;
     }
 }

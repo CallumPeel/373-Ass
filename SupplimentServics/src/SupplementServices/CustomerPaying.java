@@ -37,13 +37,13 @@ public class CustomerPaying extends Customer {
     ) {
         super(name, email, supplementSubscription);
         this.paymentMethod = paymentMethod;
-        this.associatedCustomers = new ArrayList<Customer>();
+        this.associatedCustomers = new ArrayList<>();
     }
 
     public CustomerPaying() {
         super();
         this.paymentMethod = new PaymentMethod("Default", new Card("Default", "Default", "Default", -1));
-        this.associatedCustomers = new ArrayList<Customer>();
+        this.associatedCustomers = new ArrayList<>();
 
     }
 
@@ -59,7 +59,7 @@ public class CustomerPaying extends Customer {
             ArrayList<Customer> associatedCustomers) {
         super(customer.name, customer.email, customer.getSupplementSubscription());
         this.paymentMethod = paymentMethod;
-        this.associatedCustomers = new ArrayList<Customer>();
+        this.associatedCustomers = new ArrayList<>();
         this.associatedCustomers = associatedCustomers;
     }
 
@@ -79,7 +79,7 @@ public class CustomerPaying extends Customer {
             PaymentMethod paymentMethod,
             ArrayList<Customer> associatedCustomers) {
         super(name, email, supplementSubscription);
-        this.associatedCustomers = new ArrayList<Customer>();
+        this.associatedCustomers = new ArrayList<>();
         this.paymentMethod = paymentMethod;
         this.associatedCustomers = associatedCustomers;
     }
@@ -125,6 +125,7 @@ public class CustomerPaying extends Customer {
      *
      * @return
      */
+    @Override
     public String getMonthlyEmail() {
         double multiplier = 52 / 12;
         ArrayList<Supplement> mySubscription = getSupplementSubscription();
@@ -142,7 +143,6 @@ public class CustomerPaying extends Customer {
         } else {
             monthlyEmail += this.name + ", You have no personal Supplements.\n";
         }
-
         counter = 1;
         monthlyEmail += "\n\nYour associated customer's supplement totals are as follows:";
         for (Customer associatedCustomer : associatedCustomers) {
@@ -158,9 +158,6 @@ public class CustomerPaying extends Customer {
         return monthlyEmail;
     }
 
-//    public String getTotal() {
-//        return "$" + String.format("%.2f", this.total);
-//    }
     @Override
     public String getTotal() {
         return "$" + String.format("%.2f", this.total + getAssociatedCustomerTotal());
@@ -177,9 +174,7 @@ public class CustomerPaying extends Customer {
 
     @Override
     public MyVBox getDetails() {
-
         MyVBox test = new MyVBox(getCustomerLabelVBox());
-
         TreeItem<String> subList = new TreeItem("Associated Customers");
         subList.getChildren().add(
                 new TreeItem("Total: " + "$" + String.format("%.2f", this.getAssociatedCustomerTotal()))
@@ -207,8 +202,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.bankName = bankNameBox.inputText.getText();
                         bankNameBox.outputLabel.setText(this.paymentMethod.bankName);
-                        System.out.println("Bank Name changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -226,8 +219,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.card.name = bankNameBox.inputText.getText();
                         bankNameBox.outputLabel.setText(this.paymentMethod.card.name);
-                        System.out.println("Card Name changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -245,7 +236,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.card.cardNumber = bankNameBox.inputText.getText();
                         bankNameBox.outputLabel.setText(this.paymentMethod.card.cardNumber);
-                        System.out.println("Card Number changed");
 
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
@@ -264,7 +254,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.card.exp = bankNameBox.inputText.getText();
                         bankNameBox.outputLabel.setText(this.paymentMethod.card.exp);
-                        System.out.println("Card Expiry changed");
 
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
@@ -286,7 +275,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.card.cvv = parseInt(cvvBox.inputText.getText());
                         cvvBox.outputLabel.setText(Integer.toString(this.paymentMethod.card.cvv));
-                        System.out.println("Card CVV changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -304,8 +292,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.account.name = accNameBox.inputText.getText();
                         accNameBox.outputLabel.setText(this.paymentMethod.account.name);
-                        System.out.println("Account Name changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -323,8 +309,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.account.accNum = accNameBox.inputText.getText();
                         accNameBox.outputLabel.setText(this.paymentMethod.account.accNum);
-                        System.out.println("Account Num changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -342,8 +326,6 @@ public class CustomerPaying extends Customer {
                     try {
                         this.paymentMethod.account.BSB = accNameBox.inputText.getText();
                         accNameBox.outputLabel.setText(this.paymentMethod.account.BSB);
-                        System.out.println("Account BSB changed");
-
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -379,6 +361,7 @@ public class CustomerPaying extends Customer {
         this.associatedCustomers = new ArrayList<Customer>();
     }
 
+    @Override
     public void addAssociatedCustomer(Customer associateCustomer) {
         this.associatedCustomers.add(associateCustomer);
     }

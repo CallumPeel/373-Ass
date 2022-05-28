@@ -46,9 +46,8 @@ public class Customer implements Cloneable, Serializable {
     public Customer(String name, String email, Address address, ArrayList<Supplement> supplementSubscription) {
         this.name = name;
         this.email = email;
-        this.total = total;
         this.address = address;
-        this.payer = "default";
+        this.payer = "Default";
         this.supplementSubscription = supplementSubscription;
         setTotal();
     }
@@ -64,26 +63,26 @@ public class Customer implements Cloneable, Serializable {
         this.name = name;
         this.email = email;
         this.address = new Address();
-        this.payer = "default";
-        this.supplementSubscription = new ArrayList<Supplement>();
+        this.payer = "Default";
+        this.supplementSubscription = new ArrayList<>();
         setTotal();
     }
 
     public Customer(String name) {
         this.name = name;
         this.email = "Default";
-        this.payer = "default";
+        this.payer = "Default";
         this.address = new Address();
-        this.supplementSubscription = new ArrayList<Supplement>();
+        this.supplementSubscription = new ArrayList<>();
         setTotal();
     }
 
     public Customer() {
         this.name = "Default";
         this.email = "Default";
-        this.payer = "default";
+        this.payer = "Default";
         this.address = new Address();
-        this.supplementSubscription = new ArrayList<Supplement>();
+        this.supplementSubscription = new ArrayList<>();
         setTotal();
     }
 
@@ -116,7 +115,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.name = nameBox.inputText.getText();
                         nameBox.outputLabel.setText(this.name);
-                        System.out.println("Name changed");
 
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
@@ -135,7 +133,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.email = emailBox.inputText.getText();
                         emailBox.outputLabel.setText(this.email);
-                        System.out.println("Email changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -147,7 +144,6 @@ public class Customer implements Cloneable, Serializable {
     public HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
         addressNumberBox.setButtonName("Set Address Number");
-
         addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
         if (this.address.streetNumber == -1) {
             addressNumberBox.setLabelText("Default");
@@ -157,7 +153,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.address.streetNumber = parseInt(addressNumberBox.inputText.getText());
                         addressNumberBox.outputLabel.setText(Integer.toString(this.address.streetNumber));
-                        System.out.println("Address Number changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -178,7 +173,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.address.postCode = parseInt(postCodeBox.inputText.getText());
                         postCodeBox.outputLabel.setText(Integer.toString(this.address.postCode));
-                        System.out.println("Post Code changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -196,7 +190,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.address.streetName = streetNameBox.inputText.getText();
                         streetNameBox.outputLabel.setText(this.address.streetName);
-                        System.out.println("Street Name changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -214,7 +207,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.address.suburb = suburbBox.inputText.getText();
                         suburbBox.outputLabel.setText(this.address.suburb);
-                        System.out.println("Suburb Name changed");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -222,25 +214,6 @@ public class Customer implements Cloneable, Serializable {
         suburbBox.formatBox();
         return suburbBox.getBox();
     }
-
-//    public HBox getPayerHBox() {
-//        MyHBox payerBox = new MyHBox();
-//        payerBox.setButtonName("Set Payer Name");
-//        payerBox.setLabelText(this.payer);
-//        payerBox.button.setOnAction(
-//                s -> {
-//                    try {
-//                        this.payer = payerBox.inputText.getText();
-//                        payerBox.outputLabel.setText(this.payer);
-//                        System.out.println("Payer changed1");
-//
-//                    } catch (Exception e) {
-//                        System.out.println("Something Went Wrong...");
-//                    }
-//                });
-//        payerBox.formatBox();
-//        return payerBox.getBox();
-//    }
 
     public HBox dropDown(ChoiceBox<String> choice) {
         MyHBox payerBox = new MyHBox(choice);
@@ -251,7 +224,6 @@ public class Customer implements Cloneable, Serializable {
                     try {
                         this.payer = payerBox.choice.getValue();
                         payerBox.outputLabel.setText(this.payer);
-                        System.out.println("Payer changed2");
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -334,11 +306,10 @@ public class Customer implements Cloneable, Serializable {
      */
     public String getWeeklyEmail() {
         String supplementString = this.name + " your magazine is ready to look at.\n";
-
         if (this.supplementSubscription.size() > 0) {
             supplementString += "Your supplements are:\n";
             int counter = 1;
-            for (Supplement supplement : supplementSubscription) {
+            for (Supplement supplement : this.supplementSubscription) {
                 supplementString += counter
                         + ". "
                         + supplement.getName()
@@ -348,7 +319,6 @@ public class Customer implements Cloneable, Serializable {
         } else {
             supplementString += "You have no personal supplements.";
         }
-
         return supplementString;
     }
 
