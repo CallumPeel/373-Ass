@@ -19,7 +19,7 @@ public class CenterPanel extends MyBPane {
     }
 
     public void buildPane() {
-        centerSectionPane.setBottom(this.centerBottomPane);
+        this.centerSectionPane.setBottom(this.centerBottomPane);
         setPane();
     }
 

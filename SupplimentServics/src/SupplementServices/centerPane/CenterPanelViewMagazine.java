@@ -8,7 +8,6 @@ import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
 import javafx.geometry.Insets;
-import javafx.scene.layout.VBox;
 
 /**
  *

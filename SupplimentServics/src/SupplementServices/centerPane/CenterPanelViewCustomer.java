@@ -10,7 +10,6 @@ public class CenterPanelViewCustomer extends CenterPanel {
     public CenterPanelViewCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         addTreeView();
-        
     }
 
     private void addTreeView() {

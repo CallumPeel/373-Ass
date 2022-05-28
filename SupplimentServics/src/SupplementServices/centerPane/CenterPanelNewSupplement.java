@@ -9,7 +9,6 @@ import SupplementServices.FrontEndGUI;
 import SupplementServices.MyVBox;
 import SupplementServices.Supplement;
 import java.io.IOException;
-import javafx.scene.layout.VBox;
 
 /**
  *

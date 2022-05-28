@@ -26,5 +26,4 @@ public class CenterPanelNewCustomerPaying extends CenterPanelNewCustomer {
         this.centerSectionPane.setCenter(content);
         setPane();
     }
-
 }
