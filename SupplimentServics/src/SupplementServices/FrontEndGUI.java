@@ -140,8 +140,6 @@ public class FrontEndGUI {
         }
         if (isCreateMode) {
             new LeftPanelCreate(this.backEnd, this);
-            // Update once Create version is completed
-//            new CenterPanel(this.backEnd, this);
             this.backEnd.cScene = new Scene(this.backEnd.createPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.cScene);
             this.backEnd.stage.show();

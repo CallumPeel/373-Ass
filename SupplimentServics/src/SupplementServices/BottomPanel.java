@@ -19,14 +19,13 @@ public class BottomPanel extends MyBPane{
     }
 
     public void buildPane() {
-        refreshButton.setText("Refresh");
-        refreshButton.setOnAction(e -> {
-            System.out.println("Page Refreshed\n");
+        this.refreshButton.setText("Refresh");
+        this.refreshButton.setOnAction(e -> {
             this.frontEnd.refresh();
         });
-        refreshButton.setMinWidth(buttonWidth);
-        bottomSectionPane.setCenter(refreshButton);
-        bottomSectionPane.setMargin(refreshButton,
+        this.refreshButton.setMinWidth(this.buttonWidth);
+        this.bottomSectionPane.setCenter(this.refreshButton);
+        this.bottomSectionPane.setMargin(this.refreshButton,
                 new Insets(30));
         setPane();
     }

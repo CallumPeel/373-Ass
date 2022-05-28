@@ -39,9 +39,10 @@ public class BackEnd implements Serializable {
      *
      * @param window
      * @throws java.io.IOException
+     * @throws java.io.FileNotFoundException
+     * @throws java.lang.ClassNotFoundException
      */
     public BackEnd(Stage window) throws IOException, FileNotFoundException, ClassNotFoundException {
-
         this.customers = new ArrayList<Customer>();
         this.supplements = new ArrayList<Supplement>();
         this.magazines = new ArrayList<Magazine>();
@@ -52,55 +53,55 @@ public class BackEnd implements Serializable {
     }
 
     public ArrayList<Customer> getCustomers() {
-        return customers;
+        return this.customers;
     }
 
     public ArrayList<Supplement> getSupplements() {
-        return supplements;
+        return this.supplements;
     }
 
     public ArrayList<Magazine> getMags() {
-        return magazines;
+        return this.magazines;
     }
 
     public Stage getStage() {
-        return stage;
+        return this.stage;
     }
 
     public Scene getvScene() {
-        return vScene;
+        return this.vScene;
     }
 
     public Scene getcScene() {
-        return cScene;
+        return this.cScene;
     }
 
     public Scene geteScene() {
-        return eScene;
+        return this.eScene;
     }
 
     public BorderPane getViewPane() {
-        return viewPane;
+        return this.viewPane;
     }
 
     public BorderPane getCreatePane() {
-        return createPane;
+        return this.createPane;
     }
 
     public BorderPane getEditPane() {
-        return editPane;
+        return this.editPane;
     }
 
     public FlowPane getTopPane() {
-        return topPane;
+        return this.topPane;
     }
 
     public MyVBox getViewLeftPane() {
-        return viewLeftPane;
+        return this.viewLeftPane;
     }
 
     public MyVBox getViewCenterPane() {
-        return viewCenterPane;
+        return this.viewCenterPane;
     }
 
     public MyVBox getViewRightPane() {
@@ -137,27 +138,27 @@ public class BackEnd implements Serializable {
     }
 
     protected String getCustName(int index) {
-        return customers.get(index).name;
+        return this.customers.get(index).name;
     }
 
     protected String getMagName(int index) {
-        return magazines.get(index).name;
+        return this.magazines.get(index).name;
     }
 
     protected String getSupName(int index) {
-        return supplements.get(index).name;
+        return this.supplements.get(index).name;
     }
 
     protected int getNumCust() {
-        return customers.size();
+        return this.customers.size();
     }
 
     protected int getNumSups() {
-        return supplements.size();
+        return this.supplements.size();
     }
 
     protected int getNumMags() {
-        return magazines.size();
+        return this.magazines.size();
     }
 
     public ChoiceBox<String> getPayingCustomerList() {
@@ -203,10 +204,7 @@ public class BackEnd implements Serializable {
      */
     public void removeCustomer(String name) {
         if (getCustomer(name) != null) {
-            System.out.println("Customer Removed.\n");
             customers.remove(getCustomerIndex(name));
-        } else {
-            System.out.println("Customer not found.\n");
         }
     }
 
@@ -216,15 +214,14 @@ public class BackEnd implements Serializable {
      * @param customer
      */
     public void removeCustomer(Customer customer) {
-        this.customers.remove(customer);
+        if (customer != null) {
+            this.customers.remove(customer);
+        }
     }
 
     public void removeMagazine(String name) {
         if (getMagazine(name) != null) {
-            System.out.println("Magazine Removed.\n");
-            magazines.remove(getMagazineIndex(name));
-        } else {
-            System.out.println("Magazine not found.\n");
+            this.magazines.remove(getMagazineIndex(name));
         }
     }
 
