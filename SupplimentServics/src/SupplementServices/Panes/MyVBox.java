@@ -1,5 +1,5 @@
 
-package SupplementServices;
+package SupplementServices.Panes;
 
 import java.io.Serializable;
 import javafx.scene.Node;

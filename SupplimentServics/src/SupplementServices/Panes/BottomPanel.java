@@ -1,5 +1,7 @@
-package SupplementServices;
+package SupplementServices.Panes;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;

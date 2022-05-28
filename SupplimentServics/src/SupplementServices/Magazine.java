@@ -1,5 +1,7 @@
 package SupplementServices;
 
+import SupplementServices.Panes.MyHBox;
+import SupplementServices.Panes.MyVBox;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
@@ -254,7 +256,7 @@ public class Magazine implements Cloneable, Serializable {
         custBox.setLabelText("Choose a customer to add");
         custBox.button.setOnAction(s -> {
             try {
-                String selection = custBox.choice.getValue();
+                String selection = custBox.getChoice().getValue();
                 this.customers.add(backEnd.getCustomer(selection));
                 custBox.outputLabel.setText("Customer \"" + selection + "\" added");
             } catch (Exception e) {

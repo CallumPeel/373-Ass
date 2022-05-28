@@ -1,5 +1,6 @@
 package SupplementServices;
 
+import SupplementServices.Panes.MyVBox;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,9 +28,9 @@ public class BackEnd implements Serializable {
     protected ArrayList<Magazine> magazines;
     protected Stage stage;
     protected Scene vScene, cScene, eScene;
-    protected BorderPane viewPane;
-    protected BorderPane createPane;
-    protected BorderPane editPane;
+    public BorderPane viewPane;
+    public BorderPane createPane;
+    public BorderPane editPane;
     protected FlowPane topPane;
     protected MyVBox viewLeftPane, viewCenterPane, viewRightPane;
     protected String fileName;

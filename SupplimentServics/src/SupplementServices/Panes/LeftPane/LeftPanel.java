@@ -1,11 +1,11 @@
-package SupplementServices.LeftPane;
+package SupplementServices.Panes.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyBPane;
-import SupplementServices.MyVBox;
-import SupplementServices.centerPane.CenterPanelViewSupplement;
-import SupplementServices.centerPane.CenterPanelViewCustomer;
+import SupplementServices.Panes.MyBPane;
+import SupplementServices.Panes.MyVBox;
+import SupplementServices.Panes.centerPane.CenterPanelViewSupplement;
+import SupplementServices.Panes.centerPane.CenterPanelViewCustomer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

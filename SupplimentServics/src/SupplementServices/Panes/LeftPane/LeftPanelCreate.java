@@ -1,12 +1,12 @@
-package SupplementServices.LeftPane;
+package SupplementServices.Panes.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyVBox;
-import SupplementServices.centerPane.CenterPanelDeleteMag;
-import SupplementServices.centerPane.CenterPanelEditMagazine;
-import SupplementServices.centerPane.CenterPanelNewMagazine;
-import SupplementServices.centerPane.CenterPanelViewMagazine;
+import SupplementServices.Panes.MyVBox;
+import SupplementServices.Panes.centerPane.CenterPanelDeleteMag;
+import SupplementServices.Panes.centerPane.CenterPanelEditMagazine;
+import SupplementServices.Panes.centerPane.CenterPanelNewMagazine;
+import SupplementServices.Panes.centerPane.CenterPanelViewMagazine;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

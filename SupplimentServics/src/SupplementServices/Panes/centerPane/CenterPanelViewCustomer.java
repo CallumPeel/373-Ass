@@ -1,8 +1,8 @@
-package SupplementServices.centerPane;
+package SupplementServices.Panes.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyVBox;
+import SupplementServices.Panes.MyVBox;
 import javafx.geometry.Insets;
 
 public class CenterPanelViewCustomer extends CenterPanel {

@@ -1,5 +1,7 @@
 package SupplementServices;
 
+import SupplementServices.Panes.MyVBox;
+import SupplementServices.Panes.MyHBox;
 import java.io.Serializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

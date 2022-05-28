@@ -2,7 +2,7 @@
  * Student Name: Callum Peel
  * Student ID: 34217062
  */
-package SupplementServices;
+package SupplementServices.Panes;
 
 import java.io.Serializable;
 import javafx.geometry.Insets;
@@ -13,11 +13,45 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-/**
- *
- * @author callum
- */
-class MyHBox  implements Serializable {
+public class MyHBox implements Serializable {
+
+    public Label getOutputLabel() {
+        return outputLabel;
+    }
+
+    public void setOutputLabel(Label outputLabel) {
+        this.outputLabel = outputLabel;
+    }
+
+    public Button getButton() {
+        return button;
+    }
+
+    public void setButton(Button button) {
+        this.button = button;
+    }
+
+    public TextField getInputText() {
+        return inputText;
+    }
+
+    public void setInputText(TextField inputText) {
+        this.inputText = inputText;
+    }
+
+    public ChoiceBox<String> getChoice() {
+        return choice;
+    }
+
+    public void setChoice(ChoiceBox<String> choice) {
+        this.choice = choice;
+    }
+
+    public HBox box;
+    public Label outputLabel;
+    public Button button;
+    public TextField inputText;
+    public ChoiceBox<String> choice;
 
     public MyHBox(HBox box, Label outputLabel, Button button, TextField inputText, ChoiceBox<String> choice) {
         this.box = box;
@@ -26,12 +60,6 @@ class MyHBox  implements Serializable {
         this.inputText = inputText;
         this.choice = choice;
     }
-
-    public HBox box;
-    public Label outputLabel;
-    public Button button;
-    public TextField inputText;
-    ChoiceBox<String> choice;
 
     public MyHBox() {
         this.outputLabel = new Label();
@@ -57,7 +85,7 @@ class MyHBox  implements Serializable {
         this.outputLabel.setText(fieldValue);
     }
 
-    void formatBox() {
+    public void formatBox() {
         this.box.setAlignment(Pos.BASELINE_LEFT);
         this.box.setSpacing(20);
         this.box.setPadding(new Insets(5, 30, 5, 30));

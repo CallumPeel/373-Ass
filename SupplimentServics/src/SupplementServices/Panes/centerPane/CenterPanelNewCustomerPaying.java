@@ -1,9 +1,9 @@
-package SupplementServices.centerPane;
+package SupplementServices.Panes.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.CustomerPaying;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyVBox;
+import SupplementServices.Panes.MyVBox;
 import javafx.scene.control.ChoiceBox;
 
 public class CenterPanelNewCustomerPaying extends CenterPanelNewCustomer {

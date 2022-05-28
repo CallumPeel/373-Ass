@@ -1,15 +1,15 @@
-package SupplementServices.LeftPane;
+package SupplementServices.Panes.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyVBox;
-import SupplementServices.centerPane.CenterPanelDeleteSupplement;
-import SupplementServices.centerPane.CenterPanelNewSupplement;
-import SupplementServices.centerPane.CenterPanelEditSupplement;
-import SupplementServices.centerPane.CenterPanelNewCustomer;
-import SupplementServices.centerPane.CenterPanelDeleteCustomer;
-import SupplementServices.centerPane.CenterPanelEditCustomer;
-import SupplementServices.centerPane.CenterPanelNewCustomerPaying;
+import SupplementServices.Panes.MyVBox;
+import SupplementServices.Panes.centerPane.CenterPanelDeleteSupplement;
+import SupplementServices.Panes.centerPane.CenterPanelNewSupplement;
+import SupplementServices.Panes.centerPane.CenterPanelEditSupplement;
+import SupplementServices.Panes.centerPane.CenterPanelNewCustomer;
+import SupplementServices.Panes.centerPane.CenterPanelDeleteCustomer;
+import SupplementServices.Panes.centerPane.CenterPanelEditCustomer;
+import SupplementServices.Panes.centerPane.CenterPanelNewCustomerPaying;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

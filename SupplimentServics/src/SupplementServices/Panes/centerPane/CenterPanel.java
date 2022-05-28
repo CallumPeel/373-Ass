@@ -1,8 +1,8 @@
-package SupplementServices.centerPane;
+package SupplementServices.Panes.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyBPane;
+import SupplementServices.Panes.MyBPane;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 

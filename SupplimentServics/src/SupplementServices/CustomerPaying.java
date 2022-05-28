@@ -1,5 +1,7 @@
 package SupplementServices;
 
+import SupplementServices.Panes.MyVBox;
+import SupplementServices.Panes.MyHBox;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javafx.geometry.Insets;

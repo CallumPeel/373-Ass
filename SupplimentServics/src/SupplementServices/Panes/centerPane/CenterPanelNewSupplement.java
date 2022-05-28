@@ -2,11 +2,11 @@
  * Student Name: Callum Peel
  * Student ID: 34217062
  */
-package SupplementServices.centerPane;
+package SupplementServices.Panes.centerPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.MyVBox;
+import SupplementServices.Panes.MyVBox;
 import SupplementServices.Supplement;
 import java.io.IOException;
 

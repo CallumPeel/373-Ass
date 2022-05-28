@@ -1,10 +1,13 @@
 package SupplementServices;
 
-import SupplementServices.LeftPane.LeftPanel;
-import SupplementServices.LeftPane.LeftPanelEdit;
-import SupplementServices.LeftPane.LeftPanelCreate;
-import SupplementServices.centerPane.CenterPanelViewCustomer;
-import SupplementServices.centerPane.CenterPanelEdit;
+import SupplementServices.Panes.MyVBox;
+import SupplementServices.Panes.BottomPanel;
+import SupplementServices.Panes.TopPanel;
+import SupplementServices.Panes.LeftPane.LeftPanel;
+import SupplementServices.Panes.LeftPane.LeftPanelEdit;
+import SupplementServices.Panes.LeftPane.LeftPanelCreate;
+import SupplementServices.Panes.centerPane.CenterPanelViewCustomer;
+import SupplementServices.Panes.centerPane.CenterPanelEdit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +25,9 @@ public class FrontEndGUI {
 
     protected BackEnd backEnd;
     protected int width, height;
-    protected boolean isViewMode, isCreateMode, isEditMode;
+    public boolean isViewMode;
+    public boolean isCreateMode;
+    public boolean isEditMode;
     public TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
     public String customerSelected, supplementSelected, magazineSelected;
     protected int buttonWidth;

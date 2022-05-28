@@ -1,5 +1,7 @@
-package SupplementServices;
+package SupplementServices.Panes;
 
+import SupplementServices.BackEnd;
+import SupplementServices.FrontEndGUI;
 import java.io.Serializable;
 import javafx.scene.layout.BorderPane;
 
