@@ -8,14 +8,10 @@ import SupplementServices.centerPane.CenterPanelViewSupplement;
 import SupplementServices.centerPane.CenterPanelViewCustomer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class LeftPanel extends MyBPane {
-
-    Button viewCustomerButton, viewSupplementButton;
 
     public LeftPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);

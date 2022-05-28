@@ -24,7 +24,6 @@ public class LeftPanelEdit extends LeftPanel {
     @Override
     public void buildPane() {
         Insets inset = new Insets(0, 0, 10, 30);
-
         Button newCustButton = new Button();
         newCustButton.setText("New Customer");
         newCustButton.setOnAction(
@@ -48,7 +47,6 @@ public class LeftPanelEdit extends LeftPanel {
                     }
                 }
         );
-
         Button editCustButton = new Button();
         editCustButton.setText("Edit");
         editCustButton.setOnAction(

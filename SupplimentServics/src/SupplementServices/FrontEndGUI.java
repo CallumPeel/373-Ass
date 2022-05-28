@@ -43,6 +43,7 @@ public class FrontEndGUI {
         this.customerSelected = this.backEnd.customers.get(0).name;
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
         this.magazineSelected = this.backEnd.magazines.get(0).getName();
+
         viewMode();
     }
 
@@ -169,6 +170,8 @@ public class FrontEndGUI {
                 fileName += ".bin";
             }
             System.out.println(fileName);
+        } else {
+            new MyPopup("Error!\nSomething went wrong.");
         }
         return fileName;
     }
