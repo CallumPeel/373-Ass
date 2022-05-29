@@ -27,70 +27,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class FrontEndGUI {
 
-    public BackEnd getBackEnd() {
-        return backEnd;
-    }
-
-    public void setBackEnd(BackEnd backEnd) {
-        this.backEnd = backEnd;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public TreeView<String> getCustomerTreeView() {
-        return customerTreeView;
-    }
-
-    public void setCustomerTreeView(TreeView<String> customerTreeView) {
-        this.customerTreeView = customerTreeView;
-    }
-
-    public String getCustomerSelected() {
-        return customerSelected;
-    }
-
-    public void setCustomerSelected(String customerSelected) {
-        this.customerSelected = customerSelected;
-    }
-
-    public String getSupplementSelected() {
-        return supplementSelected;
-    }
-
-    public void setSupplementSelected(String supplementSelected) {
-        this.supplementSelected = supplementSelected;
-    }
-
-    public String getMagazineSelected() {
-        return magazineSelected;
-    }
-
-    public void setMagazineSelected(String magazineSelected) {
-        this.magazineSelected = magazineSelected;
-    }
-
-    public int getButtonWidth() {
-        return buttonWidth;
-    }
-
-    public void setButtonWidth(int buttonWidth) {
-        this.buttonWidth = buttonWidth;
-    }
-
     private BackEnd backEnd;
     private int width, height;
     private boolean isViewMode;
@@ -106,6 +42,7 @@ public class FrontEndGUI {
     private VBox leftVBox;
 
     /**
+     * Constructs a Front End.
      *
      * @param backEnd
      * @param width
@@ -131,6 +68,9 @@ public class FrontEndGUI {
         viewMode();
     }
 
+    /**
+     * Builds a Tree View of all the Magazines
+     */
     private void setMagTree() {
         TreeItem<String> rootItem1 = new TreeItem("Magazine Database");
         for (int i = 0; i < backEnd.getNumMags(); i++) {
@@ -142,27 +82,90 @@ public class FrontEndGUI {
         this.magazineTreeView.setPadding(new Insets(15));
     }
 
+    /**
+     * Returns the current Customer details in a Tree View.
+     *
+     * @return
+     */
+    public TreeView<String> getCustomerTreeView() {
+        return customerTreeView;
+    }
+
+    /**
+     * Sets the current Customer Tree View.
+     *
+     * @param customerTreeView
+     */
+    public void setCustomerTreeView(TreeView<String> customerTreeView) {
+        this.customerTreeView = customerTreeView;
+    }
+
+    /**
+     * Returns button width.
+     *
+     * @return
+     */
+    public int getButtonWidth() {
+        return buttonWidth;
+    }
+
+    /**
+     * sets Button width.
+     *
+     * @param buttonWidth
+     */
+    public void setButtonWidth(int buttonWidth) {
+        this.buttonWidth = buttonWidth;
+    }
+
+    /**
+     * Returns the current Customer Tree View.
+     *
+     * @return
+     */
     public TreeView<String> customerTreeView() {
         return this.customerTreeView;
     }
 
+    /**
+     * Returns the current Magazine Tree View.
+     *
+     * @return
+     */
     public TreeView<String> getMagazineTreeView() {
         return this.magazineTreeView;
     }
 
+    /**
+     * Returns the current Supplement Tree View.
+     *
+     * @return
+     */
     public TreeView<String> getSupplementTreeView() {
         return this.supplementTreeView;
     }
 
+    /**
+     * Returns the current Left Hand Customer and Supplement lists.
+     *
+     * @return
+     */
     public VBox getLeftVBox() {
         return this.leftVBox;
     }
 
+    /**
+     * Sets the left hand side panel.
+     *
+     * @param newBox
+     */
     public void setLeftVBox(VBox newBox) {
         this.leftVBox = newBox;
     }
-    
 
+    /**
+     * Collates then sets Customer and Supplement information into TreeViews.
+     */
     private void setViewTree() {
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
         TreeItem<String> rootItem2 = new TreeItem("Supplement Database");
@@ -182,74 +185,134 @@ public class FrontEndGUI {
         this.supplementTreeView.setPadding(new Insets(15));
     }
 
+    /**
+     * Returns true or false state for View Mode
+     *
+     * @return
+     */
     public boolean getIsViewMode() {
         return isViewMode;
     }
 
+    /**
+     * Sets true or false state for View Mode
+     *
+     * @param isViewMode
+     */
     public void setIsViewMode(boolean isViewMode) {
         this.isViewMode = isViewMode;
     }
 
+    /**
+     * Returns true or false state for Create Mode
+     *
+     * @return
+     */
     public boolean getIsCreateMode() {
         return isCreateMode;
     }
 
+    /**
+     * Sets true or false state for Create Mode
+     *
+     * @param isCreateMode
+     */
     public void setIsCreateMode(boolean isCreateMode) {
         this.isCreateMode = isCreateMode;
     }
 
+    /**
+     * Returns true or false state for Edit Mode
+     *
+     * @return
+     */
     public boolean getIsEditMode() {
         return isEditMode;
     }
 
+    /**
+     * Sets true or false state for Edit Mode
+     *
+     * @param isEditMode
+     */
     public void setIsEditMode(boolean isEditMode) {
         this.isEditMode = isEditMode;
     }
 
     /**
+     * Returns the current Customer selected in Customer Tree View.
      *
+     * @return
+     */
+    public String getCustomerSelected() {
+        return customerSelected;
+    }
+
+    /**
+     * Sets current selected Customer.
      */
     public void setSelectedCustomer() {
         this.customerSelected = this.customerTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
     /**
+     * Returns the currently selected supplement.
      *
+     * @return
+     */
+    public String getSupplementSelected() {
+        return this.supplementSelected;
+    }
+
+    /**
+     * Returns the current selected magazine.
+     *
+     * @return
+     */
+    public String getMagazineSelected() {
+        return magazineSelected;
+    }
+
+    /**
+     * Sets the current Supplement selected.
      */
     public void setSelectedSupplement() {
         this.supplementSelected = this.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
     /**
-     *
+     * Sets the current Magazine selected.
      */
     public void setSelectedMagazine() {
         this.magazineSelected = this.magazineTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
     /**
-     *
+     * Sets the current Customer selected to the first element in the array.
      */
     public void setDefaultSelectedCustomer() {
+        if (this.backEnd.getNumCust() < 1) this.backEnd.addCustomer("Default");
         this.customerSelected = this.backEnd.customers.get(0).getName();
     }
 
     /**
-     *
+     * Sets the current Supplement selected to the first element in the array.
      */
     public void setDefaultSelectedSupplement() {
+        if (this.backEnd.getNumCust() < 1) this.backEnd.addSupplement("Default");
         this.supplementSelected = this.backEnd.supplements.get(0).name;
     }
 
     /**
-     *
+     * Sets the current Magazine selected to the first element in the array.
      */
     public void setDefaultSelectedMagazine() {
+        if (this.backEnd.getNumCust() < 1) this.backEnd.addMagazine("Default");
         this.magazineSelected = this.backEnd.magazines.get(0).name;
     }
 
     /**
-     *
+     * Set global boolean values to View Mode.
      */
     public void viewMode() {
         this.isViewMode = true;
@@ -259,7 +322,7 @@ public class FrontEndGUI {
     }
 
     /**
-     *
+     * Set global boolean values to Create Mode.
      */
     public void createMode() {
         this.isViewMode = false;
@@ -269,7 +332,7 @@ public class FrontEndGUI {
     }
 
     /**
-     *
+     * Set global boolean values to Edit Mode.
      */
     public void editMode() {
         this.isViewMode = false;
@@ -279,7 +342,7 @@ public class FrontEndGUI {
     }
 
     /**
-     *
+     * Resets all panes.
      */
     public void refresh() {
         setViewTree();
@@ -312,7 +375,9 @@ public class FrontEndGUI {
     }
 
     /**
-     *
+     * Prompts user to input a file name.
+     * 
+     * Returns this as correct file name format.
      * @return
      */
     public String getDirectory() {

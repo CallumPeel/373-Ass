@@ -77,7 +77,7 @@ public class LeftPanel extends MyBPane {
      * Creates a new instance of CenterPanelViewCustomer.
      */
     private void onCustViewMouseClick() {
-        this.frontEnd.setCustomerSelected(this.frontEnd.customerTreeView().getSelectionModel().getSelectedItem().getValue());
+        this.frontEnd.setSelectedCustomer();
         new CenterPanelViewCustomer(this.backEnd, this.frontEnd);
     }
 
@@ -85,7 +85,7 @@ public class LeftPanel extends MyBPane {
      * Creates a new instance of CenterPanelViewSupplement.
      */
     public void onSupViewButtonClick() {
-        this.frontEnd.setSupplementSelected(this.frontEnd.getSupplementTreeView().getSelectionModel().getSelectedItem().getValue());
+        this.frontEnd.setSelectedSupplement();
         new CenterPanelViewSupplement(this.backEnd, this.frontEnd);
     }
 }
