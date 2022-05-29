@@ -75,13 +75,13 @@ public class TopPanel extends MyBPane {
         this.topSectionPane.setMargin(this.createButton, insets);
         this.topSectionPane.setMargin(this.editButton, insets);
         this.topSectionPane.setMargin(this.separator1, insets);
-        if (this.frontEnd.isViewMode) {
+        if (this.frontEnd.getIsViewMode()) {
             this.backEnd.viewPane.setTop(this.topSectionPane);
         }
-        if (this.frontEnd.isEditMode) {
+        if (this.frontEnd.getIsEditMode()) {
             this.backEnd.editPane.setTop(this.topSectionPane);
         }
-        if (this.frontEnd.isCreateMode) {
+        if (this.frontEnd.getIsCreateMode()) {
             this.backEnd.createPane.setTop(this.topSectionPane);
         }
     }

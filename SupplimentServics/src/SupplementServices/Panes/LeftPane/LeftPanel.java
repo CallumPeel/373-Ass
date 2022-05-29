@@ -40,7 +40,7 @@ public class LeftPanel extends MyBPane {
         Label supplementLabel = new Label("Supplements");
         supplementLabel.setFont(new Font("Arial", 15));
         supplementLabel.setPadding(new Insets(20, 15, 10, 30));
-        this.frontEnd.customerTreeView.setOnMouseClicked(
+        this.frontEnd.getCustomerTreeView().setOnMouseClicked(
                 s -> {
                     try {
                         onCustViewMouseClick();
@@ -49,7 +49,7 @@ public class LeftPanel extends MyBPane {
                     }
                 }
         );
-        this.frontEnd.supplementTreeView.setOnMouseClicked(
+        this.frontEnd.getSupplementTreeView().setOnMouseClicked(
                 s -> {
                     try {
                         onSupViewButtonClick();
@@ -59,10 +59,10 @@ public class LeftPanel extends MyBPane {
 
                 }
         );
-        this.frontEnd.vbox = new VBox(customerLabel, this.frontEnd.customerTreeView, supplementLabel, this.frontEnd.supplementTreeView);
-        this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.customerTreeView, inset);
-        this.frontEnd.vbox.setMargin(this.frontEnd.supplementTreeView, inset);
+        this.frontEnd.setLeftVBox(new VBox(customerLabel, this.frontEnd.customerTreeView(), supplementLabel, this.frontEnd.getSupplementTreeView()));
+        this.frontEnd.getLeftVBox().setAlignment(Pos.CENTER);
+        this.frontEnd.getLeftVBox().setMargin(this.frontEnd.customerTreeView(), inset);
+        this.frontEnd.getLeftVBox().setMargin(this.frontEnd.getSupplementTreeView(), inset);
         setPane();
     }
 
@@ -70,14 +70,14 @@ public class LeftPanel extends MyBPane {
      * Sets default pane to center pane.
      */
     public void setPane() {
-        this.backEnd.getViewPane().setLeft(this.frontEnd.vbox);
+        this.backEnd.getViewPane().setLeft(this.frontEnd.getLeftVBox());
     }
 
     /**
      * Creates a new instance of CenterPanelViewCustomer.
      */
     private void onCustViewMouseClick() {
-        this.frontEnd.customerSelected = this.frontEnd.customerTreeView.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.setCustomerSelected(this.frontEnd.customerTreeView().getSelectionModel().getSelectedItem().getValue());
         new CenterPanelViewCustomer(this.backEnd, this.frontEnd);
     }
 
@@ -85,7 +85,7 @@ public class LeftPanel extends MyBPane {
      * Creates a new instance of CenterPanelViewSupplement.
      */
     public void onSupViewButtonClick() {
-        this.frontEnd.supplementSelected = this.frontEnd.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
+        this.frontEnd.setSupplementSelected(this.frontEnd.getSupplementTreeView().getSelectionModel().getSelectedItem().getValue());
         new CenterPanelViewSupplement(this.backEnd, this.frontEnd);
     }
 }

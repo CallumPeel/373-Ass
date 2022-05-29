@@ -27,7 +27,7 @@ public class CenterPanelViewCustomer extends CenterPanel {
      * Constructs a tree view of the customer's information.
      */
     private void addTreeView() {
-        VBox customerBreakdownVBox = new VBox(this.backEnd.getCustomer(this.frontEnd.customerSelected).getDetails());
+        VBox customerBreakdownVBox = new VBox(this.backEnd.getCustomer(this.frontEnd.getCustomerSelected()).getDetails());
         this.centerSectionPane.setCenter(customerBreakdownVBox);
         this.centerSectionPane.setBottom(this.centerBottomPane);
         this.centerSectionPane.setMargin(customerBreakdownVBox, new Insets(15));

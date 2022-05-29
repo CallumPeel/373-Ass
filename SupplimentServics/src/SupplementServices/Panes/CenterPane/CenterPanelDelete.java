@@ -70,7 +70,7 @@ public class CenterPanelDelete extends CenterPanelEdit {
      */
     public void saveChange() throws IOException {
         try {
-            this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.customerSelected));
+            this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.getCustomerSelected()));
             this.frontEnd.setDefaultSelectedCustomer();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");

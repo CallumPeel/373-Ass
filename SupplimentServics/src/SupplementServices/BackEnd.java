@@ -12,86 +12,62 @@ import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Stores arrays of customers and supplements.
+ * Stores arrays of Customers, Supplements and Magazines.
  *
  * @author Callum Peel
  */
 public class BackEnd implements Serializable {
 
     /**
-     *
+     * Array List of Customers.
      */
     protected ArrayList<Customer> customers;
 
     /**
-     *
+     * Array List of Supplements.
      */
     protected ArrayList<Supplement> supplements;
 
     /**
-     *
+     * Array List of Magazines.
      */
     protected ArrayList<Magazine> magazines;
 
     /**
-     *
+     * Holds a Stage.
      */
     protected Stage stage;
 
     /**
-     *
+     * Holds a View Scene.
      */
     protected Scene vScene,
+            /**
+             * Holds an Create Scene.
+             */
+            cScene,
+            /**
+             * Holds an Edit Scene.
+             */
+            eScene;
 
     /**
-     *
-     */
-    cScene,
-
-    /**
-     *
-     */
-    eScene;
-
-    /**
-     *
+     * Holds a View Pane.
      */
     public BorderPane viewPane;
 
     /**
-     *
+     * Holds a Create Pane.
      */
     public BorderPane createPane;
 
     /**
-     *
+     * Holds an Edit Pane.
      */
     public BorderPane editPane;
-
-    /**
-     *
-     */
-    protected FlowPane topPane;
-
-    /**
-     *
-     */
-    protected VBox viewLeftPane,
-
-    /**
-     *
-     */
-    viewCenterPane,
-
-    /**
-     *
-     */
-    viewRightPane;
 
     /**
      *
@@ -110,7 +86,7 @@ public class BackEnd implements Serializable {
         this.customers = new ArrayList<>();
         this.supplements = new ArrayList<>();
         this.magazines = new ArrayList<>();
-//        buildFullDatabase();
+        buildFullDatabase();
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
@@ -118,6 +94,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns a list of Customers.
      *
      * @return
      */
@@ -126,6 +103,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns a list of Supplements.
      *
      * @return
      */
@@ -134,6 +112,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns a list of Magazines
      *
      * @return
      */
@@ -142,6 +121,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns a stage.
      *
      * @return
      */
@@ -150,6 +130,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the view scene.
      *
      * @return
      */
@@ -158,6 +139,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the create scene.
      *
      * @return
      */
@@ -166,6 +148,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the edit scene.
      *
      * @return
      */
@@ -174,6 +157,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the view pane.
      *
      * @return
      */
@@ -182,6 +166,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the create pane.
      *
      * @return
      */
@@ -190,6 +175,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the edit pane.
      *
      * @return
      */
@@ -198,38 +184,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
-     *
-     * @return
-     */
-    public FlowPane getTopPane() {
-        return this.topPane;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public VBox getViewLeftPane() {
-        return this.viewLeftPane;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public VBox getViewCenterPane() {
-        return this.viewCenterPane;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public VBox getViewRightPane() {
-        return viewRightPane;
-    }
-
-    /**
+     * Takes the name of a Customer and returns a Customer
      *
      * @param name
      * @return
@@ -246,6 +201,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes the name of a Supplement and returns a Supplement
      *
      * @param name
      * @return
@@ -262,6 +218,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes the name of a Magazine and returns a Magazine.
      *
      * @param name
      * @return
@@ -274,15 +231,17 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes the index of a Customer and returns a Customer
      *
      * @param index
      * @return
      */
     protected String getCustName(int index) {
-        return this.customers.get(index).name;
+        return this.customers.get(index).getName();
     }
 
     /**
+     * Takes the index of a Magazine and returns a Magazine.
      *
      * @param index
      * @return
@@ -292,6 +251,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes the index of a Supplement and returns a Supplement.
      *
      * @param index
      * @return
@@ -301,6 +261,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the number of customers in the database.
      *
      * @return
      */
@@ -309,6 +270,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the number of supplements in the database.
      *
      * @return
      */
@@ -317,6 +279,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns the number of magazines in the database.
      *
      * @return
      */
@@ -325,6 +288,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns a drop down box of all the Paying Customers.
      *
      * @return
      */
@@ -333,13 +297,14 @@ public class BackEnd implements Serializable {
         CustomerPaying x = new CustomerPaying();
         for (int i = 0; i < this.customers.size(); i++) {
             if (this.customers.get(i).getClass() == x.getClass()) {
-                choice.getItems().add(this.customers.get(i).name);
+                choice.getItems().add(this.customers.get(i).getName());
             }
         }
         return choice;
     }
 
     /**
+     * Returns a drop down box of all the Supplements.
      *
      * @return
      */
@@ -352,18 +317,20 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Returns a drop down box of all the Customers.
      *
      * @return
      */
     public ChoiceBox<String> getCustomerList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.customers.size(); i++) {
-            choice.getItems().add(this.customers.get(i).name);
+            choice.getItems().add(this.customers.get(i).getName());
         }
         return choice;
     }
 
     /**
+     * Returns a drop down box of all the Magazines.
      *
      * @return
      */
@@ -399,6 +366,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes the name of a magazine and removes it.
      *
      * @param name
      */
@@ -409,6 +377,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes Magazine and removes it.
      *
      * @param mag
      */
@@ -426,6 +395,11 @@ public class BackEnd implements Serializable {
         this.supplements.remove(supplement);
     }
 
+    /**
+     * Takes a String name and returns the index of that Customer.
+     *
+     * @param name
+     */
     private int getCustomerIndex(String name) {
         int counter = 0;
         int index = -1;
@@ -438,6 +412,11 @@ public class BackEnd implements Serializable {
         return index;
     }
 
+    /**
+     * Takes a String name and returns the index of that Magazine.
+     *
+     * @param name
+     */
     private int getMagazineIndex(String name) {
         int counter = 0;
         int index = -1;
@@ -460,6 +439,8 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Adds a new customer to the list, instantiated with a String name passed
+     * in.
      *
      * @param customer
      */
@@ -480,6 +461,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes a Magazine as a parameter and adds it to the database.
      *
      * @param mag
      */
@@ -488,6 +470,8 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Adds a new Magazine to the list, instantiated with a String name passed
+     * in.
      *
      * @param mag
      */
@@ -505,6 +489,8 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Adds a new Supplement to the list, instantiated with a String name passed
+     * in.
      *
      * @param supplement
      */
@@ -597,7 +583,7 @@ public class BackEnd implements Serializable {
     }
 
     /**
-     *
+     * Adds customers to corresponding Associated Customer Lists.
      */
     public void setAssociatedCustomerLists() {
         for (int i = 0; i < this.getNumCust(); i++) {
@@ -605,7 +591,7 @@ public class BackEnd implements Serializable {
         }
         for (int i = 0; i < this.getNumCust(); i++) {
             try {
-                getCustomer(this.customers.get(i).payer).addAssociatedCustomer(this.customers.get(i));
+                getCustomer(this.customers.get(i).getPayer()).addAssociatedCustomer(this.customers.get(i));
             } catch (Exception e) {
                 System.out.println("Payer not found.");
             }
@@ -613,11 +599,9 @@ public class BackEnd implements Serializable {
     }
 
     /**
-     *
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Combines and returns object list
      */
-    public void save() throws FileNotFoundException, IOException {
+    private ArrayList<Object> getObjects() {
         setAssociatedCustomerLists();
         ArrayList<Object> objects = new ArrayList<>();
         for (int i = 0; i < this.customers.size(); i++) {
@@ -629,36 +613,36 @@ public class BackEnd implements Serializable {
         for (int i = 0; i < this.magazines.size(); i++) {
             objects.add(this.magazines.get(i));
         }
+        return objects;
+    }
+
+    /**
+     * Saves object list as binary file.
+     *
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public void save() throws FileNotFoundException, IOException {
         ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(this.fileName));
-        outputStream.writeObject(objects);
+        outputStream.writeObject(getObjects());
         outputStream.close();
     }
 
     /**
+     * Saves object list, to user specified file, as binary file.
      *
      * @param fName
      * @throws FileNotFoundException
      * @throws IOException
      */
     public void save(String fName) throws FileNotFoundException, IOException {
-        setAssociatedCustomerLists();
-        ArrayList<Object> objects = new ArrayList<>();
-        for (int i = 0; i < this.customers.size(); i++) {
-            objects.add(this.customers.get(i));
-            System.out.println(this.customers.get(i).name + " = PC = " + this.customers.get(i).payer);
-        }
-        for (int i = 0; i < this.supplements.size(); i++) {
-            objects.add(this.supplements.get(i));
-        }
-        for (int i = 0; i < this.magazines.size(); i++) {
-            objects.add(this.magazines.get(i));
-        }
         ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fName));
-        outputStream.writeObject(objects);
+        outputStream.writeObject(getObjects());
         outputStream.close();
     }
 
     /**
+     * Sets current file name.
      *
      * @param newfilename
      */
@@ -666,8 +650,10 @@ public class BackEnd implements Serializable {
         this.fileName = newfilename;
     }
 
+    /**
+     * Loads in objects from binary file and assigns them to classes.
+     */
     void load() throws FileNotFoundException, IOException, ClassNotFoundException {
-
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(this.fileName));
         List<Object> input = (List<Object>) is.readObject();
         List<Object> checkList = new ArrayList<>();

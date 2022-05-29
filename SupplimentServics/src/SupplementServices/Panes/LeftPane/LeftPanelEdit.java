@@ -17,12 +17,14 @@ import javafx.scene.layout.VBox;
 
 /**
  * Builds a template pane for editing fields.
+ *
  * @author callu
  */
 public class LeftPanelEdit extends LeftPanel {
 
     /**
      * Constructs Tree Views and editing buttons.
+     *
      * @param backEnd
      * @param frontEnd
      */
@@ -119,21 +121,21 @@ public class LeftPanelEdit extends LeftPanel {
         );
         HBox topButtons = new HBox(newCustButton, newCustPayingButton, deleteCustButton, editCustButton);
         HBox bottomButtons = new HBox(newSupButton, deleteSupButton, editSupButton);
-        this.frontEnd.vbox = new VBox(
+        this.frontEnd.setLeftVBox(new VBox(
                 topButtons,
-                this.frontEnd.customerTreeView,
+                this.frontEnd.customerTreeView(),
                 bottomButtons,
-                this.frontEnd.supplementTreeView
-        );
+                this.frontEnd.getSupplementTreeView()
+        ));
         topButtons.setAlignment(Pos.CENTER);
         topButtons.setPadding(new Insets(10, 10, 20, 30));
         topButtons.setSpacing(20);
         bottomButtons.setAlignment(Pos.CENTER);
         bottomButtons.setPadding(new Insets(20, 10, 20, 30));
         bottomButtons.setSpacing(20);
-        this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.customerTreeView, inset);
-        this.frontEnd.vbox.setMargin(this.frontEnd.supplementTreeView, inset);
+        this.frontEnd.getLeftVBox().setAlignment(Pos.CENTER);
+        this.frontEnd.getLeftVBox().setMargin(this.frontEnd.customerTreeView(), inset);
+        this.frontEnd.getLeftVBox().setMargin(this.frontEnd.getSupplementTreeView(), inset);
 
         setPane();
     }
@@ -143,7 +145,7 @@ public class LeftPanelEdit extends LeftPanel {
      */
     @Override
     public void setPane() {
-        this.backEnd.getEditPane().setLeft(this.frontEnd.vbox);
+        this.backEnd.getEditPane().setLeft(this.frontEnd.getLeftVBox());
     }
 
     /**
@@ -154,7 +156,7 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     /**
-     *      Creates a center panel for creating a new Paying Customer.
+     * Creates a center panel for creating a new Paying Customer.
      */
     public void onCustPayingNewButtonClick() {
         new CenterPanelNewCustomerPaying(this.backEnd, this.frontEnd);
@@ -194,7 +196,7 @@ public class LeftPanelEdit extends LeftPanel {
     }
 
     /**
-     *  Creates a center panel for deleting a Supplement.
+     * Creates a center panel for deleting a Supplement.
      */
     public void onSupDeleteButtonClick() {
         this.frontEnd.setSelectedSupplement();

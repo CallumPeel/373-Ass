@@ -26,7 +26,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
      */
     public CenterPanelEditSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.oldSupplement = this.backEnd.getSupplement(this.frontEnd.supplementSelected);
+        this.oldSupplement = this.backEnd.getSupplement(this.frontEnd.getSupplementSelected());
         this.initialName = this.oldSupplement.getName();
         cloneSupplement();
         this.labels = new VBox();

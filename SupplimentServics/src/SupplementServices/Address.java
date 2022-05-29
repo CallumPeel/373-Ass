@@ -4,16 +4,16 @@ import java.io.Serializable;
 import javafx.scene.control.TreeItem;
 
 /**
- *
- * @author callu
+ * 
+ * @author callum
  */
 public class Address implements Serializable {
 
-    int streetNumber, postCode;
-    String streetName, suburb;
+    private int streetNumber, postCode;
+    private String streetName, suburb;
 
     /**
-     *
+     * Constructs an Address using parameters.
      * @param streetNumber
      * @param postcode
      * @param streetName
@@ -27,7 +27,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Constructs a default Address.
      */
     public Address() {
         this.streetNumber = -1;
@@ -37,7 +37,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Sets Street Number
      * @param streetNumber
      */
     public void setStreetNumber(int streetNumber) {
@@ -45,7 +45,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Sets Post Code
      * @param postcode
      */
     public void setPostcode(int postcode) {
@@ -53,7 +53,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Sets Street Name.
      * @param streetName
      */
     public void setStreetName(String streetName) {
@@ -61,7 +61,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Sets Suburb name.
      * @param suburb
      */
     public void setSuburb(String suburb) {
@@ -69,7 +69,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Returns Street Number.
      * @return
      */
     public int getStreetNumber() {
@@ -77,7 +77,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Returns Post Code.
      * @return
      */
     public int getPostcode() {
@@ -85,15 +85,15 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Returns Street Name.
      * @return
      */
     public String getStreetName() {
         return streetName;
     }
 
-    /**
-     *
+    /** 
+     * Returns Suburb Name.
      * @return
      */
     public String getSuburb() {
@@ -101,7 +101,7 @@ public class Address implements Serializable {
     }
 
     /**
-     *
+     * Returns a Tree View of Address information.
      * @return
      */
     public TreeItem<String> getAddressTreeView() {

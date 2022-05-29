@@ -28,7 +28,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
      */
     public CenterPanelEditCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.oldCustomer = this.backEnd.getCustomer(this.frontEnd.customerSelected);
+        this.oldCustomer = this.backEnd.getCustomer(this.frontEnd.getCustomerSelected());
         this.initialName = oldCustomer.getName();
         cloneCustomer();
         this.labels = new VBox();

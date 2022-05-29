@@ -34,7 +34,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
      */
     @Override
     public void setPane() {
-        this.backEnd.getCreatePane().setLeft(this.frontEnd.vbox);
+        this.backEnd.getCreatePane().setLeft(this.frontEnd.getLeftVBox());
     }
 
     /**
@@ -76,26 +76,25 @@ public class LeftPanelCreate extends LeftPanelEdit {
                     }
                 }
         );
-        this.frontEnd.magazineTreeView.setOnMouseClicked(
+        this.frontEnd.getMagazineTreeView().setOnMouseClicked(
                 s -> {
                     try {
                         onMagViewMouseClick();
                     } catch (Exception e) {
-                        System.out.println(this.frontEnd.magazineSelected);
                         System.out.println("Select a Customer to view");
                     }
                 }
         );
         HBox topButtons = new HBox(newButton, deleteButton, editButton);
-        this.frontEnd.vbox = new VBox(
+        this.frontEnd.setLeftVBox(new VBox(
                 topButtons,
-                this.frontEnd.magazineTreeView
-        );
+                this.frontEnd.getMagazineTreeView()
+        ));
         topButtons.setAlignment(Pos.CENTER);
         topButtons.setPadding(new Insets(10));
         topButtons.setSpacing(20);
-        this.frontEnd.vbox.setAlignment(Pos.CENTER);
-        this.frontEnd.vbox.setMargin(this.frontEnd.magazineTreeView, inset);
+        this.frontEnd.getLeftVBox().setAlignment(Pos.CENTER);
+        this.frontEnd.getLeftVBox().setMargin(this.frontEnd.getMagazineTreeView(), inset);
 
         setPane();
     }

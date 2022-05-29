@@ -43,7 +43,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Creates Customer with default payment details.
      */
     public CustomerPaying() {
         super();
@@ -62,7 +62,7 @@ public class CustomerPaying extends Customer {
     public CustomerPaying(Customer customer,
             PaymentMethod paymentMethod,
             ArrayList<Customer> associatedCustomers) {
-        super(customer.name, customer.email, customer.getSupplementSubscription());
+        super(customer.getName(), customer.getEmail(), customer.getSupplementSubscription());
         this.paymentMethod = paymentMethod;
         this.associatedCustomers = new ArrayList<>();
         this.associatedCustomers = associatedCustomers;
@@ -118,13 +118,13 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns the sum of all associated customer's total costs.
      * @return
      */
     public double getAssociatedCustomerTotal() {
         double total = 0;
         for (int i = 0; i < this.associatedCustomers.size(); i++) {
-            total += this.associatedCustomers.get(i).total;
+            total += this.associatedCustomers.get(i).getTotal();
         }
         return total;
     }
@@ -142,7 +142,7 @@ public class CustomerPaying extends Customer {
         int counter = 1;
         double total = 0;
         if (mySubscription.size() > 0) {
-            monthlyEmail = this.name + ", your personal subscription totals are as follows:\n";
+            monthlyEmail = getName() + ", your personal subscription totals are as follows:\n";
             for (Supplement supplement : mySubscription) {
                 monthlyEmail += counter + ". " + supplement.getName() + " - $" + (supplement.getCost() * multiplier)
                         + ".\n";
@@ -150,12 +150,12 @@ public class CustomerPaying extends Customer {
                 counter++;
             }
         } else {
-            monthlyEmail += this.name + ", You have no personal Supplements.\n";
+            monthlyEmail += getName() + ", You have no personal Supplements.\n";
         }
         counter = 1;
         monthlyEmail += "\n\nYour associated customer's supplement totals are as follows:";
         for (Customer associatedCustomer : associatedCustomers) {
-            monthlyEmail += "\n" + associatedCustomer.name + "'s supplements are:\n";
+            monthlyEmail += "\n" + associatedCustomer.getName() + "'s supplements are:\n";
             for (Supplement supplement : associatedCustomer.getSupplementSubscription()) {
                 monthlyEmail += counter + ". " + supplement.getName() + " - $" + (supplement.getCost() * multiplier)
                         + ".\n";
@@ -168,16 +168,16 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns a formatted total in string form.
      * @return
      */
     @Override
-    public String getTotal() {
-        return "$" + String.format("%.2f", this.total + getAssociatedCustomerTotal());
+    public String getTotalString() {
+        return "$" + String.format("%.2f", getTotal() + getAssociatedCustomerTotal());
     }
 
     /**
-     *
+     * Returns a formatted "Paying Customer" label.
      * @return
      */
     @Override
@@ -190,7 +190,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns a VBox of all relevant Paying Customer Details.
      * @return
      */
     @Override
@@ -215,7 +215,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getBankNameHBox() {
@@ -236,7 +236,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getCardNameHBox() {
@@ -257,7 +257,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getCardNumberHBox() {
@@ -279,7 +279,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getCardExpHBox() {
@@ -301,7 +301,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getCardCVVHBox() {
@@ -325,7 +325,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getAccountNameHBox() {
@@ -346,7 +346,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getAccountNumHBox() {
@@ -367,7 +367,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getAccountBSBHBox() {
@@ -388,7 +388,7 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     *  Returns a VBox containing all the field editing HBoxes.
      * @param choice
      * @return
      */
@@ -415,15 +415,15 @@ public class CustomerPaying extends Customer {
     }
 
     /**
-     *
+     * Sets Associated Customer lists to null.
      */
     @Override
     public void setAssociatedCustomerListToNull() {
-        this.associatedCustomers = new ArrayList<Customer>();
+        this.associatedCustomers = new ArrayList<>();
     }
 
     /**
-     *
+     * Adds an Associated Customer to the Associated Customer list.
      * @param associateCustomer
      */
     @Override

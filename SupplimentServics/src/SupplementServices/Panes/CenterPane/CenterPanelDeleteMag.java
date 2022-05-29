@@ -30,7 +30,7 @@ public class CenterPanelDeleteMag extends CenterPanelDelete {
     @Override
     public void saveChange() throws IOException {
         try {
-            this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magazineSelected));
+            this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.getMagazineSelected()));
             this.frontEnd.setDefaultSelectedMagazine();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");

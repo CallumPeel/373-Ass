@@ -105,7 +105,7 @@ public class FrontEndConsole implements Serializable{
      */
     private void printCustomers() {
         for (Customer cust : this.backEnd.customers) {
-            System.out.println(cust.name);
+            System.out.println(cust.getName());
         }
         System.out.println();
     }
@@ -193,13 +193,13 @@ public class FrontEndConsole implements Serializable{
         // e. add a new customer to the magazine service, 
         this.backEnd.addCustomer(new Customer("Bob", "Bob@gmail.com"));
         for (Customer customer : this.backEnd.customers) {
-            System.out.println(customer.name);
+            System.out.println(customer.getName());
         }
         System.out.println();
         // f. remove an existing customer from the magazine service, 
         this.backEnd.removeCustomer("Maddie");
         for (Customer customer : this.backEnd.customers) {
-            System.out.println(customer.name);
+            System.out.println(customer.getName());
         }
     }
 

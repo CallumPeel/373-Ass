@@ -31,7 +31,7 @@ public class CenterPanelDeleteSupplement extends CenterPanelDelete {
     public void saveChange() throws IOException {
         System.out.println("Save button clicked on delete");
         try {
-            this.backEnd.removeSupplement(this.backEnd.getSupplement(this.frontEnd.supplementSelected));
+            this.backEnd.removeSupplement(this.backEnd.getSupplement(this.frontEnd.getSupplementSelected()));
             this.frontEnd.setDefaultSelectedSupplement();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");

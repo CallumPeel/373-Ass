@@ -31,7 +31,7 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
      */
     public CenterPanelEditMagazine(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
-        this.oldMagazine = this.backEnd.getMagazine(this.frontEnd.magazineSelected);
+        this.oldMagazine = this.backEnd.getMagazine(this.frontEnd.getMagazineSelected());
         this.initialName = oldMagazine.getName();
         cloneMagazine();
         this.labels = new VBox();

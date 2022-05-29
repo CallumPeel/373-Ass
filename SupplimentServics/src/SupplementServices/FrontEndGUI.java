@@ -23,79 +23,87 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author callu
+ * @author callum
  */
 public class FrontEndGUI {
 
-    /**
-     *
-     */
-    protected BackEnd backEnd;
+    public BackEnd getBackEnd() {
+        return backEnd;
+    }
 
-    /**
-     *
-     */
-    protected int width,
+    public void setBackEnd(BackEnd backEnd) {
+        this.backEnd = backEnd;
+    }
 
-    /**
-     *
-     */
-    height;
+    public int getWidth() {
+        return width;
+    }
 
-    /**
-     *
-     */
-    public boolean isViewMode;
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
-    /**
-     *
-     */
-    public boolean isCreateMode;
+    public int getHeight() {
+        return height;
+    }
 
-    /**
-     *
-     */
-    public boolean isEditMode;
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
-    /**
-     *
-     */
-    public TreeView<String> customerTreeView,
+    public TreeView<String> getCustomerTreeView() {
+        return customerTreeView;
+    }
 
-    /**
-     *
-     */
-    supplementTreeView,
+    public void setCustomerTreeView(TreeView<String> customerTreeView) {
+        this.customerTreeView = customerTreeView;
+    }
 
-    /**
-     *
-     */
-    magazineTreeView;
+    public String getCustomerSelected() {
+        return customerSelected;
+    }
 
-    /**
-     *
-     */
-    public String customerSelected,
+    public void setCustomerSelected(String customerSelected) {
+        this.customerSelected = customerSelected;
+    }
 
-    /**
-     *
-     */
-    supplementSelected,
+    public String getSupplementSelected() {
+        return supplementSelected;
+    }
 
-    /**
-     *
-     */
-    magazineSelected;
+    public void setSupplementSelected(String supplementSelected) {
+        this.supplementSelected = supplementSelected;
+    }
 
-    /**
-     *
-     */
-    protected int buttonWidth;
+    public String getMagazineSelected() {
+        return magazineSelected;
+    }
 
-    /**
-     *
-     */
-    public VBox vbox;
+    public void setMagazineSelected(String magazineSelected) {
+        this.magazineSelected = magazineSelected;
+    }
+
+    public int getButtonWidth() {
+        return buttonWidth;
+    }
+
+    public void setButtonWidth(int buttonWidth) {
+        this.buttonWidth = buttonWidth;
+    }
+
+    private BackEnd backEnd;
+    private int width, height;
+    private boolean isViewMode;
+    private boolean isCreateMode;
+    private boolean isEditMode;
+    private TreeView<String> customerTreeView,
+            supplementTreeView,
+            magazineTreeView;
+    private String customerSelected,
+            supplementSelected,
+            magazineSelected;
+    private int buttonWidth;
+    private VBox leftVBox;
 
     /**
      *
@@ -112,12 +120,12 @@ public class FrontEndGUI {
         this.height = height;
         this.buttonWidth = 150;
         this.backEnd.setFileName(getDirectory());
-        try {
-            this.backEnd.load();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.customerSelected = this.backEnd.customers.get(0).name;
+//        try {
+//            this.backEnd.load();
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        this.customerSelected = this.backEnd.customers.get(0).getName();
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
         this.magazineSelected = this.backEnd.magazines.get(0).getName();
         viewMode();
@@ -133,6 +141,27 @@ public class FrontEndGUI {
         this.magazineTreeView.setShowRoot(false);
         this.magazineTreeView.setPadding(new Insets(15));
     }
+
+    public TreeView<String> customerTreeView() {
+        return this.customerTreeView;
+    }
+
+    public TreeView<String> getMagazineTreeView() {
+        return this.magazineTreeView;
+    }
+
+    public TreeView<String> getSupplementTreeView() {
+        return this.supplementTreeView;
+    }
+
+    public VBox getLeftVBox() {
+        return this.leftVBox;
+    }
+
+    public void setLeftVBox(VBox newBox) {
+        this.leftVBox = newBox;
+    }
+    
 
     private void setViewTree() {
         TreeItem<String> rootItem1 = new TreeItem("Customer Database");
@@ -151,6 +180,30 @@ public class FrontEndGUI {
         this.supplementTreeView.setShowRoot(false);
         this.customerTreeView.setPadding(new Insets(15));
         this.supplementTreeView.setPadding(new Insets(15));
+    }
+
+    public boolean getIsViewMode() {
+        return isViewMode;
+    }
+
+    public void setIsViewMode(boolean isViewMode) {
+        this.isViewMode = isViewMode;
+    }
+
+    public boolean getIsCreateMode() {
+        return isCreateMode;
+    }
+
+    public void setIsCreateMode(boolean isCreateMode) {
+        this.isCreateMode = isCreateMode;
+    }
+
+    public boolean getIsEditMode() {
+        return isEditMode;
+    }
+
+    public void setIsEditMode(boolean isEditMode) {
+        this.isEditMode = isEditMode;
     }
 
     /**
@@ -178,7 +231,7 @@ public class FrontEndGUI {
      *
      */
     public void setDefaultSelectedCustomer() {
-        this.customerSelected = this.backEnd.customers.get(0).name;
+        this.customerSelected = this.backEnd.customers.get(0).getName();
     }
 
     /**
@@ -276,9 +329,9 @@ public class FrontEndGUI {
             if (!fileName.endsWith("bin")) {
                 fileName += ".bin";
             }
-            } else {
-                fileName = getDirectory();
-            }
+        } else {
+            fileName = getDirectory();
+        }
         return fileName;
     }
 }

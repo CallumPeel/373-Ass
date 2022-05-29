@@ -31,7 +31,7 @@ public class CenterPanelViewMagazine extends CenterPanel {
      * Constructs a tree view of the customer's information.
      */
     private void addTreeView() {
-        VBox magazineBreakdownVBox = new VBox(this.backEnd.getMagazine(this.frontEnd.magazineSelected).getDetails());
+        VBox magazineBreakdownVBox = new VBox(this.backEnd.getMagazine(this.frontEnd.getMagazineSelected()).getDetails());
         this.centerSectionPane.setCenter(magazineBreakdownVBox);
         this.centerSectionPane.setBottom(this.centerBottomPane);
         this.centerSectionPane.setMargin(magazineBreakdownVBox, new Insets(15));

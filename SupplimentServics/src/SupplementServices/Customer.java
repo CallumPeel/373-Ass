@@ -20,35 +20,12 @@ import javafx.scene.text.Font;
  */
 public class Customer implements Cloneable, Serializable {
 
-    /**
-     *
-     */
-    public String payer;
-
-    /**
-     *
-     */
-    protected String name;
-
-    /**
-     *
-     */
-    protected String email;
-
-    /**
-     *
-     */
-    protected Double total;
-
-    /**
-     *
-     */
-    protected Address address;
-
-    /**
-     *
-     */
-    protected ArrayList<Supplement> supplementSubscription;
+    private String payer;
+    private String name;
+    private String email;
+    private Double total;
+    private Address address;
+    private ArrayList<Supplement> supplementSubscription;
 
     /**
      * Takes customer attributes, constructs and initializes the the global
@@ -69,6 +46,8 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
+     * Takes customer attributes, constructs and initializes the the global.
+     * Payer is set to default.
      *
      * @param name
      * @param email
@@ -86,7 +65,8 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Takes customer attributes, constructs and initializes the global
-     * variables. Creates an empty supplementSubscription.
+     * variables. Creates an empty supplementSubscription. Payer is set to
+     * default.
      *
      * @param name
      * @param email
@@ -101,6 +81,9 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
+     * Takes customer attributes, constructs and initializes the global
+     * variables. Creates an empty supplementSubscription. Payer and email are
+     * set to default.
      *
      * @param name
      */
@@ -114,7 +97,8 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Creates a default customer. Constructs and initializes the global
+     * variables to default values.
      */
     public Customer() {
         this.name = "Default";
@@ -126,9 +110,9 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
+     * Performs a deep copy of Customer.
      *
-     * @return
-     * @throws CloneNotSupportedException
+     * @return @throws CloneNotSupportedException
      */
     @Override
     public Customer clone() throws CloneNotSupportedException {
@@ -136,6 +120,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
+     * Takes a Customer and sets it to Customer Payer value.
      *
      * @param payer
      */
@@ -143,6 +128,16 @@ public class Customer implements Cloneable, Serializable {
         this.payer = payer.name;
     }
 
+    /**
+     * Returns the name of this customers Payer.
+     */
+    public String getPayer() {
+        return this.payer;
+    }
+
+    /**
+     * Sets the total cost of this Customers subscriptions.
+     */
     private void setTotal() {
         this.total = 0.0;
         for (int i = 0; i < this.supplementSubscription.size(); i++) {
@@ -151,15 +146,24 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns the total cost in string format.
      * @return
      */
-    public String getTotal() {
+    public String getTotalString() {
         return "$" + String.format("%.2f", this.total);
     }
 
     /**
+     * Returns total cost of supplements.
      *
+     * @return
+     */
+    public double getTotal() {
+        return this.total;
+    }
+
+    /**
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getNameHBox() {
@@ -181,7 +185,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getEmailHBox() {
@@ -202,21 +206,21 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
         addressNumberBox.setButtonName("Set Address Number");
-        addressNumberBox.setLabelText(Integer.toString(this.address.streetNumber));
-        if (this.address.streetNumber == -1) {
+        addressNumberBox.setLabelText(Integer.toString(this.address.getStreetNumber()));
+        if (this.address.getStreetNumber() == -1) {
             addressNumberBox.setLabelText("Default");
         }
         addressNumberBox.button.setOnAction(
                 s -> {
                     try {
-                        this.address.streetNumber = parseInt(addressNumberBox.inputText.getText());
-                        addressNumberBox.outputLabel.setText(Integer.toString(this.address.streetNumber));
+                        this.address.setStreetNumber(parseInt(addressNumberBox.inputText.getText()));
+                        addressNumberBox.outputLabel.setText(Integer.toString(this.address.getStreetNumber()));
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -226,21 +230,21 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox getPostCodeHBox() {
         MyHBox postCodeBox = new MyHBox();
         postCodeBox.setButtonName("Set Post Code");
-        postCodeBox.setLabelText(Integer.toString(this.address.postCode));
-        if (this.address.postCode == -1) {
+        postCodeBox.setLabelText(Integer.toString(this.address.getPostcode()));
+        if (this.address.getPostcode() == -1) {
             postCodeBox.setLabelText("Default");
         }
         postCodeBox.button.setOnAction(
                 s -> {
                     try {
-                        this.address.postCode = parseInt(postCodeBox.inputText.getText());
-                        postCodeBox.outputLabel.setText(Integer.toString(this.address.postCode));
+                        this.address.setPostcode(parseInt(postCodeBox.inputText.getText()));
+                        postCodeBox.outputLabel.setText(Integer.toString(this.address.getPostcode()));
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -250,18 +254,18 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox streetNameHBox() {
         MyHBox streetNameBox = new MyHBox();
         streetNameBox.setButtonName("Set Street Name");
-        streetNameBox.setLabelText(this.address.streetName);
+        streetNameBox.setLabelText(this.address.getStreetName());
         streetNameBox.button.setOnAction(
                 s -> {
                     try {
-                        this.address.streetName = streetNameBox.inputText.getText();
-                        streetNameBox.outputLabel.setText(this.address.streetName);
+                        this.address.setStreetName(streetNameBox.inputText.getText());
+                        streetNameBox.outputLabel.setText(this.address.getStreetName());
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -271,18 +275,18 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @return
      */
     public HBox suburbBoxHBox() {
         MyHBox suburbBox = new MyHBox();
         suburbBox.setButtonName("Set Suburb Name");
-        suburbBox.setLabelText(this.address.suburb);
+        suburbBox.setLabelText(this.address.getSuburb());
         suburbBox.button.setOnAction(
                 s -> {
                     try {
-                        this.address.suburb = suburbBox.inputText.getText();
-                        suburbBox.outputLabel.setText(this.address.suburb);
+                        this.address.setSuburb(suburbBox.inputText.getText());
+                        suburbBox.outputLabel.setText(this.address.getSuburb());
                     } catch (Exception e) {
                         System.out.println("Something Went Wrong...");
                     }
@@ -292,7 +296,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Takes a DropDown and returns an HBox containing elements to set this field.
      * @param choice
      * @return
      */
@@ -314,7 +318,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     *  Returns a VBox containing all the field editing HBoxes.
      * @param choice
      * @return
      */
@@ -372,7 +376,7 @@ public class Customer implements Cloneable, Serializable {
      *
      * @return
      */
-    public String getEmailAddress() {
+    public String getEmail() {
         return this.email;
     }
 
@@ -418,7 +422,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns a Tree Item list of this customers subscriptions.
      * @return
      */
     protected TreeItem<String> getCustSupplementBreakdown() {
@@ -434,7 +438,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns a Tree Item list of this customers details.
      * @return
      */
     public TreeItem<String> getCustomerDetails() {
@@ -449,7 +453,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns a formatted label.
      * @return
      */
     public VBox getCustomerLabelVBox() {
@@ -461,7 +465,7 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns a formatted VBox list of this customers details.
      * @return
      */
     public VBox getDetails() {
@@ -475,13 +479,13 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Sets Associated Customer lists to null.
      */
     public void setAssociatedCustomerListToNull() {
     }
 
     /**
-     *
+     * Overridable method to assign customers to their respective payers.
      * @param associateCustomer
      */
     public void addAssociatedCustomer(Customer associateCustomer) {

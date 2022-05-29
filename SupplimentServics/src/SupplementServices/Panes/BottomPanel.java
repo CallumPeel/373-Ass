@@ -50,13 +50,13 @@ public class BottomPanel extends MyBPane {
      * Sets default pane to center pane.
      */
     private void setPane() {
-        if (this.frontEnd.isViewMode) {
+        if (this.frontEnd.getIsViewMode()) {
             this.backEnd.viewPane.setBottom(this.bottomSectionPane);
         }
-        if (this.frontEnd.isEditMode) {
+        if (this.frontEnd.getIsEditMode()) {
             this.backEnd.editPane.setBottom(this.bottomSectionPane);
         }
-        if (this.frontEnd.isCreateMode) {
+        if (this.frontEnd.getIsCreateMode()) {
             this.backEnd.createPane.setBottom(this.bottomSectionPane);
         }
     }
