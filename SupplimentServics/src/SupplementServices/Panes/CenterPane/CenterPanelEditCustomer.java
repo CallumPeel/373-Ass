@@ -62,7 +62,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
      * @throws IOException
      */
     @Override
-    public void onSaveAsChangesButtonClick() throws IOException {
+    public void onSaveAsButtonClick() throws IOException {
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
         this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();
@@ -76,7 +76,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
      * @throws IOException
      */
     @Override
-    public void onSaveChangesButtonClick() throws IOException {
+    public void onSaveButtonClick() throws IOException {
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
         this.backEnd.getCustomers().set(indexOfCustomerToChange, this.newCustomer);
         this.frontEnd.setDefaultSelectedCustomer();

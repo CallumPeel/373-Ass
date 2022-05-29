@@ -39,7 +39,7 @@ public class CenterPanelEdit extends CenterPanel {
         this.saveButton.setText("Save");
         this.saveButton.setOnAction(e -> {
             try {
-                onSaveChangesButtonClick();
+                onSaveButtonClick();
             } catch (IOException ex) {
                 Logger.getLogger(CenterPanelEdit.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -50,7 +50,7 @@ public class CenterPanelEdit extends CenterPanel {
         this.saveAsButton.setText("Save As");
         this.saveAsButton.setOnAction(e -> {
             try {
-                onSaveAsChangesButtonClick();
+                onSaveAsButtonClick();
             } catch (IOException ex) {
                 Logger.getLogger(CenterPanelEdit.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -70,7 +70,7 @@ public class CenterPanelEdit extends CenterPanel {
      * Saves file in user specified directory.
      * @throws IOException
      */
-    public void onSaveAsChangesButtonClick() throws IOException {
+    public void onSaveAsButtonClick() throws IOException {
         this.backEnd.save(this.frontEnd.getDirectory());
     }
 
@@ -78,7 +78,7 @@ public class CenterPanelEdit extends CenterPanel {
      * Calls a save function in the back end.
      * @throws IOException
      */
-    public void onSaveChangesButtonClick() throws IOException {
+    public void onSaveButtonClick() throws IOException {
         this.backEnd.save();
     }
 

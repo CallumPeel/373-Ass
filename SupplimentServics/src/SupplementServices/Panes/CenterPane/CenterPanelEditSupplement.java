@@ -59,7 +59,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
      * @throws IOException
      */
     @Override
-    public void onSaveAsChangesButtonClick() throws IOException {
+    public void onSaveAsButtonClick() throws IOException {
         System.out.println("Save button clicked on edit");
         int indexOfSupplementToChange = this.backEnd.getSupplements().indexOf(this.backEnd.getSupplement(initialName));
         this.backEnd.getSupplements().set(indexOfSupplementToChange, this.newSupplement);
@@ -74,7 +74,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
      * @throws IOException
      */
     @Override
-    public void onSaveChangesButtonClick() throws IOException {
+    public void onSaveButtonClick() throws IOException {
         System.out.println("Save button clicked on edit");
         int indexOfSupplementToChange = this.backEnd.getSupplements().indexOf(this.backEnd.getSupplement(initialName));
         this.backEnd.getSupplements().set(indexOfSupplementToChange, this.newSupplement);

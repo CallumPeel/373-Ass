@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javafx.scene.control.TreeItem;
 
 /**
- * 
+ * Holds Address information.
  * @author callum
  */
 public class Address implements Serializable {

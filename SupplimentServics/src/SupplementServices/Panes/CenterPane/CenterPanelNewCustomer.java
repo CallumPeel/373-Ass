@@ -54,7 +54,7 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
      * @throws IOException
      */
     @Override
-    public void onSaveChangesButtonClick() throws IOException {
+    public void onSaveButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
         this.backEnd.getCustomers().add(this.customer);
         this.frontEnd.setDefaultSelectedCustomer();
@@ -67,7 +67,7 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
      * @throws IOException
      */
     @Override
-    public void onSaveAsChangesButtonClick() throws IOException {
+    public void onSaveAsButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
         this.backEnd.getCustomers().add(this.customer);
         this.frontEnd.setDefaultSelectedCustomer();

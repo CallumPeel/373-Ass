@@ -22,7 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
+ * Graphical User Interface for the program.
  * @author callum
  */
 public class FrontEndGUI {
