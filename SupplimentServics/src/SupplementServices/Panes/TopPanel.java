@@ -11,8 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
 /**
- *
- * @author callu
+ * Top Section Pane containing edit modes..
+ * @author callum
  */
 public class TopPanel extends MyBPane {
 
@@ -23,7 +23,7 @@ public class TopPanel extends MyBPane {
     BorderPane topSectionPane;
 
     /**
-     *
+     * Constructs a pane containing mode buttons.
      * @param backEnd
      * @param frontEnd
      */
@@ -42,7 +42,7 @@ public class TopPanel extends MyBPane {
     }
 
     /**
-     *
+     * Constructs a pane containing mode buttons.
      */
     public void buildPane() {
         this.viewButton.setText("View Mode");

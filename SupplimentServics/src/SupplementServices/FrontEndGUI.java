@@ -1,6 +1,5 @@
 package SupplementServices;
 
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Panes.BottomPanel;
 import SupplementServices.Panes.TopPanel;
 import SupplementServices.Panes.LeftPane.LeftPanel;
@@ -18,21 +17,94 @@ import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ *
+ * @author callu
+ */
 public class FrontEndGUI {
 
+    /**
+     *
+     */
     protected BackEnd backEnd;
-    protected int width, height;
-    public boolean isViewMode;
-    public boolean isCreateMode;
-    public boolean isEditMode;
-    public TreeView<String> customerTreeView, supplementTreeView, magazineTreeView;
-    public String customerSelected, supplementSelected, magazineSelected;
-    protected int buttonWidth;
-    public MyVBox vbox;
 
+    /**
+     *
+     */
+    protected int width,
+
+    /**
+     *
+     */
+    height;
+
+    /**
+     *
+     */
+    public boolean isViewMode;
+
+    /**
+     *
+     */
+    public boolean isCreateMode;
+
+    /**
+     *
+     */
+    public boolean isEditMode;
+
+    /**
+     *
+     */
+    public TreeView<String> customerTreeView,
+
+    /**
+     *
+     */
+    supplementTreeView,
+
+    /**
+     *
+     */
+    magazineTreeView;
+
+    /**
+     *
+     */
+    public String customerSelected,
+
+    /**
+     *
+     */
+    supplementSelected,
+
+    /**
+     *
+     */
+    magazineSelected;
+
+    /**
+     *
+     */
+    protected int buttonWidth;
+
+    /**
+     *
+     */
+    public VBox vbox;
+
+    /**
+     *
+     * @param backEnd
+     * @param width
+     * @param height
+     * @throws IOException
+     * @throws FileNotFoundException
+     */
     public FrontEndGUI(BackEnd backEnd, int width, int height) throws IOException, FileNotFoundException {
         this.backEnd = backEnd;
         this.backEnd.stage.setTitle("Program");
@@ -81,30 +153,51 @@ public class FrontEndGUI {
         this.supplementTreeView.setPadding(new Insets(15));
     }
 
+    /**
+     *
+     */
     public void setSelectedCustomer() {
         this.customerSelected = this.customerTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
+    /**
+     *
+     */
     public void setSelectedSupplement() {
         this.supplementSelected = this.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
+    /**
+     *
+     */
     public void setSelectedMagazine() {
         this.magazineSelected = this.magazineTreeView.getSelectionModel().getSelectedItem().getValue();
     }
 
+    /**
+     *
+     */
     public void setDefaultSelectedCustomer() {
         this.customerSelected = this.backEnd.customers.get(0).name;
     }
 
+    /**
+     *
+     */
     public void setDefaultSelectedSupplement() {
         this.supplementSelected = this.backEnd.supplements.get(0).name;
     }
 
+    /**
+     *
+     */
     public void setDefaultSelectedMagazine() {
         this.magazineSelected = this.backEnd.magazines.get(0).name;
     }
 
+    /**
+     *
+     */
     public void viewMode() {
         this.isViewMode = true;
         this.isCreateMode = false;
@@ -112,6 +205,9 @@ public class FrontEndGUI {
         refresh();
     }
 
+    /**
+     *
+     */
     public void createMode() {
         this.isViewMode = false;
         this.isCreateMode = true;
@@ -119,6 +215,9 @@ public class FrontEndGUI {
         refresh();
     }
 
+    /**
+     *
+     */
     public void editMode() {
         this.isViewMode = false;
         this.isCreateMode = false;
@@ -126,6 +225,9 @@ public class FrontEndGUI {
         refresh();
     }
 
+    /**
+     *
+     */
     public void refresh() {
         setViewTree();
         setMagTree();
@@ -156,6 +258,10 @@ public class FrontEndGUI {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDirectory() {
         String fileName = "";
         JFileChooser fileChooser = new JFileChooser();

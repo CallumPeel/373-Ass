@@ -3,8 +3,8 @@ package SupplementServices.Panes.CenterPane;
 import SupplementServices.BackEnd;
 import SupplementServices.CustomerPaying;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Displays Paying Customer fields to be edited in the center pane.
@@ -37,7 +37,7 @@ public class CenterPanelNewCustomerPaying extends CenterPanelNewCustomer {
     @Override
     public void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
-        MyVBox content = this.customerPaying.getVBox(choice);
+        VBox content = this.customerPaying.getVBox(choice);
         this.centerSectionPane.setCenter(content);
         setPane();
     }

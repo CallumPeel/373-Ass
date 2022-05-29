@@ -7,9 +7,9 @@ package SupplementServices.Panes.CenterPane;
 import SupplementServices.BackEnd;
 import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import java.io.IOException;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Displays customer fields to be created in the center pane.
@@ -18,7 +18,7 @@ import javafx.scene.control.ChoiceBox;
 public class CenterPanelNewCustomer extends CenterPanelEdit {
 
     Customer customer;
-    MyVBox labels;
+    VBox labels;
 
     /**
      * Constructs a center panel for input of new Customer's fields.
@@ -28,7 +28,7 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
     public CenterPanelNewCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         setCustomer();
-        this.labels = new MyVBox();
+        this.labels = new VBox();
         setCenterPane();
     }
 
@@ -44,7 +44,7 @@ public class CenterPanelNewCustomer extends CenterPanelEdit {
      */
     public void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
-        MyVBox content = this.customer.getVBox(choice);
+        VBox content = this.customer.getVBox(choice);
         this.centerSectionPane.setCenter(content);
         setPane();
     }

@@ -21,7 +21,7 @@ public class CenterPanel extends MyBPane {
     BorderPane centerBottomPane;
 
     /**
-     *  Instantiates Center Panel.
+     *  Constructs a Center Panel.
      * 
      * @param backEnd
      * @param frontEnd

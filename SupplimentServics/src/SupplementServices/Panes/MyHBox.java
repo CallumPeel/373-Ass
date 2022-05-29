@@ -14,102 +14,38 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
 /**
- *
- * @author callu
+ * Creates a horizontal box containing editing elements such as a set button.
+ * @author callum
  */
 public class MyHBox implements Serializable {
 
     /**
-     *
-     * @return
-     */
-    public Label getOutputLabel() {
-        return outputLabel;
-    }
-
-    /**
-     *
-     * @param outputLabel
-     */
-    public void setOutputLabel(Label outputLabel) {
-        this.outputLabel = outputLabel;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Button getButton() {
-        return button;
-    }
-
-    /**
-     *
-     * @param button
-     */
-    public void setButton(Button button) {
-        this.button = button;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public TextField getInputText() {
-        return inputText;
-    }
-
-    /**
-     *
-     * @param inputText
-     */
-    public void setInputText(TextField inputText) {
-        this.inputText = inputText;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public ChoiceBox<String> getChoice() {
-        return choice;
-    }
-
-    /**
-     *
-     * @param choice
-     */
-    public void setChoice(ChoiceBox<String> choice) {
-        this.choice = choice;
-    }
-
-    /**
-     *
+     * Holds an HBox for further editing.
      */
     public HBox box;
 
     /**
-     *
+     * Holds a Label for further editing.
      */
     public Label outputLabel;
 
     /**
-     *
+     * Used to set fields.
      */
     public Button button;
 
     /**
-     *
+     * Used in conjunction with the button to set fields.
      */
     public TextField inputText;
 
     /**
-     *
+     * Used in conjunction with the button to set fields.
      */
     public ChoiceBox<String> choice;
 
     /**
-     *
+     * Constructs a horizontal box containing editing elements such as a set button.
      * @param box
      * @param outputLabel
      * @param button
@@ -125,7 +61,7 @@ public class MyHBox implements Serializable {
     }
 
     /**
-     *
+     * Constructs a horizontal box containing editing elements such as a set button.
      */
     public MyHBox() {
         this.outputLabel = new Label();
@@ -136,7 +72,7 @@ public class MyHBox implements Serializable {
     }
 
     /**
-     *
+     * Constructs a horizontal box containing editing elements such as a set button.
      * @param choice
      */
     public MyHBox(ChoiceBox<String> choice) {
@@ -146,9 +82,75 @@ public class MyHBox implements Serializable {
         this.choice = choice;
         this.box = new HBox(this.choice, this.button, this.outputLabel);
     }
+    
+    
+    /**
+     * Returns the output label.
+     * @return
+     */
+    public Label getOutputLabel() {
+        return this.outputLabel;
+    }
 
     /**
-     *
+     * Sets the output label.
+     * @param outputLabel
+     */
+    public void setOutputLabel(Label outputLabel) {
+        this.outputLabel = outputLabel;
+    }
+
+    /**
+     * Returns this button
+     * @return
+     */
+    public Button getButton() {
+        return button;
+    }
+
+    /**
+     * Sets button value.
+     * @param button
+     */
+    public void setButton(Button button) {
+        this.button = button;
+    }
+
+    /**
+     * Returns the Input text.
+     * @return
+     */
+    public TextField getInputText() {
+        return inputText;
+    }
+
+    /**
+     * Sets the input text.
+     * @param inputText
+     */
+    public void setInputText(TextField inputText) {
+        this.inputText = inputText;
+    }
+
+    /**
+     * Returns a drop down box.
+     * @return
+     */
+    public ChoiceBox<String> getChoice() {
+        return choice;
+    }
+
+    /**
+     * Sets the drop down box.
+     * @param choice
+     */
+    public void setChoice(ChoiceBox<String> choice) {
+        this.choice = choice;
+    }
+
+
+    /**
+     * Sets the button text.
      * @param name
      */
     public void setButtonName(String name) {
@@ -156,7 +158,7 @@ public class MyHBox implements Serializable {
     }
 
     /**
-     *
+     * Sets the label text.
      * @param fieldValue
      */
     public void setLabelText(String fieldValue) {
@@ -164,7 +166,7 @@ public class MyHBox implements Serializable {
     }
 
     /**
-     *
+     * Applies formatting to the HBox elements.
      */
     public void formatBox() {
         this.box.setAlignment(Pos.BASELINE_LEFT);
@@ -180,7 +182,7 @@ public class MyHBox implements Serializable {
     }
 
     /**
-     *
+     * Returns this box.
      * @return
      */
     public HBox getBox() {

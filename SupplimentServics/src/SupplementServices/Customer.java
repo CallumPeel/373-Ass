@@ -1,6 +1,5 @@
 package SupplementServices;
 
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Panes.MyHBox;
 import java.io.Serializable;
 import static java.lang.Integer.parseInt;
@@ -11,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -318,8 +318,8 @@ public class Customer implements Cloneable, Serializable {
      * @param choice
      * @return
      */
-    public MyVBox getVBox(ChoiceBox<String> choice) {
-        return new MyVBox(
+    public VBox getVBox(ChoiceBox<String> choice) {
+        return new VBox(
                 getCustomerLabelVBox(),
                 getNameHBox(),
                 getEmailHBox(),
@@ -452,11 +452,11 @@ public class Customer implements Cloneable, Serializable {
      *
      * @return
      */
-    public MyVBox getCustomerLabelVBox() {
+    public VBox getCustomerLabelVBox() {
         Label customerLabel = new Label("Customer");
         customerLabel.setPadding(new Insets(10));
         customerLabel.setFont(new Font("Arial", 20));
-        MyVBox test = new MyVBox(customerLabel);
+        VBox test = new VBox(customerLabel);
         return test;
     }
 
@@ -464,8 +464,8 @@ public class Customer implements Cloneable, Serializable {
      *
      * @return
      */
-    public MyVBox getDetails() {
-        MyVBox test = new MyVBox(getCustomerLabelVBox());
+    public VBox getDetails() {
+        VBox test = new VBox(getCustomerLabelVBox());
         TreeView details = new TreeView();
         details.setRoot(getCustomerDetails());
         details.setShowRoot(false);

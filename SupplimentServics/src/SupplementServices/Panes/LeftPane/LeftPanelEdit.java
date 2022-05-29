@@ -2,7 +2,6 @@ package SupplementServices.Panes.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Panes.CenterPane.CenterPanelDeleteSupplement;
 import SupplementServices.Panes.CenterPane.CenterPanelNewSupplement;
 import SupplementServices.Panes.CenterPane.CenterPanelEditSupplement;
@@ -14,13 +13,26 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
+/**
+ * Builds a template pane for editing fields.
+ * @author callu
+ */
 public class LeftPanelEdit extends LeftPanel {
 
+    /**
+     * Constructs Tree Views and editing buttons.
+     * @param backEnd
+     * @param frontEnd
+     */
     public LeftPanelEdit(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
+    /**
+     * Creates tree views and relevant editing buttons.
+     */
     @Override
     public void buildPane() {
         Insets inset = new Insets(0, 0, 10, 30);
@@ -107,7 +119,7 @@ public class LeftPanelEdit extends LeftPanel {
         );
         HBox topButtons = new HBox(newCustButton, newCustPayingButton, deleteCustButton, editCustButton);
         HBox bottomButtons = new HBox(newSupButton, deleteSupButton, editSupButton);
-        this.frontEnd.vbox = new MyVBox(
+        this.frontEnd.vbox = new VBox(
                 topButtons,
                 this.frontEnd.customerTreeView,
                 bottomButtons,
@@ -126,40 +138,64 @@ public class LeftPanelEdit extends LeftPanel {
         setPane();
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     @Override
     public void setPane() {
         this.backEnd.getEditPane().setLeft(this.frontEnd.vbox);
     }
 
+    /**
+     * Creates a center panel for creating a new Customer.
+     */
     public void onCustNewButtonClick() {
         new CenterPanelNewCustomer(this.backEnd, this.frontEnd);
     }
 
+    /**
+     *      Creates a center panel for creating a new Paying Customer.
+     */
     public void onCustPayingNewButtonClick() {
         new CenterPanelNewCustomerPaying(this.backEnd, this.frontEnd);
     }
 
+    /**
+     * Creates a center panel for editing a new Paying Customer.
+     */
     public void onCustEditButtonClick() {
         this.frontEnd.setSelectedCustomer();
         new CenterPanelEditCustomer(this.backEnd, this.frontEnd);
     }
 
+    /**
+     * Creates a center panel for deleting a new Paying Customer.
+     */
     public void onCustDeleteButtonClick() {
         this.frontEnd.setSelectedCustomer();
         new CenterPanelDeleteCustomer(this.backEnd, this.frontEnd);
     }
 
+    /**
+     * Creates a center panel for creating a new Supplement.
+     */
     public void onSupNewButtonClick() {
         new CenterPanelNewSupplement(this.backEnd, this.frontEnd);
         System.out.println("Creating new Supplement");
     }
 
+    /**
+     * Creates a center panel for editing a Supplement.
+     */
     public void onSupEditButtonClick() {
         this.frontEnd.setSelectedSupplement();
         new CenterPanelEditSupplement(this.backEnd, this.frontEnd);
         System.out.println("Editing Supplement");
     }
 
+    /**
+     *  Creates a center panel for deleting a Supplement.
+     */
     public void onSupDeleteButtonClick() {
         this.frontEnd.setSelectedSupplement();
         new CenterPanelDeleteSupplement(this.backEnd, this.frontEnd);

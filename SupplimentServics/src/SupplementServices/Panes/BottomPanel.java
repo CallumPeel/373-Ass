@@ -7,16 +7,18 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 /**
+ * Template for Bottom panel.
  *
- * @author callu
+ * @author callum
  */
-public class BottomPanel extends MyBPane{
+public class BottomPanel extends MyBPane {
 
     Button refreshButton;
     int buttonWidth;
     BorderPane bottomSectionPane;
 
     /**
+     * Constructs a Bottom Panel with refresh button.
      *
      * @param backEnd
      * @param frontEnd
@@ -30,7 +32,7 @@ public class BottomPanel extends MyBPane{
     }
 
     /**
-     *
+     * Constructs a Bottom Panel with refresh button.
      */
     public void buildPane() {
         this.refreshButton.setText("Refresh");
@@ -43,7 +45,10 @@ public class BottomPanel extends MyBPane{
                 new Insets(30));
         setPane();
     }
-    
+
+    /**
+     * Sets default pane to center pane.
+     */
     private void setPane() {
         if (this.frontEnd.isViewMode) {
             this.backEnd.viewPane.setBottom(this.bottomSectionPane);

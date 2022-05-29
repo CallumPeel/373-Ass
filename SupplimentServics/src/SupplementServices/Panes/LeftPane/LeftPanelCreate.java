@@ -2,7 +2,6 @@ package SupplementServices.Panes.LeftPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Panes.CenterPane.CenterPanelDeleteMag;
 import SupplementServices.Panes.CenterPane.CenterPanelEditMagazine;
 import SupplementServices.Panes.CenterPane.CenterPanelNewMagazine;
@@ -11,22 +10,39 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
+/**
+ * Builds a template pane for creating fields.
+ *
+ * @author callum
+ */
 public class LeftPanelCreate extends LeftPanelEdit {
 
+    /**
+     * Constructs Tree Views and editing buttons.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public LeftPanelCreate(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     @Override
     public void setPane() {
         this.backEnd.getCreatePane().setLeft(this.frontEnd.vbox);
     }
 
+    /**
+     * Creates tree views and relevant editing buttons.
+     */
     @Override
     public void buildPane() {
         Insets inset = new Insets(0, 0, 10, 30);
-
         Button newButton = new Button();
         newButton.setText("New");
         newButton.setOnAction(
@@ -71,7 +87,7 @@ public class LeftPanelCreate extends LeftPanelEdit {
                 }
         );
         HBox topButtons = new HBox(newButton, deleteButton, editButton);
-        this.frontEnd.vbox = new MyVBox(
+        this.frontEnd.vbox = new VBox(
                 topButtons,
                 this.frontEnd.magazineTreeView
         );
@@ -84,20 +100,32 @@ public class LeftPanelCreate extends LeftPanelEdit {
         setPane();
     }
 
+    /**
+     * Creates a center panel for creating a new Magazine.
+     */
     public void onNewButtonClick() {
         new CenterPanelNewMagazine(this.backEnd, this.frontEnd);
     }
 
+    /**
+     * Creates a center panel for editing a selected Magazine.
+     */
     public void onEditButtonClick() {
         this.frontEnd.setSelectedMagazine();
         new CenterPanelEditMagazine(this.backEnd, this.frontEnd);
     }
 
+    /**
+     * Creates a center panel for deleting a selected Magazine.
+     */
     public void onDeleteButtonClick() {
         this.frontEnd.setSelectedMagazine();
         new CenterPanelDeleteMag(this.backEnd, this.frontEnd);
     }
 
+    /**
+     * Creates a center panel for viewing a selected Magazine.
+     */
     private void onMagViewMouseClick() {
         this.frontEnd.setSelectedMagazine();
         new CenterPanelViewMagazine(this.backEnd, this.frontEnd);

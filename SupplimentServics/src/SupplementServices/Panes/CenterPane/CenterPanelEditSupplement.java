@@ -2,11 +2,11 @@ package SupplementServices.Panes.CenterPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Supplement;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.layout.VBox;
 
 /**
  * Constructs a center panel for editing supplement fields.
@@ -17,7 +17,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
 
     String initialName;
     Supplement oldSupplement, newSupplement;
-    MyVBox labels;
+    VBox labels;
 
     /**
      * Constructs a center panel for editing Supplement fields.
@@ -29,7 +29,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
         this.oldSupplement = this.backEnd.getSupplement(this.frontEnd.supplementSelected);
         this.initialName = this.oldSupplement.getName();
         cloneSupplement();
-        this.labels = new MyVBox();
+        this.labels = new VBox();
         setCenterPane();
     }
 
@@ -48,7 +48,7 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
      * Sets this Pane by passing to the back end.
      */
     private void setCenterPane() {
-        MyVBox content = this.newSupplement.getVBox();
+        VBox content = this.newSupplement.getVBox();
         this.centerSectionPane.setCenter(content);
         setPane();
     }

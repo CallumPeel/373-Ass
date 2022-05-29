@@ -6,9 +6,9 @@ package SupplementServices.Panes.CenterPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Supplement;
 import java.io.IOException;
+import javafx.scene.layout.VBox;
 
 /**
  * Displays Supplement fields to be created in the center pane.
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class CenterPanelNewSupplement extends CenterPanelEdit {
 
     Supplement supplement;
-    MyVBox labels;
+    VBox labels;
 
     /**
      * Constructs a center panel for input of new Supplement's fields.
@@ -27,7 +27,7 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
     public CenterPanelNewSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.supplement = new Supplement();
-        this.labels = new MyVBox();
+        this.labels = new VBox();
         setCenterPane();
     }
     

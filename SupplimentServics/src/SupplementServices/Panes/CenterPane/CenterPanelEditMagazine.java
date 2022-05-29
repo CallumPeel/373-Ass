@@ -3,13 +3,13 @@ package SupplementServices.Panes.CenterPane;
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import SupplementServices.Magazine;
-import SupplementServices.Panes.MyVBox;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -21,7 +21,7 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
 
     String initialName;
     Magazine oldMagazine, newMagazine;
-    MyVBox labels;
+    VBox labels;
 
     /**
      * Constructs a center panel for editing Magazine fields.
@@ -34,7 +34,7 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         this.oldMagazine = this.backEnd.getMagazine(this.frontEnd.magazineSelected);
         this.initialName = oldMagazine.getName();
         cloneMagazine();
-        this.labels = new MyVBox();
+        this.labels = new VBox();
         setCenterPane();
     }
 
@@ -55,7 +55,7 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
     private void setCenterPane() {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
-        MyVBox content = this.newMagazine.getVBox(this.backEnd, supDrop, custDrop);
+        VBox content = this.newMagazine.getVBox(this.backEnd, supDrop, custDrop);
         Label magazine = new Label("Edit Magazine");
         magazine.setPadding(new Insets(15));
         magazine.setFont(new Font("Arial", 20));

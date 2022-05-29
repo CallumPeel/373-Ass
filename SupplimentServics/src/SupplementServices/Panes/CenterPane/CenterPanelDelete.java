@@ -6,7 +6,6 @@ package SupplementServices.Panes.CenterPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Displays delete buttons to center pane.
@@ -23,7 +23,7 @@ import javafx.scene.layout.HBox;
  */
 public class CenterPanelDelete extends CenterPanelEdit {
 
-    MyVBox mainBox;
+    VBox mainBox;
     HBox buttons;
     Label question;
     Button yesButton, noButton;
@@ -50,7 +50,7 @@ public class CenterPanelDelete extends CenterPanelEdit {
             this.frontEnd.refresh();
         });
         this.buttons = new HBox(this.yesButton, this.noButton);
-        this.mainBox = new MyVBox(question, buttons);
+        this.mainBox = new VBox(question, buttons);
         this.buttons.setAlignment(Pos.CENTER);
         this.buttons.setPadding(new Insets(20));
         this.buttons.setSpacing(20);

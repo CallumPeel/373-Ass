@@ -1,6 +1,5 @@
 package SupplementServices;
 
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Panes.MyHBox;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -181,11 +181,11 @@ public class CustomerPaying extends Customer {
      * @return
      */
     @Override
-    public MyVBox getCustomerLabelVBox() {
+    public VBox getCustomerLabelVBox() {
         Label customerLabel = new Label("Paying Customer");
         customerLabel.setPadding(new Insets(10));
         customerLabel.setFont(new Font("Arial", 20));
-        MyVBox test = new MyVBox(customerLabel);
+        VBox test = new VBox(customerLabel);
         return test;
     }
 
@@ -194,8 +194,8 @@ public class CustomerPaying extends Customer {
      * @return
      */
     @Override
-    public MyVBox getDetails() {
-        MyVBox test = new MyVBox(getCustomerLabelVBox());
+    public VBox getDetails() {
+        VBox test = new VBox(getCustomerLabelVBox());
         TreeItem<String> subList = new TreeItem("Associated Customers");
         subList.getChildren().add(
                 new TreeItem("Total: " + "$" + String.format("%.2f", this.getAssociatedCustomerTotal()))
@@ -393,8 +393,8 @@ public class CustomerPaying extends Customer {
      * @return
      */
     @Override
-    public MyVBox getVBox(ChoiceBox<String> choice) {
-        return new MyVBox(
+    public VBox getVBox(ChoiceBox<String> choice) {
+        return new VBox(
                 getCustomerLabelVBox(),
                 getNameHBox(),
                 getEmailHBox(),

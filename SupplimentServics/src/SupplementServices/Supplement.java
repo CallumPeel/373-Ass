@@ -1,6 +1,5 @@
 package SupplementServices;
 
-import SupplementServices.Panes.MyVBox;
 import SupplementServices.Panes.MyHBox;
 import java.io.Serializable;
 import javafx.geometry.Insets;
@@ -8,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -95,11 +95,11 @@ public class Supplement implements Cloneable, Serializable {
      *
      * @return
      */
-    public MyVBox getSupplementLabelVBox() {
+    public VBox getSupplementLabelVBox() {
         Label supplementLabel = new Label("Supplement");
         supplementLabel.setPadding(new Insets(10));
         supplementLabel.setFont(new Font("Arial", 20));
-        MyVBox test = new MyVBox(supplementLabel);
+        VBox test = new VBox(supplementLabel);
         return test;
     }
 
@@ -107,8 +107,8 @@ public class Supplement implements Cloneable, Serializable {
      *
      * @return
      */
-    public MyVBox getDetails() {
-        MyVBox test = new MyVBox(getSupplementLabelVBox());
+    public VBox getDetails() {
+        VBox test = new VBox(getSupplementLabelVBox());
 
         TreeItem<String> supplementInformation = new TreeItem("Supplement");
         supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));
@@ -163,8 +163,8 @@ public class Supplement implements Cloneable, Serializable {
      *
      * @return
      */
-    public MyVBox getVBox() {
-        return new MyVBox(
+    public VBox getVBox() {
+        return new VBox(
                 getSupplementLabelVBox(),
                 this.getNameHBox(),
                 this.getCostHBox()

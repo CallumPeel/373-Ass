@@ -3,11 +3,11 @@ package SupplementServices.Panes.CenterPane;
 import SupplementServices.BackEnd;
 import SupplementServices.Customer;
 import SupplementServices.FrontEndGUI;
-import SupplementServices.Panes.MyVBox;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Displays Customer fields to be edited in the center pane.
@@ -18,7 +18,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     String initialName;
     Customer oldCustomer, newCustomer;
-    MyVBox labels;
+    VBox labels;
 
     /**
      * Constructs a center panel for editing customer fields.
@@ -31,7 +31,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         this.oldCustomer = this.backEnd.getCustomer(this.frontEnd.customerSelected);
         this.initialName = oldCustomer.getName();
         cloneCustomer();
-        this.labels = new MyVBox();
+        this.labels = new VBox();
         setCenterPane();
     }
 
@@ -51,7 +51,7 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
      */
     private void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
-        MyVBox content = this.newCustomer.getVBox(choice);
+        VBox content = this.newCustomer.getVBox(choice);
         this.centerSectionPane.setCenter(content);
         setPane();
     }

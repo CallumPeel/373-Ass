@@ -1,7 +1,6 @@
 package SupplementServices;
 
 import SupplementServices.Panes.MyHBox;
-import SupplementServices.Panes.MyVBox;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
@@ -10,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -346,8 +346,8 @@ public class Magazine implements Cloneable, Serializable {
      * @param custDrop
      * @return
      */
-    public MyVBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
-        return new MyVBox(
+    public VBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
+        return new VBox(
                 this.getNameHBox(),
                 this.getCostHBox(),
                 addSupDropDown(backEnd, supDrop),
@@ -361,9 +361,9 @@ public class Magazine implements Cloneable, Serializable {
      *
      * @return
      */
-    public MyVBox getDetails() {
+    public VBox getDetails() {
         Label magazine = new Label("Magazine");
-        MyVBox test = new MyVBox(magazine);
+        VBox test = new VBox(magazine);
         magazine.setPadding(new Insets(10));
         magazine.setFont(new Font("Arial", 20));
         TreeItem<String> supplementInformation = new TreeItem("Magazine");

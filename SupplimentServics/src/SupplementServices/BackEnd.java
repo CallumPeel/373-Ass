@@ -1,6 +1,5 @@
 package SupplementServices;
 
-import SupplementServices.Panes.MyVBox;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -23,16 +23,79 @@ import javafx.stage.Stage;
  */
 public class BackEnd implements Serializable {
 
+    /**
+     *
+     */
     protected ArrayList<Customer> customers;
+
+    /**
+     *
+     */
     protected ArrayList<Supplement> supplements;
+
+    /**
+     *
+     */
     protected ArrayList<Magazine> magazines;
+
+    /**
+     *
+     */
     protected Stage stage;
-    protected Scene vScene, cScene, eScene;
+
+    /**
+     *
+     */
+    protected Scene vScene,
+
+    /**
+     *
+     */
+    cScene,
+
+    /**
+     *
+     */
+    eScene;
+
+    /**
+     *
+     */
     public BorderPane viewPane;
+
+    /**
+     *
+     */
     public BorderPane createPane;
+
+    /**
+     *
+     */
     public BorderPane editPane;
+
+    /**
+     *
+     */
     protected FlowPane topPane;
-    protected MyVBox viewLeftPane, viewCenterPane, viewRightPane;
+
+    /**
+     *
+     */
+    protected VBox viewLeftPane,
+
+    /**
+     *
+     */
+    viewCenterPane,
+
+    /**
+     *
+     */
+    viewRightPane;
+
+    /**
+     *
+     */
     protected String fileName;
 
     /**
@@ -47,68 +110,130 @@ public class BackEnd implements Serializable {
         this.customers = new ArrayList<>();
         this.supplements = new ArrayList<>();
         this.magazines = new ArrayList<>();
+//        buildFullDatabase();
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
         this.stage = window;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Customer> getCustomers() {
         return this.customers;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Supplement> getSupplements() {
         return this.supplements;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Magazine> getMags() {
         return this.magazines;
     }
 
+    /**
+     *
+     * @return
+     */
     public Stage getStage() {
         return this.stage;
     }
 
+    /**
+     *
+     * @return
+     */
     public Scene getvScene() {
         return this.vScene;
     }
 
+    /**
+     *
+     * @return
+     */
     public Scene getcScene() {
         return this.cScene;
     }
 
+    /**
+     *
+     * @return
+     */
     public Scene geteScene() {
         return this.eScene;
     }
 
+    /**
+     *
+     * @return
+     */
     public BorderPane getViewPane() {
         return this.viewPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public BorderPane getCreatePane() {
         return this.createPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public BorderPane getEditPane() {
         return this.editPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public FlowPane getTopPane() {
         return this.topPane;
     }
 
-    public MyVBox getViewLeftPane() {
+    /**
+     *
+     * @return
+     */
+    public VBox getViewLeftPane() {
         return this.viewLeftPane;
     }
 
-    public MyVBox getViewCenterPane() {
+    /**
+     *
+     * @return
+     */
+    public VBox getViewCenterPane() {
         return this.viewCenterPane;
     }
 
-    public MyVBox getViewRightPane() {
+    /**
+     *
+     * @return
+     */
+    public VBox getViewRightPane() {
         return viewRightPane;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Customer getCustomer(String name) {
         Customer result = null;
         for (Customer c : this.customers) {
@@ -120,6 +245,11 @@ public class BackEnd implements Serializable {
         return result;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Supplement getSupplement(String name) {
         Supplement result = null;
         for (Supplement c : this.supplements) {
@@ -131,6 +261,11 @@ public class BackEnd implements Serializable {
         return result;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Magazine getMagazine(String name) {
         if (getMagazineIndex(name) >= 0) {
             return magazines.get(getMagazineIndex(name));
@@ -138,30 +273,61 @@ public class BackEnd implements Serializable {
         return null;
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     protected String getCustName(int index) {
         return this.customers.get(index).name;
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     protected String getMagName(int index) {
         return this.magazines.get(index).name;
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     protected String getSupName(int index) {
         return this.supplements.get(index).name;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getNumCust() {
         return this.customers.size();
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getNumSups() {
         return this.supplements.size();
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getNumMags() {
         return this.magazines.size();
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getPayingCustomerList() {
         ChoiceBox<String> choice = new ChoiceBox();
         CustomerPaying x = new CustomerPaying();
@@ -173,6 +339,10 @@ public class BackEnd implements Serializable {
         return choice;
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getSupplementList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.supplements.size(); i++) {
@@ -181,6 +351,10 @@ public class BackEnd implements Serializable {
         return choice;
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getCustomerList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.customers.size(); i++) {
@@ -189,6 +363,10 @@ public class BackEnd implements Serializable {
         return choice;
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getMagazineList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.magazines.size(); i++) {
@@ -220,12 +398,20 @@ public class BackEnd implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param name
+     */
     public void removeMagazine(String name) {
         if (getMagazine(name) != null) {
             this.magazines.remove(getMagazineIndex(name));
         }
     }
 
+    /**
+     *
+     * @param mag
+     */
     public void removeMagazine(Magazine mag) {
         this.magazines.remove(mag);
     }
@@ -273,6 +459,10 @@ public class BackEnd implements Serializable {
         this.customers.add(customer);
     }
 
+    /**
+     *
+     * @param customer
+     */
     public void addCustomer(String customer) {
         this.customers.add(new Customer(customer));
     }
@@ -289,10 +479,18 @@ public class BackEnd implements Serializable {
         this.customers.add(new CustomerPaying(customer, paymentMethod, associatedCustomers));
     }
 
+    /**
+     *
+     * @param mag
+     */
     public void addMagazine(Magazine mag) {
         this.magazines.add(mag);
     }
 
+    /**
+     *
+     * @param mag
+     */
     public void addMagazine(String mag) {
         this.magazines.add(new Magazine(mag));
     }
@@ -306,6 +504,10 @@ public class BackEnd implements Serializable {
         this.supplements.add(supplement);
     }
 
+    /**
+     *
+     * @param supplement
+     */
     public void addSupplement(String supplement) {
         this.supplements.add(new Supplement(supplement));
     }
@@ -394,6 +596,9 @@ public class BackEnd implements Serializable {
         this.addMagazine(new Magazine("Some mag", 10, supplementList3, customerList3));
     }
 
+    /**
+     *
+     */
     public void setAssociatedCustomerLists() {
         for (int i = 0; i < this.getNumCust(); i++) {
             this.customers.get(i).setAssociatedCustomerListToNull();
@@ -407,6 +612,11 @@ public class BackEnd implements Serializable {
         }
     }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void save() throws FileNotFoundException, IOException {
         setAssociatedCustomerLists();
         ArrayList<Object> objects = new ArrayList<>();
@@ -424,6 +634,12 @@ public class BackEnd implements Serializable {
         outputStream.close();
     }
 
+    /**
+     *
+     * @param fName
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void save(String fName) throws FileNotFoundException, IOException {
         setAssociatedCustomerLists();
         ArrayList<Object> objects = new ArrayList<>();
@@ -442,6 +658,10 @@ public class BackEnd implements Serializable {
         outputStream.close();
     }
 
+    /**
+     *
+     * @param newfilename
+     */
     public void setFileName(String newfilename) {
         this.fileName = newfilename;
     }
