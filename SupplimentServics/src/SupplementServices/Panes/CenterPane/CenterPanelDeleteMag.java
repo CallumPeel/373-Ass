@@ -2,7 +2,7 @@
  * Student Name: Callum Peel
  * Student ID: 34217062
  */
-package SupplementServices.Panes.centerPane;
+package SupplementServices.Panes.CenterPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
@@ -10,23 +10,27 @@ import java.io.IOException;
 
 /**
  *
- * @author callu
+ * @author callum
  */
-public class CenterPanelDeleteCustomer extends CenterPanelDelete {
+public class CenterPanelDeleteMag extends CenterPanelDelete {
 
-    public CenterPanelDeleteCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
+    public CenterPanelDeleteMag(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
     @Override
     public void saveChange() throws IOException {
         try {
-            this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.customerSelected));
-            this.frontEnd.setDefaultSelectedCustomer();
+            this.backEnd.removeMagazine(this.backEnd.getMagazine(this.frontEnd.magazineSelected));
+            this.frontEnd.setDefaultSelectedMagazine();
         } catch (Exception e) {
             System.out.println("Something Went Wrong");
         }
         this.backEnd.save();
         this.frontEnd.refresh();
+    }
+
+    @Override
+    public void setPane() {
     }
 }

@@ -1,4 +1,4 @@
-package SupplementServices.Panes.centerPane;
+package SupplementServices.Panes.CenterPane;
 
 import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;

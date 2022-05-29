@@ -5,9 +5,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    BackEnd backEnd;
-    FrontEndConsole console;
-    FrontEndGUI gui;
+    private BackEnd backEnd;
+    private FrontEndConsole console;
+    private FrontEndGUI gui;
 
     public static void main(String[] args) {
         Application.launch(args);

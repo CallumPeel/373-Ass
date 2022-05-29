@@ -47,7 +47,6 @@ public class BackEnd implements Serializable {
         this.customers = new ArrayList<>();
         this.supplements = new ArrayList<>();
         this.magazines = new ArrayList<>();
-//        buildFullDatabase();
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
