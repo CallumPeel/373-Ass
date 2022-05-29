@@ -4,8 +4,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- *
- * @author callu
+ * Main entry to the Application.
+ * @author callum
  */
 public class Main extends Application {
 
@@ -14,7 +14,7 @@ public class Main extends Application {
     private FrontEndGUI gui;
 
     /**
-     *
+     * Main method for the program.
      * @param args
      */
     public static void main(String[] args) {

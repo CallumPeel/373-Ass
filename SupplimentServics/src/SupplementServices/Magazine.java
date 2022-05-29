@@ -214,7 +214,7 @@ public class Magazine implements Cloneable, Serializable {
     public ChoiceBox<String> getSupplementList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.supplements.size(); i++) {
-            choice.getItems().add(this.supplements.get(i).name);
+            choice.getItems().add(this.supplements.get(i).getName());
         }
         return choice;
     }
@@ -389,7 +389,7 @@ public class Magazine implements Cloneable, Serializable {
         supplementInformation.getChildren().add(new TreeItem("Name: " + this.name));
         supplementInformation.getChildren().add(new TreeItem("Cost: $" + String.format("%.2f", this.cost)));
         TreeItem<String> supList = new TreeItem("Magazine Supplements");
-        this.supplements.forEach((n) -> supList.getChildren().add(new TreeItem("" + n.name)));
+        this.supplements.forEach((n) -> supList.getChildren().add(new TreeItem("" + n.getName())));
         supplementInformation.getChildren().add(supList);
         TreeItem<String> custList = new TreeItem("Magazine Customers");
         for (int i = 0; i < this.customers.size(); i++) {

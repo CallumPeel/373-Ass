@@ -17,15 +17,8 @@ import javafx.scene.text.Font;
  */
 public class Supplement implements Cloneable, Serializable {
 
-    /**
-     *
-     */
-    protected String name;
-
-    /**
-     *
-     */
-    protected double cost;
+    private String name;
+    private double cost;
 
     /**
      * Takes a name and cost, constructs and initializes those values.
@@ -39,6 +32,7 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
+     * Constructs a Supplement from name with default values.
      *
      * @param name
      */
@@ -48,6 +42,7 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
+     * Constructs a Supplement with default values.
      *
      */
     public Supplement() {
@@ -56,7 +51,7 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
-     * Takes a name and initializes it.
+     * Sets name.
      *
      * @param name
      */
@@ -92,6 +87,7 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
+     * Gets formatted label.
      *
      * @return
      */
@@ -104,6 +100,7 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
+     * Returns a VBox containing this Supplement's details.
      *
      * @return
      */
@@ -122,6 +119,11 @@ public class Supplement implements Cloneable, Serializable {
         return test;
     }
 
+    /**
+     * Returns an HBox containing elements to set this field.
+     *
+     * @return
+     */
     private HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Set Name");
@@ -139,6 +141,11 @@ public class Supplement implements Cloneable, Serializable {
         return nameBox.getBox();
     }
 
+    /**
+     * Returns an HBox containing elements to set this field.
+     *
+     * @return
+     */
     private HBox getCostHBox() {
         MyHBox costBox = new MyHBox();
         costBox.setButtonName("Set Cost");
@@ -160,6 +167,7 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
+     * Returns a VBox containing editing HBoxes.
      *
      * @return
      */
@@ -172,9 +180,9 @@ public class Supplement implements Cloneable, Serializable {
     }
 
     /**
+     * Returns a deep copy of a this Supplement.
      *
-     * @return
-     * @throws CloneNotSupportedException
+     * @return @throws CloneNotSupportedException
      */
     @Override
     public Supplement clone() throws CloneNotSupportedException {

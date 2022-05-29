@@ -257,7 +257,7 @@ public class BackEnd implements Serializable {
      * @return
      */
     protected String getSupName(int index) {
-        return this.supplements.get(index).name;
+        return this.supplements.get(index).getName();
     }
 
     /**
@@ -311,7 +311,7 @@ public class BackEnd implements Serializable {
     public ChoiceBox<String> getSupplementList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.supplements.size(); i++) {
-            choice.getItems().add(this.supplements.get(i).name);
+            choice.getItems().add(this.supplements.get(i).getName());
         }
         return choice;
     }

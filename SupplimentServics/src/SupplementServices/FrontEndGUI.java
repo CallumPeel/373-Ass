@@ -300,7 +300,7 @@ public class FrontEndGUI {
      */
     public void setDefaultSelectedSupplement() {
         if (this.backEnd.getNumCust() < 1) this.backEnd.addSupplement("Default");
-        this.supplementSelected = this.backEnd.supplements.get(0).name;
+        this.supplementSelected = this.backEnd.supplements.get(0).getName();
     }
 
     /**
