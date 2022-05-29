@@ -9,12 +9,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ChoiceBox;
 
+/**
+ * Displays Customer fields to be edited in the center pane.
+ *
+ * @author callum
+ */
 public class CenterPanelEditCustomer extends CenterPanelEdit {
 
     String initialName;
     Customer oldCustomer, newCustomer;
     MyVBox labels;
 
+    /**
+     * Constructs a center panel for editing customer fields.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelEditCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.oldCustomer = this.backEnd.getCustomer(this.frontEnd.customerSelected);
@@ -24,6 +35,9 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         setCenterPane();
     }
 
+    /**
+     * Performs a deep copy of a Customer.
+     */
     private void cloneCustomer() {
         try {
             this.newCustomer = this.oldCustomer.clone();
@@ -32,6 +46,9 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         }
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     private void setCenterPane() {
         ChoiceBox<String> choice = this.backEnd.getPayingCustomerList();
         MyVBox content = this.newCustomer.getVBox(choice);
@@ -39,6 +56,11 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         setPane();
     }
 
+    /**
+     * Saves file in user specified directory.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveAsChangesButtonClick() throws IOException {
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));
@@ -48,6 +70,11 @@ public class CenterPanelEditCustomer extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Calls a save function in the back end.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveChangesButtonClick() throws IOException {
         int indexOfCustomerToChange = this.backEnd.getCustomers().indexOf(this.backEnd.getCustomer(initialName));

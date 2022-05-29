@@ -17,7 +17,14 @@ import javafx.scene.text.Font;
  */
 public class Supplement implements Cloneable, Serializable {
 
+    /**
+     *
+     */
     protected String name;
+
+    /**
+     *
+     */
     protected double cost;
 
     /**
@@ -31,11 +38,18 @@ public class Supplement implements Cloneable, Serializable {
         this.cost = cost;
     }
 
+    /**
+     *
+     * @param name
+     */
     public Supplement(String name) {
         this.name = name;
         this.cost = -1;
     }
 
+    /**
+     *
+     */
     public Supplement() {
         this.name = "Default";
         this.cost = -1;
@@ -77,6 +91,10 @@ public class Supplement implements Cloneable, Serializable {
         return this.cost;
     }
 
+    /**
+     *
+     * @return
+     */
     public MyVBox getSupplementLabelVBox() {
         Label supplementLabel = new Label("Supplement");
         supplementLabel.setPadding(new Insets(10));
@@ -85,6 +103,10 @@ public class Supplement implements Cloneable, Serializable {
         return test;
     }
 
+    /**
+     *
+     * @return
+     */
     public MyVBox getDetails() {
         MyVBox test = new MyVBox(getSupplementLabelVBox());
 
@@ -137,6 +159,10 @@ public class Supplement implements Cloneable, Serializable {
         return costBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public MyVBox getVBox() {
         return new MyVBox(
                 getSupplementLabelVBox(),
@@ -145,6 +171,11 @@ public class Supplement implements Cloneable, Serializable {
         );
     }
 
+    /**
+     *
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Supplement clone() throws CloneNotSupportedException {
         return (Supplement) super.clone();

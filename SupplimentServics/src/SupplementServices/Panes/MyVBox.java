@@ -11,17 +11,33 @@ import javafx.scene.layout.VBox;
  */
 public class MyVBox extends VBox implements Serializable{
 
+    /**
+     *
+     */
     public MyVBox() {
     }
 
+    /**
+     *
+     * @param spacing
+     */
     public MyVBox(double spacing) {
         super(spacing);
     }
 
+    /**
+     *
+     * @param children
+     */
     public MyVBox(Node... children) {
         super(children);
     }
 
+    /**
+     *
+     * @param spacing
+     * @param children
+     */
     public MyVBox(double spacing, Node... children) {
         super(spacing, children);
     }

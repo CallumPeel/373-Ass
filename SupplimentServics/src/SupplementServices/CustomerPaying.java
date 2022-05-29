@@ -42,6 +42,9 @@ public class CustomerPaying extends Customer {
         this.associatedCustomers = new ArrayList<>();
     }
 
+    /**
+     *
+     */
     public CustomerPaying() {
         super();
         this.paymentMethod = new PaymentMethod("Default", new Card("Default", "Default", "Default", -1));
@@ -114,6 +117,10 @@ public class CustomerPaying extends Customer {
         this.associatedCustomers.add(customer);
     }
 
+    /**
+     *
+     * @return
+     */
     public double getAssociatedCustomerTotal() {
         double total = 0;
         for (int i = 0; i < this.associatedCustomers.size(); i++) {
@@ -160,11 +167,19 @@ public class CustomerPaying extends Customer {
         return monthlyEmail;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getTotal() {
         return "$" + String.format("%.2f", this.total + getAssociatedCustomerTotal());
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public MyVBox getCustomerLabelVBox() {
         Label customerLabel = new Label("Paying Customer");
@@ -174,6 +189,10 @@ public class CustomerPaying extends Customer {
         return test;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public MyVBox getDetails() {
         MyVBox test = new MyVBox(getCustomerLabelVBox());
@@ -195,6 +214,10 @@ public class CustomerPaying extends Customer {
         return test;
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getBankNameHBox() {
         MyHBox bankNameBox = new MyHBox();
         bankNameBox.setButtonName("Set Bank Name");
@@ -212,6 +235,10 @@ public class CustomerPaying extends Customer {
         return bankNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getCardNameHBox() {
         MyHBox bankNameBox = new MyHBox();
         bankNameBox.setButtonName("Set Card Name");
@@ -229,6 +256,10 @@ public class CustomerPaying extends Customer {
         return bankNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getCardNumberHBox() {
         MyHBox bankNameBox = new MyHBox();
         bankNameBox.setButtonName("Set Card Number");
@@ -247,6 +278,10 @@ public class CustomerPaying extends Customer {
         return bankNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getCardExpHBox() {
         MyHBox bankNameBox = new MyHBox();
         bankNameBox.setButtonName("Set Card Expiry");
@@ -265,6 +300,10 @@ public class CustomerPaying extends Customer {
         return bankNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getCardCVVHBox() {
         MyHBox cvvBox = new MyHBox();
         cvvBox.setButtonName("Set Card CVV");
@@ -285,6 +324,10 @@ public class CustomerPaying extends Customer {
         return cvvBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getAccountNameHBox() {
         MyHBox accNameBox = new MyHBox();
         accNameBox.setButtonName("Set Account Name");
@@ -302,6 +345,10 @@ public class CustomerPaying extends Customer {
         return accNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getAccountNumHBox() {
         MyHBox accNameBox = new MyHBox();
         accNameBox.setButtonName("Set Account Num");
@@ -319,6 +366,10 @@ public class CustomerPaying extends Customer {
         return accNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getAccountBSBHBox() {
         MyHBox accNameBox = new MyHBox();
         accNameBox.setButtonName("Set Account BSB");
@@ -336,6 +387,11 @@ public class CustomerPaying extends Customer {
         return accNameBox.getBox();
     }
 
+    /**
+     *
+     * @param choice
+     * @return
+     */
     @Override
     public MyVBox getVBox(ChoiceBox<String> choice) {
         return new MyVBox(
@@ -358,11 +414,18 @@ public class CustomerPaying extends Customer {
         );
     }
 
+    /**
+     *
+     */
     @Override
     public void setAssociatedCustomerListToNull() {
         this.associatedCustomers = new ArrayList<Customer>();
     }
 
+    /**
+     *
+     * @param associateCustomer
+     */
     @Override
     public void addAssociatedCustomer(Customer associateCustomer) {
         this.associatedCustomers.add(associateCustomer);

@@ -10,15 +10,26 @@ import SupplementServices.Panes.MyVBox;
 import javafx.geometry.Insets;
 
 /**
+ * Displays Supplement information to center pane.
  *
- * @author callu
+ * @author callum
  */
 public class CenterPanelViewSupplement extends CenterPanel {
 
+    /**
+     * Constructs a center panel for viewing Supplement's fields.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelViewSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         addTreeView();
     }
+
+    /**
+     * Constructs a tree view of the customer's information.
+     */
     private void addTreeView() {
         MyVBox supplementBreakdownVBox = new MyVBox(this.backEnd.getSupplement(this.frontEnd.supplementSelected).getDetails());
         this.centerSectionPane.setCenter(supplementBreakdownVBox);

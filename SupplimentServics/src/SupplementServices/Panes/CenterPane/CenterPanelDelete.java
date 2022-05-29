@@ -17,8 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 /**
+ * Displays delete buttons to center pane.
  *
- * @author callu
+ * @author callum
  */
 public class CenterPanelDelete extends CenterPanelEdit {
 
@@ -27,6 +28,12 @@ public class CenterPanelDelete extends CenterPanelEdit {
     Label question;
     Button yesButton, noButton;
 
+    /**
+     * Constructs a panel for confirming deletion.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelDelete(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.question = new Label("Are you sure?");
@@ -57,6 +64,10 @@ public class CenterPanelDelete extends CenterPanelEdit {
         this.backEnd.getCreatePane().setCenter(this.centerSectionPane);
     }
 
+    /**
+     * Calls a save function in the back end.
+     * @throws IOException
+     */
     public void saveChange() throws IOException {
         try {
             this.backEnd.removeCustomer(this.backEnd.getCustomer(this.frontEnd.customerSelected));
@@ -68,6 +79,9 @@ public class CenterPanelDelete extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Deletes unnecessary buttons by overriding initial method.
+     */
     @Override
     public void setBottomPane() {
     }

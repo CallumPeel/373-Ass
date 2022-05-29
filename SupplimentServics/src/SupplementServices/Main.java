@@ -3,12 +3,20 @@ package SupplementServices;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author callu
+ */
 public class Main extends Application {
 
     private BackEnd backEnd;
     private FrontEndConsole console;
     private FrontEndGUI gui;
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Application.launch(args);
     }

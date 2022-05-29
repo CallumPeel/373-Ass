@@ -28,8 +28,10 @@ public class Magazine implements Cloneable, Serializable {
      * Takes a supplement list and cost then constructs and initializes a
      * Magazine object.
      *
+     * @param name
      * @param supplements
      * @param cost
+     * @param customerSubscriptions
      */
     public Magazine(String name, double cost, ArrayList<Supplement> supplements, ArrayList<Customer> customerSubscriptions) {
         this.name = name;
@@ -38,6 +40,12 @@ public class Magazine implements Cloneable, Serializable {
         this.customers = customerSubscriptions;
     }
 
+    /**
+     *
+     * @param name
+     * @param cost
+     * @param supplements
+     */
     public Magazine(String name, double cost, ArrayList<Supplement> supplements) {
         this.name = name;
         this.cost = cost;
@@ -45,6 +53,11 @@ public class Magazine implements Cloneable, Serializable {
         this.customers = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param name
+     * @param cost
+     */
     public Magazine(String name, double cost) {
         this.name = name;
         this.cost = cost;
@@ -52,6 +65,10 @@ public class Magazine implements Cloneable, Serializable {
         this.customers = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param mag
+     */
     public Magazine(String mag) {
         this.name = mag;
         this.cost = -1;
@@ -69,15 +86,28 @@ public class Magazine implements Cloneable, Serializable {
         this.customers = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Magazine clone() throws CloneNotSupportedException {
         return (Magazine) super.clone();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Customer> getCustomerSubscriptions() {
         return this.customers;
     }
@@ -100,10 +130,18 @@ public class Magazine implements Cloneable, Serializable {
         return this.supplements;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @param customerSubscriptions
+     */
     public void setCustomerSubscriptions(ArrayList<Customer> customerSubscriptions) {
         this.customers = customerSubscriptions;
     }
@@ -144,6 +182,10 @@ public class Magazine implements Cloneable, Serializable {
         this.supplements.remove(supplement);
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getCustomerList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.customers.size(); i++) {
@@ -152,6 +194,10 @@ public class Magazine implements Cloneable, Serializable {
         return choice;
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getSupplementList() {
         ChoiceBox<String> choice = new ChoiceBox();
         for (int i = 0; i < this.supplements.size(); i++) {
@@ -160,6 +206,10 @@ public class Magazine implements Cloneable, Serializable {
         return choice;
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Name");
@@ -196,6 +246,12 @@ public class Magazine implements Cloneable, Serializable {
         return costBox.getBox();
     }
 
+    /**
+     *
+     * @param backEnd
+     * @param choice
+     * @return
+     */
     public HBox addSupDropDown(BackEnd backEnd, ChoiceBox<String> choice) {
         MyHBox supplementsBox = new MyHBox(choice);
         supplementsBox.setButtonName("add");
@@ -214,6 +270,11 @@ public class Magazine implements Cloneable, Serializable {
         return supplementsBox.getBox();
     }
 
+    /**
+     *
+     * @param backEnd
+     * @return
+     */
     public HBox deleteSupDropDown(BackEnd backEnd) {
         MyHBox supplementsBox = new MyHBox(getSupplementList());
         supplementsBox.setButtonName("remove");
@@ -232,6 +293,11 @@ public class Magazine implements Cloneable, Serializable {
         return supplementsBox.getBox();
     }
 
+    /**
+     *
+     * @param backEnd
+     * @return
+     */
     public HBox deleteCustDropDown(BackEnd backEnd) {
         MyHBox custBox = new MyHBox(getCustomerList());
         custBox.setButtonName("remove");
@@ -250,6 +316,12 @@ public class Magazine implements Cloneable, Serializable {
         return custBox.getBox();
     }
 
+    /**
+     *
+     * @param backEnd
+     * @param custDrop
+     * @return
+     */
     public HBox addCustDropDown(BackEnd backEnd, ChoiceBox<String> custDrop) {
         MyHBox custBox = new MyHBox(custDrop);
         custBox.setButtonName("add");
@@ -267,6 +339,13 @@ public class Magazine implements Cloneable, Serializable {
         return custBox.getBox();
     }
 
+    /**
+     *
+     * @param backEnd
+     * @param supDrop
+     * @param custDrop
+     * @return
+     */
     public MyVBox getVBox(BackEnd backEnd, ChoiceBox<String> supDrop, ChoiceBox<String> custDrop) {
         return new MyVBox(
                 this.getNameHBox(),
@@ -278,6 +357,10 @@ public class Magazine implements Cloneable, Serializable {
         );
     }
 
+    /**
+     *
+     * @return
+     */
     public MyVBox getDetails() {
         Label magazine = new Label("Magazine");
         MyVBox test = new MyVBox(magazine);

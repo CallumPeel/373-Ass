@@ -13,46 +13,109 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
+/**
+ *
+ * @author callu
+ */
 public class MyHBox implements Serializable {
 
+    /**
+     *
+     * @return
+     */
     public Label getOutputLabel() {
         return outputLabel;
     }
 
+    /**
+     *
+     * @param outputLabel
+     */
     public void setOutputLabel(Label outputLabel) {
         this.outputLabel = outputLabel;
     }
 
+    /**
+     *
+     * @return
+     */
     public Button getButton() {
         return button;
     }
 
+    /**
+     *
+     * @param button
+     */
     public void setButton(Button button) {
         this.button = button;
     }
 
+    /**
+     *
+     * @return
+     */
     public TextField getInputText() {
         return inputText;
     }
 
+    /**
+     *
+     * @param inputText
+     */
     public void setInputText(TextField inputText) {
         this.inputText = inputText;
     }
 
+    /**
+     *
+     * @return
+     */
     public ChoiceBox<String> getChoice() {
         return choice;
     }
 
+    /**
+     *
+     * @param choice
+     */
     public void setChoice(ChoiceBox<String> choice) {
         this.choice = choice;
     }
 
+    /**
+     *
+     */
     public HBox box;
+
+    /**
+     *
+     */
     public Label outputLabel;
+
+    /**
+     *
+     */
     public Button button;
+
+    /**
+     *
+     */
     public TextField inputText;
+
+    /**
+     *
+     */
     public ChoiceBox<String> choice;
 
+    /**
+     *
+     * @param box
+     * @param outputLabel
+     * @param button
+     * @param inputText
+     * @param choice
+     */
     public MyHBox(HBox box, Label outputLabel, Button button, TextField inputText, ChoiceBox<String> choice) {
         this.box = box;
         this.outputLabel = outputLabel;
@@ -61,6 +124,9 @@ public class MyHBox implements Serializable {
         this.choice = choice;
     }
 
+    /**
+     *
+     */
     public MyHBox() {
         this.outputLabel = new Label();
         this.button = new Button();
@@ -69,6 +135,10 @@ public class MyHBox implements Serializable {
         this.choice = new ChoiceBox<String>();
     }
 
+    /**
+     *
+     * @param choice
+     */
     public MyHBox(ChoiceBox<String> choice) {
         this.outputLabel = new Label();
         this.button = new Button();
@@ -77,14 +147,25 @@ public class MyHBox implements Serializable {
         this.box = new HBox(this.choice, this.button, this.outputLabel);
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setButtonName(String name) {
         this.button.setText(name);
     }
 
+    /**
+     *
+     * @param fieldValue
+     */
     public void setLabelText(String fieldValue) {
         this.outputLabel.setText(fieldValue);
     }
 
+    /**
+     *
+     */
     public void formatBox() {
         this.box.setAlignment(Pos.BASELINE_LEFT);
         this.box.setSpacing(20);
@@ -98,6 +179,10 @@ public class MyHBox implements Serializable {
         this.choice.setMaxWidth(100);
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getBox() {
         return this.box;
     }

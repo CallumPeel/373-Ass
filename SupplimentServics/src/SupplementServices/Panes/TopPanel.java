@@ -10,6 +10,10 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
+/**
+ *
+ * @author callu
+ */
 public class TopPanel extends MyBPane {
 
     Label title;
@@ -18,6 +22,11 @@ public class TopPanel extends MyBPane {
     Separator separator1;
     BorderPane topSectionPane;
 
+    /**
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public TopPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.title = new Label("MAGAZINE SERVICES");
@@ -32,6 +41,9 @@ public class TopPanel extends MyBPane {
         buildPane();
     }
 
+    /**
+     *
+     */
     public void buildPane() {
         this.viewButton.setText("View Mode");
         this.viewButton.setOnAction(e -> {

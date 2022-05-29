@@ -8,21 +8,34 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Constructs a center panel for editing supplement fields.
+ *
+ * @author callum
+ */
 public class CenterPanelEditSupplement extends CenterPanelEdit {
 
     String initialName;
     Supplement oldSupplement, newSupplement;
     MyVBox labels;
 
+    /**
+     * Constructs a center panel for editing Supplement fields.
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelEditSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.oldSupplement = this.backEnd.getSupplement(this.frontEnd.supplementSelected);
         this.initialName = this.oldSupplement.getName();
         cloneSupplement();
-        this.labels = getLabels();
+        this.labels = new MyVBox();
         setCenterPane();
     }
 
+    /**
+     * Performs a deep copy of a Supplement.
+     */
     private void cloneSupplement() {
         try {
             this.newSupplement = this.oldSupplement.clone();
@@ -31,17 +44,20 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
         }
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     private void setCenterPane() {
         MyVBox content = this.newSupplement.getVBox();
         this.centerSectionPane.setCenter(content);
         setPane();
     }
 
-    private MyVBox getLabels() {
-        MyVBox buttons = new MyVBox();
-        return buttons;
-    }
-
+    /**
+     * Saves file in user specified directory.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveAsChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on edit");
@@ -52,6 +68,11 @@ public class CenterPanelEditSupplement extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Calls a save function in the back end.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on edit");

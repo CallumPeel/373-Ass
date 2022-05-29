@@ -6,12 +6,21 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
+/**
+ *
+ * @author callu
+ */
 public class BottomPanel extends MyBPane{
 
     Button refreshButton;
     int buttonWidth;
     BorderPane bottomSectionPane;
 
+    /**
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public BottomPanel(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.refreshButton = new Button();
@@ -20,6 +29,9 @@ public class BottomPanel extends MyBPane{
         buildPane();
     }
 
+    /**
+     *
+     */
     public void buildPane() {
         this.refreshButton.setText("Refresh");
         this.refreshButton.setOnAction(e -> {

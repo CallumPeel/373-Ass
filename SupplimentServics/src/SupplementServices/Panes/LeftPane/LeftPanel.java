@@ -11,13 +11,25 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
+/**
+ *
+ * @author callu
+ */
 public class LeftPanel extends MyBPane {
 
+    /**
+     *
+     * @param backEnd
+     * @param sceneTemplate
+     */
     public LeftPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);
         buildPane();
     }
 
+    /**
+     *
+     */
     public void buildPane() {
         Insets inset = new Insets(0, 15, 10, 30);      
         Label customerLabel = new Label("Customers");
@@ -52,6 +64,9 @@ public class LeftPanel extends MyBPane {
         setPane();
     }
 
+    /**
+     *
+     */
     public void setPane() {
         this.backEnd.getViewPane().setLeft(this.frontEnd.vbox);
     }
@@ -61,6 +76,9 @@ public class LeftPanel extends MyBPane {
         new CenterPanelViewCustomer(this.backEnd, this.frontEnd);
     }
 
+    /**
+     *
+     */
     public void onSupViewButtonClick() {
         this.frontEnd.supplementSelected = this.frontEnd.supplementTreeView.getSelectionModel().getSelectedItem().getValue();
         new CenterPanelViewSupplement(this.backEnd, this.frontEnd);

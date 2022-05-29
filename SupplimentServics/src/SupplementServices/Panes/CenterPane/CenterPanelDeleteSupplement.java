@@ -8,12 +8,25 @@ import SupplementServices.BackEnd;
 import SupplementServices.FrontEndGUI;
 import java.io.IOException;
 
+/**
+ * Extends default Delete class. Deletes selected supplement.
+ * @author callum
+ */
 public class CenterPanelDeleteSupplement extends CenterPanelDelete {
 
+    /**
+     * Constructs a Delete Panel.
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelDeleteSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
+    /**
+     * Calls a save function in the back end.
+     * @throws IOException
+     */
     @Override
     public void saveChange() throws IOException {
         System.out.println("Save button clicked on delete");

@@ -10,11 +10,20 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
+/**
+ * Builds a template pane for editing fields.
+ * @author callum
+ */
 public class CenterPanelEdit extends CenterPanel {
 
     private Button saveButton, saveAsButton;
     private int buttonWidth;
 
+    /**
+     * Constructs a center panel that contains save buttons.
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelEdit(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.saveButton = new Button();
@@ -23,6 +32,9 @@ public class CenterPanelEdit extends CenterPanel {
         setBottomPane();
     }
 
+    /**
+     * Adds buttons to bottom section.
+     */
     public void setBottomPane() {
         this.saveButton.setText("Save");
         this.saveButton.setOnAction(e -> {
@@ -54,14 +66,25 @@ public class CenterPanelEdit extends CenterPanel {
         this.centerSectionPane.setBottom(this.centerBottomPane);
     }
 
+    /**
+     * Saves file in user specified directory.
+     * @throws IOException
+     */
     public void onSaveAsChangesButtonClick() throws IOException {
         this.backEnd.save(this.frontEnd.getDirectory());
     }
 
+    /**
+     * Calls a save function in the back end.
+     * @throws IOException
+     */
     public void onSaveChangesButtonClick() throws IOException {
         this.backEnd.save();
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     @Override
     public void setPane() {
         this.centerSectionPane.setPadding(new Insets(0, 0, 0, 15));

@@ -20,11 +20,34 @@ import javafx.scene.text.Font;
  */
 public class Customer implements Cloneable, Serializable {
 
+    /**
+     *
+     */
     public String payer;
+
+    /**
+     *
+     */
     protected String name;
+
+    /**
+     *
+     */
     protected String email;
+
+    /**
+     *
+     */
     protected Double total;
+
+    /**
+     *
+     */
     protected Address address;
+
+    /**
+     *
+     */
     protected ArrayList<Supplement> supplementSubscription;
 
     /**
@@ -45,6 +68,13 @@ public class Customer implements Cloneable, Serializable {
         setTotal();
     }
 
+    /**
+     *
+     * @param name
+     * @param email
+     * @param address
+     * @param supplementSubscription
+     */
     public Customer(String name, String email, Address address, ArrayList<Supplement> supplementSubscription) {
         this.name = name;
         this.email = email;
@@ -70,6 +100,10 @@ public class Customer implements Cloneable, Serializable {
         setTotal();
     }
 
+    /**
+     *
+     * @param name
+     */
     public Customer(String name) {
         this.name = name;
         this.email = "Default";
@@ -79,6 +113,9 @@ public class Customer implements Cloneable, Serializable {
         setTotal();
     }
 
+    /**
+     *
+     */
     public Customer() {
         this.name = "Default";
         this.email = "Default";
@@ -88,11 +125,20 @@ public class Customer implements Cloneable, Serializable {
         setTotal();
     }
 
+    /**
+     *
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Customer clone() throws CloneNotSupportedException {
         return (Customer) super.clone();
     }
 
+    /**
+     *
+     * @param payer
+     */
     public void setPayer(Customer payer) {
         this.payer = payer.name;
     }
@@ -104,10 +150,18 @@ public class Customer implements Cloneable, Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTotal() {
         return "$" + String.format("%.2f", this.total);
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Set Name");
@@ -126,6 +180,10 @@ public class Customer implements Cloneable, Serializable {
         return nameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getEmailHBox() {
         MyHBox emailBox = new MyHBox();
         emailBox.setButtonName("Set Email");
@@ -143,6 +201,10 @@ public class Customer implements Cloneable, Serializable {
         return emailBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getAddressHBox() {
         MyHBox addressNumberBox = new MyHBox();
         addressNumberBox.setButtonName("Set Address Number");
@@ -163,6 +225,10 @@ public class Customer implements Cloneable, Serializable {
         return addressNumberBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox getPostCodeHBox() {
         MyHBox postCodeBox = new MyHBox();
         postCodeBox.setButtonName("Set Post Code");
@@ -183,6 +249,10 @@ public class Customer implements Cloneable, Serializable {
         return postCodeBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox streetNameHBox() {
         MyHBox streetNameBox = new MyHBox();
         streetNameBox.setButtonName("Set Street Name");
@@ -200,6 +270,10 @@ public class Customer implements Cloneable, Serializable {
         return streetNameBox.getBox();
     }
 
+    /**
+     *
+     * @return
+     */
     public HBox suburbBoxHBox() {
         MyHBox suburbBox = new MyHBox();
         suburbBox.setButtonName("Set Suburb Name");
@@ -217,6 +291,11 @@ public class Customer implements Cloneable, Serializable {
         return suburbBox.getBox();
     }
 
+    /**
+     *
+     * @param choice
+     * @return
+     */
     public HBox dropDown(ChoiceBox<String> choice) {
         MyHBox payerBox = new MyHBox(choice);
         payerBox.setButtonName("Set Paying Customer");
@@ -234,6 +313,11 @@ public class Customer implements Cloneable, Serializable {
         return payerBox.getBox();
     }
 
+    /**
+     *
+     * @param choice
+     * @return
+     */
     public MyVBox getVBox(ChoiceBox<String> choice) {
         return new MyVBox(
                 getCustomerLabelVBox(),
@@ -333,6 +417,10 @@ public class Customer implements Cloneable, Serializable {
         return "";
     }
 
+    /**
+     *
+     * @return
+     */
     protected TreeItem<String> getCustSupplementBreakdown() {
         TreeItem<String> supplementList = new TreeItem(this.name + "'s Supplement Breakdown");
 
@@ -345,6 +433,10 @@ public class Customer implements Cloneable, Serializable {
         return supplementList;
     }
 
+    /**
+     *
+     * @return
+     */
     public TreeItem<String> getCustomerDetails() {
         TreeItem<String> customerInformation = new TreeItem("Customer");
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
@@ -356,6 +448,10 @@ public class Customer implements Cloneable, Serializable {
         return customerInformation;
     }
 
+    /**
+     *
+     * @return
+     */
     public MyVBox getCustomerLabelVBox() {
         Label customerLabel = new Label("Customer");
         customerLabel.setPadding(new Insets(10));
@@ -364,6 +460,10 @@ public class Customer implements Cloneable, Serializable {
         return test;
     }
 
+    /**
+     *
+     * @return
+     */
     public MyVBox getDetails() {
         MyVBox test = new MyVBox(getCustomerLabelVBox());
         TreeView details = new TreeView();
@@ -374,9 +474,16 @@ public class Customer implements Cloneable, Serializable {
         return test;
     }
 
+    /**
+     *
+     */
     public void setAssociatedCustomerListToNull() {
     }
 
+    /**
+     *
+     * @param associateCustomer
+     */
     public void addAssociatedCustomer(Customer associateCustomer) {
     }
 }

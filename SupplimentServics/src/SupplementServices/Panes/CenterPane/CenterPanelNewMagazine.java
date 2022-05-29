@@ -15,21 +15,31 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
 /**
+ * Displays Magazine fields to be created in the center pane.
  *
- * @author callu
+ * @author callum
  */
 public class CenterPanelNewMagazine extends CenterPanelEdit {
 
     Magazine magazine;
     MyVBox labels;
 
+    /**
+     * Constructs a center panel for input of new Magazines's fields.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelNewMagazine(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.magazine = new Magazine();
-        this.labels = getLabels();
+        this.labels = new MyVBox();
         setCenterPane();
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     private void setCenterPane() {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
@@ -42,11 +52,11 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
         setPane();
     }
 
-    private MyVBox getLabels() {
-        MyVBox buttons = new MyVBox();
-        return buttons;
-    }
-
+    /**
+     * Saves file in user specified directory.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveAsChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
@@ -56,6 +66,11 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Calls a save function in the back end.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
@@ -65,6 +80,9 @@ public class CenterPanelNewMagazine extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     @Override
     public void setPane() {
         this.centerSectionPane.setPadding(new Insets(25, 0, 0, 50));

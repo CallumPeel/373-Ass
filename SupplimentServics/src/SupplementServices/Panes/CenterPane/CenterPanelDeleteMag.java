@@ -9,15 +9,24 @@ import SupplementServices.FrontEndGUI;
 import java.io.IOException;
 
 /**
- *
+ * Extends default Delete class. Deletes selected magazine.
  * @author callum
  */
 public class CenterPanelDeleteMag extends CenterPanelDelete {
 
+    /**
+     * Constructs a Delete Panel.
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelDeleteMag(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
+    /**
+     * Calls a save function in the back end.
+     * @throws IOException
+     */
     @Override
     public void saveChange() throws IOException {
         try {
@@ -30,6 +39,9 @@ public class CenterPanelDeleteMag extends CenterPanelDelete {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Deletes unnecessary buttons by overriding initial method.
+     */
     @Override
     public void setPane() {
     }

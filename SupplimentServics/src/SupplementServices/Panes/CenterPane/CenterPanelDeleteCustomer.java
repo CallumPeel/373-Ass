@@ -9,15 +9,24 @@ import SupplementServices.FrontEndGUI;
 import java.io.IOException;
 
 /**
- *
- * @author callu
+ * Extends default Delete class. Deletes selected customer.
+ * @author callum
  */
 public class CenterPanelDeleteCustomer extends CenterPanelDelete {
 
+    /**
+     * Constructs a Delete Panel.
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelDeleteCustomer(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
     }
 
+    /**
+     * Calls a save function in the back end.
+     * @throws IOException
+     */
     @Override
     public void saveChange() throws IOException {
         try {

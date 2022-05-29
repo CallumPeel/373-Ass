@@ -12,12 +12,23 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
+/**
+ * Constructs a center panel for editing magazine fields.
+ *
+ * @author callum
+ */
 public class CenterPanelEditMagazine extends CenterPanelEdit {
 
     String initialName;
     Magazine oldMagazine, newMagazine;
     MyVBox labels;
 
+    /**
+     * Constructs a center panel for editing Magazine fields.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelEditMagazine(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.oldMagazine = this.backEnd.getMagazine(this.frontEnd.magazineSelected);
@@ -27,6 +38,9 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         setCenterPane();
     }
 
+    /**
+     * Performs a deep copy of a Magazine.
+     */
     private void cloneMagazine() {
         try {
             this.newMagazine = this.oldMagazine.clone();
@@ -35,6 +49,9 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         }
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     private void setCenterPane() {
         ChoiceBox<String> supDrop = this.backEnd.getSupplementList();
         ChoiceBox<String> custDrop = this.backEnd.getCustomerList();
@@ -46,6 +63,12 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         this.centerSectionPane.setCenter(content);
         setPane();
     }
+
+    /**
+     * Saves file in user specified directory.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveAsChangesButtonClick() throws IOException {
         System.out.println("Save Changes button clicked on edit");
@@ -55,7 +78,12 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         this.backEnd.save(this.frontEnd.getDirectory());
         this.frontEnd.refresh();
     }
-    
+
+    /**
+     * Calls a save function in the back end.
+     *
+     * @throws IOException
+     */
     @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save Changes button clicked on edit");
@@ -66,6 +94,9 @@ public class CenterPanelEditMagazine extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     @Override
     public void setPane() {
         this.centerSectionPane.setPadding(new Insets(25, 0, 0, 50));

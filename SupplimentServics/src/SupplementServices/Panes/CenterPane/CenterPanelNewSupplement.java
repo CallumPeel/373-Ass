@@ -11,7 +11,7 @@ import SupplementServices.Supplement;
 import java.io.IOException;
 
 /**
- *
+ * Displays Supplement fields to be created in the center pane.
  * @author callum
  */
 public class CenterPanelNewSupplement extends CenterPanelEdit {
@@ -19,13 +19,21 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
     Supplement supplement;
     MyVBox labels;
 
+    /**
+     * Constructs a center panel for input of new Supplement's fields.
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelNewSupplement(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         this.supplement = new Supplement();
-        this.labels = getLabels();
+        this.labels = new MyVBox();
         setCenterPane();
     }
-
+    
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     private void setCenterPane() {
         this.centerSectionPane.setCenter(
                 this.supplement.getVBox()
@@ -33,11 +41,10 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
         setPane();
     }
 
-    private MyVBox getLabels() {
-        MyVBox buttons = new MyVBox();
-        return buttons;
-    }
-
+    /**
+     * Saves file in user specified directory.
+     * @throws IOException
+     */
     @Override
     public void onSaveAsChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");
@@ -47,6 +54,10 @@ public class CenterPanelNewSupplement extends CenterPanelEdit {
         this.frontEnd.refresh();
     }
 
+    /**
+     * Calls a save function in the back end.
+     * @throws IOException
+     */
     @Override
     public void onSaveChangesButtonClick() throws IOException {
         System.out.println("Save button clicked on new");

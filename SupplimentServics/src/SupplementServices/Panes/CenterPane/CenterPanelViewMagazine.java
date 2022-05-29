@@ -10,16 +10,26 @@ import SupplementServices.Panes.MyVBox;
 import javafx.geometry.Insets;
 
 /**
+ * Displays Magazine information to center pane.
  *
- * @author callu
+ * @author callum
  */
 public class CenterPanelViewMagazine extends CenterPanel {
 
+    /**
+     * Constructs a center panel for viewing Magazine's fields.
+     *
+     * @param backEnd
+     * @param frontEnd
+     */
     public CenterPanelViewMagazine(BackEnd backEnd, FrontEndGUI frontEnd) {
         super(backEnd, frontEnd);
         addTreeView();
     }
 
+    /**
+     * Constructs a tree view of the customer's information.
+     */
     private void addTreeView() {
         MyVBox magazineBreakdownVBox = new MyVBox(this.backEnd.getMagazine(this.frontEnd.magazineSelected).getDetails());
         this.centerSectionPane.setCenter(magazineBreakdownVBox);
@@ -28,6 +38,9 @@ public class CenterPanelViewMagazine extends CenterPanel {
         setPane();
     }
 
+    /**
+     * Sets this Pane by passing to the back end.
+     */
     @Override
     public void setPane() {
         this.backEnd.getCreatePane().setCenter(centerSectionPane);
