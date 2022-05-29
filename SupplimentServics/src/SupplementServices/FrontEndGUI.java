@@ -2,7 +2,7 @@ package SupplementServices;
 
 import SupplementServices.Panes.BottomPanel;
 import SupplementServices.Panes.TopPanel;
-import SupplementServices.Panes.LeftPane.LeftPanel;
+import SupplementServices.Panes.LeftPane.LeftPanelView;
 import SupplementServices.Panes.LeftPane.LeftPanelEdit;
 import SupplementServices.Panes.LeftPane.LeftPanelCreate;
 import SupplementServices.Panes.CenterPane.CenterPanelViewCustomer;
@@ -57,11 +57,11 @@ public class FrontEndGUI {
         this.height = height;
         this.buttonWidth = 150;
         this.backEnd.setFileName(getDirectory());
-//        try {
-//            this.backEnd.load();
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            this.backEnd.load();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.customerSelected = this.backEnd.customers.get(0).getName();
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
         this.magazineSelected = this.backEnd.magazines.get(0).getName();
@@ -353,7 +353,7 @@ public class FrontEndGUI {
         new TopPanel(this.backEnd, this);
         new BottomPanel(this.backEnd, this);
         if (isViewMode) {
-            new LeftPanel(this.backEnd, this);
+            new LeftPanelView(this.backEnd, this);
             new CenterPanelViewCustomer(this.backEnd, this);
             this.backEnd.vScene = new Scene(this.backEnd.viewPane, this.width, this.height);
             this.backEnd.stage.setScene(this.backEnd.vScene);

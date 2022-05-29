@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
  *
  * @author callu
  */
-public class LeftPanelEdit extends LeftPanel {
+public class LeftPanelEdit extends LeftPanelView {
 
     /**
      * Constructs Tree Views and editing buttons.

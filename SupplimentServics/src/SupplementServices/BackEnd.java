@@ -86,7 +86,7 @@ public class BackEnd implements Serializable {
         this.customers = new ArrayList<>();
         this.supplements = new ArrayList<>();
         this.magazines = new ArrayList<>();
-        buildFullDatabase();
+//        buildFullDatabase();
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
@@ -593,7 +593,6 @@ public class BackEnd implements Serializable {
             try {
                 getCustomer(this.customers.get(i).getPayer()).addAssociatedCustomer(this.customers.get(i));
             } catch (Exception e) {
-                System.out.println("Payer not found.");
             }
         }
     }

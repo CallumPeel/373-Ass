@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
  *
  * @author callum
  */
-public class LeftPanel extends MyBPane {
+public class LeftPanelView extends MyBPane {
 
     /**
      * Constructs a Left Panel.
@@ -24,7 +24,7 @@ public class LeftPanel extends MyBPane {
      * @param backEnd
      * @param sceneTemplate
      */
-    public LeftPanel(BackEnd backEnd, FrontEndGUI sceneTemplate) {
+    public LeftPanelView(BackEnd backEnd, FrontEndGUI sceneTemplate) {
         super(backEnd, sceneTemplate);
         buildPane();
     }

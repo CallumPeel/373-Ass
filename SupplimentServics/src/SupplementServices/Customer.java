@@ -147,6 +147,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns the total cost in string format.
+     *
      * @return
      */
     public String getTotalString() {
@@ -164,6 +165,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns an HBox containing elements to set this field.
+     *
      * @return
      */
     public HBox getNameHBox() {
@@ -186,6 +188,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns an HBox containing elements to set this field.
+     *
      * @return
      */
     public HBox getEmailHBox() {
@@ -207,6 +210,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns an HBox containing elements to set this field.
+     *
      * @return
      */
     public HBox getAddressHBox() {
@@ -231,6 +235,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns an HBox containing elements to set this field.
+     *
      * @return
      */
     public HBox getPostCodeHBox() {
@@ -255,6 +260,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns an HBox containing elements to set this field.
+     *
      * @return
      */
     public HBox streetNameHBox() {
@@ -276,6 +282,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns an HBox containing elements to set this field.
+     *
      * @return
      */
     public HBox suburbBoxHBox() {
@@ -296,7 +303,9 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     * Takes a DropDown and returns an HBox containing elements to set this field.
+     * Takes a DropDown and returns an HBox containing elements to set this
+     * field.
+     *
      * @param choice
      * @return
      */
@@ -318,7 +327,8 @@ public class Customer implements Cloneable, Serializable {
     }
 
     /**
-     *  Returns a VBox containing all the field editing HBoxes.
+     * Returns a VBox containing all the field editing HBoxes.
+     *
      * @param choice
      * @return
      */
@@ -328,9 +338,9 @@ public class Customer implements Cloneable, Serializable {
                 getNameHBox(),
                 getEmailHBox(),
                 getAddressHBox(),
-                getPostCodeHBox(),
                 streetNameHBox(),
                 suburbBoxHBox(),
+                getPostCodeHBox(),
                 dropDown(choice)
         );
     }
@@ -423,6 +433,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns a Tree Item list of this customers subscriptions.
+     *
      * @return
      */
     protected TreeItem<String> getCustSupplementBreakdown() {
@@ -439,6 +450,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns a Tree Item list of this customers details.
+     *
      * @return
      */
     public TreeItem<String> getCustomerDetails() {
@@ -446,7 +458,7 @@ public class Customer implements Cloneable, Serializable {
         customerInformation.getChildren().add(new TreeItem("Name: " + this.name));
         customerInformation.getChildren().add(new TreeItem("Payer Name: " + this.payer));
         customerInformation.getChildren().add(new TreeItem("Email: " + this.email));
-        customerInformation.getChildren().add(new TreeItem("Total Cost: " + getTotal()));
+        customerInformation.getChildren().add(new TreeItem("Total Cost: " + "$" + String.format("%.2f", getTotal())));
         customerInformation.getChildren().add(this.address.getAddressTreeView());
         customerInformation.getChildren().add(getCustSupplementBreakdown());
         return customerInformation;
@@ -454,6 +466,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns a formatted label.
+     *
      * @return
      */
     public VBox getCustomerLabelVBox() {
@@ -466,6 +479,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Returns a formatted VBox list of this customers details.
+     *
      * @return
      */
     public VBox getDetails() {
@@ -486,6 +500,7 @@ public class Customer implements Cloneable, Serializable {
 
     /**
      * Overridable method to assign customers to their respective payers.
+     *
      * @param associateCustomer
      */
     public void addAssociatedCustomer(Customer associateCustomer) {
