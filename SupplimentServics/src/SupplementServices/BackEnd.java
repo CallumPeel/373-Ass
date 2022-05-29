@@ -44,9 +44,10 @@ public class BackEnd implements Serializable {
      * @throws java.lang.ClassNotFoundException
      */
     public BackEnd(Stage window) throws IOException, FileNotFoundException, ClassNotFoundException {
-        this.customers = new ArrayList<Customer>();
-        this.supplements = new ArrayList<Supplement>();
-        this.magazines = new ArrayList<Magazine>();
+        this.customers = new ArrayList<>();
+        this.supplements = new ArrayList<>();
+        this.magazines = new ArrayList<>();
+//        buildFullDatabase();
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
