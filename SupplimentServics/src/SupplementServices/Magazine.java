@@ -41,6 +41,8 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Takes some values and constructs a new Magazine with other default
+     * values.
      *
      * @param name
      * @param cost
@@ -54,6 +56,8 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Takes some values and constructs a new Magazine with other default
+     * values.
      *
      * @param name
      * @param cost
@@ -66,6 +70,8 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Takes some values and constructs a new Magazine with other default
+     * values.
      *
      * @param mag
      */
@@ -77,7 +83,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
-     * Default constructor initializes global variables too default values.
+     * Default constructor initializes global variables to default values.
      */
     public Magazine() {
         this.name = "Defaut";
@@ -87,6 +93,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Returns a deep copy of aMagazine.
      *
      * @return
      * @throws CloneNotSupportedException
@@ -97,6 +104,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Returns this Magazines name.
      *
      * @return
      */
@@ -105,6 +113,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Returns this Magazines customer subscriptions.
      *
      * @return
      */
@@ -131,6 +140,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Sets this Magazines name.
      *
      * @param name
      */
@@ -139,6 +149,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Sets this Magazines customer subscriptions.
      *
      * @param customerSubscriptions
      */
@@ -183,6 +194,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Returns this Magazines Customer List as a drop down menu.
      *
      * @return
      */
@@ -195,6 +207,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Returns this Magazines Supplement List as a drop down menu.
      *
      * @return
      */
@@ -207,10 +220,11 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
+     * Returns an HBox containing elements to set this field.
      *
      * @return
      */
-    public HBox getNameHBox() {
+    private HBox getNameHBox() {
         MyHBox nameBox = new MyHBox();
         nameBox.setButtonName("Name");
         nameBox.setLabelText(this.name);
@@ -227,6 +241,11 @@ public class Magazine implements Cloneable, Serializable {
         return nameBox.getBox();
     }
 
+    /**
+     * Returns an HBox containing elements to set this field.
+     *
+     * @return
+     */
     private HBox getCostHBox() {
         MyHBox costBox = new MyHBox();
         costBox.setButtonName("Magazine Cost");
@@ -235,24 +254,24 @@ public class Magazine implements Cloneable, Serializable {
             costBox.setLabelText("Default");
         }
         costBox.button.setOnAction(s -> {
-                    try {
-                        this.cost = Double.parseDouble(costBox.inputText.getText());
-                        costBox.outputLabel.setText(Double.toString(this.cost));
-                    } catch (Exception e) {
-                        System.out.println("Something Went Wrong...");
-                    }
-                });
+            try {
+                this.cost = Double.parseDouble(costBox.inputText.getText());
+                costBox.outputLabel.setText(Double.toString(this.cost));
+            } catch (Exception e) {
+                System.out.println("Something Went Wrong...");
+            }
+        });
         costBox.formatBox();
         return costBox.getBox();
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @param backEnd
      * @param choice
      * @return
      */
-    public HBox addSupDropDown(BackEnd backEnd, ChoiceBox<String> choice) {
+    private HBox addSupDropDown(BackEnd backEnd, ChoiceBox<String> choice) {
         MyHBox supplementsBox = new MyHBox(choice);
         supplementsBox.setButtonName("add");
         supplementsBox.setLabelText("Choose a supplement to add");
@@ -271,11 +290,11 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @param backEnd
      * @return
      */
-    public HBox deleteSupDropDown(BackEnd backEnd) {
+    private HBox deleteSupDropDown(BackEnd backEnd) {
         MyHBox supplementsBox = new MyHBox(getSupplementList());
         supplementsBox.setButtonName("remove");
         supplementsBox.setLabelText("Choose a supplement to remove");
@@ -294,11 +313,11 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @param backEnd
      * @return
      */
-    public HBox deleteCustDropDown(BackEnd backEnd) {
+    private HBox deleteCustDropDown(BackEnd backEnd) {
         MyHBox custBox = new MyHBox(getCustomerList());
         custBox.setButtonName("remove");
         custBox.setLabelText("Choose a customer to remove");
@@ -317,12 +336,12 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an HBox containing elements to set this field.
      * @param backEnd
      * @param custDrop
      * @return
      */
-    public HBox addCustDropDown(BackEnd backEnd, ChoiceBox<String> custDrop) {
+    private HBox addCustDropDown(BackEnd backEnd, ChoiceBox<String> custDrop) {
         MyHBox custBox = new MyHBox(custDrop);
         custBox.setButtonName("add");
         custBox.setLabelText("Choose a customer to add");
@@ -340,7 +359,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns an VBox containing all elements to set for this Magazine.
      * @param backEnd
      * @param supDrop
      * @param custDrop
@@ -358,7 +377,7 @@ public class Magazine implements Cloneable, Serializable {
     }
 
     /**
-     *
+     * Returns a tree view of this magazines information.
      * @return
      */
     public VBox getDetails() {
