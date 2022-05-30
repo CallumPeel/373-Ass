@@ -1,12 +1,9 @@
 package SupplementServices;
 
 import SupplementServices.Panes.BottomPanel;
-import SupplementServices.Panes.TopPanel;
-import SupplementServices.Panes.LeftPane.LeftPanelView;
-import SupplementServices.Panes.LeftPane.LeftPanelEdit;
-import SupplementServices.Panes.LeftPane.LeftPanelCreate;
-import SupplementServices.Panes.CenterPane.CenterPanelViewCustomer;
-import SupplementServices.Panes.CenterPane.CenterPanelEdit;
+import SupplementServices.Panes.*;
+import SupplementServices.Panes.CenterPane.*;
+import SupplementServices.Panes.LeftPane.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -57,11 +54,11 @@ public class FrontEndGUI {
         this.height = height;
         this.buttonWidth = 150;
         this.backEnd.setFileName(getDirectory());
-        try {
-            this.backEnd.load();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            this.backEnd.load();
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(FrontEndGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         this.customerSelected = this.backEnd.customers.get(0).getName();
         this.supplementSelected = this.backEnd.supplements.get(0).getName();
         this.magazineSelected = this.backEnd.magazines.get(0).getName();

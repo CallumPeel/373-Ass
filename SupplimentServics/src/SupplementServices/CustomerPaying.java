@@ -49,7 +49,15 @@ public class CustomerPaying extends Customer {
         super();
         this.paymentMethod = new PaymentMethod("Default", new Card("Default", "Default", "Default", -1));
         this.associatedCustomers = new ArrayList<>();
-
+    }
+    
+        /**
+     * Creates Customer with default payment details.
+     */
+    public CustomerPaying(String name) {
+        super(name);
+        this.paymentMethod = new PaymentMethod("Default", new Card("Default", "Default", "Default", -1));
+        this.associatedCustomers = new ArrayList<>();
     }
 
     /**
@@ -419,7 +427,7 @@ public class CustomerPaying extends Customer {
      */
     @Override
     public void setAssociatedCustomerListToNull() {
-        this.associatedCustomers = new ArrayList<>();
+        this.associatedCustomers.removeAll(this.associatedCustomers);
     }
 
     /**

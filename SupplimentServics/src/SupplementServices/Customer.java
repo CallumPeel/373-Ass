@@ -39,7 +39,7 @@ public class Customer implements Cloneable, Serializable {
         this.name = name;
         this.email = email;
         this.address = new Address();
-        this.payer = "default";
+        this.payer = "Default";
         this.supplementSubscription = new ArrayList<Supplement>();
         this.supplementSubscription = supplementSubscription;
         setTotal();

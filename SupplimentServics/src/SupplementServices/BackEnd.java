@@ -86,7 +86,7 @@ public class BackEnd implements Serializable {
         this.customers = new ArrayList<>();
         this.supplements = new ArrayList<>();
         this.magazines = new ArrayList<>();
-//        buildFullDatabase();
+        buildFullDatabase();
         this.viewPane = new BorderPane();
         this.createPane = new BorderPane();
         this.editPane = new BorderPane();
@@ -439,6 +439,15 @@ public class BackEnd implements Serializable {
     }
 
     /**
+     * Takes a customer and adds it to the list of customers.
+     *
+     * @param customer
+     */
+    public void addCustomerPaying(CustomerPaying customer) {
+        this.customers.add(customer);
+    }
+
+    /**
      * Adds a new customer to the list, instantiated with a String name passed
      * in.
      *
@@ -446,6 +455,15 @@ public class BackEnd implements Serializable {
      */
     public void addCustomer(String customer) {
         this.customers.add(new Customer(customer));
+    }
+    
+        /**
+     * Takes a customer and adds it to the list of customers.
+     *
+     * @param customer
+     */
+    public void addPayingCustomer(String customer) {
+        this.customers.add(new CustomerPaying(customer));
     }
 
     /**
@@ -586,10 +604,11 @@ public class BackEnd implements Serializable {
      * Adds customers to corresponding Associated Customer Lists.
      */
     public void setAssociatedCustomerLists() {
-        for (int i = 0; i < this.getNumCust(); i++) {
+        int numCust = this.getNumCust();
+        for (int i = 0; i < numCust; i++) {
             this.customers.get(i).setAssociatedCustomerListToNull();
         }
-        for (int i = 0; i < this.getNumCust(); i++) {
+        for (int i = 0; i < numCust; i++) {
             try {
                 getCustomer(this.customers.get(i).getPayer()).addAssociatedCustomer(this.customers.get(i));
             } catch (Exception e) {
